@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new DH\UserBundle\DHUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

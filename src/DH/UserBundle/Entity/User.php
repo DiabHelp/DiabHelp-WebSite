@@ -11,6 +11,11 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addRole('ROLE_USER');
+    }  
   /**
    * @ORM\Column(name="id", type="integer")
    * @ORM\Id

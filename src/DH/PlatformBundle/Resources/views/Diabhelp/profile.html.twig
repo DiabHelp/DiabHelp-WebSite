@@ -46,8 +46,8 @@
                 {#//echo '<a onclick="validate_account($_SESSION[\'name\'], $_SESSION[\'id\']);">Envoyer un email pour valider mon compte maintenant.</a><br>';#}
             </p>
             <form method="GET" action="" name="inscription">
-                <div class="contact_form_box">
-                    <div class="form_box_left fl">
+                <div class="contact_form_box">';
+                    <div class="form_box_left fl">';
                         {#if ($usr['firstname'])#}
                         {#<input class="contact_form_input_noname" title="Prénom" name="fname" type="text" value="'.$usr['firstname'].'" />#}
                         {#else if (!($usr['firstname']))#}
@@ -65,7 +65,7 @@
                         {#else if (!($usr['organism']))#}
                         <input class="contact_form_input_noname" title="Association" name="organism" type="text" placeholder="Renseignez votre association" />
                     </div>
-                    <div class="form_box_center fl">
+                    <div class="form_box_center fl">';
                         {#if ($usr['telephone'])#}
                         {#echo '<input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" value="'.$usr['telephone'].'" />';#}
                         {#else if (!($usr['telephone']))#}
@@ -79,12 +79,11 @@
                         {#<input style="border: solid 3px red;" class="contact_form_input_noname" name="pwd" onchange="" type="password" placeholder="Mot de passe" />#}
                         {#<input style="border: solid 3px red;" class="contact_form_input_noname" name="pwdv" onchange="" type="password" placeholder="Confirmation de mdp" />#}
                         {#else#}
-                        <input class="contact_form_input_noname" name="pwd" type="password" placeholder="Mot de passe" />
-                        <input class="contact_form_input_noname" name="pwdv" type="password" placeholder="Confirmation de mdp" />
+                        <input class="contact_form_input_noname" name="pwd" onchange="" type="password" placeholder="Mot de passe" />
+                        <input class="contact_form_input_noname" name="pwdv" onchange="" type="password" placeholder="Confirmation de mdp" />
                     </div>
                     <div class="form_box_righ fl" style="background-color:#2a2a2a;">
-                        <input class="proposer_submit contact_form_submit" alt="Submit" type="image" />
-                        {#src="{{ asset('bundles/dhplatform/images/submit_button.png') }}" />#}
+                        <input class="proposer_submit contact_form_submit" alt="Submit" type="image"  src="{{ asset('bundles/dhplatform/images/submit_button.png') }}" />
                         <p>Valider les modifications</p>
                     </div>
             </form>
