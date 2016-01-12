@@ -46,8 +46,8 @@
                 {#//echo '<a onclick="validate_account($_SESSION[\'name\'], $_SESSION[\'id\']);">Envoyer un email pour valider mon compte maintenant.</a><br>';#}
             </p>
             <form method="GET" action="" name="inscription">
-                <div class="contact_form_box">';
-                    <div class="form_box_left fl">';
+                <div class="contact_form_box">
+                    <div class="form_box_left fl">
                         {#if ($usr['firstname'])#}
                         {#<input class="contact_form_input_noname" title="Prénom" name="fname" type="text" value="'.$usr['firstname'].'" />#}
                         {#else if (!($usr['firstname']))#}
@@ -65,7 +65,7 @@
                         {#else if (!($usr['organism']))#}
                         <input class="contact_form_input_noname" title="Association" name="organism" type="text" placeholder="Renseignez votre association" />
                     </div>
-                    <div class="form_box_center fl">';
+                    <div class="form_box_center fl">
                         {#if ($usr['telephone'])#}
                         {#echo '<input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" value="'.$usr['telephone'].'" />';#}
                         {#else if (!($usr['telephone']))#}
