@@ -5,10 +5,15 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    public function init() {
+    public function __constructor() {
         date_default_timezone_set('Asia/Hong_Kong');
         parent::init();
     }
+
+    public function init() {
+        date_default_timezone_set('Asia/Hong_Kong');
+    }
+
     public function registerBundles()
     {
         $bundles = array(
@@ -23,6 +28,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new DH\PlatformBundle\DHPlatformBundle(),
             new DH\UserBundle\DHUserBundle(),
+            new DH\AdminBundle\DHAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),

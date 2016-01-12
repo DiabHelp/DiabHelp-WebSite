@@ -57,6 +57,13 @@
         </li>
       </ul>
     </li>
+      {% if is_granted('ROLE_ADMIN') %}
+        <li>
+          <a href="{{ path('dh_admin_index') }}">
+            Zone admin
+          </a>
+        </li>
+      {% endif %}
     {% if app.user %}
       <li>
         <a href="{{ path('dh_platform_profile') }}">

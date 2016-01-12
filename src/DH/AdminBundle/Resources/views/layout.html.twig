@@ -3,20 +3,16 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-  Home - {{ parent() }}
+  Admin - {{ parent() }}
 {% endblock %}
 
 
+{% block body %}
 
- {% block body %}
-
-  {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
-  <h1>Website</h1>
-
-  <hr>
+<a href="{{ path('dh_admin_modules') }}">Modules</a> | <a href="{{ path('dh_admin_articles') }}">News</a><br/>
 
   {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
-  {% block dhplatform_body %}
+  {% block dhadmin_body %}
   {% endblock %}
 
 {% endblock %}
