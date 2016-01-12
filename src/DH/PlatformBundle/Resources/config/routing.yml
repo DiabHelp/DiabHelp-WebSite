@@ -1,0 +1,64 @@
+dh_platform_home:
+    path:     /
+    defaults: { _controller: DHPlatformBundle:Diabhelp:index }
+
+dh_platform_legal:
+    path:     /legal
+    defaults: { _controller: DHPlatformBundle:Diabhelp:legal }
+
+dh_platform_contact:
+    path:     /contact
+    defaults: { _controller: DHPlatformBundle:Diabhelp:contact }
+
+dh_platform_profile:
+    path:     /profile
+    defaults: { _controller: DHPlatformBundle:Diabhelp:profile }
+
+## MODULES
+dh_platform_module:
+    path:     /module
+    defaults: { _controller: DHPlatformBundle:Module:index }
+
+dh_platform_module_add:
+    path:     /module/add
+    defaults: { _controller: DHPlatformBundle:Module:add }
+
+dh_platform_module_view:
+    path:      /module/{id}
+    defaults:  { _controller: DHPlatformBundle:Module:view }
+    requirements:
+        id:  \d+
+
+dh_platform_module_vote:
+    path:      /module/vote/{id}/{note}
+    defaults:  { _controller: DHPlatformBundle:Module:vote }
+    requirements:
+        id:  \d+
+        note: \d+
+
+dh_platform_module_comment_delete:
+    path:      /module/deletecomment/{id}
+    defaults:  { _controller: DHPlatformBundle:Module:deleteComment }
+    requirements:
+        id:  \d+
+
+## ARTICLES
+dh_platform_article:
+    path:     /article
+    defaults: { _controller: DHPlatformBundle:Article:index }
+
+dh_platform_article_add:
+    path:     /article/add
+    defaults: { _controller: DHPlatformBundle:Article:add }
+
+dh_platform_article_view:
+    path:      /article/{id}
+    defaults:  { _controller: DHPlatformBundle:Article:view }
+    requirements:
+        id:  \d+
+
+dh_platform_article_comment_delete:
+    path:      /article/deletecomment/{id}
+    defaults:  { _controller: DHPlatformBundle:Article:deleteComment }
+    requirements:
+        id:  \d+

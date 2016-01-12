@@ -1,0 +1,66 @@
+{# src/DH/PlatformBundle/Resources/views/Module/index.html.twig #}
+
+{% extends "DHPlatformBundle::slide.html.twig" %}
+
+{% block title %}
+  Modules - {{ parent() }}
+{% endblock %}
+
+{% block dhplatform_body %}
+
+  <div class = 'page_header'>
+    <div class= center >
+      <img class='page_header_logo fl' src='{{ asset('bundles/dhplatform/images/news_logo.png') }}' alt=''>
+      <h1 class='page_header_title fl'>Liste des modules</h1>
+      <ul class='page_header_nav fr'>
+        <li>
+          <a href='{{ path('dh_platform_home') }}'>Accueil</a>
+        </li>
+        <li>
+          <a class='active' href='{{ path('dh_platform_module') }}'>Liste des modules</a>
+        </li>
+      </ul>
+      <div class='cf'></div>
+    </div>
+  </div>
+
+  {% for module in modules %}
+
+    <div class="center">
+      <h3 class="services_item_title">
+        <a class='link_mods' href="{{ path('dh_platform_module_view', {'id': module.id}) }}" title="Information complémentaire sur le module {{ module.name }}" >{{ module.name }}</a>
+      </h3>
+      <div class='graph_mod'>
+        <div class='left_mod'>
+          <img class='img_mod' id='image_profil' src='{{ module.logo }}' />
+          <p>Note Actuelle : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
+          <div class='rating' style='margin-right:35px;'>
+            <a id="{{ module.id }}rating5" onclick="voteModuleIndex({{ module.id }}, 5)" title='Attribuer 5 étoiles à ce module'>☆</a>
+            <a id="{{ module.id }}rating4" onclick="voteModuleIndex({{ module.id }}, 4)" title='Attribuer 4 étoiles à ce module'>☆</a>
+            <a id="{{ module.id }}rating3" onclick="voteModuleIndex({{ module.id }}, 3)" title='Attribuer 3 étoiles à ce module'>☆</a>
+            <a id="{{ module.id }}rating2" onclick="voteModuleIndex({{ module.id }}, 2)" title='Attribuer 2 étoiles à ce module'>☆</a>
+            <a id="{{ module.id }}rating1" onclick="voteModuleIndex({{ module.id }}, 1)" title='Attribuer 1 étoile à ce module'>☆</a>
+          </div>
+          <p class='describ_mod'>{{ module.description }}</p>
+        </div>
+        <div class='right_mod'>
+          <h3>Crée par : {{ module.organisme }}</h3>
+          <h4>Catégorie : {{ module.type }}</h4>
+          <h5 style="text-align:right; text-transform:none;">
+            <a style="text-decoration:none; color:white;" href="" >Ce module a reçu {{ module.nbVote }} commentaires </a>
+          </h5>
+        </div>
+        <a>
+          <img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}' style='float:right;'/>
+          {#onclick='shareOnFacebook(<?php echo "\"DiabHelp - ".$mods['name']."\", \"http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?name='.$mods['name']."\", \"".$mods['describ']."\", \"http://www.diabhelp.fr/".$mods['logo']; ?>")' style='float:right;'>#}
+        </a>
+      </div>
+    </div>
+
+	  {#<h4><a href="{{ path('dh_platform_module_view', {'id': module.id}) }}">{{ module.name }}</a></h4>#}
+
+  {% endfor %}
+
+  <div class='cf'></div>
+
+{% endblock %}

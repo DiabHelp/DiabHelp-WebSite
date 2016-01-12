@@ -1,0 +1,37 @@
+{# src/DH/PlatformBundle/Resources/views/slide.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+ {% block body %}
+
+     <div class="flexslider" id="home-slider">
+         <ul class="slides">
+             <li style="background-image:url({{ asset('bundles/dhplatform/images/flexslider/slide2.jpg') }}); background-size:cover; background-position:center center;">
+                 <div class="descr">
+                     <h1>DiabHelp</h1>
+                     <p>Un projet créé pour les patients, par les patients.<br/>Devenez acteur du développement de votre solution.</p>
+                     <div class="descr_link"><a href="{{ path('dh_platform_contact') }}">En savoir plus..</a></div>
+                 </div>
+             </li>
+             <li style="background-image:url({{ asset('bundles/dhplatform/images/flexslider/slide3.jpg') }}); background-size:cover; background-position:center center;">
+                 <div class="descr">
+                     <h1>Réagissez</h1>
+                     <p>Notez et commentez les modules qui vous semblent pertinents.<br/></p>
+                     <div class="descr_link"><a href="{{ path('dh_platform_module') }}">En savoir plus..</a></div>
+                 </div>
+             </li>
+             <li style="background-image:url({{ asset('bundles/dhplatform/images/flexslider/slide1.jpg') }}); background-size:cover; background-position:center center;">
+                 <div class="descr">
+                     <h1>Créer votre module</h1>
+                     <p>Proposez le module de votre choix !<br/>Il sera alors soumis aux votes de la communauté</p>
+                     <div class="descr_link"><a href="{{ path('dh_platform_module_add') }}">En savoir plus..</a></div>
+                 </div>
+             </li>
+         </ul>
+     </div>
+
+     {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+     {% block dhplatform_body %}
+     {% endblock %}
+
+ {% endblock %}

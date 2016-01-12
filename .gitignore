@@ -1,0 +1,36 @@
+# Cache and logs (Symfony2)
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+
+# Parameters
+/app/config/parameters.yml
+
+# Managed by Composer
+/app/bootstrap.php.cache
+/var/bootstrap.php.cache
+/bin/*
+!bin/console
+!bin/symfony_requirements
+/vendor
+
+# Assets and user uploads
+/web/uploads/
+/web/bundles/
+
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml
+
+# Build data
+/build/
+
+#IntelliJ IDEA
+/.idea/
+
+# Notes
+notes
+
+# Composer PHAR
+/composer.phar

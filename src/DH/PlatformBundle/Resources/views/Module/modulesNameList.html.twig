@@ -1,0 +1,13 @@
+    <ul class="nav_second" >
+        {% if modules %}
+            {% for module in modules %}
+                <li>
+                    <a href='{{ path('dh_platform_module_view', {'id': module.id}) }}'>{{ module.name }}</a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>
+                Pas de modules trouvé
+            </li>
+        {% endif %}
+    </ul>

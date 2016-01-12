@@ -1,0 +1,25 @@
+<div id='inscription' class='center' hidden>
+    <h2 class='center'>S'inscrire</h2>
+    <form action="{{ path('fos_user_registration_register') }}" method="POST">
+        <div class="form-group" id="fos_user_registration_form">
+            <div id="signup_first_part">
+                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur' } }) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'E-mail' } }) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div id="signup_second_part">
+                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe' } }) }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe de confirmation' } }) }}
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_rest(form) }}
+            </div>
+        </div>
+        <input required type='checkbox' name='CGU'> Acceptez les <a href='{{ path('dh_platform_legal') }}'>CGU</a><br/>
+        <div>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Enregistrer">
+        </div>
+    </form>
+    <p>Déjà inscrit? <a onclick='show_signup_part("signin");' style='color: blue;'>Connectez-vous</a></p>
+</div>

@@ -1,0 +1,97 @@
+{% extends "DHPlatformBundle::slide.html.twig" %}
+
+{% block title %}
+    Profil - {{ parent() }}
+{% endblock %}
+
+{% block dhplatform_body %}
+
+    <div class = "page_header">
+        <div class="center">
+            <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
+            <h1 class="page_header_title fl">Modifier son profil</h1>
+            <ul class="page_header_nav fr">
+                <li><a href="{{ path('dh_platform_home') }}">Accueil</a></li>
+                <li><a class="active" href="{{ path('dh_platform_profile') }}">Modifier son profil</a></li>
+            </ul>
+            <div class="cf"></div>
+        </div>
+    </div>
+
+    <div class='contact_content' style="margin:auto;background-color:#078b87;" >
+        <div class="cf"></div>
+        <div style="width:100%;" class="center" >
+            <p style="text-align:center;"><img id="image_profile" src="{{ asset('bundles/dhplatform/images/user_avatar/av-def.png')}}" title="user_avatar" /></p>
+        </div>
+        <p style="text-align:center;font-size:0.8em;color:white;">Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)</p>
+        <div style="width:265px;margin:0 auto;background:#078b87;">
+            <form method="post" action="" enctype="multipart/form-data">
+                <input type="file" name="avatar" id="fileToUp" />
+                <div class="cf"></div>
+                <div style="padding:2px 25px;background-color:#2a2a2a">
+                    <input type="submit" style="color:white;width:100%" name="submit" id="UpSub" alt="submit" value="Uploader cette image"/>
+                </div>
+            </form>
+        </div>
+        <div class="contact_form">
+            <p style="text-align:center">
+                {#if ($usr['news'])#}
+                <input type="checkbox" name="news" checked />Je souhaite recevoir des informations de DiabHelp par mail.<br>
+                {#else if (!($usr['news']))																									// UNE JQUERY CA SERAIT CHOULI#}
+                <input type="checkbox" name="news" />Je ne souhaite plus recevoir d\'informations de DiabHelp par mail.<br>
+                {#if ($usr['valide'])#}
+                <input type="checkbox" name="valide" value="valide" checked />Mon compte est validé<br>
+                {#else if (!($usr['valide']))#}
+                {#echo '<input type="checkbox" name="valide" value="valide"  onchange="validate_account($_SESSION[\'name\'], $_SESSION[\'id\']);">Envoyer un email pour valider mon compte maintenant.</a><br>';#}
+                {#//echo '<a onclick="validate_account($_SESSION[\'name\'], $_SESSION[\'id\']);">Envoyer un email pour valider mon compte maintenant.</a><br>';#}
+            </p>
+            <form method="GET" action="" name="inscription">
+                <div class="contact_form_box">
+                    <div class="form_box_left fl">
+                        {#if ($usr['firstname'])#}
+                        {#<input class="contact_form_input_noname" title="Prénom" name="fname" type="text" value="'.$usr['firstname'].'" />#}
+                        {#else if (!($usr['firstname']))#}
+                        <input class="contact_form_input_noname" title="Prénom" name="fname" type="text"  placeholder="Renseignez votre prénom" />
+                        {#if ($usr['lastname'])#}
+                        {#<input class="contact_form_input_noname" title="Nom" name="lname" type="text" value="'.$usr['lastname'].'" />#}
+                        {#else if (!($usr['lastname']))#}
+                        <input class="contact_form_input_noname" title="Nom" name="lname" type="text" placeholder="Renseignez votre nom" />
+                        {#if ($usr['email'])#}
+                        {#<input class="contact_form_input_noname" title="Email" name="email" type="text" value="'.$usr['email'].'" />#}
+                        {#else if (!($usr['email']))#}
+                        <input class="contact_form_input_noname" title="Email" name="email" type="text" placeholder="Renseignez votre adresse email" />
+                        {#if ($usr['organism'])#}
+                        {#<input class="contact_form_input_noname" title="Association" name="organism" type="text" value="'.$usr['organism'].'" />#}
+                        {#else if (!($usr['organism']))#}
+                        <input class="contact_form_input_noname" title="Association" name="organism" type="text" placeholder="Renseignez votre association" />
+                    </div>
+                    <div class="form_box_center fl">
+                        {#if ($usr['telephone'])#}
+                        {#echo '<input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" value="'.$usr['telephone'].'" />';#}
+                        {#else if (!($usr['telephone']))#}
+                        <input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" placeholder="Numéro de téléphone" />
+                        {#if ($usr['birthday'])#}
+                        <input class="contact_form_input_noname" title="Date de naissance" name="birth" type="date" placeholder="" />
+                        {#else if (!($usr['birthday']))#}
+                        {#echo '<input class="contact_form_input_noname" title="Date de naissance" name="birth" type="date" placeholder="'.$usr['birthday'].'"value="'.$usr['birthday'].'" />';#}
+
+                        {#if (isset($_GET['e']) && $_GET['e'] == 1)#}
+                        {#<input style="border: solid 3px red;" class="contact_form_input_noname" name="pwd" onchange="" type="password" placeholder="Mot de passe" />#}
+                        {#<input style="border: solid 3px red;" class="contact_form_input_noname" name="pwdv" onchange="" type="password" placeholder="Confirmation de mdp" />#}
+                        {#else#}
+                        <input class="contact_form_input_noname" name="pwd" type="password" placeholder="Mot de passe" />
+                        <input class="contact_form_input_noname" name="pwdv" type="password" placeholder="Confirmation de mdp" />
+                    </div>
+                    <div class="form_box_righ fl" style="background-color:#2a2a2a;">
+                        <input class="proposer_submit contact_form_submit" alt="Submit" type="image" />
+                        {#src="{{ asset('bundles/dhplatform/images/submit_button.png') }}" />#}
+                        <p>Valider les modifications</p>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <div class="cf"></div>
+    <p style="text-align:center;" onclick=""><button style="color:red; padding: 2px 25px; background-color: #2a2a2a;">Je souhaite supprimer mon compte</button></p>
+    <div class="cf"></div>
+
+{% endblock %}

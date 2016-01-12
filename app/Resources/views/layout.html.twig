@@ -1,0 +1,158 @@
+{# src/DH/PlatformBundle/Resources/views/menu.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="{{ asset('bundles/dhplatform/images/icone_onglet.ico') }}" type="image/x-icon">
+  <title>{% block title %}DiabHelp{% endblock %}</title>
+
+  {% block stylesheets %}
+    {% stylesheets 'bundles/dhplatform/css/general.css' filter="cssrewrite" %}
+      <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+    {#&#123;&#35; On charge le CSS de bootstrap depuis le site directement &#35;&#125;#}
+    {#&#123;&#35;<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">&#35;&#125;#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/dhplatform/css/general.css') }}">#}
+  {% endblock %}
+</head>
+
+<body>
+<div class="header center">
+  <div class="header_logo fl">
+    <a class="header_logo fl" href="{{ path('dh_platform_home') }}">
+      <img src="{{ asset('bundles/dhplatform/images/Logo_diabhelp3.png') }}">
+    </a>
+  </div>
+  <ul class="nav fl cf">
+    <li>
+      <a href="{{ path('dh_platform_home') }}">
+        Accueil
+      </a>
+    </li>
+    <li>
+      <a href="{{ path('dh_platform_module') }}">
+        Modules
+      </a>
+      {{ render(controller("DHPlatformBundle:Module:listName")) }}
+    </li>
+    <li>
+      <a href="{{ path('dh_platform_module_add') }}">
+        Proposer
+      </a>
+    </li>
+    <li>
+      <a href="{{ path('dh_platform_contact') }}">
+        Contact
+      </a>
+    </li>
+    <li>
+      <a href="{{ path('dh_platform_article') }}">
+        Communauté
+      </a>
+      <ul class="nav_second">
+        <li>
+          <a href="{{ path('dh_platform_article') }}">News</a>
+        </li>
+      </ul>
+    </li>
+    {% if app.user %}
+      <li>
+        <a href="{{ path('dh_platform_profile') }}">
+          <b>{{ app.user.username }}</b> Profil
+        </a>
+      </li>
+      <li>
+        <a href="{{ path('fos_user_security_logout') }}">
+          Déconnexion
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <a onclick="show_signup()">
+          Connexion/Inscription
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+
+<div id="welogin" class="welogin">
+  {{ render(controller("DHUserBundle:Registration:register")) }}
+  {{ render(controller("DHUserBundle:Security:login")) }}
+</div>
+
+<div id="content">
+  {% block body %}
+  {% endblock %}
+</div>
+
+<footer>
+  <div class="footer">
+    <div class="footer_center">
+      <div class="footer_contacts f1">
+        <h1 class="footer_contacts_title">
+          <a class="link_footer" href="{{ path('dh_platform_legal') }}">Mentions Legales</a></h1>
+      </div>
+      <div class="footer_contacts fl">
+        <h1 class="footer_contacts_title">Contacts</h1>
+        <div class="footer_contacts_item">
+          <div class="cf"></div>
+        </div>
+        <div class="footer_contacts_item">
+          <div class="footer_contacts_item_pic_address fl"></div>
+          <div class="footer_contacts_item_inf fl">
+            <h5>ADRESSE:</h5>
+            <p>40 boulevard de la Marquette<br/> 31000 Toulouse</p>
+          </div>
+          <div class="cf"></div>
+        </div>
+        <div class="footer_contacts_item">
+          <div class="footer_contacts_item_pic_tel fl"></div>
+          <div class="footer_contacts_item_inf fl">
+            <h5>TELEPHONE:</h5>
+            <p>+33 6 ** ** ** **</p>
+          </div>
+          <div class="cf"></div>
+        </div>
+        <div class="footer_contacts_item">
+          <div class="footer_contacts_item_pic_email fl"></div>
+          <div class="footer_contacts_item_inf fl">
+            <h5>EMAIL:</h5>
+            <p>damien.pollet@epitech.eu</p>
+          </div>
+          <div class="cf"></div>
+        </div>
+      </div>
+      <div class="cf"></div>
+    </div>
+  </div>
+  <div class="social_icons">
+    <div class="social_icons_center cf">
+      <h6 class="copyright fl"></h6>
+      <div class="icons_item fr">
+        <p class="icons_item_background"><a class="twitter" href="#"></a></p>
+        <p class="icons_item_background"><a class="facebook" href="https://www.facebook.com/pages/DiabHelp/791976390848837?fref=ts"></a></p>
+          <!--					<p class="icons_item_background"><a class="pinterest" href="#"></a></p>
+                              <p class="icons_item_background"><a class="linkedin" href="#"></a></p>
+                              <p class="icons_item_background"><a class="skype" href="#"></a></p>
+                              <p class="icons_item_background"><a class="tumbl" href="#"></a></p>-->
+      </div>
+      <div class="cf"></div>
+      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+    </div>
+  </div>
+</footer>
+
+{% block javascripts %}
+  {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="{{ asset('bundles/dhplatform/js/masonry.pkgd.min.js') }}"></script>
+  <script src="{{ asset('bundles/dhplatform/js/jquery.flexslider-min.js') }}"></script>
+  <script src="{{ asset('bundles/dhplatform/js/scripts.js') }}"></script>
+  {#<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>#}
+{% endblock %}
+
+</body>
+</html>
