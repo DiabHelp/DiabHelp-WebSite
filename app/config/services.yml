@@ -8,3 +8,6 @@ services:
         class: DH\PlatformBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    authentication_handler:
+        class:        DH\UserBundle\Handler\AuthenticationHandler
+        arguments:    [@router, @security.context, @fos_user.user_manager, @service_container]

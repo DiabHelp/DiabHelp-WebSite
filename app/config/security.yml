@@ -43,8 +43,10 @@ security:
             anonymous:      true
             provider:       main
             form_login:
-                login_path: fos_user_security_login
-                check_path: fos_user_security_check
+                login_path:         fos_user_security_login
+                check_path:         fos_user_security_check
+                success_handler:    authentication_handler
+                failure_handler:    authentication_handler
             logout:
                 path:       fos_user_security_logout
                 target:     /
