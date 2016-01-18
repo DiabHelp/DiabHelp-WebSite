@@ -9,7 +9,11 @@ A Symfony project created on October 12, 2015, 5:57 pm.
 ### Update des dépendances :
 `php composer.phar update`
 
-### Si la db est inexistante :
+### Si la db mysql est inexistante :
+`php app/console doctrine:database:create`
+
+## Pareille pour sqlite :
+`sqlite3 app/db/data.db3 "create table aTable(field1 int); drop table aTable;"`
 `php app/console doctrine:database:create`
 
 ### Sous Linux :
@@ -23,7 +27,7 @@ A Symfony project created on October 12, 2015, 5:57 pm.
 `php app/console assets:install web`
 
 ### Réécriture des assets (fichier CSS du cache Synfony2)
-`php app/console assetic:dump web
+`php app/console assetic:dump web`
 
 ### Pour la génération de pdf :
 Linux : 
