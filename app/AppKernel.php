@@ -32,7 +32,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            // new Divi\AjaxLoginBundle\DiviAjaxLoginBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

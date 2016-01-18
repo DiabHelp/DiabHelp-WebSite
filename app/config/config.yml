@@ -55,7 +55,7 @@ assetic:
 doctrine:
     dbal:
 
-        default_connection: sqlite
+        default_connection: mysql
 
         connections:
             sqlite:
