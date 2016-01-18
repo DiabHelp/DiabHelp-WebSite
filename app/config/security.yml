@@ -47,11 +47,17 @@ security:
                 check_path:         fos_user_security_check
                 success_handler:    authentication_handler
                 failure_handler:    authentication_handler
+            ajax_form_login:
+                login_path:         fos_user_security_login
+                check_path:         fos_user_security_check
+                success_handler:    authentication_handler
+                failure_handler:    authentication_handler
             logout:
                 path:       fos_user_security_logout
                 target:     /
             remember_me:
                 key:        %secret% # %secret% est un paramètre de parameters.yml
-
+            http_basic:
+                realm: "REST Service Realm"
     access_control:
         # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

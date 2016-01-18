@@ -47,4 +47,8 @@ fos_user_change_password:
 
 login:
     path:   /login
+
+rest_login:
+    path:   /rest-login
+    defaults:   { _controller: DHUserBundle:Security:restLogin }
     # defaults:  { _controller: DHUserBundle:Security:login }

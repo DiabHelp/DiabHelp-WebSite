@@ -1,3 +1,24 @@
 <h2>Carnet de suivi</h2>
 <p>firstname : {{ firstname }}</p>
 <p>lastname : {{ lastname }}</p>
+
+<table border="1">
+<tbody>
+	<tr>
+		<th>title</th>
+		<th>date</th>
+		<th>glucide</th>
+		<th>glycemy</th>
+		<th>hba1c</th>
+	</tr>
+	{% for data in datas %}
+		<tr>
+			<td>{{ data.title }}</td>
+			<td>{{ data.date }}, {{ data.hour }}</td>
+			<td>{{ data.glucide }}</td>
+			<td>{{ data.glycemy }}</td>
+			<td>{{ data.hba1c }}</td>
+		</tr>
+	{% endfor %}
+</tbody>
+</table>

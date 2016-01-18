@@ -32,8 +32,9 @@
 # Notes
 notes
 
-# Composer PHAR
+# Composer
 /composer.phar
-
+/composer.lock
 *~
-app/data/pdf/logbook/
+agpp/data/pdf/logbook/
+/local/
