@@ -35,13 +35,21 @@ class SecurityController extends BaseController
     public function restLoginAction(Request $request)
     {
         $username = $request->get('username');
+        $password = $request->get('password');
         $em = $this->getDoctrine();
         $repo  = $em->getRepository("DHUserBundle:User"); //Entity Repository
         $user = $repo->findOneByUsername($username);
         if (!$user) {
             return new Response(json_encode(array("success" => false, "message" => "Invalid username")));
         } else {
-            $token = new UsernamePasswordToken($user, null, "main", $user->getRoles());
+            $token = new UsernamePasswordToken($user, $password, "main", $user->getRoles());
+            $encoder_service = $this->get('security.encoder_factory');
+            $encoder = $encoder_service->getEncoder($user);
+            $encoded_pass = $encoder->encodePassword($password, $user->getSalt());
+            if ($user->getPassword() != $encoded_pass) {
+                return new Response(json_encode(array("success" => false, "message" => "Invalid password")));
+            }
+            // return new Response($token);
             $this->get("security.context")->setToken($token); //now the user is logged in
              
             //now dispatch the login event
