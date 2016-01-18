@@ -20,7 +20,10 @@ class RegistrationType extends AbstractType
                    )
                )
            )
-        );
+        )
+        ->add('firstname')
+        ->add('lastname')
+        ;
     }
 
     public function getParent()

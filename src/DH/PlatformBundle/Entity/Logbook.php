@@ -5,12 +5,12 @@ namespace DH\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Vote
+ * Logbook
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="DH\PlatformBundle\Entity\VoteRepository")
+ * @ORM\Entity(repositoryClass="DH\PlatformBundle\Entity\LogbookRepository")
  */
-class Vote
+class Logbook
 {
     /**
      * @var integer
@@ -22,11 +22,11 @@ class Vote
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="vote", type="integer")
+     * @ORM\Column(name="token", type="string", length=43)
      */
-    private $vote;
+    private $token;
 
     /**
      * @var \DateTime
@@ -36,16 +36,10 @@ class Vote
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DH\PlatformBundle\Entity\Module", inversedBy="Vote")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $module;
-
-    /**
      * @ORM\ManyToOne(targetEntity="DH\UserBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $author;
+    private $user;
 
     /**
      * Get id
@@ -58,31 +52,27 @@ class Vote
     }
 
     /**
-     * Set vote
+     * Set token
      *
-     * @param integer $vote
+     * @param string $token
      *
-     * @return Vote
+     * @return Logbook
      */
-    public function setVote($vote)
+    public function setToken($token)
     {
-        if ($vote < 1)
-            $vote = 1;
-        else if ($vote > 5)
-            $vote = 5;
-        $this->vote = $vote;
+        $this->token = $token;
 
         return $this;
     }
 
     /**
-     * Get vote
+     * Get token
      *
-     * @return integer
+     * @return string
      */
-    public function getVote()
+    public function getToken()
     {
-        return $this->vote;
+        return $this->token;
     }
 
     /**
@@ -90,7 +80,7 @@ class Vote
      *
      * @param \DateTime $date
      *
-     * @return Vote
+     * @return Logbook
      */
     public function setDate($date)
     {
@@ -108,5 +98,28 @@ class Vote
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \DH\UserBundle\Entity\User $user
+     *
+     * @return Logbook
+     */
+    public function setUser(\DH\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \DH\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}
