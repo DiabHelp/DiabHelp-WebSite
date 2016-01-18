@@ -2,10 +2,24 @@ dh_admin_index:
     path:       /
     defaults:   { _controller: DHAdminBundle:Admin:index }
 
+# Articles
 dh_admin_articles:
-    path:       /articles
+    path:       /article
     defaults:   { _controller: DHAdminBundle:Article:index }
 
+dh_admin_articles_delete:
+    path:      /article/delete/{id}
+    defaults:  { _controller: DHAdminBundle:Article:delete }
+    requirements:
+        id:  \d+
+
+# Modules
 dh_admin_modules:
     path:       /modules
-    defaults:   { _controller: DHAdminBundle:Modules:index }
+    defaults:   { _controller: DHAdminBundle:Module:index }
+
+dh_admin_modules_delete:
+    path:      /modules/delete/{id}
+    defaults:  { _controller: DHAdminBundle:Module:delete }
+    requirements:
+        id:  \d+

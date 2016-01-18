@@ -76,6 +76,11 @@ class Module
     private $nbVote = 0;
 
     /**
+     * @ORM\OneToMany(targetEntity="DH\PlatformBundle\Entity\Vote", mappedBy="module", cascade={"persist", "remove"})
+     */
+    private $votes;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="display", type="integer", options={"default" = 1})

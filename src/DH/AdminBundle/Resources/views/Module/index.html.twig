@@ -1,15 +1,44 @@
+{# Admin/Module/index #}
+
 {% extends "DHAdminBundle::layout.html.twig" %}
 
 {% block title %}
-  Articles - {{ parent() }}
+  Edition des modules - {{ parent() }}
 {% endblock %}
 
-{% block dhplatform_body %}
+{% block dhadmin_body %}
 
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+{% for key, lmessage in app.session.flashbag.all() %}
+	{% for message in lmessage %}
+		<div class="alert alert-{{ key }}">
+			<li>{{ key }} -> {{ message }}</li>
+		</div>
+	{% endfor %}
+{% endfor %}
 
-      <!-- {% for article in articles %} -->
-
-        
-      <!-- {% endfor %} -->
+<table border="1">
+<tbody>
+	<tr>
+		<th>id</th>
+		<th>Nom</th>
+		<th>Description</th>
+		<th>nb votes</th>
+		<th>type</th>
+		<th>Delete</th>
+	</tr>
+	{% for module in modules %}
+		<tr>
+			<td>{{ module.id }}</td>
+			<td>{{ module.name }}</td>
+			<td>{{ module.description }}</td>
+			<td>{{ module.nbVote }}</td>
+			<td>{{ module.type }}</td>
+			<td><a href="{{ path('dh_admin_modules_delete', {'id': module.id}) }}">Delete this module</a></td>
+		</tr>
+	{% endfor %}
+</tbody>
+</table>
 
 {% endblock %}
