@@ -40,8 +40,8 @@ class CarnetController extends Controller
 
 		$datastring = $this->getFakeData();
 		$datas = json_decode($datastring);
-		dump($datas);
-		return new Response("<html><body></body></html>");
+		// dump($datas);
+		// return new Response("<html><body></body></html>");
 
 
 		$this->get('knp_snappy.pdf')->generateFromHtml(
