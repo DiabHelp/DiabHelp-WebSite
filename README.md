@@ -14,16 +14,21 @@ A Symfony project created on October 12, 2015, 5:57 pm.
 
 ## Pareille pour sqlite :
 `sqlite3 app/db/data.db3 "create table aTable(field1 int); drop table aTable;"`
+
 `php app/console doctrine:database:create`
 
 ### Sous Linux :
 `php app/console doctrine:schema:update DHPlatformBundle --dump-sql`
+
 `php app/console doctrine:schema:update DHPlatformBundle --force`
+
 `php app/console assets:install --symlink web`
 
 ### Sous Windows :
 `php app/console doctrine:schema:update --dump-sql`
+
 `php app/console doctrine:schema:update --force`
+
 `php app/console assets:install web`
 
 ### Réécriture des assets (fichier CSS du cache Synfony2)
