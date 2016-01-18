@@ -1,0 +1,30 @@
+{# Admin/Articles/index #}
+
+{% extends "DHAdminBundle::layout.html.twig" %}
+
+{% block title %}
+  Edition des news - {{ parent() }}
+{% endblock %}
+
+{% block dhadmin_body %}
+
+<table border="1">
+<tbody>
+	<tr>
+		<th>id</th>
+		<th>date</th>
+		<th>title</th>
+		<th>text</th>
+	</tr>
+	{% for article in articles %}
+		<tr>
+			<td>{{ article.id }}</td>
+			<td>{{ article.date|date('d/m/Y') }}</td>
+			<td>{{ article.title }}</td>
+			<td>{{ article.text }}</td>
+		</tr>
+	{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

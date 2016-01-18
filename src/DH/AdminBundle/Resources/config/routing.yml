@@ -1,0 +1,11 @@
+dh_admin_index:
+    path:       /
+    defaults:   { _controller: DHAdminBundle:Admin:index }
+
+dh_admin_articles:
+    path:       /articles
+    defaults:   { _controller: DHAdminBundle:Article:index }
+
+dh_admin_modules:
+    path:       /modules
+    defaults:   { _controller: DHAdminBundle:Modules:index }

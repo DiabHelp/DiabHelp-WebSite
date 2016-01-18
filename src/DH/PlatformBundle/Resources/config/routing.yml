@@ -68,9 +68,3 @@ dh_platform_article_comment_delete:
 dh_platform_carnetsuivi_exportjson:
     path:       /carnet/export
     defaults:   { _controller: DHPlatformBundle:CarnetSuivi:exportJSON}
-
-## Admin
-
-dh_platform_admin_index:
-    path:       /admin
-    defaults:   { _controller: DHPlatformBundle:Admin:index}
