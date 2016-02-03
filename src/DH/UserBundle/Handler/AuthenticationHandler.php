@@ -103,10 +103,10 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
      */
     public function onAuthenticationSuccess( Request $request, TokenInterface $token )
     {
-        // echo '<pre>';
-        // echo (print_r($_POST));
+        echo '<pre>';
+        echo (print_r($_POST));
         // var_dump($request);
-        // echo '</pre>';
+        echo '</pre>';
         // return new Response("");
         // if AJAX login
         if ( $request->isXmlHttpRequest() ) {
@@ -145,12 +145,12 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
      */
      public function onAuthenticationFailure( Request $request, AuthenticationException $exception )
     {
-        if ($request->isXmlHttpRequest())
-            $isxml = "Yes, it's xmlhtttp, but : ";
-        else
-            $isxml = " No, it's not xmlhtttp, but : ";
-        echo $isxml;
-        echo (print_r($_POST));
+        // if ($request->isXmlHttpRequest())
+        //     $isxml = "Yes, it's xmlhtttp, but : ";
+        // else
+        //     $isxml = " No, it's not xmlhtttp, but : ";
+        // echo $isxml;
+        // echo (print_r($_POST));
         // return new Response("AAAAAAAAAA " . $isxml);
         // if AJAX login
         if ( $request->isXmlHttpRequest() ) { 

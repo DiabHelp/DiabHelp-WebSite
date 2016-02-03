@@ -42,3 +42,5 @@ MacOS :
 
 ### Todo
 Error 404 + 500
+export pdf -> mail
+connexion username/mail

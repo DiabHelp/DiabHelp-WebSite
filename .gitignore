@@ -36,6 +36,6 @@ notes
 /composer.phar
 /composer.lock
 *~
-agpp/data/pdf/logbook/
+app/data/pdf/logbook/*
 /local/
 /app/db/*
