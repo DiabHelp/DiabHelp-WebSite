@@ -64,6 +64,7 @@
                     <div id="header_com_gauche">
                         <img src="" alt="user" class="icone_picture_user">
                         <h3>{{ comment.author.username }}</h3>
+                        <h3>{{ comment.vote }} / 5</h3>
                     </div>
                     <div id="header_com_droite">
                               {#<?php if (isset($_SESSION['id']) && $_SESSION['id'] != ""){#}
@@ -94,7 +95,7 @@
                     </div>
                 </div>
                 <div class="content_com">
-                    <p id=com_info_msg" style="display:none"></p>
+                    <p id="com_info_msg" style="display:none"></p>
                     <div id=text_com>
                         <p>{{ comment.text }}</p>
                     </div>

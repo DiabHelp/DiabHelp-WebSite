@@ -3,6 +3,7 @@
 namespace DH\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DH\PlatformBundle\Entity\Vote;
 
 /**
  * CommentModule
@@ -47,9 +48,29 @@ class CommentModule
      */
     private $module;
 
+    private $vote;
+
     public function __construct()
     {
         $this->date = new \Datetime();
+    }
+
+    public function setVote($em)
+    {
+        $vote = $em->getRepository('DHPlatformBundle:Vote')
+                   ->findOneBy(array('author' => $this->getAuthor(),
+                                     'module' => $this->getModule(),
+                                     ));
+
+        if ($vote != null)
+            $this->vote = $vote->getVote();
+        else
+            $this->vote = 0;
+    }
+
+    public function getVote()
+    {
+        return $this->vote;
     }
 
     /**

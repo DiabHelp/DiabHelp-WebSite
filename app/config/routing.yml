@@ -2,9 +2,9 @@ dh_admin:
     resource: "@DHAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
-# dhapi:
-#     resource: "@DHAPIBundle/Resources/config/routing.yml"
-#     prefix:   /
+dh_api:
+    resource: "@DHAPIBundle/Resources/config/routing.yml"
+    prefix:   /api
 
 ## DiabHelp Platform routing
 dh_platform:

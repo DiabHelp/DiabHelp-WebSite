@@ -103,10 +103,10 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
      */
     public function onAuthenticationSuccess( Request $request, TokenInterface $token )
     {
-        echo '<pre>';
-        echo (print_r($_POST));
+        // echo '<pre>';
+        // echo (print_r($_POST));
         // var_dump($request);
-        echo '</pre>';
+        // echo '</pre>';
         // return new Response("");
         // if AJAX login
         if ( $request->isXmlHttpRequest() ) {

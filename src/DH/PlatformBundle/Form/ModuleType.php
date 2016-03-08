@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 class ModuleType extends AbstractType
 {
     /**
@@ -28,13 +30,14 @@ class ModuleType extends AbstractType
             ->add('description', 'textarea')
             ->add('type', 'text')
             ->add('organisme', 'text')
-            ->add('logo', 'file', array('required' => false))
+            ->add('logo', FileType::class, array('required' => false))
+            // ->add('logo', 'file', array('required' => false))
             // ->add('version', 'text')
             // ->add('url', 'text')
             ->add('save', 'submit')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

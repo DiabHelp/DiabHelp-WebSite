@@ -9,6 +9,7 @@ use DH\PlatformBundle\Form\ModuleType;
 use DH\PlatformBundle\Form\CommentModuleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class ModuleController extends Controller
@@ -63,9 +64,8 @@ class ModuleController extends Controller
 
   	public function viewAction(Request $request, $id)
   	{
-	    $repository = $this->getDoctrine()
-	      ->getManager()
-	      ->getRepository('DHPlatformBundle:Module');
+  		$em = $this->getDoctrine()->getManager();
+	    $repository = $em->getRepository('DHPlatformBundle:Module');
 
 	    $module = $repository->find($id);
 
@@ -89,6 +89,10 @@ class ModuleController extends Controller
 
 			// On redirige vers la page de visualisation de l'annonce nouvellement créée
 			return $this->redirect($this->generateUrl('dh_platform_module_view', array('id' => $module->getId())));
+	    }
+
+	    foreach ($module->getComments() as $key => $com) {
+	    	$com->setVote($em);
 	    }
 
 	    return $this->render('DHPlatformBundle:Module:view.html.twig', array(
@@ -121,6 +125,12 @@ class ModuleController extends Controller
   		$vote->setAuthor($this->getUser());
   		$vote->setModule($module);
   		$vote->setDate(new \Datetime());
+
+  		$beforeNote = $module->getNote();
+  		$beforeNbVote = $module->getNbVote();
+  		$afterNote = (($beforeNote * $beforeNbVote) + $note) / ($beforeNbVote + 1);
+  		$module->setNbVote($beforeNbVote + 1);
+  		$module->setNote($afterNote);
 
   		$em->persist($vote);
   		$em->flush();

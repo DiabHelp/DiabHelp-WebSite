@@ -1,0 +1,9 @@
+dh_api_module_view:
+    path:      /modules/{id}
+    defaults:  { _controller: DHAPIBundle:Module:view }
+    requirements:
+        id:  \d+
+
+dh_api_module_all:
+    path:      /modules/all
+    defaults:  { _controller: DHAPIBundle:Module:all }

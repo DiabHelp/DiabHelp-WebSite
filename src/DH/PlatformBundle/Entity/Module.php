@@ -57,14 +57,14 @@ class Module
     /**
      * @var string
      *
-     * @ORM\Column(name="logo", type="text", options={"default" = "basic.jpg", "nullable" = "true"})
+     * @ORM\Column(name="logo", type="text", options={"default" = "basic.jpg"})
      */
     private $logo;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="note", type="integer", options={"default" = 0})
+     * @ORM\Column(name="note", type="float", options={"default" = 0})
      */
     private $note = 0;
 
@@ -90,14 +90,14 @@ class Module
     /**
      * @var string
      *
-     * @ORM\Column(name="version", type="string", length=255, options={"default" = "0.0.1", "nullable" = "true"})
+     * @ORM\Column(name="version", type="string", length=42, options={"default" = "0.0.1"})
      */
     private $version;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="text", options={"default" = "ya pas", "nullable" = "true"})
+     * @ORM\Column(name="url", type="text", options={"default" = "ya pas pour le moment"})
      */
     private $url = "";
 

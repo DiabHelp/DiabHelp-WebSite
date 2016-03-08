@@ -41,6 +41,8 @@ MacOS :
 `brew install Caskroom/cask/wkhtmltopdf`
 
 ### Todo
+https://docs.google.com/document/d/12ZC_DrxtdDA7C8SDdoGOTVv3lv-NJeWLbbzEAqKxJCk/edit
 Error 404 + 500
 export pdf -> mail
 connexion username/mail
+inscription rest POST
