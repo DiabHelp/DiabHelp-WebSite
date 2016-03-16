@@ -4,6 +4,7 @@ namespace DH\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationType extends AbstractType
 {
@@ -43,5 +44,12 @@ class RegistrationType extends AbstractType
     public function getName()
     {
         return $this->getBlockPrefix();
+    }
+
+   public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'csrf_protection' => false,
+        ));
     }
 }

@@ -7,3 +7,8 @@ dh_api_module_view:
 dh_api_module_all:
     path:      /modules/all
     defaults:  { _controller: DHAPIBundle:Module:all }
+
+## USERS
+dh_api_user_register:
+    path:      /users/add
+    defaults:  { _controller: DHAPIBundle:User:register }
