@@ -1,3 +1,22 @@
+## CARNET DE SUIVI
+dh_api_carnet_export:
+    path:      /carnet/sendmail/{mail}/{entries}
+    defaults:  { _controller: DHAPIBundle:Carnet:export }
+    requirements:
+        mail:   \d+
+        entries:  \d+
+
+dh_api_carnet_download:
+    path:      /carnet/download/{id}
+    defaults:  { _controller: DHAPIBundle:Carnet:download }
+    requirements:
+        id:   \d+
+
+dh_api_carnet_exportJSON:
+    path:      /carnet/exportJSON
+    defaults:  { _controller: DHAPIBundle:Carnet:exportJSON }
+
+## MODULES
 dh_api_module_view:
     path:      /modules/{id}
     defaults:  { _controller: DHAPIBundle:Module:view }

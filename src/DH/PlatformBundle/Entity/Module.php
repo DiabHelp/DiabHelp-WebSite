@@ -396,4 +396,5 @@ class Module
     {
         return strval($this->id);
     }
+
 }

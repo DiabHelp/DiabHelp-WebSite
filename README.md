@@ -12,19 +12,19 @@ A Symfony project created on October 12, 2015, 5:57 pm.
 ### Si la db mysql est inexistante :
 `php app/console doctrine:database:create`
 
-## Pareille pour sqlite :
+## Pareil pour sqlite :
 `sqlite3 app/db/data.db3 "create table aTable(field1 int); drop table aTable;"`
 
 `php app/console doctrine:database:create`
 
-### Sous Linux :
+### Linux :
 `php app/console doctrine:schema:update DHPlatformBundle --dump-sql`
 
 `php app/console doctrine:schema:update DHPlatformBundle --force`
 
 `php app/console assets:install --symlink web`
 
-### Sous Windows :
+### Windows :
 `php app/console doctrine:schema:update --dump-sql`
 
 `php app/console doctrine:schema:update --force`
@@ -36,7 +36,7 @@ A Symfony project created on October 12, 2015, 5:57 pm.
 
 ### Pour la génération de pdf :
 Linux : 
-`sudo apt-get install wkhtmltopdf``
+`sudo apt-get install wkhtmltopdf`
 MacOS :
 `brew install Caskroom/cask/wkhtmltopdf`
 

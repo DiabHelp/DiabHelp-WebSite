@@ -99,4 +99,34 @@ class User extends BaseUser
     {
         return $this->lastname;
     }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     *
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return User
+     *
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
 }

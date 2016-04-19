@@ -45,7 +45,7 @@ class UserController extends Controller
         if (!$email)
             $errors[] = "Invalid email";
         else {
-            $user = $repo->findByEmail($username);
+            $user = $repo->findByEmail($email);
             if ($user)
                 $errors[] = "email already use";
         }
