@@ -2,9 +2,6 @@
 
 namespace DH\APIBundle\Controller;
 
-use DH\UserBundle\Entity\User;
-use DH\PlatformBundle\Form\RegistrationType;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +9,6 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Serializer\Serializer;
 
 class UserController extends Controller
@@ -95,4 +91,32 @@ class UserController extends Controller
         // }
         // return new Response($this->serializer->serialize(array("status" => "fail", "errors" => $form->getErrors()), 'json'));
     }
+
+    public function logoutAction(Request $request, $token) {
+        $encoders = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object;
+        });
+
+        $this->serializer = new Serializer(array($normalizer), array($encoders));
+
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('DHUserBundle:User');
+
+        $user = $repository->findByToken($token);
+
+        if ($user == null) {
+            throw new NotFoundHttpException("Le token " . $token . " n'existe pas.");
+        }
+
+        $repository->emptyAuthToken($user->getId());
+
+        $jsonContent = $this->serializer->serialize("true", 'json');
+
+        return new Response($jsonContent);
+    }
+
 }

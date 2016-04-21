@@ -88,6 +88,13 @@ class Module
     private $display = 0;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="isNew", type="integer", options={"default" = 1})
+     */
+    private $isNew = 0;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="version", type="string", length=42, options={"default" = "0.0.1"})
@@ -97,15 +104,96 @@ class Module
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="text", options={"default" = "ya pas pour le moment"})
+     * @ORM\Column(name="urlStore", type="text", options={"default" = "ya pas pour le moment"})
      */
-    private $url = "";
+    private $urlStore = "";
+
+    /**
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * @param string $size
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlSiteWeb()
+    {
+        return $this->urlSiteWeb;
+    }
+
+    /**
+     * @param string $urlSiteWeb
+     */
+    public function setUrlSiteWeb($urlSiteWeb)
+    {
+        $this->urlSiteWeb = $urlSiteWeb;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlStore()
+    {
+        return $this->urlStore;
+    }
+
+    /**
+     * @param string $urlStore
+     */
+    public function setUrlStore($urlStore)
+    {
+        $this->urlStore = $urlStore;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlSiteWeb", type="text", options={"default" = "ya pas pour le moment"})
+     */
+    private $urlSiteWeb = "";
+
+    /**
+     * @return int
+     */
+    public function getIsNew()
+    {
+        return $this->isNew;
+    }
+
+    /**
+     * @param int $isNew
+     */
+    public function setIsNew($isNew)
+    {
+        $this->isNew = $isNew;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="size", type="text", options={"default" = "0mb"})
+     */
+    private $size = "";
 
     public function __construct()
     {
         $this->version = "0.0.1";
-        $this->url = "";
+        $this->urlStore = "";
+        $this->urlSiteWeb = "";
         $this->logo = "";
+        $this->isNew = 1;
+        $this->size = "Omb";
     }
 
     /**
@@ -284,30 +372,6 @@ class Module
     public function getVersion()
     {
         return $this->version;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Module
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**

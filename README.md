@@ -29,9 +29,9 @@ A Symfony project created on October 12, 2015, 5:57 pm.
 
 `php app/console doctrine:schema:update --force`
 
+### Réécriture des assets (fichier CSS du cache Synfony2) :
 `php app/console assets:install web`
 
-### Réécriture des assets (fichier CSS du cache Synfony2)
 `php app/console assetic:dump web`
 
 ### Pour la génération de pdf :
