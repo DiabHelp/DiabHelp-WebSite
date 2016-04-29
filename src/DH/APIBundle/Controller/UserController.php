@@ -93,14 +93,9 @@ class UserController extends Controller
     }
 
     public function logoutAction(Request $request, $token) {
-        $encoders = new JsonEncoder();
-        $normalizer = new ObjectNormalizer();
-
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object;
-        });
-
-        $this->serializer = new Serializer(array($normalizer), array($encoders));
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
 
         $repository = $this->getDoctrine()
             ->getManager()
@@ -114,9 +109,7 @@ class UserController extends Controller
 
         $repository->emptyAuthToken($user->getId());
 
-        $jsonContent = $this->serializer->serialize("true", 'json');
-
-        return new Response($jsonContent);
+        return new Response($this->serializer->serialize(array("status" => "success"), 'json'));
     }
 
 }
