@@ -95,7 +95,11 @@
     <div class="footer_center">
       <div class="footer_contacts f1">
         <h1 class="footer_contacts_title">
-          <a class="link_footer" href="{{ path('dh_platform_legal') }}">Mentions Legales</a></h1>
+          <a class="link_footer" href="{{ path('dh_platform_legal') }}">Mentions Legales</a>
+        </h1>
+        <h1 class="footer_contacts_title">
+          <a class="link_footer" href="{{ path('dh_platform_theyHelpedUs') }}">Ils nous ont aidé</a>
+        </h1>
       </div>
       <div class="footer_contacts fl">
         <h1 class="footer_contacts_title">Contacts</h1>
@@ -131,7 +135,8 @@
     </div>
   </div>
   <div class="social_icons">
-    <div class="social_icons_center cf">
+    <div class="cf"></div>
+    <div class="social_icons_center">
       <h6 class="copyright fl"></h6>
       <div class="icons_item fr">
         <p class="icons_item_background"><a class="twitter" href="#"></a></p>
@@ -141,8 +146,8 @@
                               <p class="icons_item_background"><a class="skype" href="#"></a></p>
                               <p class="icons_item_background"><a class="tumbl" href="#"></a></p>-->
       </div>
-      <div class="cf"></div>
-      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+      <p>DiabHelp {{ 'now'|date('Y') }} ©</p>
+      <p>App icon by <a href="https://icons8.com/">icons8</a></p>
     </div>
   </div>
 </footer>

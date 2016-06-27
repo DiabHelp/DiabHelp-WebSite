@@ -1,0 +1,21 @@
+{% block subject %}Confirmation de l'email{% endblock %}
+
+{% block body_text %}
+    {% autoescape false %}
+        Bonjour {{ user.username }} !
+
+        Veuillez confirmer votre email en cliquant sur ce lien : {{ confirmationUrl }}
+
+        Merci et à bientôt,
+
+        L'équipe DiabHelp.
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+    {#
+        You can of course render the html directly here.
+        Including a template as done here allows keeping things DRY by using
+        the template inheritance in it
+    #}
+{% endblock %}

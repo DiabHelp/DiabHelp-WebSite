@@ -6,9 +6,15 @@ dh_platform_legal:
     path:     /legal
     defaults: { _controller: DHPlatformBundle:Diabhelp:legal }
 
+dh_platform_theyHelpedUs:
+    path:     /theyHelpedUs
+    defaults: { _controller: DHPlatformBundle:Diabhelp:theyHelpedUs }
+
 dh_platform_contact:
     path:     /contact
     defaults: { _controller: DHPlatformBundle:Diabhelp:contact }
+    requirements:
+        _method:  GET|POST
 
 dh_platform_profile:
     path:     /profile
