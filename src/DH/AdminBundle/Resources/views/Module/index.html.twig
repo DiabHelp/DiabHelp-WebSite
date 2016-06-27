@@ -27,6 +27,7 @@
 		<th>nb votes</th>
 		<th>type</th>
 		<th>Delete</th>
+		<th>Hide/Show</th>
 	</tr>
 	{% for module in modules %}
 		<tr>
@@ -36,6 +37,15 @@
 			<td>{{ module.nbVote }}</td>
 			<td>{{ module.type }}</td>
 			<td><a href="{{ path('dh_admin_modules_delete', {'id': module.id}) }}">Delete this module</a></td>
+			<td>
+				<a href="{{ path('dh_admin_modules_hideorshow', {'id': module.id}) }}">
+					{% if module.display == 1 %}
+						Hide
+					{% else %}
+						Show
+					{% endif %}
+				</a>
+			</td>
 		</tr>
 	{% endfor %}
 </tbody>

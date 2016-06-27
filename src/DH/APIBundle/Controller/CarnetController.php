@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CarnetController extends Controller
 {
 
-    public function exportAction(Request $request, $mail, $entries)
+    public function exportAction(Request $request, $id, $entries)
     {
         $encoders = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
@@ -28,10 +28,10 @@ class CarnetController extends Controller
             ->getManager()
             ->getRepository('DHPlatformBundle:Module');
 
-        $module = $repository->find($mail);
+        $module = $repository->find($id);
 
         if ($module == null) {
-            throw new NotFoundHttpException("Le module " . $mail . " n'existe pas.");
+            throw new NotFoundHttpException("Le module " . $id . " n'existe pas.");
         }
 
         $jsonContent = $this->serializer->serialize($module, 'json');

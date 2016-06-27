@@ -24,6 +24,12 @@ dh_admin_modules_delete:
     requirements:
         id:     \d+
 
+dh_admin_modules_hideorshow:
+    path:      /modules/hideOrShow/{id}
+    defaults:  { _controller: DHAdminBundle:Module:hideOrShow }
+    requirements:
+        id:     \d+
+
 dh_admin_modules_view:
     path:       /modules/{id}
     defaults:   { _controller:DHAdminBundle:Module:view }

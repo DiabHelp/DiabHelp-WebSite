@@ -38,7 +38,28 @@ class ModuleController extends Controller
 		return $this->redirect($this->generateUrl('dh_admin_modules'));
 	}
 
-  	public function viewAction(Request $request, $id)
+	public function hideOrShowAction(Request $request, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$module = $em->getRepository('DHPlatformBundle:Module')->find($id);
+
+		if ($module) {
+			if ($module->getDisplay() == 0)
+				$module->setDisplay(1);
+			else
+				$module->setDisplay(0);
+			$em->persist($module);
+			$em->flush();
+			$request->getSession()->getFlashBag()->add('success', 'Module édité avec success');
+		}
+		else {
+			$request->getSession()->getFlashBag()->add('error', 'Id module invalide');
+		}
+		return $this->redirect($this->generateUrl('dh_admin_modules'));
+	}
+
+	public function viewAction(Request $request, $id)
   	{
   		$em = $this->getDoctrine()->getManager();
 	    $repository = $em->getRepository('DHPlatformBundle:Module');

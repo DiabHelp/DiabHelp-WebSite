@@ -1,9 +1,11 @@
     <ul class="nav_second" >
         {% if modules %}
             {% for module in modules %}
-                <li>
-                    <a href='{{ path('dh_platform_module_view', {'id': module.id}) }}'>{{ module.name }}</a>
-                </li>
+                {% if module.display == 1 %}
+                    <li>
+                        <a href='{{ path('dh_platform_module_view', {'id': module.id}) }}'>{{ module.name }}</a>
+                    </li>
+                {% endif %}
             {% endfor %}
         {% else %}
             <li>
