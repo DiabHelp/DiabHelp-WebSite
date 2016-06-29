@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="DH\APIBundle\Entity\Vote" table="vote">
+    <indexes>
+      <index name="IDX_5A108564AFC2B591" columns="module_id"/>
+      <index name="IDX_5A108564F675F31B" columns="author_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="vote" type="integer" column="vote" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="date" type="datetime" column="date" nullable="false"/>
+    <many-to-one field="module" target-entity="Module" fetch="LAZY">
+      <join-columns>
+        <join-column name="module_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="author" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="author_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
