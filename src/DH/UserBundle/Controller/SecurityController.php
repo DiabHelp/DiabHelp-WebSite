@@ -58,7 +58,9 @@ class SecurityController extends BaseController
             $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
             $sessionId = $this->get("session")->getId();
             $other = $this->container->get('security.context')->getToken();
-            return new Response(json_encode(array("sessid" => $sessionId, "other" => $other)));
+            $id_user = $user->getId();
+            $role = $user->getRoles();
+            return new Response(json_encode(array("sessid" => $sessionId, "other" => $other, "id_user" => $id_user, "role" => $role)));
         }
     }
 

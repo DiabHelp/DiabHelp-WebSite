@@ -12,12 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CdsSave
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="date", type="text", length=65535, nullable=false)
-     */
-    private $date;
 
     /**
      * @var string
@@ -225,31 +219,7 @@ class CdsSave
     private $id;
 
 
-
-    /**
-     * Set date
-     *
-     * @param string $date
-     *
-     * @return CdsSave
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
+    
     /**
      * Set title
      *
@@ -930,5 +900,63 @@ class CdsSave
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * @var integer
+     */
+    private $idSynchro;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateEdition;
+
+
+    /**
+     * Set idSynchro
+     *
+     * @param integer $idSynchro
+     *
+     * @return CdsSave
+     */
+    public function setIdSynchro($idSynchro)
+    {
+        $this->idSynchro = $idSynchro;
+
+        return $this;
+    }
+
+    /**
+     * Get idSynchro
+     *
+     * @return integer
+     */
+    public function getIdSynchro()
+    {
+        return $this->idSynchro;
+    }
+
+    /**
+     * Set dateEdition
+     *
+     * @param \DateTime $dateEdition
+     *
+     * @return CdsSave
+     */
+    public function setDateEdition($dateEdition)
+    {
+        $this->dateEdition = $dateEdition;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEdition
+     *
+     * @return \DateTime
+     */
+    public function getDateEdition()
+    {
+        return $this->dateEdition;
     }
 }

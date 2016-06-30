@@ -4,11 +4,17 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="date" type="text" column="date" length="65535" nullable="false">
+    <field name="idSynchro" type="integer" column="id_synchro" nullable="false">
       <options>
-        <option name="fixed"/>
+        <option name="unsigned"/>
       </options>
     </field>
+    <field name="idUser" type="integer" column="id_user" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dateEdition" type="datetime" column="date_edition" nullable="false"/>
     <field name="title" type="text" column="title" length="65535" nullable="false">
       <options>
         <option name="fixed"/>
@@ -122,11 +128,6 @@
     <field name="rdate" type="datetime" column="rdate" nullable="false">
       <options>
         <option name="default">CURRENT_TIMESTAMP</option>
-      </options>
-    </field>
-    <field name="idUser" type="integer" column="id_user" nullable="false">
-      <options>
-        <option name="unsigned"/>
       </options>
     </field>
   </entity>

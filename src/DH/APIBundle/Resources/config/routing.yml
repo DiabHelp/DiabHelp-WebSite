@@ -1,4 +1,29 @@
 ## CARNET DE SUIVI
+dh_api_carnet_entry_getAllByUserId:
+    path:      /carnet/entry/getAllByUserId/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:getAllEntryByUserId }
+    requirements:
+        id_user:   \d+
+
+dh_api_carnet_entry_getLastDate:
+    path:      /carnet/entry/getLastDate/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:getLastDate }
+    requirements:
+        id_user:   \d+
+
+dh_api_carnet_entry_setFromApp:
+    path:      /carnet/entry/setFromApp
+    defaults:  { _controller: DHAPIBundle:Carnet:setFromApp }
+    requirements:
+        _method:  POST
+
+dh_api_carnet_entry_delete:
+    path:      /carnet/entry/delete/{id}/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:delete }
+    requirements:
+        id:       \d+
+        id_user:  \d+
+
 dh_api_carnet_export:
     path:      /carnet/exportPDF
     defaults:  { _controller: DHAPIBundle:Carnet:export }

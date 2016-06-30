@@ -54,7 +54,7 @@ class ModuleController extends Controller
 			$request->getSession()->getFlashBag()->add('notice', 'Module has been add');
 
 			// On redirige vers la page de visualisation de l'annonce nouvellement créée
-			return $this->redirect($this->generateUrl('dh_platform_module_view', array('id' => $module->getId())));
+			return $this->redirect($this->generateUrl('dh_platform_module'));
 	    }
 
 	    return $this->render('DHPlatformBundle:Module:add.html.twig', array(

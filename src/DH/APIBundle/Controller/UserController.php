@@ -43,14 +43,14 @@ class UserController extends Controller
         else {
             $user = $repo->findByEmail($email);
             if ($user)
-                $errors[] = "email already use";
+                $errors[] = "Email already use";
         }
-        if (!$password && strlen($password) < 42 && strlen($password) > 3)
-            $errors[] = "Invalid password";
-        if (!$firstname && strlen($firstname) < 42 && strlen($firstname) > 3)
-            $errors[] = "Invalid firstname";
-        if (!$lastname && strlen($lastname) < 42 && strlen($lastname) > 3)
-            $errors[] = "Invalid lastname";
+//        if (!$password && strlen($password) < 42 && strlen($password) > 3)
+//            $errors[] = "Invalid password";
+//        if (!$firstname && strlen($firstname) < 42 && strlen($firstname) > 3)
+//            $errors[] = "Invalid firstname";
+//        if (!$lastname && strlen($lastname) < 42 && strlen($lastname) > 3)
+//            $errors[] = "Invalid lastname";
         if (!($role == "ROLE_PATIENT" || $role == "ROLE_PROCHE" || $role == "ROLE_DOCTOR" || $role == "ROLE_ADMIN"))
             $errors[] = "Invalid role";
 
