@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    logo_directory: '%kernel.root_dir%/../web/images/module'
 
 framework:
     #esi:             ~
@@ -118,3 +119,11 @@ knp_snappy:
         enabled:    true
         binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
         options:    []
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        logo_module:
+            uri_prefix:         /Dev-API/web/images/module
+            upload_destination: %kernel.root_dir%/../web/images/module
+            namer:              vich_uploader.namer_uniqid

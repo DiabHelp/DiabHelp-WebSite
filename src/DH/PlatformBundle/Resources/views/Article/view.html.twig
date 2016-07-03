@@ -28,6 +28,7 @@
          <div class=news_item>
            <div class= center>
              <img style="width:100%" src="{{ article.imgPath }}" border="0"/>
+               {#<img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />#}
              <h2 class=news_item_date>{{ article.date|date('d/m/Y') }}</h2>
              <h2 class=news_item_title>{{ article.title }}</h2>
                <a class="fbShareButtonNews"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>
@@ -67,7 +68,7 @@
             <div class="simple_com">
                 <div class="header_com">
                     <div id="header_com_gauche">
-                        <img src="" alt="user" class="icone_picture_user">
+                        <img src="{{ asset('images/profile/' ~ comment.author.profilePicturePath ) }}" alt="user" class="icone_picture_user">
                         <h3>{{ comment.author.username }}</h3>
                     </div>
                     <div id="header_com_droite">

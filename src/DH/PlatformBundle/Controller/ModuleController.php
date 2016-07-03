@@ -43,9 +43,8 @@ class ModuleController extends Controller
 		$form = $this->get('form.factory')->create(new ModuleType, $module);
 
 	    if ($form->handleRequest($request)->isValid()) {
-	    	// $module->setAuthor($this->getUser());
-	    	if ($module->getLogo() == "" or $module->getLogo() == null) {
-	    		$module->setLogo("basic.jpg");
+	    	if ($module->getImageName() == "" or $module->getImageName() == null) {
+	    		$module->setImageName("basic.jpg");
 	    	}
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($module);
@@ -53,7 +52,6 @@ class ModuleController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Module has been add');
 
-			// On redirige vers la page de visualisation de l'annonce nouvellement créée
 			return $this->redirect($this->generateUrl('dh_platform_module'));
 	    }
 

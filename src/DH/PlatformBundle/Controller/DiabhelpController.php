@@ -4,8 +4,10 @@ namespace DH\PlatformBundle\Controller;
 
 use DH\PlatformBundle\Entity\Contact;
 use DH\PlatformBundle\Form\ContactType;
+use DH\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use DH\PlatformBundle\Form\UserType;
 
 class DiabhelpController extends Controller
 {
@@ -53,9 +55,34 @@ class DiabhelpController extends Controller
             ));
     }
     
-    public function profileAction()
+    public function profileAction(Request $request)
     {
-        return $this->render('DHPlatformBundle:Diabhelp:profile.html.twig');
+        $username = $this->getUser()->getUsername();
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('DHUserBundle:User')->findOneByUsername($username);
+        $userProfilePicturePath = $user->getProfilePicturePath();
+
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'No user found for username '. $username
+            );
+        }
+
+        $form = $this->get('form.factory')->create(new UserType, $user);
+
+        if ($form->handleRequest($request)->isValid()) {
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Profile has been modified');
+
+            return $this->redirect($this->generateUrl('dh_platform_profile'));
+        }
+
+        return $this->render('DHPlatformBundle:Diabhelp:profile.html.twig', array(
+            'form' => $form->createView(), 'userProfilePicturePath' => $userProfilePicturePath
+        ));
     }
 
     public function forgetPwdAction()

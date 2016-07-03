@@ -149,7 +149,7 @@ function mapInit() {
 function loadMapScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "http://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=mapInit";
+  script.src = "https://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=mapInit";
   document.body.appendChild(script);
 }
 

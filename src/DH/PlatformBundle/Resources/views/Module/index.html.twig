@@ -34,7 +34,7 @@
       </h3>
       <div class='graph_mod'>
         <div class='left_mod'>
-          <img class='img_mod' id='image_profil' src='{{ module.logo }}' />
+          <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />
           <p>Note Actuelle : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
           <div class='rating' style='margin-right:35px;'>
             <a id="{{ module.id }}rating5" onclick="voteModuleIndex({{ module.id }}, 5)" title='Attribuer 5 étoiles à ce module'>☆</a>

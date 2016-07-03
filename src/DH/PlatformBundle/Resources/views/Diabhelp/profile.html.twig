@@ -20,18 +20,20 @@
 
     <div class='contact_content' style="margin:auto;background-color:#078b87;" >
         <div class="cf"></div>
+        {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
+        <div class="error">
+            {{ form_errors(form) }}
+        </div>
         <div style="width:100%;" class="center" >
-            <p style="text-align:center;"><img id="image_profile" src="{{ asset('bundles/dhplatform/images/user_avatar/av-def.png')}}" title="user_avatar" /></p>
+            <p style="text-align:center;">
+                <img id="image_profile" src="{{ asset('images/profile/' ~ userProfilePicturePath ) }}" title="user_avatar" />
+                {#<img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />#}
+            </p>
         </div>
         <p style="text-align:center;font-size:0.8em;color:white;">Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)</p>
         <div style="width:265px;margin:0 auto;background:#078b87;">
-            <form method="post" action="" enctype="multipart/form-data">
-                <input type="file" name="avatar" id="fileToUp" />
-                <div class="cf"></div>
-                <div style="padding:2px 25px;background-color:#2a2a2a">
-                    <input type="submit" style="color:white;width:100%" name="submit" id="UpSub" alt="submit" value="Uploader cette image"/>
-                </div>
-            </form>
+            {{ form_widget(form.profilePictureFile, {'attr': {'title': 'logo', 'value': "Uploader cette image"}}) }}
+            <div class="cf"></div>
         </div>
         <div class="contact_form">
             <p style="text-align:center">
@@ -45,49 +47,57 @@
                 {#echo '<input type="checkbox" name="valide" value="valide"  onchange="validate_account($_SESSION[\'name\'], $_SESSION[\'id\']);">Envoyer un email pour valider mon compte maintenant.</a><br>';#}
                 {#//echo '<a onclick="validate_account($_SESSION[\'name\'], $_SESSION[\'id\']);">Envoyer un email pour valider mon compte maintenant.</a><br>';#}
             </p>
-            <form method="GET" action="" name="inscription">
                 <div class="contact_form_box">
                     <div class="form_box_left fl">
                         {#if ($usr['firstname'])#}
                         {#<input class="contact_form_input_noname" title="Prénom" name="fname" type="text" value="'.$usr['firstname'].'" />#}
                         {#else if (!($usr['firstname']))#}
-                        <input class="contact_form_input_noname" title="Prénom" name="fname" type="text"  placeholder="Renseignez votre prénom" />
+                        {#<input class="contact_form_input_noname" title="Prénom" name="fname" type="text"  placeholder="Renseignez votre prénom" />#}
+                        {{ form_widget(form.firstname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre prénom'}}) }}
                         {#if ($usr['lastname'])#}
                         {#<input class="contact_form_input_noname" title="Nom" name="lname" type="text" value="'.$usr['lastname'].'" />#}
                         {#else if (!($usr['lastname']))#}
-                        <input class="contact_form_input_noname" title="Nom" name="lname" type="text" placeholder="Renseignez votre nom" />
+                        {#<input class="contact_form_input_noname" title="Nom" name="lname" type="text" placeholder="Renseignez votre nom" />#}
+                        {{ form_widget(form.lastname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre nom'}}) }}
                         {#if ($usr['email'])#}
                         {#<input class="contact_form_input_noname" title="Email" name="email" type="text" value="'.$usr['email'].'" />#}
                         {#else if (!($usr['email']))#}
-                        <input class="contact_form_input_noname" title="Email" name="email" type="text" placeholder="Renseignez votre adresse email" />
+                        {#<input class="contact_form_input_noname" title="Email" name="email" type="text" placeholder="Renseignez votre adresse email" />#}
+                        {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre adresse email'}}) }}
                         {#if ($usr['organism'])#}
                         {#<input class="contact_form_input_noname" title="Association" name="organism" type="text" value="'.$usr['organism'].'" />#}
                         {#else if (!($usr['organism']))#}
-                        <input class="contact_form_input_noname" title="Association" name="organism" type="text" placeholder="Renseignez votre association" />
+                        {#<input class="contact_form_input_noname" title="Association" name="organism" type="text" placeholder="Renseignez votre association" />#}
+                        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre association'}}) }}
                     </div>
                     <div class="form_box_center fl">
                         {#if ($usr['telephone'])#}
                         {#echo '<input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" value="'.$usr['telephone'].'" />';#}
                         {#else if (!($usr['telephone']))#}
-                        <input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" placeholder="Numéro de téléphone" />
+                        {#<input class="contact_form_input_noname" title="Téléphone" name="tel" type="tel" placeholder="Numéro de téléphone" />#}
+                        {{ form_widget(form.phone, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre numéro de téléphone'}}) }}
                         {#if ($usr['birthday'])#}
-                        <input class="contact_form_input_noname" title="Date de naissance" name="birth" type="date" placeholder="" />
+                        {#<input class="contact_form_input_noname" title="Date de naissance" name="birth" type="date" placeholder="" />#}
+                        {{ form_widget(form.birthdate, {'attr': {'class': 'contact_form_input_noname'}}) }}
                         {#else if (!($usr['birthday']))#}
                         {#echo '<input class="contact_form_input_noname" title="Date de naissance" name="birth" type="date" placeholder="'.$usr['birthday'].'"value="'.$usr['birthday'].'" />';#}
 
                         {#if (isset($_GET['e']) && $_GET['e'] == 1)#}
+                        {{ form_widget(form.password, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Mot de passe'}}) }}
+                        {{ form_widget(form.password, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Confirmation mot de passe'}}) }}
                         {#<input style="border: solid 3px red;" class="contact_form_input_noname" name="pwd" onchange="" type="password" placeholder="Mot de passe" />#}
                         {#<input style="border: solid 3px red;" class="contact_form_input_noname" name="pwdv" onchange="" type="password" placeholder="Confirmation de mdp" />#}
                         {#else#}
-                        <input class="contact_form_input_noname" name="pwd" onchange="" type="password" placeholder="Mot de passe" />
-                        <input class="contact_form_input_noname" name="pwdv" onchange="" type="password" placeholder="Confirmation de mdp" />
+                        {#<input class="contact_form_input_noname" name="pwd" onchange="" type="password" placeholder="Mot de passe" />#}
+                        {#<input class="contact_form_input_noname" name="pwdv" onchange="" type="password" placeholder="Confirmation de mdp" />#}
                     </div>
                     <div class="form_box_righ fl" style="background-color:#2a2a2a;">
-                        <input class="proposer_submit contact_form_submit" alt="Submit" type="image"  src="{{ asset('bundles/dhplatform/images/submit_button.png') }}" />
+                        {#<input class="proposer_submit contact_form_submit" alt="Submit" type="image"  src="{{ asset('bundles/dhplatform/images/submit_button.png') }}" />#}
+                        {{ form_widget(form._token) }}
+                        {{ form_widget(form.save, {'attr': {'class': 'contact_form_submit', 'type' : 'image', 'src' : asset('bundles/dhplatform/images/submit_button.png') }}) }}
                         <p>Valider les modifications</p>
                     </div>
-            </form>
-        </div>
+            </div>
     </div>
     <div class="cf"></div>
     <p style="text-align:center;" onclick=""><button style="color:red; padding: 2px 25px; background-color: #2a2a2a;">Je souhaite supprimer mon compte</button></p>

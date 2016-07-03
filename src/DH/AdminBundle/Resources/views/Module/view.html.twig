@@ -21,7 +21,7 @@
   </div>
   <div class='modules_back'>
     <div class='module_s'>
-      <img class='img_mod_s' id='image_profil' src='{{ module.logo }}' />
+        <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />
         <h2 id="module_name">{{ module.name }}</h2>
         <h3 style='text-align:left'>Crée par : <em>{{ module.organisme }}</em></h3>
         <h4 style='text-align:left'>Catégorie : {{ module.type }}</h4>
