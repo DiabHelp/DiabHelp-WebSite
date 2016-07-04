@@ -45,4 +45,4 @@ assetic:
     use_controller: true
 
 swiftmailer:
-    delivery_address: adrien.vigour@gmail.com
+    delivery_address: contact@diabhelp.org
