@@ -59,3 +59,15 @@ dh_api_user_logout:
     defaults:  { _controller: DHAPIBundle:User:logout }
     requirements:
         token:  \d+
+
+dh_api_user_get_info:
+    path:      /user/getInfo/{id}
+    defaults:  { _controller: DHAPIBundle:User:getInfo }
+    requirements:
+        id:   \d+
+
+dh_api_user_set_info:
+    path:      /user/setInfo
+    defaults:  { _controller: DHAPIBundle:User:setInfo }
+    requirements:
+        _method:  POST

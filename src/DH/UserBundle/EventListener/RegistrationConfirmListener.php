@@ -30,7 +30,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
         );
     }
 
-    public function onRegistrationConfirm(\FOS\UserBundle\Event\FormEvent $event)
+    public function onRegistrationConfirm(\FOS\UserBundle\Event\GetResponseUserEvent $event)
     {
         $url = $this->router->generate('dh_platform_home');
 
