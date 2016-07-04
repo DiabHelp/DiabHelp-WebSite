@@ -55,16 +55,13 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-
         default_connection: mysql
-
         connections:
             sqlite:
                 driver:  pdo_sqlite
                 user:    root
                 path:    %kernel.root_dir%/db/data.db3
                 charset: utf8
-
             mysql:
                 driver:   pdo_mysql
                 host:     "%database_host%"
@@ -73,8 +70,6 @@ doctrine:
                 user:     "%database_user%"
                 password: "%database_password%"
                 charset:  UTF8
-
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -87,7 +82,9 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
+    auth_mode: "%mailer_auth_mode%"
     host:      "%mailer_host%"
+    port:      "%mailer_port%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -102,7 +99,7 @@ fos_user:
         form:
             type: app_user_registration
         confirmation:
-            enabled: false
+            enabled: true
             template: email/registration.email.twig
             from_email:
                 address:        registration@diabhelp.fr

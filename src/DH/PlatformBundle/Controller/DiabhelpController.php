@@ -34,13 +34,12 @@ class DiabhelpController extends Controller
         if ($request->getMethod() == 'POST') {
 
             if ($form->handleRequest($request)->isValid()) {
-//                $form->bindRequest($request);
 
                 if ($form->isValid()) {
                     $message = \Swift_Message::newInstance()
                         ->setSubject('Contact from DiabHelp website')
-                        ->setFrom('contact@diabhelp.fr')
-                        ->setTo('adrien.vigour@gmail.com')
+                        ->setFrom($contact->getEmail())
+                        ->setTo('contact@diabhelp.org')
                         ->setBody($this->renderView('DHPlatformBundle:Mail:contact.html.twig', array('enquiry' => $contact)));
                     $this->get('mailer')->send($message);
 
@@ -50,9 +49,9 @@ class DiabhelpController extends Controller
             }
         }
 
-            return $this->render('DHPlatformBundle:Diabhelp:contact.html.twig', array(
-                'form' => $form->createView()
-            ));
+        return $this->render('DHPlatformBundle:Diabhelp:contact.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
     
     public function profileAction(Request $request)

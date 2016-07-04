@@ -60,7 +60,7 @@ class SecurityController extends BaseController
             $other = $this->container->get('security.context')->getToken();
             $id_user = $user->getId();
             $role = $user->getRoles();
-            return new Response(json_encode(array("sessid" => $sessionId, "other" => $other, "id_user" => $id_user, "role" => $role)));
+            return new Response(json_encode(array("success" => true, "sessid" => $sessionId, "other" => $other, "id_user" => $id_user, "role" => $role)));
         }
     }
 
