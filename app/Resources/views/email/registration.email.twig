@@ -1,15 +1,18 @@
-{% block subject %}Confirmation de l'email : {{ confirmationUrl }}{% endblock %}
+{% block subject %}Confirmation de l'email{% endblock %}
 
 {% block body_html %}
     {% embed "DHPlatformBundle:Mail:registration.html.twig" %}
         {% block body_text %}
             {% autoescape false %}
                 Bonjour {{ user.username }} !
-
+                </br>
+                </br>
                 Veuillez confirmer votre email en cliquant sur ce lien : {{ confirmationUrl }}
-
+                </br>
+                </br>
                 Merci et à bientôt,
-
+                </br>
+                </br>
                 L'équipe DiabHelp.
             {% endautoescape %}
         {% endblock %}
