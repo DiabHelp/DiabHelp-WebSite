@@ -1,12 +1,5 @@
 $(window).load(function() {
 
-	for (var id = '1'; $('.noteModule'+id).length != 0; id++) {
-		if ($('.noteModule'+id)) {
-			for (var i = 1; i <= $('.noteModule'+id).html(); i++)
-				$('#'+id+'rating'+i).css('color', 'orange');
-		}
-	}
-
 	// carousel index page
   $('.flexslider').flexslider({
     animation: "slide",
@@ -121,7 +114,7 @@ function voteModuleView(id, note) {
 
 function voteModuleIndex(id, note) {
 	$.ajax({
-		url: "./module/vote/"+id+"/"+note,
+		url: "./modules/vote/"+id+"/"+note,
 		dataType: "json",
 		type: "GET"
 	});

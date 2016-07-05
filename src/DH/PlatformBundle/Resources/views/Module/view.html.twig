@@ -28,11 +28,11 @@
         <a class="fbShareButton"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>
         <p>Note Actuelle : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
         <div class='rating' style='margin-right:35px;'>
-          <a id="{{ module.id }}rating5" onclick="voteModuleView({{ module.id }}, 5)" title='Attribuer 5 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating4" onclick="voteModuleView({{ module.id }}, 4)" title='Attribuer 4 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating3" onclick="voteModuleView({{ module.id }}, 3)" title='Attribuer 3 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating2" onclick="voteModuleView({{ module.id }}, 2)" title='Attribuer 2 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating1" onclick="voteModuleView({{ module.id }}, 1)" title='Attribuer 1 étoile à ce module'>☆</a>
+          <a id="{{ module.id }}rating5" onclick="voteModuleView({{ module.id }}, 5)" {% if module.note > 4 %} style="color:#FFA500" {% endif %} title='Attribuer 5 étoiles à ce module'>☆</a>
+          <a id="{{ module.id }}rating4" onclick="voteModuleView({{ module.id }}, 4)" {% if module.note > 3 %} style="color:#FFA500" {% endif %} title='Attribuer 4 étoiles à ce module'>☆</a>
+          <a id="{{ module.id }}rating3" onclick="voteModuleView({{ module.id }}, 3)" {% if module.note > 2 %} style="color:#FFA500" {% endif %} title='Attribuer 3 étoiles à ce module'>☆</a>
+          <a id="{{ module.id }}rating2" onclick="voteModuleView({{ module.id }}, 2)" {% if module.note > 1 %} style="color:#FFA500" {% endif %} title='Attribuer 2 étoiles à ce module'>☆</a>
+          <a id="{{ module.id }}rating1" onclick="voteModuleView({{ module.id }}, 1)" {% if module.note > 0 %} style="color:#FFA500" {% endif %}title='Attribuer 1 étoile à ce module'>☆</a>
         </div>
         <div class='describ_mod'>
           <p>{{ module.description }}</p>

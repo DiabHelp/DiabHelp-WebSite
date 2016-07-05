@@ -103,7 +103,7 @@ class ModuleController extends Controller
   	{
   		$em = $this->getDoctrine()->getManager();
 
-  		$vote = $em->getRepository('DHPlatformBundle:Vote')->findBy(array('author' => $this->getUser(),
+  		$vote = $em->getRepository('DHPlatformBundle:Vote')->findOneBy(array('author' => $this->getUser(),
   																		  'module' => $id,
   																		  ));
 
@@ -112,25 +112,26 @@ class ModuleController extends Controller
   		if ($module == null)
   			throw $this->createNotFoundException("Module not found");
 
-  		if ($vote != null)
-  			throw $this->createNotFoundException("User has already vote");
-
   		if ($note == null)
   			throw $this->createNotFoundException("Please precise a note between 1 and 5 as a post param 'vote'");
 
-  		$vote = new Vote();
-  		$vote->setVote($note);
-  		$vote->setAuthor($this->getUser());
-  		$vote->setModule($module);
-  		$vote->setDate(new \Datetime());
+		if ($vote == null) {
+			$vote = new Vote();
+			$vote->setVote($note);
+			$vote->setAuthor($this->getUser());
+			$vote->setModule($module);
+			$vote->setDate(new \Datetime());
+			$em->persist($vote);
+		} else
+			$vote->setVote($note);
 
-  		$beforeNote = $module->getNote();
+
+		$beforeNote = $module->getNote();
   		$beforeNbVote = $module->getNbVote();
   		$afterNote = (($beforeNote * $beforeNbVote) + $note) / ($beforeNbVote + 1);
   		$module->setNbVote($beforeNbVote + 1);
   		$module->setNote($afterNote);
 
-  		$em->persist($vote);
   		$em->flush();
 
   		return $this->redirect($this->generateUrl('dh_platform_module_view', array('id' => $module->getId())));

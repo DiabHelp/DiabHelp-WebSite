@@ -88,6 +88,7 @@ class CarnetController extends Controller
             $entry_insert = new CdsSave();
             $entry_insert->setIdSynchro($entry['id']);
             $entry_insert->setIdUser($id_user);
+            $entry_insert->setDate($entry['date']);
             $entry_insert->setDateEdition($entry['date_edition']);
             $entry_insert->setTitle($entry['title']);
             $entry_insert->setPlace($entry['place']);
