@@ -32,10 +32,10 @@ class CarnetController extends Controller
         $entries = $repository->findByIdUser($id_user);
 
         if ($entries == null) {
-            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize($entries, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true), $entries, 'json');
 
         return new Response($jsonContent);
     }
@@ -61,10 +61,10 @@ class CarnetController extends Controller
         );
 
         if ($entry == null) {
-            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize($entry->getDateEdition(), 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true), $entry->getDateEdition(), 'json');
 
         return new Response($jsonContent);
     }
@@ -81,8 +81,8 @@ class CarnetController extends Controller
 
         $repository = $em->getRepository('DHAPIBundle:CdsSave');
 
-        $id_user = $request->request->get('id_user', null);
-        $entries = $request->request->get('entries', null);
+        $id_user = $request->get('id_user', null);
+        $entries = $request->get('entries', null);
 
         foreach ($entries as $entry) {
             $entry_insert = new CdsSave();
@@ -122,10 +122,10 @@ class CarnetController extends Controller
         }
 
         if ($repository == null) {
-            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        return new Response($this->serializer->serialize(array("status" => "success"), 'json'));
+        return new Response($this->serializer->serialize(array("success" => true), 'json'));
     }
 
     public function deleteAction(Request $request, $id, $id_user)
@@ -145,13 +145,13 @@ class CarnetController extends Controller
         );
 
         if ($repository == null || $entry == null) {
-            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
         $em->remove($entry);
         $em->flush();
 
-        return new Response($this->serializer->serialize(array("status" => "success"), 'json'));
+        return new Response($this->serializer->serialize(array("success" => true), 'json'));
     }
 
     public function exportAction(Request $request, $id, $entries)
@@ -172,10 +172,10 @@ class CarnetController extends Controller
         $module = $repository->find($id);
 
         if ($module == null) {
-            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize($module, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true), $module, 'json');
 
         return new Response($jsonContent);
     }
@@ -198,10 +198,10 @@ class CarnetController extends Controller
         $module = $repository->find($id);
 
         if ($module == null) {
-            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize($module, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true), $module, 'json');
 
         return new Response($jsonContent);
     }
