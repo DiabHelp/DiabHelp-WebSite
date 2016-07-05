@@ -35,7 +35,7 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize(array("success" => true), $entries, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, $entries), 'json');
 
         return new Response($jsonContent);
     }
@@ -64,7 +64,7 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize(array("success" => true), $entry->getDateEdition(), 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, $entry->getDateEdition()), 'json');
 
         return new Response($jsonContent);
     }
@@ -175,7 +175,7 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize(array("success" => true), $module, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, $module), 'json');
 
         return new Response($jsonContent);
     }
@@ -201,7 +201,7 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize(array("success" => true), $module, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, $module), 'json');
 
         return new Response($jsonContent);
     }
