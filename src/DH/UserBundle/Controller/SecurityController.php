@@ -12,25 +12,6 @@ use FOS\UserBundle\Controller\SecurityController as BaseController;
 
 class SecurityController extends BaseController
 {
-     // public function loginAction(Request $request)
-     // {
-     //    $logger = $this->get('logger');
-
-
-     //    $logger->info('PREEEE : ' . print_r($_POST));
-     //    if($request->isXmlHttpRequest()){
-     //        $logger->info('POOOOST : ' . print_r($_POST));
-     //    	// echo "AAAAAA";
-     //        $response = new Response(json_encode(array(
-     //            'success'=> $error == '' ? "1" : "0",
-     //            'error'=> $this->container->get('translator')->trans($error)
-     //        )));
-     //        $response->headers->set('Content-Type', 'application/json');
-     //        return $response;
-     //        exit();
-     //    }
-     //    return parent::loginAction($request);
-     // }
 
     public function restLoginAction(Request $request)
     {
@@ -64,24 +45,4 @@ class SecurityController extends BaseController
         }
     }
 
-    // public function restLoginAction($secret) {
-    //     $em = $this->getDoctrine()->getEntityManager();
-    //     $repository = $em->getRepository('MiedzywodzieClientBundle:Reservation');
-    //     $result = $repository->matchLoginKey($secret);
-    //     if (!$result) {
-    //         return $this->render('MiedzywodzieClientBundle:Default:autologin_incorrect.html.twig');
-    //     }
-    //     $result = $result[0]; 
- 
-    //     $token = new UsernamePasswordToken($result, $result->getPassword(), 'secured_area', $result->getRoles());
- 
-    //     $request = $this->getRequest();
-    //     $session = $request->getSession();
-    //     $session->set('_security_secured_area',  serialize($token));
- 
-    //     $router = $this->get('router');
-    //     $url = $router->generate('miedzywodzie_client_default_dashboard');
- 
-    //     return $this->redirect($url);
-    // }
 }

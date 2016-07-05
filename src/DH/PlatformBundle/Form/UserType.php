@@ -28,14 +28,14 @@ class UserType extends AbstractType
                     'label' => false,
                     'attr' => array(
                         'placeholder' => 'password',
-                        'class' => 'contact_form_input_noname hide_label',
+                        'class' => 'contact_form_input_noname',
                     )
                 ),
                 'second_options' => array(
                     'label' => false,
                     'attr' => array(
                         'placeholder' => 'password confirmation',
-                        'class' => 'contact_form_input_noname hide_label',
+                        'class' => 'contact_form_input_noname',
                     )
                 ),
                 'required' => false

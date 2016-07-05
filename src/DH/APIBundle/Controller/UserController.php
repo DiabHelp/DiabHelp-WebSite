@@ -60,23 +60,6 @@ class UserController extends Controller
         $em->flush();
 
         return new Response($this->serializer->serialize(array("success" => true), 'json'));
-        // $user = new User();        
-        // // $form = $this->createForm(new RegistrationType(), $user);
-        // $form = $this->get('form.factory')->create(new RegistrationType, $user);
-        // $form->submit($request);
-        // $form->handleRequest($request);
-        // if($form->isValid()) {
-        //     $userManager = $this->get('fos_user.user_manager');
-        //     $exists = $userManager->findUserBy(array('email' => $user->getEmail()));
-        //     if ($exists instanceof User) {
-        //         throw new HttpException(409, 'Email already taken');
-        //     }
-        //     // print_r($user);
-        //     // return new Response("");
-        //     $userManager->updateUser($user);
-        //     return new Response($this->serializer->serialize(array("status" => "success"), 'json'));
-        // }
-        // return new Response($this->serializer->serialize(array("status" => "fail", "errors" => $form->getErrors()), 'json'));
     }
 
     public function logoutAction(Request $request, $token) {
