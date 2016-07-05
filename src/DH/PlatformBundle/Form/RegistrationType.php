@@ -15,9 +15,9 @@ class RegistrationType extends AbstractType
                'options' => array(
                    'choices' => array(
                        'ROLE_PATIENT' => 'Patient',
-                       'ROLE_DOCTOR' => 'Docteur',
                        'ROLE_PROCHE' => 'Proche',
-                       'ROLE_ADMIN' => 'Admin'
+                       'ROLE_DOCTOR' => 'Docteur'
+//                       'ROLE_ADMIN' => 'Admin'
                    )
                )
            )

@@ -1,5 +1,4 @@
 <?php
-// src/DH/UserBundle/Entity/User.php
 
 namespace DH\UserBundle\Entity;
 
