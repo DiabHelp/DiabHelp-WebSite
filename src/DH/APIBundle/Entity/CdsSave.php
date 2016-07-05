@@ -203,6 +203,13 @@ class CdsSave
     private $rdate = 'CURRENT_TIMESTAMP';
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id_user", type="integer", nullable=false)
@@ -218,8 +225,22 @@ class CdsSave
      */
     private $id;
 
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 
-    
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
     /**
      * Set title
      *
