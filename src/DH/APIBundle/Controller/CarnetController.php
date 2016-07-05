@@ -32,7 +32,7 @@ class CarnetController extends Controller
         $entries = $repository->findByIdUser($id_user);
 
         if ($entries == null) {
-            throw new NotFoundHttpException("L'id user " . $id_user . " n'a aucune entrées.");
+            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
         }
 
         $jsonContent = $this->serializer->serialize($entries, 'json');
@@ -61,7 +61,7 @@ class CarnetController extends Controller
         );
 
         if ($entry == null) {
-            throw new NotFoundHttpException("L'id user " . $id_user . " n'a aucune entrées.");
+            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
         }
 
         $jsonContent = $this->serializer->serialize($entry->getDateEdition(), 'json');
@@ -172,7 +172,7 @@ class CarnetController extends Controller
         $module = $repository->find($id);
 
         if ($module == null) {
-            throw new NotFoundHttpException("Le module " . $id . " n'existe pas.");
+            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
         }
 
         $jsonContent = $this->serializer->serialize($module, 'json');
@@ -198,7 +198,7 @@ class CarnetController extends Controller
         $module = $repository->find($id);
 
         if ($module == null) {
-            throw new NotFoundHttpException("Le module " . $id . " n'existe pas.");
+            return new Response($this->serializer->serialize(array("status" => "error"), 'json'));
         }
 
         $jsonContent = $this->serializer->serialize($module, 'json');
