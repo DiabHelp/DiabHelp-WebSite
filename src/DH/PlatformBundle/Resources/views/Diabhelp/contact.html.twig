@@ -81,22 +81,14 @@
                         {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_name', 'placeholder' : 'Votre nom'}}) }}
                         {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_mail', 'placeholder' : 'Votre Email'}}) }}
                         {{ form_widget(form.phone_number, {'attr': {'class': 'contact_form_input_phone', 'placeholder' : 'Votre Numéro de téléphone'}}) }}
-                        {#<input class="contact_form_input_name" type="text" placeholder="Votre Nom">#}
-                        {#<input class="contact_form_input_mail" type="text" placeholder="Votre Email">#}
-                        {#<input class="contact_form_input_phone" type="text" placeholder="Votre Numéro de téléphone">#}
                     </div>
                     <div class="form_box_center fl">
                         {{ form_widget(form.body, {'attr': {'class': 'contact_form_textarea', 'placeholder' : 'Ecrivez votre message'}}) }}
-                        {#<textarea class="contact_form_textarea" placeholder="Ecrivez votre message"></textarea>#}
                     </div>
                     <div class="form_box_righ fl proposer_submit">
-                        <input type="submit" class="contact_form_submit" src="/Seb-Git-DiabHelp-Website/web/bundles/dhplatform/images/submit_button.png"></input>
-                        <p>Envoyez</p>
+                        <button type="submit" class="contact_form_submit" src="/Dev-API/web/bundles/dhplatform/images/submit_button.png"></button>
+                        <p>Envoyer</p>
                     </div>
-                    {#<div class="form_box_righ fl" style="background-color:#2a2a2a;">#}
-                    {#<input class="contact_form_submit" type="image" src="{{ asset('bundles/dhplatform/images/submit_button.png') }}" alt="Submit">#}
-                    {#<p>Envoyez</p>#}
-                    {#</div>#}
                 {{ form_end(form) }}
                 <div class="cf"></div>
             </div>

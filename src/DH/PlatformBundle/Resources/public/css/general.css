@@ -2495,7 +2495,7 @@ body {
   border-radius: 27px 0 0 27px;
 }
 .contact_form_input_noname {
-/*  background: #ffffff url('../images/contact_personal.png') -3px -3px no-repeat;*/
+  background: #ffffff url('../images/contact_personal.png') -3px -3px no-repeat;
   font-size: 1.3em !important;
   color: #2a2a2a !important;
   padding: 0 10px 0 35px !important;
@@ -5041,4 +5041,8 @@ body {
 .fbShareButtonNews {
   float: right;
   margin-right: 20px;
+}
+
+#dh_platformbundle_module_imageFile label, .hide_label {
+  display: none;
 }

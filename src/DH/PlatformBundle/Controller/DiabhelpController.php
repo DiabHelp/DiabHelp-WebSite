@@ -60,13 +60,14 @@ class DiabhelpController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('DHUserBundle:User')->findOneByUsername($username);
-        $userProfilePicturePath = $user->getProfilePicturePath();
 
         if (!$user) {
             throw $this->createNotFoundException(
                 'No user found for username '. $username
             );
         }
+
+        $userProfilePicturePath = $user->getProfilePicturePath();
 
         $form = $this->get('form.factory')->create(new UserType, $user);
 

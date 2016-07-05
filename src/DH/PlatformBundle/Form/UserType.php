@@ -16,9 +16,30 @@ class UserType extends AbstractType
             ->add('email')
             ->add('organisme')
             ->add('phone')
-            ->add('birthdate')
+            ->add('birthdate', 'date', array(
+                'widget' => 'single_text',
+                'attr' => array(
+                    'class' => 'contact_form_input_noname',
+                )
+            ))
             ->add('profilePictureFile')
-            ->add('password')
+            ->add('plainPassword', 'repeated', array(
+                'first_options'  => array(
+                    'label' => false,
+                    'attr' => array(
+                        'placeholder' => 'password',
+                        'class' => 'contact_form_input_noname hide_label',
+                    )
+                ),
+                'second_options' => array(
+                    'label' => false,
+                    'attr' => array(
+                        'placeholder' => 'password confirmation',
+                        'class' => 'contact_form_input_noname hide_label',
+                    )
+                ),
+                'required' => false
+            ))
             ->add('save', 'submit')
         ;
     }
