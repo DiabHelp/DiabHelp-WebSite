@@ -177,7 +177,7 @@ class CarnetController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
 
-		$content = file_get_contents($path);
+//		$content = file_get_contents($path);
 
 /*		$response = new Response();
 	    $response->headers->set('Content-Type', 'application/pdf');
@@ -189,14 +189,14 @@ class CarnetController extends Controller
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-            $attachment = Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
+//            $attachment = Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
                 ->setTo($email)
                 ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
-                ->attach($attachment);
+                ->attach(Swift_Attachment::fromPath($path));
             $this->get('mailer')->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
