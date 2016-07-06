@@ -135,6 +135,7 @@ class CarnetController extends Controller
 		else
 			$path = $this->get('kernel')->getRootDir() . '/data/pdf/logbook/' . $carnetToken . '.pdf';
 
+        var_dump($path);
 
 		$id_user = $request->get('id_user', null);
 		//$entries = $request->get('datas', null);
