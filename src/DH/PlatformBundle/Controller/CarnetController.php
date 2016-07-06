@@ -198,6 +198,6 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
         else
-            return new Response($this->serializer->serialize(array("failure" => true), 'json'));
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
     }
 }
