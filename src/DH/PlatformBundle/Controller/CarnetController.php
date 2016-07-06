@@ -127,8 +127,7 @@ class CarnetController extends Controller
 		$encoders = array(new XmlEncoder(), new JsonEncoder());
 		$normalizers = array(new ObjectNormalizer());
 		$this->serializer = new Serializer($normalizers, $encoders);
-
-		$carnetToken = $this->generateRandomString();
+        $carnetToken = $this->generateRandomString();
 		if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
 			$path = $this->get('kernel')->getRootDir() . '\data\pdf\logbook\\' . $carnetToken . '.pdf';
 		}
@@ -173,8 +172,7 @@ class CarnetController extends Controller
 	    $path
 	    );
 
-
-		$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
 
 //		$content = file_get_contents($path);
@@ -186,7 +184,7 @@ class CarnetController extends Controller
 
         $em->flush();
         $email = $request->get('email', null);
-        if ($email == null)
+ /*       if ($email == null)
             $email = $user->getEmail();
         if ($email){
 //            $attachment = Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
@@ -200,7 +198,7 @@ class CarnetController extends Controller
             $this->get('mailer')->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
-        else
+        else*/
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
     }
 }
