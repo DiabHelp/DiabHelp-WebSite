@@ -138,27 +138,28 @@ class CarnetController extends Controller
 
 		$id_user = $request->get('id_user', null);
 		//$entries = $request->get('datas', null);
-        $entries = array();
+/*        $entries = array();
         $content = $this->get("request")->getContent();
         if (!empty($content)) {
             $entries = json_decode($content, true);
-        }
+        }*/
+
 		$em = $this->getDoctrine()->getManager();
 		$repo = $em->getRepository('DHUserBundle:User');
+        $logbook = new Logbook();
+        $logbook->setToken($carnetToken);
+        $logbook->setDate(new \Datetime());
 
 		$user = $repo->findOneById($id_user);
         if (!$user)
 			return new Response($this->serializer->serialize(array("success" => false), 'json'));
 
-		$logbook = new Logbook();
-		$logbook->setToken($carnetToken);
-		$logbook->setDate(new \Datetime());
 		$logbook->setUser($user);
 
 		$firstname = $user->getFirstname();
 		$lastname = $user->getLastname();
 
-//		$datas = json_decode($entries);
+		$entries = json_decode($this->getFakeData());
 
 		$this->get('knp_snappy.pdf')->generateFromHtml(
 	    $this->renderView(
@@ -184,7 +185,7 @@ class CarnetController extends Controller
 
         $em->flush();
         $email = $request->get('email', null);
- /*       if ($email == null)
+        if ($email == null)
             $email = $user->getEmail();
         if ($email){
 //            $attachment = Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
@@ -198,7 +199,7 @@ class CarnetController extends Controller
             $this->get('mailer')->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
-        else*/
+        else
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
     }
 }
