@@ -95,15 +95,19 @@ class CarnetController extends Controller
         $entries = $request->get('datas', null);
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('DHUserBundle:User');
-        $user = $this->getUser();
-        $datastring = $this->getFakeData();
-        $datas = json_decode($datastring);
-//        $user = $repo->findOneById($id_user);
-//        if (!$user)
-  //          return new Response($this->serializer->serialize(array("success" => false), 'json'));
+
+        $user = $repo->findOneById($id_user);
+        if (!$user)
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
+
+//        $logbook = new Logbook();
+//        $logbook->setToken($carnetToken);
+//        $logbook->setDate(new \Datetime());
+//        $logbook->setUser($user);
 
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
+        $datas = json_decode($entries);
 
         $content = $this->renderView('DHPlatformBundle:Carnet:template.html.twig',
             array(
@@ -133,7 +137,12 @@ class CarnetController extends Controller
 
 
 		$id_user = $request->get('id_user', null);
-		$entries = $request->get('datas', null);
+		//$entries = $request->get('datas', null);
+        $entries = array();
+        $content = $this->get("request")->getContent();
+        if (!empty($content)) {
+            $entries = json_decode($content, true);
+        }
 		$em = $this->getDoctrine()->getManager();
 		$repo = $em->getRepository('DHUserBundle:User');
 
@@ -149,7 +158,7 @@ class CarnetController extends Controller
 		$firstname = $user->getFirstname();
 		$lastname = $user->getLastname();
 
-		$datas = json_decode($entries);
+//		$datas = json_decode($entries);
 
 		$this->get('knp_snappy.pdf')->generateFromHtml(
 	    $this->renderView(
@@ -157,23 +166,35 @@ class CarnetController extends Controller
 	        array(
 	            'firstname' => $firstname,
 	            'lastname' => $lastname,
-	            'datas' => $datas,
+	            'datas' => $entries,
 	            )
 	        ),
 	    $path
 	    );
+
 
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
 
 		$content = file_get_contents($path);
 
-		$response = new Response();
-	    $response->headers->set('Content-Type', 'application/pdf');
-	    $response->headers->set('Content-Disposition', 'attachment;filename="'."Carnet_suivi_$firstname-$lastname.pdf");
-	    $response->setContent($content);
+//		$response = new Response();
+//	    $response->headers->set('Content-Type', 'application/pdf');
+//	    $response->headers->set('Content-Disposition', 'attachment;filename="'."Carnet_suivi_$firstname-$lastname.pdf");
+//	    $response->setContent($content);
+
+        $email = $request->get('email', null);
+        if ($email == null)
+            $email = $user->getEmail();
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Votre carnet de suivi')
+            ->setFrom('exportCDS@diabhelp.org')
+            ->setTo($email)
+            ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
+            ->attach($content);
+        $this->get('mailer')->send($message);
 
 		$em->flush();
-	    return $response;
-	}
+        return new Response($this->serializer->serialize(array("success" => true), 'json'));
+    }
 }
