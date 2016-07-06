@@ -178,23 +178,26 @@ class CarnetController extends Controller
 
 		$content = file_get_contents($path);
 
-//		$response = new Response();
-//	    $response->headers->set('Content-Type', 'application/pdf');
-//	    $response->headers->set('Content-Disposition', 'attachment;filename="'."Carnet_suivi_$firstname-$lastname.pdf");
-//	    $response->setContent($content);
+		$response = new Response();
+	    $response->headers->set('Content-Type', 'application/pdf');
+	    $response->headers->set('Content-Disposition', 'attachment;filename="'."Carnet_suivi_$firstname-$lastname.pdf");
+	    $response->setContent($content);
 
+        $em->flush();
         $email = $request->get('email', null);
         if ($email == null)
             $email = $user->getEmail();
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Votre carnet de suivi')
-            ->setFrom('exportCDS@diabhelp.org')
-            ->setTo($email)
-            ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
-            ->attach($content);
-        $this->get('mailer')->send($message);
-
-		$em->flush();
-        return new Response($this->serializer->serialize(array("success" => true), 'json'));
+        if ($email){
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Votre carnet de suivi')
+                ->setFrom('exportCDS@diabhelp.org')
+                ->setTo($email)
+                ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
+                ->attach($response);
+            $this->get('mailer')->send($message);
+            return new Response($this->serializer->serialize(array("success" => true), 'json'));
+        }
+        else
+            return new Response($this->serializer->serialize(array("failure" => true), 'json'));
     }
 }
