@@ -102,7 +102,7 @@ class UserController extends Controller
         $user->setPassword("");
         $user->setSalt("");
 
-        $jsonContent = $this->serializer->serialize(array("success" => true), $user, 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, 'user' => $user), 'json');
 
         return new Response($jsonContent);
     }

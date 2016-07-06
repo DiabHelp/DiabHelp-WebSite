@@ -2,6 +2,7 @@
 
 namespace DH\APIBundle\Controller;
 
+use DateTime;
 use DH\APIBundle\Entity\CdsSave;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,7 +65,7 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
-        $jsonContent = $this->serializer->serialize(array("success" => true, $entry->getDateEdition()), 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, "dateEdition" => $entry->getDateEdition()), 'json');
 
         return new Response($jsonContent);
     }
@@ -81,49 +82,101 @@ class CarnetController extends Controller
 
         $repository = $em->getRepository('DHAPIBundle:CdsSave');
 
-        $id_user = $request->get('id_user', null);
-        $entries = $request->get('entries', null);
-
-        foreach ($entries as $entry) {
-            $entry_insert = new CdsSave();
-            $entry_insert->setIdSynchro($entry['id']);
-            $entry_insert->setIdUser($id_user);
-            $entry_insert->setDate($entry['date']);
-            $entry_insert->setDateEdition($entry['date_edition']);
-            $entry_insert->setTitle($entry['title']);
-            $entry_insert->setPlace($entry['place']);
-            $entry_insert->setDateHour($entry['date_hour']);
-            $entry_insert->setGlucide($entry['glucide']);
-            $entry_insert->setActivity($entry['activity']);
-            $entry_insert->setActivityType($entry['activity_type']);
-            $entry_insert->setNotes($entry['notes']);
-            $entry_insert->setFastInsu($entry['fast_insu']);
-            $entry_insert->setSlowInsu($entry['slow_insu']);
-            $entry_insert->setHba1c($entry['hba1c']);
-            $entry_insert->setHour($entry['hour']);
-            $entry_insert->setGlycemy($entry['glycemy']);
-            $entry_insert->setBreakfast($entry['breakfast']);
-            $entry_insert->setLunch($entry['lunch']);
-            $entry_insert->setDiner($entry['diner']);
-            $entry_insert->setEncas($entry['encas']);
-            $entry_insert->setSleep($entry['sleep']);
-            $entry_insert->setWakeup($entry['wakeup']);
-            $entry_insert->setNight($entry['night']);
-            $entry_insert->setWorkout($entry['workout']);
-            $entry_insert->setHypogly($entry['hypogly']);
-            $entry_insert->setHypergly($entry['hupergly']);
-            $entry_insert->setWork($entry['work']);
-            $entry_insert->setAthome($entry['athome']);
-            $entry_insert->setAlcohol($entry['alcohol']);
-            $entry_insert->setPeriod($entry['period']);
-            $entry_insert->setRdate($entry['rdate']);
-
-            $em->persist($entry_insert);
-            $em->flush();
+        $entries = array();
+        $content = $this->get("request")->getContent();
+        if (!empty($content)) {
+            $entries = json_decode($content, true);
         }
 
-        if ($repository == null) {
+        $id_user = $request->get('id_user', null);
+
+        if ($id_user == null || $content == null) {
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
+        }
+
+        foreach ($entries as $entry) {
+            $test_entry = $repository->findOneBy(array(
+                'idSynchro' => $entry['id'],
+                'idUser' => $id_user,
+            ));
+
+            if ($test_entry == null) {
+                $entry_insert = new CdsSave();
+                $date = new DateTime();
+                $entry_insert->setIdSynchro($entry['id']);
+                $entry_insert->setIdUser($id_user);
+                $entry_insert->setDate($entry['date']);
+                $date_edition = $date->setTimestamp($entry['date_edition']['timestamp']);
+                $entry_insert->setDateEdition($date_edition);
+                $entry_insert->setTitle($entry['title']);
+                $entry_insert->setPlace($entry['place']);
+                $entry_insert->setDateHour($entry['date_hour']);
+                $entry_insert->setGlucide($entry['glucide']);
+                $entry_insert->setActivity($entry['activity']);
+                $entry_insert->setActivityType($entry['activity_type']);
+                $entry_insert->setNotes($entry['notes']);
+                $entry_insert->setFastInsu($entry['fast_insu']);
+                $entry_insert->setSlowInsu($entry['slow_insu']);
+                $entry_insert->setHba1c($entry['hba1c']);
+                $entry_insert->setHour($entry['hour']);
+                $entry_insert->setGlycemy($entry['glycemy']);
+                $entry_insert->setBreakfast($entry['breakfast']);
+                $entry_insert->setLunch($entry['lunch']);
+                $entry_insert->setDiner($entry['diner']);
+                $entry_insert->setEncas($entry['encas']);
+                $entry_insert->setSleep($entry['sleep']);
+                $entry_insert->setWakeup($entry['wakeup']);
+                $entry_insert->setNight($entry['night']);
+                $entry_insert->setWorkout($entry['workout']);
+                $entry_insert->setHypogly($entry['hypogly']);
+                $entry_insert->setHypergly($entry['hypergly']);
+                $entry_insert->setWork($entry['work']);
+                $entry_insert->setAthome($entry['athome']);
+                $entry_insert->setAlcohol($entry['alcohol']);
+                $entry_insert->setPeriod($entry['period']);
+                $rdate = $date->setTimestamp($entry['rdate']['timestamp']);
+                $entry_insert->setRdate($rdate);
+
+                $em->persist($entry_insert);
+                $em->flush();
+            } else if ($test_entry->getDateEdition()->getTimestamp() < $entry['date_edition']['timestamp']) {
+                $date = new DateTime();
+                $test_entry->setIdSynchro($entry['id']);
+                $test_entry->setIdUser($id_user);
+                $test_entry->setDate($entry['date']);
+                $date_edition = $date->setTimestamp($entry['date_edition']['timestamp']);
+                $test_entry->setDateEdition($date_edition);
+                $test_entry->setTitle($entry['title']);
+                $test_entry->setPlace($entry['place']);
+                $test_entry->setDateHour($entry['date_hour']);
+                $test_entry->setGlucide($entry['glucide']);
+                $test_entry->setActivity($entry['activity']);
+                $test_entry->setActivityType($entry['activity_type']);
+                $test_entry->setNotes($entry['notes']);
+                $test_entry->setFastInsu($entry['fast_insu']);
+                $test_entry->setSlowInsu($entry['slow_insu']);
+                $test_entry->setHba1c($entry['hba1c']);
+                $test_entry->setHour($entry['hour']);
+                $test_entry->setGlycemy($entry['glycemy']);
+                $test_entry->setBreakfast($entry['breakfast']);
+                $test_entry->setLunch($entry['lunch']);
+                $test_entry->setDiner($entry['diner']);
+                $test_entry->setEncas($entry['encas']);
+                $test_entry->setSleep($entry['sleep']);
+                $test_entry->setWakeup($entry['wakeup']);
+                $test_entry->setNight($entry['night']);
+                $test_entry->setWorkout($entry['workout']);
+                $test_entry->setHypogly($entry['hypogly']);
+                $test_entry->setHypergly($entry['hypergly']);
+                $test_entry->setWork($entry['work']);
+                $test_entry->setAthome($entry['athome']);
+                $test_entry->setAlcohol($entry['alcohol']);
+                $test_entry->setPeriod($entry['period']);
+                $rdate = $date->setTimestamp($entry['rdate']['timestamp']);
+                $test_entry->setRdate($rdate);
+
+                $em->flush();
+            }
         }
 
         return new Response($this->serializer->serialize(array("success" => true), 'json'));
