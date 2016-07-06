@@ -2,6 +2,7 @@
 
 namespace DH\APIBundle\Controller;
 
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,6 +102,12 @@ class UserController extends Controller
 
         $user->setPassword("");
         $user->setSalt("");
+
+        $user->setBirthDate($user->getBirthDate()->format('Y-m-d H:i:s'));
+//        $user->setLastLogin($user->getLastLogin()->format('Y-m-d H:i:s'));
+//        $user->setExpiresAt($user->getExpiresAt()->format('Y-m-d H:i:s'));
+//        $user->setPasswordRequestedAt($user->getPasswordRequestedAt()->format('Y-m-d H:i:s'));
+//        $user->setCredentialsRequestedAt($user->getCredentialsRequestedAt()->format('Y-m-d H:i:s'));
 
         $jsonContent = $this->serializer->serialize(array("success" => true, 'user' => $user), 'json');
 

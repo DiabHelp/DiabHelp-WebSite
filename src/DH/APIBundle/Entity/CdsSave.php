@@ -226,7 +226,7 @@ class CdsSave
     private $id;
 
     /**
-     * @return \DateTime
+     * @return mixed
      */
     public function getDate()
     {
@@ -234,7 +234,7 @@ class CdsSave
     }
 
     /**
-     * @param \DateTime $date
+     * @param mixed $date
      */
     public function setDate($date)
     {
@@ -868,7 +868,7 @@ class CdsSave
     /**
      * Set rdate
      *
-     * @param \DateTime $rdate
+     * @param mixed $rdate
      *
      * @return CdsSave
      */
@@ -882,7 +882,7 @@ class CdsSave
     /**
      * Get rdate
      *
-     * @return \DateTime
+     * @return mixed
      */
     public function getRdate()
     {
@@ -960,7 +960,7 @@ class CdsSave
     /**
      * Set dateEdition
      *
-     * @param \DateTime $dateEdition
+     * @param mixed $dateEdition
      *
      * @return CdsSave
      */
@@ -974,7 +974,7 @@ class CdsSave
     /**
      * Get dateEdition
      *
-     * @return \DateTime
+     * @return mixed
      */
     public function getDateEdition()
     {

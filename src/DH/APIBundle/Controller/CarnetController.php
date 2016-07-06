@@ -36,6 +36,15 @@ class CarnetController extends Controller
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
 
+        foreach ($entries as $entry) {
+            if ($entry->getRdate() != null)
+                $entry->setRdate($entry->getRdate()->format('Y-m-d H:i:s'));
+            if ($entry->getDateEdition() != null)
+                $entry->setDateEdition($entry->getDateEdition()->format('Y-m-d H:i:s'));
+            if ($entry->getDate() != null)
+                $entry->setDate($entry->getDate()->format('Y-m-d H:i:s'));
+        }
+
         $jsonContent = $this->serializer->serialize(array("success" => true, $entries), 'json');
 
         return new Response($jsonContent);
@@ -64,6 +73,8 @@ class CarnetController extends Controller
         if ($entry == null) {
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
         }
+
+        $entry->setDateEdition($entry->getDateEdition()->format('Y-m-d H:i:s'));
 
         $jsonContent = $this->serializer->serialize(array("success" => true, "dateEdition" => $entry->getDateEdition()), 'json');
 
