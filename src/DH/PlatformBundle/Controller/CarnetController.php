@@ -177,7 +177,8 @@ class CarnetController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
 
-//		$content = file_get_contents($path);
+		$content = file_get_contents($path);
+        var_dump($content);
 
 /*		$response = new Response();
 	    $response->headers->set('Content-Type', 'application/pdf');
