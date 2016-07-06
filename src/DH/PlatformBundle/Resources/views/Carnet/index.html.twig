@@ -3,12 +3,14 @@
 {% extends "DHPlatformBundle::slide.html.twig" %}
 
 {% block title %}
-  Carnet de suivit - {{ parent() }}
+  Carnet de suivi - {{ parent() }}
 {% endblock %}
 
 {% block dhplatform_body %}
 
 <h2><a href="{{ path('dh_platform_carnet_exportjson') }}">Exporter mon carnet de suivi !</a></h2>
+
+<h2><a href="{{ path('dh_platform_carnet_show') }}">Visualiser mon carnet de suivi !</a></h2>
 
   <div class='cf'></div>
 

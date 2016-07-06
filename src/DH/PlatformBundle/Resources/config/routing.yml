@@ -75,6 +75,10 @@ dh_platform_carnet:
     path:       /carnet
     defaults:   { _controller: DHPlatformBundle:Carnet:index}
 
+dh_platform_carnet_show:
+    path:       /carnet/show
+    defaults:   { _controller: DHPlatformBundle:Carnet:show}
+
 dh_platform_carnet_exportjson:
     path:       /carnet/export
     defaults:   { _controller: DHPlatformBundle:Carnet:exportJSON}

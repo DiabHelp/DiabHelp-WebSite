@@ -21,12 +21,101 @@ class CarnetController extends Controller
 
 	private function getFakeData()
 	{
-		return '[{"title": "Un titre","glucide": 13.0,"activity": "une activité","activityType": "un type d\'activité","notes": "Une note","date": "17-janv.-2016","fast_insu": 0.02,"slow_insu": 0.03,"hba1c": 2.0,"hour": "23:56","glycemy": 32.4},{"title": "Un titre","glucide": 13.0,"activity": "une activité","activityType": "un type d\'activité","notes": "Une note","date": "17-janv.-2016","fast_insu": 0.02,"slow_insu": 0.03,"hba1c": 2.0,"hour": "23:56","glycemy": 32.4}]';
-	}
+        return '
+[{
+   "date":null,
+   "title":"test",
+   "place":"test",
+   "dateHour":"now",
+   "glucide":0.2,
+   "activity":"test",
+   "activityType":"test",
+   "notes":"test",
+   "fastInsu":0.3,
+   "slowInsu":0.4,
+   "hba1c":0.5,
+   "hour":"test",
+   "glycemy":0.6,
+   "breakfast":1,
+   "lunch":0,
+   "diner":0,
+   "encas":0,
+   "sleep":1,
+   "wakeup":0,
+   "night":0,
+   "workout":0,
+   "hypogly":0,
+   "hypergly":0,
+   "work":0,
+   "athome":1,
+   "alcohol":1,
+   "period":0,
+   "rdate":{
+      "timezone":{
+         "name":"Asia\/Hong_Kong",
+         "location":{
+            "country_code":"HK",
+            "latitude":22.28333,
+            "longitude":114.14999,
+            "comments":""
+         }
+      },
+      "offset":28800,
+      "timestamp":1467281191
+   },
+   "idUser":1,
+   "id":1,
+   "idSynchro":1,
+   "dateEdition":{
+      "timezone":{
+         "name":"Asia\/Hong_Kong",
+         "location":{
+            "country_code":"HK",
+            "latitude":22.28333,
+            "longitude":114.14999,
+            "comments":""
+         }
+      },
+      "offset":28800,
+      "timestamp":1467216000
+   }
+}]';
+    }
 
 	public function indexAction(Request $request)
 	{
 		return $this->render('DHPlatformBundle:Carnet:index.html.twig');
+	}
+
+	public function showAction(Request $request){
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+        $id_user = $request->get('id_user', null);
+        $entries = $request->get('datas', null);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('DHUserBundle:User');
+        $user = $this->getUser();
+        $datastring = $this->getFakeData();
+        $datas = json_decode($datastring);
+//        $user = $repo->findOneById($id_user);
+//        if (!$user)
+  //          return new Response($this->serializer->serialize(array("success" => false), 'json'));
+
+        $firstname = $user->getFirstname();
+        $lastname = $user->getLastname();
+
+        $content = $this->renderView('DHPlatformBundle:Carnet:template.html.twig',
+            array(
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'datas' => $datas,
+            )
+        );
+		$response = new Response();
+		$response->headers->set('Content-Type', 'text/html');
+		$response->setContent($content);
+		return ($response);
 	}
 
 	public function exportJSONAction(Request $request)
@@ -36,15 +125,20 @@ class CarnetController extends Controller
 		$this->serializer = new Serializer($normalizers, $encoders);
 
 		$carnetToken = $this->generateRandomString();
-		$path = $this->get('kernel')->getRootDir() . '/data/pdf/logbook/' . $carnetToken . '.pdf';
+		if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+			$path = $this->get('kernel')->getRootDir() . '\data\pdf\logbook\\' . $carnetToken . '.pdf';
+		}
+		else
+			$path = $this->get('kernel')->getRootDir() . '/data/pdf/logbook/' . $carnetToken . '.pdf';
+
 
 		$id_user = $request->get('id_user', null);
 		$entries = $request->get('datas', null);
 		$em = $this->getDoctrine()->getManager();
 		$repo = $em->getRepository('DHUserBundle:User');
-		$user = $repo->findOneById($id_user);
 
-		if (!$user)
+		$user = $repo->findOneById($id_user);
+        if (!$user)
 			return new Response($this->serializer->serialize(array("success" => false), 'json'));
 
 		$logbook = new Logbook();
