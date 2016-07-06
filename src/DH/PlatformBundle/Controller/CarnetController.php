@@ -127,7 +127,8 @@ class CarnetController extends Controller
 		$encoders = array(new XmlEncoder(), new JsonEncoder());
 		$normalizers = array(new ObjectNormalizer());
 		$this->serializer = new Serializer($normalizers, $encoders);
-        $carnetToken = $this->generateRandomString();
+
+		$carnetToken = $this->generateRandomString();
 		if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
 			$path = $this->get('kernel')->getRootDir() . '\data\pdf\logbook\\' . $carnetToken . '.pdf';
 		}
@@ -138,28 +139,27 @@ class CarnetController extends Controller
 
 		$id_user = $request->get('id_user', null);
 		//$entries = $request->get('datas', null);
-/*        $entries = array();
+        $entries = array();
         $content = $this->get("request")->getContent();
         if (!empty($content)) {
             $entries = json_decode($content, true);
-        }*/
-
+        }
 		$em = $this->getDoctrine()->getManager();
 		$repo = $em->getRepository('DHUserBundle:User');
-        $logbook = new Logbook();
-        $logbook->setToken($carnetToken);
-        $logbook->setDate(new \Datetime());
 
 		$user = $repo->findOneById($id_user);
         if (!$user)
 			return new Response($this->serializer->serialize(array("success" => false), 'json'));
 
+		$logbook = new Logbook();
+		$logbook->setToken($carnetToken);
+		$logbook->setDate(new \Datetime());
 		$logbook->setUser($user);
 
 		$firstname = $user->getFirstname();
 		$lastname = $user->getLastname();
 
-		$entries = json_decode($this->getFakeData());
+//		$datas = json_decode($entries);
 
 		$this->get('knp_snappy.pdf')->generateFromHtml(
 	    $this->renderView(
@@ -173,7 +173,8 @@ class CarnetController extends Controller
 	    $path
 	    );
 
-        $em = $this->getDoctrine()->getManager();
+
+		$em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
 
 //		$content = file_get_contents($path);
