@@ -24,19 +24,9 @@ dh_api_carnet_entry_delete:
         id:       \d+
         id_user:  \d+
 
-dh_api_carnet_export:
-    path:      /carnet/exportPDF
-    defaults:  { _controller: DHAPIBundle:Carnet:export }
-
-dh_api_carnet_download:
-    path:      /carnet/downloadPDF/{id}
-    defaults:  { _controller: DHAPIBundle:Carnet:download }
-    requirements:
-        id:   \d+
-
 dh_api_carnet_exportJSON:
     path:      /carnet/exportJSON
-    defaults:  { _controller: DHAPIBundle:Carnet:exportJSON }
+    defaults:  { _controller: DHPlatformBundle:Carnet:exportJSON }
 
 ## MODULES
 dh_api_module_view:

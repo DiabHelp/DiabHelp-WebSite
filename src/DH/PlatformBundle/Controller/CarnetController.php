@@ -7,6 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use DH\PlatformBundle\Entity\Logbook;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class CarnetController extends Controller
 {
@@ -27,22 +31,31 @@ class CarnetController extends Controller
 
 	public function exportJSONAction(Request $request)
 	{
+		$encoders = array(new XmlEncoder(), new JsonEncoder());
+		$normalizers = array(new ObjectNormalizer());
+		$this->serializer = new Serializer($normalizers, $encoders);
+
 		$carnetToken = $this->generateRandomString();
 		$path = $this->get('kernel')->getRootDir() . '/data/pdf/logbook/' . $carnetToken . '.pdf';
+
+		$id_user = $request->get('id_user', null);
+		$entries = $request->get('datas', null);
+		$em = $this->getDoctrine()->getManager();
+		$repo = $em->getRepository('DHUserBundle:User');
+		$user = $repo->findOneById($id_user);
+
+		if (!$user)
+			return new Response($this->serializer->serialize(array("success" => false), 'json'));
+
 		$logbook = new Logbook();
-		$user = $this->getUser();
 		$logbook->setToken($carnetToken);
 		$logbook->setDate(new \Datetime());
-		$logbook->setUser($this->getUser());
+		$logbook->setUser($user);
 
 		$firstname = $user->getFirstname();
 		$lastname = $user->getLastname();
 
-		$datastring = $this->getFakeData();
-		$datas = json_decode($datastring);
-		// dump($datas);
-		// return new Response("<html><body></body></html>");
-
+		$datas = json_decode($entries);
 
 		$this->get('knp_snappy.pdf')->generateFromHtml(
 	    $this->renderView(
