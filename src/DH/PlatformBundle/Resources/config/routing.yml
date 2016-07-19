@@ -20,6 +20,10 @@ dh_platform_profile:
     path:     /profile
     defaults: { _controller: DHPlatformBundle:Diabhelp:profile }
 
+dp_platform_check_available:
+    path:     /check_available
+    defaults: { _controller: DHPlatformBundle:Diabhelp:checkAvailable }
+
 ## MODULES
 dh_platform_module:
     path:     /modules

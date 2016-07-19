@@ -1,5 +1,32 @@
 $(window).load(function() {
 
+	$('#fos_user_registration_form_submit').click(function () {
+		var errors = 0;
+		var username = $('#fos_user_registration_form_username').val();
+		var email = $('#fos_user_registration_form_email').val();
+		var pwd = $('#fos_user_registration_form_plainPassword_first').val();
+		var pwdv = $('#fos_user_registration_form_plainPassword_second').val();
+
+		$.post("check_available", { username: username, email: email },
+			function (result) {
+				var res = $.parseJSON(result);
+				if (res.success == false) {
+					if (res.availables[0] == 0)
+						$('#availability_result').html('Le nom d\'utilisateur ' + username + ' est déjà utilisé, veuillez en prendre un autre.');
+					else if (res.availables[1] == 0)
+						$('#availability_result').html('L\'adresse email ' + email + ' est déjà utilisée, veuillez en prendre une autre.');
+					errors++;
+				} else if (pwd != pwdv) {
+					$('#availability_result').html('Les mots de passe doivent être identiques.');
+					errors++;
+				} else
+					$('#availability_result').html('');
+				if (errors == 0) {
+					$('#fos_user_registration_form').submit();
+				}
+			});
+	});
+
 	// carousel index page
   $('.flexslider').flexslider({
     animation: "slide",

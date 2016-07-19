@@ -21,7 +21,9 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->addRole('ROLE_USER');
-    }  
+        $this->setProfilePicturePath('default.jpg');
+    }
+
    /**
     * @ORM\Column(name="id", type="integer")
     * @ORM\Id

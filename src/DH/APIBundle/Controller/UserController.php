@@ -32,15 +32,25 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('DHUserBundle:User');
 
+        if ($username == null)
+            $errors[] = "Missing username";
+        if ($password == null)
+            $errors[] = "Missing password";
+        if ($email == null)
+            $errors[] = "Missing email";
+        if ($firstname == null)
+            $errors[] = "Missing firstname";
+        if ($lastname == null)
+            $errors[] = "Missing lastname";
+        if ($role == null)
+            $errors[] = "Missing role";
+
         $user = $repo->findByUsername($username);
         if ($user)
             $errors[] = "Username already used";
         $user = $repo->findByEmail($email);
         if ($user)
             $errors[] = "Email already used";
-
-//        if (!($role == "ROLE_PATIENT" || $role == "ROLE_PROCHE" || $role == "ROLE_DOCTOR" || $role == "ROLE_ADMIN"))
-//            $errors[] = "Invalid role";
 
         if (count($errors) > 0) {
             $resp = array("success" => false, "errors" => $errors);
@@ -54,6 +64,7 @@ class UserController extends Controller
         $user->setFirstname($firstname);
         $user->setLastname($lastname);
         $user->addRole($role);
+        $user->setProfilePicturePath("defaulf.jpg");
         $user->setEnabled(true);
 
         // $userManager->updateUser($user);
@@ -76,7 +87,6 @@ class UserController extends Controller
 
         if ($user == null) {
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
-//            throw new NotFoundHttpException("Le token " . $token . " n'existe pas.");
         }
 
         $repository->emptyAuthToken($user->getId());
@@ -97,17 +107,13 @@ class UserController extends Controller
 
         if ($user == null) {
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
-//            throw new NotFoundHttpException("Aucun user trouvé pour l'id " . $id);
         }
 
         $user->setPassword("");
         $user->setSalt("");
 
-        $user->setBirthDate($user->getBirthDate()->format('Y-m-d H:i:s'));
-//        $user->setLastLogin($user->getLastLogin()->format('Y-m-d H:i:s'));
-//        $user->setExpiresAt($user->getExpiresAt()->format('Y-m-d H:i:s'));
-//        $user->setPasswordRequestedAt($user->getPasswordRequestedAt()->format('Y-m-d H:i:s'));
-//        $user->setCredentialsRequestedAt($user->getCredentialsRequestedAt()->format('Y-m-d H:i:s'));
+        if ($user->getBirthDate() != null)
+            $user->setBirthDate($user->getBirthDate()->format('Y-m-d H:i:s'));
 
         $jsonContent = $this->serializer->serialize(array("success" => true, 'user' => $user), 'json');
 

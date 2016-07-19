@@ -8,6 +8,11 @@ use DH\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use DH\PlatformBundle\Form\UserType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class DiabhelpController extends Controller
 {
@@ -88,5 +93,41 @@ class DiabhelpController extends Controller
     public function forgetPwdAction()
     {
         return $this->render('DHPlatformBundle:Diabhelp:forgetPwd.html.twig');
+    }
+
+    public function checkAvailableAction(Request $request) {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
+        $username = $request->get('username', null);
+        $email = $request->get('email', null);
+
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('DHUserBundle:User');
+
+        $errors = array();
+        if ($username == null)
+            $errors[] = "Missing username";
+
+        if ($email == null)
+            $errors[] = "Missing email";
+
+        $userByUsername = $repo->findByUsername($username);
+
+        $userByEmail = $repo->findByEmail($email);
+
+        if ($userByUsername == null && $userByEmail == null)
+            $resp = array("success" => true);
+        $availables = array(0 => 1, 1 => 1);
+        if ($userByUsername != null)
+            $availables[0] = 0;
+        if ($userByEmail != null)
+            $availables[1] = 0;
+        if (count($errors) > 0 || $userByUsername != null || $userByEmail != null)
+            $resp = array("success" => false, "errors" => $errors, "availables" => $availables);
+
+        $jsonContent = $this->serializer->serialize($resp, 'json');
+        return new Response($jsonContent);
     }
 }
