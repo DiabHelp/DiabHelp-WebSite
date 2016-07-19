@@ -113,7 +113,9 @@ class UserController extends Controller
         $user->setSalt("");
 
         if ($user->getBirthDate() != null)
-            $user->setBirthDate($user->getBirthDate()->format('Y-m-d H:i:s'));
+            $user->setBirthDate($user->getBirthDate()->getTimestamp());
+        if ($user->getLastLogin() != null)
+            $user->setLastLogin(null);
 
         $jsonContent = $this->serializer->serialize(array("success" => true, 'user' => $user), 'json');
 
@@ -124,6 +126,7 @@ class UserController extends Controller
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
         $this->serializer = new Serializer($normalizers, $encoders);
+        $birthdate = new DateTime();
 
         $id = $request->get('id', null);
         $username = $request->get('username', null);
@@ -133,34 +136,38 @@ class UserController extends Controller
         $firstname = $request->get('firstname', null);
         $lastname = $request->get('lastname', null);
         $phone = $request->get('phone', null);
-        $birthdate = $request->get('birthdate', null);
+        $tmp_birthdate = $request->get('birthdate', null);
+        $birthdate->setTimestamp($tmp_birthdate);
         $organisme = $request->get('organisme', null);
 
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('DHUserBundle:User');
+        if ($id && $id != "") {
+            $em = $this->getDoctrine()->getManager();
+            $repo = $em->getRepository('DHUserBundle:User');
 
-        if ($id && $id != "")
             $user = $repo->findOneById($id);
-        if ($username && $username != "")
-            $user->setUsername($username);
-        if ($password && $passwordv && $password == $passwordv && $password != "")
-            $user->setPlainPassword($password);
-        if ($email && $email != "")
-            $user->setEmail($email);
-        if ($firstname && $firstname != "")
-            $user->setFirstname($firstname);
-        if ($lastname && $lastname != "")
-            $user->setLastname($lastname);
-        if ($phone && $phone != "")
-            $user->setPhone($phone);
-        if ($birthdate && $birthdate != "")
-            $user->setBirthdate($birthdate);
-        if ($organisme && $organisme != "")
-            $user->setOrganisme($organisme);
+            if ($username && $username != "")
+                $user->setUsername($username);
+            if ($password && $passwordv && $password == $passwordv && $password != "")
+                $user->setPlainPassword($password);
+            if ($email && $email != "")
+                $user->setEmail($email);
+            if ($firstname && $firstname != "")
+                $user->setFirstname($firstname);
+            if ($lastname && $lastname != "")
+                $user->setLastname($lastname);
+            if ($phone && $phone != "")
+                $user->setPhone($phone);
+            if ($birthdate && $birthdate != "")
+                $user->setBirthdate($birthdate);
+            if ($organisme && $organisme != "")
+                $user->setOrganisme($organisme);
 
-        $em->flush();
+            $em->flush();
 
-        return new Response($this->serializer->serialize(array("success" => true), 'json'));
+            return new Response($this->serializer->serialize(array("success" => true), 'json'));
+        }
+
+        return new Response($this->serializer->serialize(array("success" => false), 'json'));
     }
 
 }
