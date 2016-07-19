@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace DH\PlatformBundle\Controller;
 
@@ -44,8 +44,8 @@ class ModuleController extends Controller
 
 	    if ($form->handleRequest($request)->isValid()) {
 	    	if ($module->getImageName() == "" or $module->getImageName() == null) {
-				$module->setImageName("av-def.jpg");
-				$module->setUpdatedAtNow();
+	    		$module->setImageName("av-def.jpg");
+                $module->setUpdatedAtNow();
 	    	}
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($module);

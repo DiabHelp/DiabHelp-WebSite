@@ -9,9 +9,10 @@ parameters:
     database_password: ~
     # You should uncomment this if you want use pdo_sqlite
     database_path: "%kernel.root_dir%/data/data.db3"
-
+    mailer_auth_mode:  login
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
+    mailer_port:       587
     mailer_user:       ~
     mailer_password:   ~
 
