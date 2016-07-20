@@ -1,11 +1,12 @@
 $(window).load(function() {
 
 	$('#fos_user_registration_form_submit').click(function () {
-		var errors = 0;
 		var username = $('#fos_user_registration_form_username').val();
 		var email = $('#fos_user_registration_form_email').val();
 		var pwd = $('#fos_user_registration_form_plainPassword_first').val();
 		var pwdv = $('#fos_user_registration_form_plainPassword_second').val();
+		var firstname = $('#fos_user_registration_form_firstname').val();
+		var lastname = $('#fos_user_registration_form_lastname').val();
 
 		$.post("check_available", { username: username, email: email },
 			function (result) {
@@ -15,13 +16,20 @@ $(window).load(function() {
 						$('#availability_result').html('Le nom d\'utilisateur ' + username + ' est déjà utilisé, veuillez en prendre un autre.');
 					else if (res.availables[1] == 0)
 						$('#availability_result').html('L\'adresse email ' + email + ' est déjà utilisée, veuillez en prendre une autre.');
-					errors++;
-				} else if (pwd != pwdv) {
+					else
+						$('#availability_result').html('Tout les champs sont obligatoires.');
+				} else if (pwd != pwdv)
 					$('#availability_result').html('Les mots de passe doivent être identiques.');
-					errors++;
-				} else
+				else if (pwd.length < 8 || pwd.length > 42)
+					$('#availability_result').html('Le mot de passe doit contenir entre 8 et 42 caractères.');
+				else if (firstname.length < 1 || firstname.length > 42 || lastname.length < 1 || lastname.length > 42)
+					$('#availability_result').html('Les noms et prénoms doivent contenir entre 1 et 42 caractères.');
+				else if (username.length < 2 || username.length > 25)
+					$('#availability_result').html('Les mots de passe doivent être identiques.');
+				else if (!$('#fos_user_registration_form_cgu').is(":checked"))
+					$('#availability_result').html('Vous devez accepter les CGU afin de vous enregistrer.');
+				else {
 					$('#availability_result').html('');
-				if (errors == 0) {
 					$('#fos_user_registration_form').submit();
 				}
 			});
