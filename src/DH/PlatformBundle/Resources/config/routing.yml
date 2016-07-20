@@ -23,6 +23,14 @@ dh_platform_profile:
 dp_platform_check_available:
     path:     /check_available
     defaults: { _controller: DHPlatformBundle:Diabhelp:checkAvailable }
+    requirements:
+        _method:  POST
+
+dp_platform_check_email_exist:
+    path:     /check_email_exist
+    defaults: { _controller: DHPlatformBundle:Diabhelp:checkEmailExist }
+    requirements:
+        _method:  POST
 
 ## MODULES
 dh_platform_module:

@@ -5,6 +5,22 @@ $(window).load(function() {
 		return pattern.test(emailAddress);
 	};
 
+	$('#reset_pwd').click(function () {
+		var email = $('#fos_user_forget_pwd_form_email').val();
+
+		$.post("check_email_exist", { email: email },
+			function (result) {
+				var res = $.parseJSON(result);
+				if (res.success == true)
+					$('#email_exist_error').html('L\'adresse email ' + email + ' n\'est pas enregistrée, veuillez en saisir une autre.');
+				else {
+					$('#email_exist_error').html('');
+					console.log('reset_pwd_submit');
+				}
+					// $('#fos_user_registration_form').submit();
+			});
+	});
+
 	$('#fos_user_registration_form_submit').click(function () {
 		var username = $('#fos_user_registration_form_username').val();
 		var email = $('#fos_user_registration_form_email').val();

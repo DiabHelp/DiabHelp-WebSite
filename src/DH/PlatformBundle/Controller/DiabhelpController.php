@@ -130,4 +130,32 @@ class DiabhelpController extends Controller
         $jsonContent = $this->serializer->serialize($resp, 'json');
         return new Response($jsonContent);
     }
+
+    public function checkEmailExistAction(Request $request) {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
+        $email = $request->get('email', null);
+
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('DHUserBundle:User');
+
+        $errors = array();
+
+        if ($email == null)
+            $errors[] = "Missing email";
+
+        $user = $repo->findByEmail($email);
+
+        if (count($errors) > 0)
+            $resp = array("success" => true, "errors" => $errors);
+        else if ($user != null)
+            $resp = array("success" => false);
+        else
+            $resp = array("success" => true);
+
+        $jsonContent = $this->serializer->serialize($resp, 'json');
+        return new Response($jsonContent);
+    }
 }
