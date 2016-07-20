@@ -11,9 +11,10 @@
 </div>
 <div id='forget' class='center' hidden>
     <h2 class='center'>Retrouver son mot de passe</h2>
+    <p id="email_exist_error" style="color: red;"></p>
     <form name='forget' action="" method='post'>
-        <input required type='text' name='mail' placeholder='E-mail'/>
-        <input type='submit' value='envoyer'>
+        <input required type='text' name='mail' id='fos_user_forget_pwd_form_email' placeholder='E-mail'/>
+        <input id='reset_pwd' type='button' value='envoyer'>
     </form>
     <a onclick='show_signup_part("signin");' style='color: blue; font-size: 0.8em;'>Mot de passe retrouvé?</a>
 </div>
