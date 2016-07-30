@@ -23,57 +23,57 @@
   <ul class="nav fl cf">
     <li>
       <a href="{{ path('dh_platform_home') }}">
-        Accueil
+        {{ 'Accueil' | trans }}
       </a>
     </li>
     <li>
       <a href="{{ path('dh_platform_module') }}">
-        Modules
+        {{ 'Modules' | trans }}
       </a>
       {{ render(controller("DHPlatformBundle:Module:listName")) }}
     </li>
     <li>
       <a href="{{ path('dh_platform_module_add') }}">
-        Proposer
+        {{ 'Proposer' | trans }}
       </a>
     </li>
     <li>
       <a href="{{ path('dh_platform_contact') }}">
-        Contact
+        {{ "L'équipe" | trans }}
       </a>
     </li>
     <li>
       <a href="{{ path('dh_platform_article') }}">
-        Communauté
+        {{ 'Communauté' | trans }}
       </a>
       <ul class="nav_second">
         <li>
-          <a href="{{ path('dh_platform_article') }}">News</a>
+          <a href="{{ path('dh_platform_article') }}">{{ 'Actualités' | trans }}</a>
         </li>
       </ul>
     </li>
       {% if is_granted('ROLE_ADMIN') %}
         <li>
           <a href="{{ path('dh_admin_index') }}">
-            Zone admin
+            {{ 'Zone admin' | trans }}
           </a>
         </li>
       {% endif %}
     {% if app.user %}
       <li>
         <a href="{{ path('dh_platform_profile') }}">
-          <b>{{ app.user.username }}</b> Profil
+          <b>{{ app.user.username }}</b> {{ 'Profil' | trans }}
         </a>
       </li>
       <li>
         <a href="{{ path('fos_user_security_logout') }}">
-          Déconnexion
+          {{ 'Déconnexion' | trans }}
         </a>
       </li>
     {% else %}
       <li>
         <a onclick="show_signup()">
-          Connexion/Inscription
+          {{ 'Connexion/Inscription' | trans }}
         </a>
       </li>
     {% endif %}
@@ -95,21 +95,21 @@
     <div class="footer_center">
       <div class="footer_contacts f1">
         <h1 class="footer_contacts_title">
-          <a class="link_footer" href="{{ path('dh_platform_legal') }}">Mentions Legales</a>
+          <a class="link_footer" href="{{ path('dh_platform_legal') }}">{{ 'Mentions légales' | trans }}</a>
         </h1>
         <h1 class="footer_contacts_title">
-          <a class="link_footer" href="{{ path('dh_platform_theyHelpedUs') }}">Ils nous ont aidés</a>
+          <a class="link_footer" href="{{ path('dh_platform_theyHelpedUs') }}">{{ 'Ils nous ont aidés' | trans }}</a>
         </h1>
       </div>
       <div class="footer_contacts fl">
-        <h1 class="footer_contacts_title">Contacts</h1>
+        <h1 class="footer_contacts_title">{{ 'Contact' | trans }}</h1>
         <div class="footer_contacts_item">
           <div class="cf"></div>
         </div>
         <div class="footer_contacts_item">
           <div class="footer_contacts_item_pic_address fl"></div>
           <div class="footer_contacts_item_inf fl">
-            <h5>ADRESSE:</h5>
+            <h5>{{ 'ADRESSE' | trans }}</h5>
             <p>40 boulevard de la Marquette<br/> 31000 Toulouse</p>
           </div>
           <div class="cf"></div>
@@ -117,7 +117,7 @@
         <div class="footer_contacts_item">
           <div class="footer_contacts_item_pic_tel fl"></div>
           <div class="footer_contacts_item_inf fl">
-            <h5>TELEPHONE:</h5>
+            <h5>{{ 'TELEPHONE' | trans }}</h5>
             <p>+33 6 ** ** ** **</p>
           </div>
           <div class="cf"></div>
@@ -125,8 +125,8 @@
         <div class="footer_contacts_item">
           <div class="footer_contacts_item_pic_email fl"></div>
           <div class="footer_contacts_item_inf fl">
-            <h5>EMAIL:</h5>
-            <p>damien.pollet@epitech.eu</p>
+            <h5>{{ 'EMAIL' | trans }}</h5>
+            <p>contact@diabhelp.org</p>
           </div>
           <div class="cf"></div>
         </div>

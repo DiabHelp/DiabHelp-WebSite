@@ -13,8 +13,8 @@
       <img class='page_header_logo fl' src='{{ asset('bundles/dhplatform/images/news_logo.png') }}' alt=''>
       <h1 class='page_header_title fl'>{{ module.name }}</h1>
       <ul class='page_header_nav fr'>
-        <li><a href='{{ path('dh_platform_home') }}'>Accueil</a></li>
-        <li><a class='active' href='{{ path('dh_platform_module') }}'>Liste des modules</a></li>
+        <li><a href='{{ path('dh_platform_home') }}'>{{ 'Accueil' | trans }}</a></li>
+        <li><a class='active' href='{{ path('dh_platform_module') }}'>{{ 'Liste des modules' | trans }}</a></li>
       </ul>
       <div class='cf'></div>
     </div>
@@ -23,21 +23,21 @@
     <div class='module_s'>
         <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />
         <h2 id="module_name">{{ module.name }}</h2>
-        <h3 style='text-align:left'>Crée par : <em>{{ module.organisme }}</em></h3>
-        <h4 style='text-align:left'>Catégorie : {{ module.type }}</h4>
+        <h3 style='text-align:left'>{{ 'Créé par' | trans }} : <em>{{ module.organisme }}</em></h3>
+        <h4 style='text-align:left'>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
         <a class="fbShareButton"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>
-        <p>Note Actuelle : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
+        <p>{{ 'Note Actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
         <div class='rating' style='margin-right:35px;'>
-          <a id="{{ module.id }}rating5" onclick="voteModuleView({{ module.id }}, 5)" {% if module.note > 4 %} style="color:#FFA500" {% endif %} title='Attribuer 5 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating4" onclick="voteModuleView({{ module.id }}, 4)" {% if module.note > 3 %} style="color:#FFA500" {% endif %} title='Attribuer 4 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating3" onclick="voteModuleView({{ module.id }}, 3)" {% if module.note > 2 %} style="color:#FFA500" {% endif %} title='Attribuer 3 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating2" onclick="voteModuleView({{ module.id }}, 2)" {% if module.note > 1 %} style="color:#FFA500" {% endif %} title='Attribuer 2 étoiles à ce module'>☆</a>
-          <a id="{{ module.id }}rating1" onclick="voteModuleView({{ module.id }}, 1)" {% if module.note > 0 %} style="color:#FFA500" {% endif %}title='Attribuer 1 étoile à ce module'>☆</a>
+          <a id="{{ module.id }}rating5" onclick="voteModuleView({{ module.id }}, 5)" {% if module.note > 4 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 5 étoiles à ce module' | trans }}'>☆</a>
+          <a id="{{ module.id }}rating4" onclick="voteModuleView({{ module.id }}, 4)" {% if module.note > 3 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 4 étoiles à ce module' | trans }}'>☆</a>
+          <a id="{{ module.id }}rating3" onclick="voteModuleView({{ module.id }}, 3)" {% if module.note > 2 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 3 étoiles à ce module' | trans }}'>☆</a>
+          <a id="{{ module.id }}rating2" onclick="voteModuleView({{ module.id }}, 2)" {% if module.note > 1 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 2 étoiles à ce module' | trans }}'>☆</a>
+          <a id="{{ module.id }}rating1" onclick="voteModuleView({{ module.id }}, 1)" {% if module.note > 0 %} style="color:#FFA500" {% endif %}title='{{ 'Attribuer 1 étoile à ce module' | trans }}'>☆</a>
         </div>
         <div class='describ_mod'>
           <p>{{ module.description }}</p>
         </div>
-             <h2 class="contact_form_title" style="color:white;">Vous voulez poster un commentaire ?</h2>
+             <h2 class="contact_form_title" style="color:white;">{{ 'Poster un commentaire' | trans }}</h2>
             {% if app.user %}
                 <div id="comSend" style="position:relative;margin-bottom:10px" >
                     {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
@@ -45,17 +45,22 @@
                         {{ form_errors(form) }}
                     </div>
                     <div align="center">
-                        {{ form_widget(form.text, {'attr': {'class': 'texteareaCommentNews', 'rows' : 10, 'cols' : 100, 'placeholder' : 'Votre commentaire ici..'}}) }}
+                        {{ form_widget(form.text, {'attr': {'class': 'texteareaCommentNews', 'rows' : 10, 'cols' : 100, 'placeholder' : 'Votre commentaire ici..' | trans }}) }}
                     </div>
                     <div align="center">
-                        {{ form_widget(form.submit, {'attr': {'class': 'submitCommentNews', 'value' : 'Envoyer'}}) }}
+                        {{ form_widget(form.submit, {'attr': {'class': 'submitCommentNews', 'value' : 'Envoyer' | trans }}) }}
                     </div>
                     {{ form_end(form) }}
                 </div>
             {% else %}
-                <p style="font-size:1.8em;font-style:bold;text-align:center;color:#474747"> Vous devez être <span onclick="show_signup()"  style="color:blue;"><a>connecté</a></span> afin de poster un commentaire</p>
+                <p style="font-size:1.8em;font-style:bold;text-align:center;">
+                    {{ 'Vous devez être connecté afin de proposer un module.' | trans }}
+                    <span onclick="show_signup()" style="color:blue;">
+                      <a>{{ 'Se connecter' | trans }}</a>
+                    </span>
+                </p>
             {% endif %}
-		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >Afficher les {{ module.comments|length }} commentaires</button>
+		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >{{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}</button>
     </div>
         <div id="com_react_content" style="height:auto; display:none;">
             {% for comment in module.comments %}
@@ -82,12 +87,12 @@
                         <div class="action_block">
                             {% if app.user and comment.author.id == app.user.id and loop.last %}
                                 <div class="delete_com">
-                                    <a style="background-color:red;" href="{{ path('dh_platform_module_comment_delete', {'id': comment.id}) }}">Supprimer</a>
+                                    <a style="background-color:red;" href="{{ path('dh_platform_module_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>
                                 </div>
                             {% endif %}
                             {% if app.user and comment.author.id == app.user.id %}
                                 <div class="modify_com">
-                                    <a style="background-color:gray" onclick="">Modifier</a>
+                                    <a style="background-color:gray" onclick="">{{ 'Modifier' | trans }}</a>
                                 </div>
                             {% endif %}
                         </div>
@@ -104,7 +109,7 @@
                             <textarea rows="10" cols="100" class="com_change" id=com_change>{{ comment.text }}</textarea>
                         </div>
                         <div align="center">
-                            <input name="envoyer" class="send_button" id="envoyer" value="Envoyer" />
+                            <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" />
                         </div>
                     </form>
                 </div>

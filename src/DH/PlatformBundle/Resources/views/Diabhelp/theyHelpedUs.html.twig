@@ -3,21 +3,21 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-    Ils nous ont aidé - {{ parent() }}
+    {{ 'Ils nous ont aidés' | trans }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
 
     <div class='center'>
-        <h1 class=news_item_title>Ils nous ont aidé</h1>
+        <h1 class=news_item_title>{{ 'Ils nous ont aidés' | trans }}</h1>
         <div class="cf"></div>
         <div class='news_item'>
             <div id='Text_News'>
                 <h2>Thomas Ruiz</h2>
                 <p>
-                    Thomas nous a aidé, lors de la création du projet, à concevoir le logo DiabHelp ainsi que certaines icônes pour le site web et les applications mobile.
+                    {{ 'helper.thomas' | trans }}
                     <br/>
-                    Merci à lui !
+                    {{ 'Merci à Thomas ! :-)' | trans }}
                 </p>
             </div>
         </div>

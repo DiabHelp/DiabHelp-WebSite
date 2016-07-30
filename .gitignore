@@ -39,3 +39,11 @@ notes
 app/data/pdf/logbook/*
 /local/
 /app/db/*
+app/check.php
+web/config.php
+app/config/parameters.yml
+app/SymfonyRequirements.php
+app/check.php
+app/SymfonyRequirements.php
+app/config/parameters.yml
+web/config.php
