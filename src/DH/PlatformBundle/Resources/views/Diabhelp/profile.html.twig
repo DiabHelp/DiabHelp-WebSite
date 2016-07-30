@@ -1,7 +1,7 @@
 {% extends "DHPlatformBundle::slide.html.twig" %}
 
 {% block title %}
-    Profil - {{ parent() }}
+    {{ 'Profil' | trans }}- {{ parent() }}
 {% endblock %}
 
 {% block dhplatform_body %}
@@ -9,10 +9,10 @@
     <div class = "page_header">
         <div class="center">
             <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
-            <h1 class="page_header_title fl">Modifier son profil</h1>
+            <h1 class="page_header_title fl">{{ 'Modifier son profil' | trans }}</h1>
             <ul class="page_header_nav fr">
-                <li><a href="{{ path('dh_platform_home') }}">Accueil</a></li>
-                <li><a class="active" href="{{ path('dh_platform_profile') }}">Modifier son profil</a></li>
+                <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
+                <li><a class="active" href="{{ path('dh_platform_profile') }}">{{ 'Modifier son profil' | trans }}</a></li>
             </ul>
             <div class="cf"></div>
         </div>
@@ -29,38 +29,37 @@
                 <img id="image_profile" src="{{ asset('images/profile/' ~ userProfilePicturePath ) }}" title="user_avatar" />
             </p>
         </div>
-        <p style="text-align:center;font-size:0.8em;color:white;">Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)</p>
+        <p style="text-align:center;font-size:0.8em;color:white;">{{ 'Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)' | trans }}</p>
         <div style="width:265px;margin:0 auto;background:#078b87;">
-            {{ form_widget(form.profilePictureFile, {'attr': {'title': 'logo', 'value': "Uploader cette image"}}) }}
+            {{ form_widget(form.profilePictureFile, {'attr': {'title': 'logo', 'value': "Envoyer cette image" | trans}}) }}
             <div class="cf"></div>
         </div>
         <div class="contact_form">
             {#<p style="text-align:center">#}
-                {#<input type="checkbox" name="news" checked />Je souhaite recevoir des informations de DiabHelp par mail.<br>#}
-                {#<input type="checkbox" name="news" />Je ne souhaite plus recevoir d\'informations de DiabHelp par mail.<br>#}
-                {#<input type="checkbox" name="valide" value="valide" checked />Mon compte est validé<br>#}
+                {#<input type="checkbox" name="news" checked />{{ 'Je souhaite recevoir des informations de DiabHelp par mail.' | trans }}<br>#}
+                {#<input type="checkbox" name="valide" value="valide" checked />{{ 'Mon compte est validé' | trans }}<br>#}
             {#</p>#}
                 <div class="contact_form_box">
                     <div class="form_box_left fl">
-                        {{ form_widget(form.firstname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre prénom'}}) }}
-                        {{ form_widget(form.lastname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre nom'}}) }}
-                        {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre adresse email'}}) }}
-                        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre association'}}) }}
+                        {{ form_widget(form.firstname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Prénom'}}) }}
+                        {{ form_widget(form.lastname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Nom'}}) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Email'}}) }}
+                        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Association'}}) }}
                     </div>
                     <div class="form_box_center fl">
-                        {{ form_widget(form.phone, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Renseignez votre numéro de téléphone'}}) }}
+                        {{ form_widget(form.phone, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Numéro de téléphone'}}) }}
                         {{ form_widget(form.birthdate, {'attr': {'class': 'contact_form_input_noname'}}) }}
                         {{ form_widget(form.plainPassword) }}
                     </div>
                     <div class="form_box_righ fl proposer_submit">
                         {{ form_widget(form._token) }}
                         {{ form_widget(form.save, {'attr': {'class': 'contact_form_submit', 'type' : 'image', 'src' : asset('bundles/dhplatform/images/submit_button.png') }}) }}
-                        <p>Modifier</p>
+                        <p>{{ 'Modifier' | trans }}</p>
                     </div>
             </div>
     </div>
     <div class="cf"></div>
-    <p style="text-align:center;" onclick=""><button style="color:red; padding: 2px 25px; background-color: #2a2a2a;">Je souhaite supprimer mon compte</button></p>
+    <p style="text-align:center;" onclick=""><button style="color:red; padding: 2px 25px; background-color: #2a2a2a;">{{ 'Je souhaite supprimer mon compte' | trans }}</button></p>
     <div class="cf"></div>
 
 {% endblock %}
