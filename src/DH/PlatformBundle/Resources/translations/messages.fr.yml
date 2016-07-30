@@ -34,10 +34,10 @@ diabhelp.desc:
     informations, mais aussi les outils leur permettant de gérer au mieux leur condition. Cette application est
     disponible sur les principales plateformes mobiles (Android, IOS et Windows Phone).
   parag2: >
-    Grace aux retours et propositions de la communauté, notre équipe souhaite développer une application complète et
-    fidèle aux demandes des utilisateurs. Toutes vos participations sont les bienvenues, n''hésitez pas à aller voter
+    Grâce aux retours et propositions de la communauté, notre équipe souhaite développer une application complète et
+    fidèle aux demandes des utilisateurs. Toutes vos participations sont les bienvenues, n'hésitez pas à aller voter
     pour vos modules favoris, ou encore proposer vos idées de développement. En collaboration avec des organismes de la
-    santé (médecins, nutritionistes, centres hospitaliers, etc) nous assurerons un service qualitatif qui répondra à
+    santé (médecins, nutritionnistes, centres hospitaliers, etc), nous assurerons un service qualitatif qui répondra à
     vos besoins.
 #endof index
 
@@ -66,6 +66,7 @@ EMAIL: EMAIL
 'S''inscrire': 'Créer un compte'
 'Retrouver son mot de passe': 'Retrouver son mot de passe'
 'Envoyer': 'Envoyer'
+'envoyer': 'envoyer'
 'Mot de passe retrouvé?': 'Mot de passe retrouvé?'
 
 #inscription
@@ -84,6 +85,7 @@ EMAIL: EMAIL
 #modules
 'Liste des modules': Liste des modules
 'Informations complémentaires sur le module': "Informations complémentaires sur le module"
+Information: Information
 'Note actuelle': "Note actuelle"
 'Attribuer 5 étoiles à ce module': "Attribuer 5 étoiles à ce module"
 'Attribuer 4 étoiles à ce module': "Attribuer 4 étoiles à ce module"
@@ -102,20 +104,20 @@ EMAIL: EMAIL
 
 #proposer
 'Proposer un module': 'Proposer un module'
-'Pourquoi proposer un module ?': "Why submitting an idea ?"
+'Pourquoi proposer un module ?': "Pourquoi proposer un module ?"
 proposer:
   desc:
     parag1: >
-          Le but de DiabHelp est simple. Nous vous permettons de proposer vos modules qui seront
-          ensuite votés par la communauté pour que nous les développions.
+      Le but de DiabHelp est simple. Nous vous permettons de proposer vos modules qui seront
+      ensuite votés par la communauté pour que nous les développions.
     parag2: >
       Ainsi, nous serons capables de vous proposer la solution qui vous conviendra le mieux.
-      Ne soyez pas timides sur les propositions, même si les projets ne seront pas tous réalisables,
-      grâce à la communauté et au système de commentaires sur les propositions, nous pourrons tirer
-      parti du meilleur des idées proposées par chacun.
+      Ne soyez pas timides sur les propositions, il est certain que certaines idées ne seront pas réalisables.
+      Cependant, grâce à la communauté et au système de commentaires sur les propositions, nous pourrons tirer parti du
+      meilleur des idées proposées par chacun.
     parag3: >
-      Comme vous le voyez, la communauté a son mot à dire par ici, alors ne vous privez pas, ce sera
-      avec plaisir que nous traiterons vos demandes.
+      Comme vous le voyez, la communauté a son mot à dire par ici, alors ne vous privez pas, nous traiterons avec
+      plaisir vos demandes.
 'Vous voulez proposer un module ?': "Vous voulez proposer un module ?"
 'Nom du module': 'Nom du module'
 'Type de module': 'Type de module'
@@ -133,8 +135,8 @@ contact:
   desc:
     parag1: >
       Nous sommes une équipe de 6 étudiants de 5ème année à l'école EPITECH Toulouse, école d'expertise informatique.
-      Nos membres sont sensibilisés par les problèmes et contraintes que rencontrent les personnes atteintes de diabète.
-      Nous voudrions alléger ce fardeau autant que nous le pouvons.
+      Nos membres ont été sensibilisés par les problèmes et contraintes que rencontrent les personnes atteintes de
+      diabète. Nous voudrions alléger le poids du suivi quotidien, et ce autant que nous le pouvons.
     parag2: >
       Le principe de DiabHelp se veut simple mais complet : nous souhaitons proposer une application contenant tous les
       outils dont une personne diabétique pourrait avoir besoin.
@@ -148,8 +150,8 @@ contact:
       suivi régulier et sécurisant pour un jeune patient par exemple.
     parag5: >
       Pour d'autres qui souhaiteraient plus de liberté du fait qu'ils connaissent déjà ce qu'ils ont à faire pour gérer
-      leur condition, notre solution totalement évolutive propose les modules dont ils ont besoin et qu'ils pourront
-      télécharger et utiliser à souhait, et ce sur le PlayStore (Android) et AppStore (IOS).
+      leur condition, notre solution totalement évolutive propose les modules dont ils ont besoin. Ils sont
+      téléchargeables depuis le PlayStore (Android) et AppStore (IOS), et utilisables à souhait.
     parag6: >
       Cette application nous tient à coeur, et nous espérons que ce sera le cas pour vous aussi. De par son
       fonctionnement, nous avons besoin d'une communauté conséquente, alors ensemble, construisons DiabHelp !
@@ -168,8 +170,8 @@ contact:
       Développeur Android et Windows Phone, Simon a travaillé sur la version Android du Glucocompteur. Sachant que Windows
       Phone n'a pas vraiment le vent en poupe, Simon va passer sur la partie IOS de notre solution.
     rem: >
-      Designer, développeur Android, Rémi n'a qu'un seul mot d'ordre : l'ergonomie utilisateur. Il se travaille sur l'API
-      côté Android ainsi que de certains modules comme la relation patient-proche bientôt disponible.
+      Designer, développeur Android, Rémi n'a qu'un seul mot d'ordre : l'ergonomie utilisateur. Il travaille sur l'API
+      côté Android et sur certains modules Android comme la relation patient-proche bientôt disponible.
     ant: >
       Développeur Android et Windows Phone, Antoine développe les modules disponibles au sein de l'application.
       Il a notamment produit le coeur de l'app DiabHelp sur Windows Phone, ainsi que le glucocompteur Android avec Simon.
@@ -187,9 +189,10 @@ Mars: Mars
 Avril: Avril
 Mai: Mai
 Juin: Juin
-Juillet: Juiller
+Juillet: Juillet
 Août: Août
 Septembre: Septembre
+Octobre: Octobre
 Novembre: Novembre
 Décembre: Décembre
 'Lire la suite': 'Lire la suite'
@@ -213,3 +216,7 @@ helper:
     Thomas nous a aidés, lors de la création du projet, à concevoir le logo DiabHelp ainsi que certaines icônes pour le
     site web et les applications.
 'Merci à Thomas ! :-)': 'Merci à Thomas ! :-)'
+
+#email
+"Email confirmation envoyé": >
+ Un email d'activation a été envoyé sur votre adresse email, merci de cliquer sur le lien de validation.

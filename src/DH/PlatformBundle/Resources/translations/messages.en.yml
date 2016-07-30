@@ -61,6 +61,7 @@ EMAIL: EMAIL
 'S''inscrire': 'Create an account'
 'Retrouver son mot de passe': 'Retrieve password'
 'Envoyer': 'Send'
+'envoyer': 'send'
 'Mot de passe retrouvé?': 'Password found'
 
 #inscription
@@ -79,6 +80,7 @@ EMAIL: EMAIL
 #modules
 'Liste des modules': List of modules
 'Informations complémentaires sur le module': "Additional information about the module"
+Information: Information
 'Note actuelle': "Current rating"
 'Attribuer 5 étoiles à ce module': "Give 5 stars to this module"
 'Attribuer 4 étoiles à ce module': "Give 4 stars to this module"
@@ -183,6 +185,7 @@ Juin: June
 Juillet: July
 Août: August
 Septembre: September
+Octobre: October
 Novembre: November
 Décembre: December
 'Lire la suite': 'Read more'
@@ -205,3 +208,8 @@ helper:
     Thomas helped us when we started the project. He helped on the logo conception, as well as some work on icons and
     design for the website and the applications.
 'Merci à Thomas ! :-)': 'Thank you Thomas ! :-)'
+
+
+#email
+"Email confirmation envoyé": >
+  A confirmation email have been sent to your adress, check your mailbox and click on the attached link.

@@ -26,7 +26,7 @@
         <h3 style='text-align:left'>{{ 'Créé par' | trans }} : <em>{{ module.organisme }}</em></h3>
         <h4 style='text-align:left'>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
         <a class="fbShareButton"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>
-        <p>{{ 'Note Actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
+        <p>{{ 'Note actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
         <div class='rating' style='margin-right:35px;'>
           <a id="{{ module.id }}rating5" onclick="voteModuleView({{ module.id }}, 5)" {% if module.note > 4 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 5 étoiles à ce module' | trans }}'>☆</a>
           <a id="{{ module.id }}rating4" onclick="voteModuleView({{ module.id }}, 4)" {% if module.note > 3 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 4 étoiles à ce module' | trans }}'>☆</a>
@@ -60,7 +60,9 @@
                     </span>
                 </p>
             {% endif %}
-		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >{{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}</button>
+		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >
+
+            {{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}</button>
     </div>
         <div id="com_react_content" style="height:auto; display:none;">
             {% for comment in module.comments %}
