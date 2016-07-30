@@ -11,6 +11,7 @@
 </div>
 <div id='forget' class='center' hidden>
     <h2 class='center'>{{ "Retrouver son mot de passe" | trans }}</h2>
+    <p id="email_exist_error" style="color: red;"></p>
     <form name='forget' action="" method='post'>
         <input required type='text' name='mail' placeholder='E-mail'/>
         <input type='submit' value='{{ 'Envoyer' | trans }}'>

@@ -1,11 +1,33 @@
 $(window).load(function() {
 
+	function isValidEmailAddress(emailAddress) {
+		var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+		return pattern.test(emailAddress);
+	};
+
+	$('#reset_pwd').click(function () {
+		var email = $('#fos_user_forget_pwd_form_email').val();
+
+		$.post("check_email_exist", { email: email },
+			function (result) {
+				var res = $.parseJSON(result);
+				if (res.success == true)
+					$('#email_exist_error').html('L\'adresse email ' + email + ' n\'est pas enregistrée, veuillez en saisir une autre.');
+				else {
+					$('#email_exist_error').html('');
+					console.log('reset_pwd_submit');
+				}
+					// $('#fos_user_registration_form').submit();
+			});
+	});
+
 	$('#fos_user_registration_form_submit').click(function () {
-		var errors = 0;
 		var username = $('#fos_user_registration_form_username').val();
 		var email = $('#fos_user_registration_form_email').val();
 		var pwd = $('#fos_user_registration_form_plainPassword_first').val();
 		var pwdv = $('#fos_user_registration_form_plainPassword_second').val();
+		var firstname = $('#fos_user_registration_form_firstname').val();
+		var lastname = $('#fos_user_registration_form_lastname').val();
 
 		$.post("check_available", { username: username, email: email },
 			function (result) {
@@ -15,13 +37,22 @@ $(window).load(function() {
 						$('#availability_result').html('Le nom d\'utilisateur ' + username + ' est déjà utilisé, veuillez en prendre un autre.');
 					else if (res.availables[1] == 0)
 						$('#availability_result').html('L\'adresse email ' + email + ' est déjà utilisée, veuillez en prendre une autre.');
-					errors++;
-				} else if (pwd != pwdv) {
+					else
+						$('#availability_result').html('Tout les champs sont obligatoires.');
+				} else if (!isValidEmailAddress(email))
+					$('#availability_result').html('Veuillez rentrer une adresse email valide.');
+				else if (pwd != pwdv)
 					$('#availability_result').html('Les mots de passe doivent être identiques.');
-					errors++;
-				} else
+				else if (pwd.length < 8 || pwd.length > 42)
+					$('#availability_result').html('Le mot de passe doit contenir entre 8 et 42 caractères.');
+				else if (firstname.length < 1 || firstname.length > 42 || lastname.length < 1 || lastname.length > 42)
+					$('#availability_result').html('Les noms et prénoms doivent contenir entre 1 et 42 caractères.');
+				else if (username.length < 2 || username.length > 25)
+					$('#availability_result').html('Les mots de passe doivent être identiques.');
+				else if (!$('#fos_user_registration_form_cgu').is(":checked"))
+					$('#availability_result').html('Vous devez accepter les CGU afin de vous enregistrer.');
+				else {
 					$('#availability_result').html('');
-				if (errors == 0) {
 					$('#fos_user_registration_form').submit();
 				}
 			});

@@ -5038,3 +5038,7 @@ body {
 #dh_platformbundle_module_imageFile label {
   display: none;
 }
+
+input[type=password] {
+  border: 1px solid #c4c5c7;
+}

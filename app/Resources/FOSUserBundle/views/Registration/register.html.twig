@@ -3,19 +3,19 @@
     <p id="availability_result" style="color: red;"></p>
     <form id="fos_user_registration_form" action="{{ path('fos_user_registration_register') }}" method="POST">
         <div class="form-group">
-            <div id="signup_first_part">
+            <div>
                 {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur' | trans } }) }}
                 {{ form_errors(form.username) }}
                 {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email' | trans } }) }}
                 {{ form_errors(form.email) }}
             </div>
-            <div id="signup_second_part">
+            <div>
                 {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe' | trans } }) }}
                 {{ form_errors(form.plainPassword.first) }}
                 {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirmation de mot de passe' | trans } }) }}
                 {{ form_errors(form.plainPassword.second) }}
             </div>
-            <div id="signup_third_part">
+            <div>
                 {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom' | trans } }) }}
                 {{ form_errors(form.firstname) }}
                 {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'Nom' | trans } }) }}
@@ -23,12 +23,13 @@
             </div>
         </div>
         <div class="signup_roles">
+            {{ 'Je suis un' | trans }}
             {{ form_widget(form.roles, { 'attr': {'class': 'form-control' } }) }}
             {{ form_errors(form.roles) }}
         </div>
         {{ form_rest(form) }}
         <a href='{{ path('dh_platform_legal') }}'>{{ "Consulter les Conditions Générales d'Utilisation" | trans }}</a>
-        <input required type='checkbox' name='CGU'> {{ "J'accepte les CGU" | trans }}<br/>
+        <input required id="fos_user_registration_form_cgu" type='checkbox' name='CGU'> {{ "J'accepte les CGU" | trans }}<br/>
         <div>
             <input id="fos_user_registration_form_submit" class="btn btn-lg btn-primary btn-block" type="button" value="{{ "Enregistrer" | trans }}">
         </div>
