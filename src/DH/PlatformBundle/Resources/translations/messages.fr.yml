@@ -22,24 +22,37 @@ Proposer: Proposer
 'Application DiabHelp': 'Application DiabHelp'
 'L''application': 'L''application'
 'Donnez votre avis sur les modules de l''application': 'Donnez votre avis sur les modules de l''application'
-'Devenez acteur du développement en proposant votre propre module': 'Devenez acteur du développement en proposant votre propre module'
+'Devenez acteur du développement en proposant votre propre module':
+  'Devenez acteur du développement en proposant votre propre module'
 'Qui sommes nous ?': 'Qui sommes nous ?'
 'A propos de l''équipe DiabHelp': 'A propos de l''équipe DiabHelp'
 'En savoir plus': 'En savoir plus'
 'Allégeons la gestion du diabète avec DiabHelp': 'Allégeons la gestion du diabète avec DiabHelp'
-diabhelp.desc: 'Dans l''optique d''améliorer le quotidien des personnes diagnostiquées du diabète, nous proposons de centraliser les informations, mais aussi les outils leur permettant de gérer au mieux leur condition. Cette application est disponible sur les principaux systèmes mobiles (Android, IOS et Windows Phone). Grace aux retours et propositions de la communauté, notre équipe souhaite développer une application complète et fidèle aux demandes des utilisateurs. Toutes vos participations sont les bienvenues, n''hésitez pas à aller voter pour vos modules favoris, ou encore proposer vos idées de développement. En collaboration avec des organismes de la santé (médecins, nutritionistes, centres hospitaliers, etc) nous assurerons un service qualitatif qui répondra à vos besoins.'
+diabhelp.desc:
+  parag1: >
+    Dans l'optique d'améliorer le quotidien des personnes atteintes du diabète, nous proposons de centraliser les
+    informations, mais aussi les outils leur permettant de gérer au mieux leur condition. Cette application est
+    disponible sur les principales plateformes mobiles (Android, IOS et Windows Phone).
+  parag2: >
+    Grace aux retours et propositions de la communauté, notre équipe souhaite développer une application complète et
+    fidèle aux demandes des utilisateurs. Toutes vos participations sont les bienvenues, n''hésitez pas à aller voter
+    pour vos modules favoris, ou encore proposer vos idées de développement. En collaboration avec des organismes de la
+    santé (médecins, nutritionistes, centres hospitaliers, etc) nous assurerons un service qualitatif qui répondra à
+    vos besoins.
 #endof index
 
 #slider
 Réagissez: Réagissez
-'Notez et commentez les modules qui vous semblent pertinents.': 'Notez et commentez les modules qui vous semblent pertinents.'
-'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.': 'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.'
+'Notez et commentez les modules qui vous semblent pertinents.':
+  'Notez et commentez les modules qui vous semblent pertinents.'
+'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.':
+  'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.'
 'Créez votre module': 'Créez votre module'
-'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée': 'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée'
+'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée':
+  'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée'
 
 #footer
-'Mentions Legales': 'Mentions Legales'
-'Ils nous ont aidés': 'Ils nous ont aidés'
+'Mentions légales': 'Mentions légales'
 ADRESSE: ADRESSE
 TELEPHONE: TELEPHONE
 EMAIL: EMAIL
@@ -143,15 +156,10 @@ contact:
   pres:
     dam: >
       Développeur Android, Damien est le chef de projet, il s'implique beaucoup au coeur de Diabhelp. Il est le
-      fondateur de notre équipe, l'électron libre qui nous rassemble. Il est en charge du développement des modules Android
-      et de leur intégration dans l'application mère : DiabHelp.
-    max:
-      parag1: >
-        Développeur Web, Android et IOS à ses heures perdues, Maxime est aussi surnommé "Checkman". Pourquoi ? Car il
-        vérifie tout! Les bugs, les fautes, le Max, il aime pas ça ! Mais sinon, il est sympa quand même :-).
-      parag2: >
-        C'est lui qui s'occupe de la documentation, de la vérification des contenus publiés dans les apps, de la
-        création de contenus, mais aussi de l'administration système et du développement IOS.
+      fondateur de notre équipe, l'électron libre qui nous rassemble.
+    max: >
+      Développeur Web, Android et IOS à ses heures perdues, Maxime est aussi surnommé "Checkman". Pourquoi ? Car il
+      vérifie tout! Les bugs, les fautes, le Max, il aime pas ça ! Mais sinon, il est sympa quand même :-).
     adri: >
       Développeur Web front-end et back-end, c'est "ZE Bugbuster". Il est co-gérant et chargé de mener le projet à bien
       dans son aspect technique. Il s'occupe de l'API permettant la communication entre le site web et les différentes
@@ -191,14 +199,15 @@ Décembre: Décembre
 
 #profil
 'Modifier son profil': 'Edit profile'
-'Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)': 'Choose your profile picture (2Mo max, jpg, jpeg, gif and png accepted)'
+'Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)':
+  'Choose your profile picture (2Mo max, jpg, jpeg, gif and png accepted)'
 'Envoyer cette image': 'Envoyer cette image'
 Association: Association
 "Numéro de téléphone": 'Numéro de téléphone'
 'Je souhaite supprimer mon compte': 'Je souhaite supprimer mon compte'
 
 #ilsNousOntAidés
-'Ils nous ont aidé': 'Ils nous ont aidé'
+'Ils nous ont aidés': 'Ils nous ont aidés'
 helper:
   thomas: >
     Thomas nous a aidés, lors de la création du projet, à concevoir le logo DiabHelp ainsi que certaines icônes pour le

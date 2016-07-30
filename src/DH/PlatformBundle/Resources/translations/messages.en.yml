@@ -24,19 +24,29 @@ Réagir: React
 'A propos de l''équipe DiabHelp': 'About the Diabhelp team'
 'En savoir plus': 'More information'
 'Allégeons la gestion du diabète avec DiabHelp': 'Let''s lower the weight of diabetes management with DiabHelp'
-diabhelp.desc: 'In order to ease the daily management of diabetes, we offer a solution to centralize the tools but also the informations to handle and improve the overall management. This app is available on the main mobile operating systems (Android, IOS and Windows Phone). Thanks to the suggestions and comments of the community, our team wants to developp the most complete and adapted app. Each and every participation are most welcome, do not hesitate to vote for your favorites modules, or even submit your own development ideas. By collaborating with health organisms (doctors, nutritionists, hospitals, etc), we will provide a quality standard to fullfill your needs.'
+diabhelp.desc:
+ parag1: >
+    In order to ease the daily management of diabetes, we offer a solution to centralize the tools but also the
+    informations to handle and improve the overall management. This app is available on the main mobile operating systems
+    (Android, IOS and Windows Phone).
+ parag2: >
+    Thanks to the suggestions and comments of the community, our team wants to developp the most complete and adapted
+    app. Each and every participation are most welcome, do not hesitate to vote for your favorites modules, or even
+    submit your own development ideas. By collaborating with health organisms (doctors, nutritionists, hospitals, etc),
+    we will provide a quality standard to fullfill your needs.
 #endof index
 
 #slider
 Réagissez: React
 'Notez et commentez les modules qui vous semblent pertinents.': 'Rate and give your impressions about the modules.'
-'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.': 'A project created by and for the patients. Become actor of DiabHelp''s improvment.'
+'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.':
+  'A project created by and for the patients. Become actor of DiabHelp''s improvment.'
 'Créez votre module': 'Create your module'
-'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée': 'Suggest your own module ! The community will give feedback and vote for it to get the best of the idea.'
+'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée':
+  'Suggest your own module ! The community will give feedback and vote for it to get the best of the idea.'
 
 #footer
-'Mentions Legales': 'Legal notice'
-'Ils nous ont aidés': 'They helped us'
+'Mentions légales': 'Legal notice'
 ADRESSE: ADRESS
 TELEPHONE: PHONE
 EMAIL: EMAIL
@@ -139,16 +149,9 @@ contact:
     dam: >
       Android developer, Damien is the Project Manager. He is much involved in development of DiabHelp.
       He is the founder of our team as well, the free electron that brings us together.
-      He manages the overall progress and works on the Android version of the App by integrating all the
-      modules in the main module : DiabHelp.
-    max:
-      parag1: >
-        Web developer, Android developer and IOS developer in his spare time, Maxime is also surnamed "Checkman". Why ?
-        Because he checks everything. Bugs, glitches, mistakes, he doesn't like it. Otherwise, he is very lovely :-).
-      parag2: >
-        He is in charge of the documentation, the inspection of the publicated content in the apps and on the website
-        and the content creation of some informative modules. He also works on the website, its system administration
-        and the Android & IOS apps.
+    max: >
+      Web developer, Android developer and IOS developer in his spare time, Maxime is also surnamed "Checkman". Why ?
+      Because he checks everything. Bugs, glitches, mistakes, he doesn't like it. Otherwise, he is lovely :-).
     adri: >
       Web developer, front-end and back-end, he is "ZE Bugbuster". He is co-leader of the project, and must look after
       proper technical development. He works on the Website, the API allowing the communication between our website and
@@ -161,7 +164,7 @@ contact:
       and also on the majority of Android's modules of our solution.
     ant: >
       Android and Windows Phone developer, Antoine programms the available modules in the application.
-      He especially worked on the core of the Windows Phone version of the App, as well as the Glucose Counter on the
+      He especially worked on the Windows Phone's core of the App, as well as the Glucose Counter on the
       Android version.
 'Vous voulez nous contacter ?': 'You want to contact us?'
 'Votre nom': 'Your name'
@@ -196,7 +199,7 @@ Association: Association
 'Je souhaite supprimer mon compte': 'I want to delete my account'
 
 #ilsNousOntAidés
-'Ils nous ont aidé': 'They helped us'
+'Ils nous ont aidés': 'They helped us'
 helper:
   thomas: >
     Thomas helped us when we started the project. He helped on the logo conception, as well as some work on icons and
