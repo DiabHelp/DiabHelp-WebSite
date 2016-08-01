@@ -3,7 +3,7 @@
 {% extends "DHPlatformBundle::slide.html.twig" %}
 
 {% block title %}
-    Contact - {{ parent() }}
+    {{ 'Contact' | trans }} - {{ parent() }}
 {% endblock %}
 
 {% block dhplatform_body %}
@@ -12,10 +12,10 @@
     <div class = "page_header">
         <div class= center >
             <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
-            <h1 class="page_header_title fl">Contact</h1>
+            <h1 class="page_header_title fl">{{ 'Contact' | trans }}</h1>
             <ul class="page_header_nav fr">
-                <li><a href="{{ path('dh_platform_home') }}">Accueil</a></li>
-                <li><a class="active" href="{{ path('dh_platform_contact') }}">Contact</a></li>
+                <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
+                <li><a class="active" href="{{ path('dh_platform_contact') }}">{{ 'Contact' | trans }}</a></li>
             </ul>
         </div>
         <div class="cf"></div>
@@ -24,70 +24,65 @@
     <div class="contact_map" id="map_contact"></div>
     <div class="contact_content">
         <div class="contact_info">
-            <h1 style='text-align:center;'> Qui sommes nous ? </h1>
-            <p style="font-size:1.2em;">Nous sommes une équipe de programmeurs étudiant à l'école EPITECH Toulouse sensibilisés par les problèmes que rencontrent les personnes atteintes de diabète.<br />
-                Le principe de DiabHelp se veut simple mais complet : nous souhaitons proposer à notre communauté une application contenant les outils auxquels chacun pourra contribuer en apportant
-                son avis et ses souhaits concernant un ajout ou une correction du développement de notre part. DiabHelp servira aussi à faciliter les interactions entre le patient et son médecin traitant
-                assurant ainsi un suivi régulier et sécurisant pour un patient en jeune âge par exemple. Pour d'autres qui souhaiteraient plus de liberté du fait qu'ils connaissent déjà ce qu'ils ont à faire pour
-                gérer leur condition, notre solution totalement évolutive propose les modules dont ils ont besoin et qu'ils pourront télécharger et utiliser à souhait, et ce sur les principales plateformes mobiles.<br /></p>
-            <p style="font-size:1.2em;">Cette application nous tient à coeur et nécessite une communauté conséquente, donc ensemble, construisons DiabHelp !</p>
+            <h1 style='text-align:center;'>{{ 'Qui sommes nous ?' | trans }}</h1>
+            <p style="font-size:1.2em;">{{ 'contact.desc.parag1' | trans }}</p>
+            <p style="font-size:1.2em;">{{ 'contact.desc.parag2' | trans }}</p>
+            <p style="font-size:1.2em;">{{ 'contact.desc.parag3' | trans }}</p>
+            <p style="font-size:1.2em;">{{ 'contact.desc.parag4' | trans }}</p>
+            <p style="font-size:1.2em;">{{ 'contact.desc.parag5' | trans }}</p>
+            <p style="font-size:1.2em;">{{ 'contact.desc.parag6' | trans }}</p>
         </div>
         <div class="contact_picture_block">
             <div id="contact_picture1" class="contact_picture">
                 <img src="{{ asset('bundles/dhplatform/images/pollet_d.jpg') }}" alt="Damien POLLET" class="icone_picture_contact">
                 <h3 class="name_worker">Damien POLLET</h3>
-                <p>Chef du projet et développeur Back-end, impliqué personnellement au coeur de Diabhelp, il est le créateur de notre équipe.</p>
+                <p>{{ 'contact.pres.dam' | trans }}</p>
             </div>
             <div id="contact_picture2" class="contact_picture">
                 <img src="{{ asset('bundles/dhplatform/images/comte_m.jpg') }}" alt="Maxime COMTE" class="icone_picture_contact">
                 <h3 class="name_worker">Maxime Comté</h3>
-                <p>Développeur Back-end, Passionné d'algorithmes, chargé du développement technique au sein du site et des appli mobiles.</p>
+                <p>{{ 'contact.pres.max' | trans }}</p>
             </div>
             <div id="contact_picture3" class="contact_picture">
                 <img src="{{ asset('bundles/dhplatform/images/vigour_a.jpg') }}" alt="Adrien VIGOUROUX" class="icone_picture_contact">
                 <h3 class="name_worker">Adrien VIGOUROUX</h3>
-                <p>Développeur Back-end & "Bugbuster", il est co-gérant et chargé de mener le projet à bien dans son aspect technique.</p>
+                <p>{{ 'contact.pres.adri' | trans }}</p>
             </div>
             <div id="contact_picture4" class="contact_picture">
                 <img src="{{ asset('bundles/dhplatform/images/milhau_s.jpg') }}" alt="Simon MILHAU" class="icone_picture_contact">
                 <h3 class="name_worker">Simon MILHAU</h3>
-                <p>Développeur Back-end, chargé de gérer le forum dans son aspect technique, ainsi que les futures applis.</p>
+                <p>{{ 'contact.pres.sim' | trans }}</p>
             </div>
             <div id="contact_picture5" class="contact_picture">
                 <img src="{{ asset('bundles/dhplatform/images/remi.jpg') }}" alt="Rémi LACAN" class="icone_picture_contact">
                 <h3 class="name_worker">Rémi LACAN</h3>
-                <p>Designer, Développeur Front-end, Un seul mot d'ordre l'ergonomie utilisateur.</p>
+                <p>{{ 'contact.pres.rem' | trans }}</p>
             </div>
             <div id="contact_picture6" class="contact_picture">
                 <img src="{{ asset('bundles/dhplatform/images/antoine.jpg') }}" alt="Antoire Egea" class="icone_picture_contact">
                 <h3 class="name_worker">Antoine Egea</h3>
-                <p>Développeur mobile, il est chargé de développer les modules disponibles au sein de l'application.</p>
+                <p>{{ 'contact.pres.ant' | trans }}</p>
             </div>
-            {#<div id="contact_picture7" class="contact_picture">#}
-                {#<img src="{{ asset('bundles/dhplatform/images/Seb.png') }}" alt="Sébastien TREILLE" class="icone_picture_contact">#}
-                {#<h3 class="name_worker">Sébastien TREILLE</h3>#}
-                {#<p>Développeur backend et administrateur système, il se charge de la partie serveur et veille au bon fonctionnement des rouages internes de DiabHelp.</p>#}
-            {#</div>#}
         </div>
         <div class="cf"></div>
         <div class="contact_form">
-            <h2 class="contact_form_title">Vous voulez nous contacter ?</h2>
+            <h2 class="contact_form_title">{{ 'Vous voulez nous contacter ?' | trans }}</h2>
             <div class="contact_form_box">
                 {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
                    <div class="error">
                         {{ form_errors(form) }}
                     </div>
                     <div class="form_box_left fl">
-                        {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_name', 'placeholder' : 'Votre nom'}}) }}
-                        {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_mail', 'placeholder' : 'Votre Email'}}) }}
-                        {{ form_widget(form.phone_number, {'attr': {'class': 'contact_form_input_phone', 'placeholder' : 'Votre Numéro de téléphone'}}) }}
+                        {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_name', 'placeholder' : 'Votre nom' | trans }}) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_mail', 'placeholder' : 'Votre email' | trans }}) }}
+                        {{ form_widget(form.phone_number, {'attr': {'class': 'contact_form_input_phone', 'placeholder' : 'Votre numéro de téléphone' | trans }}) }}
                     </div>
                     <div class="form_box_center fl">
-                        {{ form_widget(form.body, {'attr': {'class': 'contact_form_textarea', 'placeholder' : 'Ecrivez votre message'}}) }}
+                        {{ form_widget(form.body, {'attr': {'class': 'contact_form_textarea', 'placeholder' : 'Ecrivez votre message' | trans }}) }}
                     </div>
                     <div class="form_box_righ fl proposer_submit">
                         <button type="submit" class="contact_form_submit" src="/Dev-API/web/bundles/dhplatform/images/submit_button.png"></button>
-                        <p>Envoyer</p>
+                        <p>{{ 'Envoyer' | trans }}</p>
                     </div>
                 {{ form_end(form) }}
                 <div class="cf"></div>

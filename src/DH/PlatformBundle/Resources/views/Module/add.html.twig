@@ -10,10 +10,10 @@
   <div class = "page_header">
     <div class="center">
       <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
-      <h1 class="page_header_title fl">Proposer un module</h1>
+      <h1 class="page_header_title fl">{{ 'Proposer un module' | trans }}</h1>
       <ul class="page_header_nav fr">
-        <li><a href="{{ path('dh_platform_home') }}">Accueil</a></li>
-        <li><a class="active" href="{{ path('dh_platform_module_add') }}">Proposer un module</a></li>
+        <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
+        <li><a class="active" href="{{ path('dh_platform_module_add') }}">{{ 'Proposer un module' | trans }}</a></li>
       </ul>
       <div class="cf"></div>
     </div>
@@ -21,12 +21,12 @@
   <div class='contact_content' style="margin:0 auto;">
   <div class="contact_form">
   <div class='contact_info' style="color:white;font-size:1.2em;">
-    <h1 style='text-align:center;'> Pourquoi proposer un module ?</h1>
-    <p>Le but de DiabHelp est simple. Nous vous permettons de proposer vos modules qui seront ensuite votés par la communauté pour que nous les développions. Ainsi, nous serons capables de vous proposer la solution qui vous conviendra le mieux.<br/>
-      Ne soyez pas timides sur les propositions, même si les projets ne seront pas tous réalisables, grâce à la communauté et au système de commentaires sur les propositions, nous pourrons tirer les meilleures idées apportées par chacun.</p>
-    <p>Comme vous le voyez, la communauté a son mot à dire par ici, alors ne vous privez pas, ce sera avec plaisir que nous traiterons vos demandes.</p>
+    <h1 style='text-align:center;'>{{ 'Pourquoi proposer un module ?' | trans }}</h1>
+    <p>{{ "proposer.desc.parag1" | trans }}</p>
+    <p>{{ "proposer.desc.parag2" | trans }}</p>
+    <p>{{ "proposer.desc.parag3" | trans }}</p>
   </div>
-  <h2 class="contact_form_title">Vous voulez proposer un module ?</h2>
+  <h2 class="contact_form_title">{{ 'Vous voulez proposer un module ?' | trans }}</h2>
 {% if app.user %}
   <div class="contact_form_box">
     {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
@@ -34,29 +34,29 @@
       {{ form_errors(form) }}
   </div>
     <div class="form_box_left fl">
-        {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Nom du module'}}) }}
-        {{ form_widget(form.type, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Type de module'}}) }}
-        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Organisme / association'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Nom du module' | trans }}) }}
+        {{ form_widget(form.type, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Type de module' | trans }}) }}
+        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Organisme / association' | trans }}) }}
       <div style="text-align: center;margin-bottom: 2%;">
-        <h5 style="margin-top: 3%;color:white;font-size:1.5em;"> Soumettre un Logo </h5>
+        <h5 style="margin-top: 3%;color:white;font-size:1.5em;">{{ 'Soumettre un logo' | trans }}</h5>
         {{ form_widget(form.imageFile, {'attr': {'title': 'logo'}}) }}
       </div>
     </div>
     <div class="form_box_center fl">
-    {{ form_widget(form.description, {'attr': {'class': 'contact_form_textarea', 'placeholder' : 'Décrivez ici le module que vous souhaiteriez avoir dans votre appli DiabHelp'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'contact_form_textarea',
+      'placeholder' : 'Décrivez ici le module que vous souhaiteriez avoir dans votre application DiabHelp' | trans}}) }}
     {{ form_widget(form._token) }}
     </div>
     <div class="form_box_righ fl proposer_submit">
       {{ form_widget(form.save, {'attr': {'class': 'contact_form_submit', 'type' : 'image', 'src' : asset('bundles/dhplatform/images/submit_button.png') }}) }}
-      <p>Proposer</p>
+      <p>{{ 'Proposer' | trans }}</p>
     </div>
   {% else %}
     <p style="font-size:1.8em;font-style:bold;text-align:center;">
-      Vous devez être
+      {{ 'Vous devez être connecté afin de proposer un module.' | trans }}
         <span onclick="show_signup()" style="color:blue;">
-          <a>connecté</a>
+          <a>{{ 'Se connecter' | trans }}</a>
         </span>
-       afin de proposer un module
      </p>
     <br/>
   {% endif %}
