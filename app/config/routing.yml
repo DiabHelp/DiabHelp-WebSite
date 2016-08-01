@@ -9,7 +9,9 @@ dh_api:
 ## DiabHelp Platform routing
 dh_platform:
     resource: "@DHPlatformBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/ # Ici, on ajoute {_locale} au préfixe !
+    requirements:
+            _locale: en|fr
 
 # app:
 #     resource: "@AppBundle/Controller/"
@@ -46,7 +48,9 @@ fos_user_change_password:
     prefix: /profile
 
 login:
-    path:   /login
+    path:   /{_locale}/login
+    requirements:
+            _locale: en|fr
 
 rest_login:
     path:   /rest-login
