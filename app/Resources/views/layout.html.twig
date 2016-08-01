@@ -19,15 +19,18 @@
       <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">
           {% if app.request.get('_locale') == 'fr' %}
             <span style="border: grey solid 2px;">
+          {% else %}
+              <span>
           {% endif %}
           <img src="{{ asset('bundles/dhplatform/images/icones/fr.svg') }}" alt="Français" height="22" width="26" />
-          </span>
       </a>
   </li>
   <li>
       <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">
           {% if app.request.get('_locale') == 'en' %}
           <span style="border: grey solid 2px;">
+          {% else %}
+            <span>
           {% endif %}
               <img src="{{ asset('bundles/dhplatform/images/icones/gb.svg') }}" alt="English" height="22" width="26" />
           </span>

@@ -7,6 +7,13 @@ dh_api:
     prefix:   /api
 
 ## DiabHelp Platform routing
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /fr/
+        permanent: true
+
 dh_platform:
     resource: "@DHPlatformBundle/Resources/config/routing.yml"
     prefix:   /{_locale}/ # Ici, on ajoute {_locale} au préfixe !
