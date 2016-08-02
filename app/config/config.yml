@@ -99,7 +99,7 @@ fos_user:
         form:
             type: app_user_registration
         confirmation:
-            enabled: true
+            enabled: false
             template: email/registration.email.twig
             from_email:
                 address:        registration@diabhelp.fr
