@@ -74,27 +74,13 @@
                         <h3>{{ comment.vote }} / 5</h3>
                     </div>
                     <div id="header_com_droite">
-                              {#<?php if (isset($_SESSION['id']) && $_SESSION['id'] != ""){#}
-                                  {#$id = $_SESSION['id'];#}
-                                      {#if ($id == 0){ ?>#}
-                                          {#<div class="action_block">#}
-                                              {#<div class="delete_com">#}
-                                                {#<a style="background-color:red;" href="{{ path('dh_platform_article_comment_delete', {'id': module.id}) }}" >Supprimer</a>#}
-                                              {#</div>#}
-                                              {#<div class="modify_com">#}
-                                                      {#<a style="background-color:gray" <?php echo 'onclick="show_com_modification_form(\'modif_com_form'.$data['com_id'].'\',\''.'text_com'.$data['com_id'].'\');"' ?> >Modifier</a>#}
-                                              {#</div>#}
-                                          {#</div>#}
-                                      {#<?php }#}
                         <div class="action_block">
                             {% if app.user and comment.author.id == app.user.id and loop.last %}
                                 <div class="delete_com">
                                     <a style="background-color:red;" href="{{ path('dh_platform_module_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>
                                 </div>
-                            {% endif %}
-                            {% if app.user and comment.author.id == app.user.id %}
                                 <div class="modify_com">
-                                    <a style="background-color:gray" onclick="">{{ 'Modifier' | trans }}</a>
+                                    <a style="background-color:gray" onclick="show_com_modification_form({{ comment.id }})">{{ 'Modifier' | trans }}</a>
                                 </div>
                             {% endif %}
                         </div>
@@ -102,18 +88,18 @@
                     </div>
                 </div>
                 <div class="content_com">
-                    <p id="com_info_msg" style="display:none"></p>
-                    <div id=text_com>
+                    <p id="com_info_msg{{ comment.id }}" style="display:none"></p>
+                    <div id="text_com{{ comment.id }}">
                         <p>{{ comment.text }}</p>
                     </div>
-                    <form action="" id=modif_com_form style="width:100%;display:none;">
+                    <div id="modif_com_form{{ comment.id }}" style="width:100%;display:none;">
                         <div align="center">
-                            <textarea rows="10" cols="100" class="com_change" id=com_change>{{ comment.text }}</textarea>
+                            <textarea rows="10" cols="100" class="com_change" id="com_change{{ comment.id }}">{{ comment.text }}</textarea>
                         </div>
                         <div align="center">
-                            <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" />
+                            <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" onclick="update_com({{ comment.id }})" />
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             {% endfor %}

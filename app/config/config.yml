@@ -104,6 +104,12 @@ fos_user:
             from_email:
                 address:        registration@diabhelp.fr
                 sender_name:    L'équipe DiabHelp
+    resetting:
+        email:
+            from_email:
+                address:        reset@diabhelp.fr
+                sender_name:    L'équipe DiabHelp
+            template: email/password_resetting.email.twig
             # type: DH\PlatformBundle\Form\RegistrationType
             # if you are using Symfony < 2.8 you should use the type name instead
 

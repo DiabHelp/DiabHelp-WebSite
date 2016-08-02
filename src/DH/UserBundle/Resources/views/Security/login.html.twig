@@ -6,7 +6,8 @@
         <input type="submit" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
     </form>
     {#<?php // include 'src/fb.php'; ?>#}
-    <a onclick='show_signup_part("forget")' style='color: blue; font-size: 0.8em;'>{{ 'Mot de passe oublié?' | trans }}</a>
+    <a href='{{ path('fos_user_resetting_request') }}' style='color: blue; font-size: 0.8em;'>{{ 'Mot de passe oublié?' | trans }}</a>
+
     <p>{{ 'Pas de compte?' | trans}} <a onclick='show_signup_part("signup");' style='color: blue;'>{{ "S'inscrire" | trans }}</a></p>
 </div>
 <div id='forget' class='center' hidden>
