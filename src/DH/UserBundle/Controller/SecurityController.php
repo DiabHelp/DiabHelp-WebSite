@@ -19,11 +19,17 @@ class SecurityController extends BaseController
 
     public function restLoginAction(Request $request)
     {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
         $username = $request->get('username');
         $password = $request->get('password');
         $em = $this->getDoctrine();
         $repo  = $em->getRepository("DHUserBundle:User"); //Entity Repository
         $user = $repo->findOneByUsername($username);
+        if ($user == null)
+            $user = $repo->findOneByEmail($username);
 
         $errors = array();
         if ($username == null)
@@ -44,7 +50,8 @@ class SecurityController extends BaseController
             $encoder = $encoder_service->getEncoder($user);
             $encoded_pass = $encoder->encodePassword($password, $user->getSalt());
             if ($user->getPassword() != $encoded_pass) {
-                return new Response(json_encode(array("success" => false, "message" => $encoded_pass)));
+                $errors[] = "Wrong password";
+                return new Response($this->serializer->serialize(array("success" => false, "errors" => $errors), 'json'));
             }
             $this->get("security.context")->setToken($token); //now the user is logged in
              
@@ -55,14 +62,10 @@ class SecurityController extends BaseController
             $other = $this->container->get('security.context')->getToken();
             $id_user = $user->getId();
             $role = $user->getRoles();
+            return new Response(json_encode(array("success" => true, "sessid" => $sessionId, "other" => $other, "id_user" => $id_user, "role" => $role)));
         }
-        if (count($errors) > 0) {
-            $encoders = array(new XmlEncoder(), new JsonEncoder());
-            $normalizers = array(new ObjectNormalizer());
-            $this->serializer = new Serializer($normalizers, $encoders);
-            return new Response($this->serializer->serialize(array("success" => false, "errors" => $errors), 'json'));
-        }
-        return new Response(json_encode(array("success" => true, "sessid" => $sessionId, "other" => $other, "id_user" => $id_user, "role" => $role)));
+        $errors[] = "Wrong username";
+        return new Response($this->serializer->serialize(array("success" => false, "errors" => $errors), 'json'));
     }
 
 }
