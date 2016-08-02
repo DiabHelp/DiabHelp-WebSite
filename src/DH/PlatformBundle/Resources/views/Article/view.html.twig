@@ -74,55 +74,78 @@
            {% endif %}
         <div id="com_react_content" style="height:auto; display:none;">
             {% for comment in article.comments %}
-            <div class="simple_com">
-                <div class="header_com">
-                    <div id="header_com_gauche">
-                        <img src="{{ asset('images/profile/' ~ comment.author.profilePicturePath ) }}" alt="user" class="icone_picture_user">
-                        <h3>{{ comment.author.username }}</h3>
-                    </div>
-                    <div id="header_com_droite">
-                              {#<?php if (isset($_SESSION['id']) && $_SESSION['id'] != ""){#}
-                                  {#$id = $_SESSION['id'];#}
-                                      {#if ($id == 0){ ?>#}
-                                          {#<div class="action_block">#}
-                                              {#<div class="delete_com">#}
-                                                  {#<a style="background-color:red;" <?php echo 'href="src/deleteCom.php?com='.$data["com_id"].'"';?> >Supprimer</a>#}
-                                              {#</div>#}
-                                              {#<div class="modify_com">#}
-                                                      {#<a style="background-color:gray" <?php echo 'onclick="show_com_modification_form(\'modif_com_form'.$data['com_id'].'\',\''.'text_com'.$data['com_id'].'\');"' ?> >Modifier</a>#}
-                                              {#</div>#}
-                                          {#</div>#}
-                                      {#<?php }#}
-                        <div class="action_block">
-                            {% if app.user and comment.author.id == app.user.id and loop.last %}
-                                <div class="delete_com">
-                                    <a style="background-color:red;" href="{{ path('dh_platform_article_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>
-                                </div>
-                            {% endif %}
-                            {% if app.user and comment.author.id == app.user.id %}
-                                <div class="modify_com">
-                                    <a style="background-color:gray" onclick="">{{ 'Modifier' | trans }}</a>
-                                </div>
-                            {% endif %}
+            {#<div class="simple_com">#}
+                {#<div class="header_com">#}
+                    {#<div id="header_com_gauche">#}
+                        {#<img src="{{ asset('images/profile/' ~ comment.author.profilePicturePath ) }}" alt="user" class="icone_picture_user">#}
+                        {#<h3>{{ comment.author.username }}</h3>#}
+                    {#</div>#}
+                    {#<div id="header_com_droite">#}
+                        {#<div class="action_block">#}
+                            {#{% if app.user and comment.author.id == app.user.id and loop.last %}#}
+                                {#<div class="delete_com">#}
+                                    {#<a style="background-color:red;" href="{{ path('dh_platform_article_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>#}
+                                {#</div>#}
+                            {#{% endif %}#}
+                            {#{% if app.user and comment.author.id == app.user.id %}#}
+                                {#<div class="modify_com">#}
+                                    {#<a style="background-color:gray" onclick="">{{ 'Modifier' | trans }}</a>#}
+                                {#</div>#}
+                            {#{% endif %}#}
+                        {#</div>#}
+                        {#<h4>{{ comment.date|date('d/m/Y H:i:s') }}</h4>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="content_com">#}
+                    {#<p id=com_info_msg" style="display:none"></p>#}
+                    {#<div id=text_com>#}
+                        {#<p>{{ comment.text }}</p>#}
+                    {#</div>#}
+                    {#<form action="" id=modif_com_form style="width:100%;display:none;">#}
+                        {#<div align="center">#}
+                            {#<textarea rows="10" cols="100" class="com_change" id=com_change>{{ comment.text }}</textarea>#}
+                        {#</div>#}
+                        {#<div align="center">#}
+                            {#<input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" />#}
+                        {#</div>#}
+                    {#</form>#}
+                {#</div>#}
+            {#</div>#}
+                <div class="simple_com">
+                    <div class="header_com">
+                        <div id="header_com_gauche">
+                            <img src="{{ asset('images/profile/' ~ comment.author.profilePicturePath ) }}" alt="user" class="icone_picture_user">
+                            <h3>{{ comment.author.username }}</h3>
                         </div>
-                        <h4>{{ comment.date|date('d/m/Y H:i:s') }}</h4>
+                        <div id="header_com_droite">
+                            <div class="action_block">
+                                {% if app.user and comment.author.id == app.user.id and loop.last %}
+                                    <div class="delete_com">
+                                        <a style="background-color:red;" href="{{ path('dh_platform_article_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>
+                                    </div>
+                                    <div class="modify_com">
+                                        <a style="background-color:gray" onclick="show_com_modification_form({{ comment.id }})">{{ 'Modifier' | trans }}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <h4>{{ comment.date|date('d/m/Y H:i:s') }}</h4>
+                        </div>
+                    </div>
+                    <div class="content_com">
+                        <p id="com_info_msg{{ comment.id }}" style="display:none"></p>
+                        <div id="text_com{{ comment.id }}">
+                            <p>{{ comment.text }}</p>
+                        </div>
+                        <div id="modif_com_form{{ comment.id }}" style="width:100%;display:none;">
+                            <div align="center">
+                                <textarea rows="10" cols="100" class="com_change" id="com_change{{ comment.id }}">{{ comment.text }}</textarea>
+                            </div>
+                            <div align="center">
+                                <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" onclick="update_com({{ comment.id }})" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="content_com">
-                    <p id=com_info_msg" style="display:none"></p>
-                    <div id=text_com>
-                        <p>{{ comment.text }}</p>
-                    </div>
-                    <form action="" id=modif_com_form style="width:100%;display:none;">
-                        <div align="center">
-                            <textarea rows="10" cols="100" class="com_change" id=com_change>{{ comment.text }}</textarea>
-                        </div>
-                        <div align="center">
-                            <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" />
-                        </div>
-                    </form>
-                </div>
-            </div>
             {% endfor %}
         </div>
        </div>

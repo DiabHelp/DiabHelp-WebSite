@@ -118,4 +118,39 @@ class ArticleController extends Controller
 		return $this->redirect($this->generateUrl('dh_platform_article_view', array('id' => $article->getId())));
 	}
 
+    public function editCommentAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $message = $request->get('text', null);
+
+        $comment = $em->getRepository('DHPlatformBundle:CommentArticle')->find($id);
+
+        if ($comment == null) {
+            throw $this->createNotFoundException("Comment ".$id." doesn't exist");
+        }
+        else if ($comment->getAuthor() != $this->getUser()) {
+            throw $this->createNotFoundException("Comment not found for this user");
+        }
+
+        $article = $comment->getArticle();
+
+        if ($article == null) {
+            throw $this->createNotFoundException("Article not found");
+        }
+
+    $allComments = $em->getRepository('DHPlatformBundle:CommentArticle')->findByArticle($article->getId());
+
+        if (end($allComments) != $comment) {
+            throw $this->createNotFoundException("You cannot delete this comment because it's not the last one");
+        }
+
+        $comment->setText($message);
+
+        $em->flush();
+        $request->getSession()->getFlashBag()->add('info', 'Comment edited');
+
+        return $this->redirect($this->generateUrl('dh_platform_article_view', array('id' => $article->getId())));
+    }
+
 }

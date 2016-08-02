@@ -287,10 +287,10 @@ function show_com_content(id)
     }
 }
 
-function show_com_modification_form(id, id_text)
+function show_com_modification_form(id)
 	{
-		var elem = document.getElementById(id);
-		var text = document.getElementById(id_text);
+		var elem = document.getElementById("modif_com_form" + id);
+		var text = document.getElementById("text_com" + id);
 		if (elem.style.display == "none")
 		{
 			$(text).slideUp("slow", function(){
@@ -314,13 +314,13 @@ function display_info_msg(id, msg, color)
 
 function update_com(id)
 {
-	var posting = $.post("./src/update_com.php",
-		{text: $("#com_change" + id).val(),
-		id_com: id
-	});
+	var edit_text = $("#com_change" + id).val();
+	var posting = $.post("./editcomment/" + id,
+		{text: edit_text}
+		);
 	posting.done(function(data){
-		$("#text_com" + id).html(data);
-		show_com_modification_form("modif_com_form" + id, "text_com" + id);
+		$("#text_com" + id).html(edit_text);
+		show_com_modification_form(id);
 		display_info_msg("#com_info_msg" + id, "Commentaire édité avec succès.", "#7FFF00");
 	});
 
