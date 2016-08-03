@@ -47,7 +47,7 @@
                         {{ form_widget(form.text, {'attr': {'class': 'texteareaCommentNews', 'rows' : 10, 'cols' : 100, 'placeholder' : 'Votre commentaire ici..' | trans }}) }}
                     </div>
                     <div align="center">
-                        {{ form_widget(form.submit, {'attr': {'class': 'submitCommentNews', 'value' : 'Envoyer' | trans }}) }}
+                        <button type="submit" class="submitCommentNews">{{ 'Envoyer' | trans }}</button>
                     </div>
                     {{ form_end(form) }}
                 </div>
