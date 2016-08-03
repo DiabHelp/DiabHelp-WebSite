@@ -1,6 +1,16 @@
 <div id='inscription' class='center' hidden>
     <h2 class='center'>{{ "S'inscrire" | trans }}</h2>
-    <p id="availability_result" style="color: red;"></p>
+    <div style="color: red;">
+        <p id="username_already_use" class="hideme" hidden></p>
+        <p id="email_already_use" class="hideme" hidden></p>
+        <p id="empty_form" class="hideme" hidden></p>
+        <p id="email_unvailable" class="hideme" hidden></p>
+        <p id="passwords_different" class="hideme" hidden></p>
+        <p id="passwords_bad_lenght" class="hideme" hidden></p>
+        <p id="names_bad_lenght" class="hideme" hidden></p>
+        <p id="username_bad_lenght" class="hideme" hidden></p>
+        <p id="accept_cgu" class="hideme" hidden></p>
+    </div>
     <form id="fos_user_registration_form" action="{{ path('fos_user_registration_register') }}" method="POST">
         <div class="form-group">
             <div>
