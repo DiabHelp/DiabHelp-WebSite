@@ -29,31 +29,53 @@ $(window).load(function() {
 		var firstname = $('#fos_user_registration_form_firstname').val();
 		var lastname = $('#fos_user_registration_form_lastname').val();
 
-		$.post("check_available", { username: username, email: email },
+
+        $('.hideme').hide();
+
+		var error = 0;
+		var main_error = 0;
+        $.post("check_available", { username: username, email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == false) {
-					if (res.availables[0] == 0)
-						$('#availability_result').html('Le nom d\'utilisateur ' + username + ' est déjà utilisé, veuillez en prendre un autre.');
-					else if (res.availables[1] == 0)
-						$('#availability_result').html('L\'adresse email ' + email + ' est déjà utilisée, veuillez en prendre une autre.');
-					else
-						$('#availability_result').html('Tout les champs sont obligatoires.');
-				} else if (!isValidEmailAddress(email))
-					$('#availability_result').html('Veuillez rentrer une adresse email valide.');
-				else if (pwd != pwdv)
-					$('#availability_result').html('Les mots de passe doivent être identiques.');
-				else if (pwd.length < 8 || pwd.length > 42)
-					$('#availability_result').html('Le mot de passe doit contenir entre 8 et 42 caractères.');
-				else if (firstname.length < 1 || firstname.length > 42 || lastname.length < 1 || lastname.length > 42)
-					$('#availability_result').html('Les noms et prénoms doivent contenir entre 1 et 42 caractères.');
-				else if (username.length < 2 || username.length > 25)
-					$('#availability_result').html('Les mots de passe doivent être identiques.');
-				else if (!$('#fos_user_registration_form_cgu').is(":checked"))
-					$('#availability_result').html('Vous devez accepter les CGU afin de vous enregistrer.');
+					if (res.availables[0] == 0){
+						$('#username_already_used').show();
+						main_error++;
+					}
+					if (res.availables[1] == 0){
+						$('#email_already_used').show();
+						main_error++;
+					}
+					if (main_error == 0)
+						$('#empty_form').show();
+				}
 				else {
-					$('#availability_result').html('');
-					$('#fos_user_registration_form').submit();
+					if (username.length < 2 || username.length > 25){
+						$('#username_bad_lenght').show();
+						error++;
+					}
+					if (!isValidEmailAddress(email)){
+						$('#email_unvailable').show();
+						error++;
+					}
+					if (pwd.length < 8 || pwd.length > 42){
+						$('#passwords_bad_lenght').show();
+						error++;
+					}
+					else if (pwd != pwdv){
+						$('#passwords_different').show();
+						error++;
+					}
+					if (firstname.length < 2 || firstname.length > 25 || lastname.length < 2 || lastname.length > 25){
+						$('#names_bad_lenght').show();
+						error++;
+					}
+					if (!$('#fos_user_registration_form_cgu').is(":checked")){
+						$('#accept_cgu').show();
+						error++;
+					}
+					if (error == 0 && main_error == 0)
+						$('#fos_user_registration_form').submit();
 				}
 			});
 	});

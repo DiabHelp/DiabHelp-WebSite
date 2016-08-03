@@ -1,6 +1,37 @@
 <div id='inscription' class='center' hidden>
     <h2 class='center'>{{ "S'inscrire" | trans }}</h2>
-    <p id="availability_result" style="color: red;"></p>
+    <div style="color: red;">
+        <p id="username_already_used" class="hideme" hidden>
+            {{ "Nom d'uilisateur"| trans }}
+            {#{ form.username }#}
+            {{ "déjà utilisé." | trans }}
+        </p>
+        <p id="email_already_used" class="hideme" hidden>
+            {#{ form.email }#} :
+            {{ "Adresse email déjà utilisée." | trans }}
+        </p>
+        <p id="empty_form" class="hideme" hidden>
+            {{ "Formulaire vide." | trans }}
+        </p>
+        <p id="email_unvailable" class="hideme" hidden>
+            {{ "Adresse email non valide." | trans }}
+        </p>
+        <p id="passwords_different" class="hideme" hidden>
+            {{ "Les mots de passe ne correspondent pas." | trans }}
+        </p>
+        <p id="passwords_bad_lenght" class="hideme" hidden>
+            {{ "Le mot de passe doit contenir entre 8 et 42 caractères." | trans }}
+        </p>
+        <p id="names_bad_lenght" class="hideme" hidden>
+            {{ "Le nom et le prénom doivent contenir entre 2 et 25 caractères." | trans }}
+        </p>
+        <p id="username_bad_lenght" class="hideme" hidden>
+            {{ "Le nom d'utilisateur doit contenir entre 2 et 25 caractères." | trans }}
+        </p>
+        <p id="accept_cgu" class="hideme" hidden>
+            {{ "Vous devez accepter les Conditions Générales d'utilisation." | trans }}
+        </p>
+    </div>
     <form id="fos_user_registration_form" action="{{ path('fos_user_registration_register') }}" method="POST">
         <div class="form-group">
             <div>
