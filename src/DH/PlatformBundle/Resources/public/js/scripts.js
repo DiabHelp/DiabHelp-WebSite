@@ -32,30 +32,49 @@ $(window).load(function() {
 
         $('.hideme').hide();
 
+		var error = 0;
+		var main_error = 0;
         $.post("check_available", { username: username, email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == false) {
-					if (res.availables[0] == 0)
-						$('#username_already_use').show();
-					else if (res.availables[1] == 0)
-						$('#email_already_use').show();
-					else
+					if (res.availables[0] == 0){
+						$('#username_already_used').show();
+						main_error++;
+					}
+					if (res.availables[1] == 0){
+						$('#email_already_used').show();
+						main_error++;
+					}
+					if (main_error == 0)
 						$('#empty_form').show();
-				} else if (!isValidEmailAddress(email))
-					$('#email_unvailable').show();
-				else if (pwd != pwdv)
-					$('#passwords_different').show();
-				else if (pwd.length < 8 || pwd.length > 42)
-					$('#passwords_bad_lenght').show();
-				else if (firstname.length < 1 || firstname.length > 42 || lastname.length < 1 || lastname.length > 42)
-					$('#names_bad_lenght').show();
-				else if (username.length < 2 || username.length > 25)
-					$('#username_bad_lenght').show();
-				else if (!$('#fos_user_registration_form_cgu').is(":checked"))
-					$('#accept_cgu').show();
+				}
 				else {
-					$('#fos_user_registration_form').submit();
+					if (username.length < 2 || username.length > 25){
+						$('#username_bad_lenght').show();
+						error++;
+					}
+					if (!isValidEmailAddress(email)){
+						$('#email_unvailable').show();
+						error++;
+					}
+					if (pwd.length < 8 || pwd.length > 42){
+						$('#passwords_bad_lenght').show();
+						error++;
+					}
+					else if (pwd != pwdv){
+						$('#passwords_different').show();
+						error++;
+					}
+						$('#names_bad_lenght').show();
+						error++;
+					}
+					if (!$('#fos_user_registration_form_cgu').is(":checked")){
+						$('#accept_cgu').show();
+						error++;
+					}
+					if (error == 0 && main_error == 0)
+						$('#fos_user_registration_form').submit();
 				}
 			});
 	});

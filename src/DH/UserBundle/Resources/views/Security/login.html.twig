@@ -1,7 +1,7 @@
 <div id='connexion' class='center'>
     <h2 class='center'>{{ 'Se connecter à DiabHelp' | trans }}</h2>
     <form action="{{ path('fos_user_security_check') }}" method="post">
-        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }}" class='nav_respons_signup' autofocus/>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }} {{ "ou adresse email" | trans }}" class='nav_respons_signup' autofocus/>
         <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" class='nav_respons_signup'/>
         <input type="submit" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
     </form>
