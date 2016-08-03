@@ -144,11 +144,11 @@ $(window).load(function() {
 
   // carousel news page   
   $('.news_item_pic').flexslider({
-    animation: "slide", //String: Тип анимации, "fade" или "slide"
+    animation: "slide", //String: "fade" or "slide"
     slideshow: true,
-    controlNav: false, //Boolean: Создание навигации для постраничного управления каждым слайдом.
-    prevText: "", //String: Тест для кнопки "previous" пункта directionNav
-    nextText: "",  //String: Тест для кнопки "next" пункта directionNav
+    controlNav: false, //Boolean:
+    prevText: "", //String: "previous"
+    nextText: "",  //String: "next"
   });
 
   // masonry index page
@@ -200,7 +200,7 @@ function mapInit() {
 function loadMapScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "https://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=mapInit";
+  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFMs-Ca3F9mv2r4Oa6WctxU9zzeNWy_vg&callback=mapInit";
   document.body.appendChild(script);
 }
 
