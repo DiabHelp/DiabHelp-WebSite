@@ -37,12 +37,10 @@ class CarnetController extends Controller
         }
 
         foreach ($entries as $entry) {
-            if ($entry->getRdate() != null)
-                $entry->setRdate($entry->getRdate()->getTimestamp());
             if ($entry->getDateEdition() != null)
                 $entry->setDateEdition($entry->getDateEdition()->getTimestamp());
-            if ($entry->getDate() != null)
-                $entry->setDate($entry->getDate()->getTimestamp());
+            if ($entry->getDateCreation() != null)
+                $entry->setDateCreation($entry->getDateCreation()->getTimestamp());
         }
 
         $jsonContent = $this->serializer->serialize(array("success" => true, "entries" => $entries), 'json');
@@ -114,8 +112,8 @@ class CarnetController extends Controller
                 $tmp_date = new DateTime();
                 $entry_insert->setIdSynchro($entry['id']);
                 $entry_insert->setIdUser($id_user);
-                $date = $tmp_date->setTimestamp($entry['date']);
-                $entry_insert->setDate($date);
+                $date = $tmp_date->setTimestamp($entry['date_creation']);
+                $entry_insert->setDateCreation($date);
                 $date_edition = $tmp_date->setTimestamp($entry['date_edition']);
                 $entry_insert->setDateEdition($date_edition);
                 $entry_insert->setTitle($entry['title']);
@@ -144,8 +142,6 @@ class CarnetController extends Controller
                 $entry_insert->setAthome($entry['athome']);
                 $entry_insert->setAlcohol($entry['alcohol']);
                 $entry_insert->setPeriod($entry['period']);
-                $rdate = $tmp_date->setTimestamp($entry['rdate']);
-                $entry_insert->setRdate($rdate);
 
                 $em->persist($entry_insert);
                 $em->flush();
@@ -153,8 +149,8 @@ class CarnetController extends Controller
                 $tmp_date = new DateTime();
                 $test_entry->setIdSynchro($entry['id']);
                 $test_entry->setIdUser($id_user);
-                $date = $tmp_date->setTimestamp($entry['date']);
-                $test_entry->setDate($date);
+                $date = $tmp_date->setTimestamp($entry['date_creation']);
+                $test_entry->setDateCreation($date);
                 $date_edition = $tmp_date->setTimestamp($entry['date_edition']);
                 $test_entry->setDateEdition($date_edition);
                 $test_entry->setTitle($entry['title']);
@@ -183,8 +179,6 @@ class CarnetController extends Controller
                 $test_entry->setAthome($entry['athome']);
                 $test_entry->setAlcohol($entry['alcohol']);
                 $test_entry->setPeriod($entry['period']);
-                $rdate = $tmp_date->setTimestamp($entry['rdate']);
-                $test_entry->setRdate($rdate);
 
                 $em->flush();
             }
