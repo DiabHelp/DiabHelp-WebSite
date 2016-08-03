@@ -16,6 +16,7 @@ class CommentModuleType extends AbstractType
     {
         $builder
             ->add('text')
+            ->add('submit', 'submit')
         ;
     }
     
