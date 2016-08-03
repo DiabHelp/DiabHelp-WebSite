@@ -19,10 +19,13 @@ class RegistrationType extends AbstractType
                         'ROLE_PROCHE' => 'Proche',
                         'ROLE_DOCTOR' => 'Docteur'
 //                       'ROLE_ADMIN' => 'Admin'
-                    )
+                    ),
+//                    'choice_label' => 'roleName',
+                    'choice_translation_domain' => 'messages',
                 )
             )
         )
+
             ->add('firstname')
             ->add('lastname')
         ;
