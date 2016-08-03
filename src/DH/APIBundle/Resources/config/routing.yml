@@ -12,9 +12,10 @@ dh_api_carnet_entry_getLastDate:
         id_user:   \d+
 
 dh_api_carnet_entry_setFromApp:
-    path:      /carnet/entry/setFromApp
+    path:      /carnet/entry/setFromApp/{id_user}
     defaults:  { _controller: DHAPIBundle:Carnet:setFromApp }
     requirements:
+        id_user:   \d+
         _method:  POST
 
 dh_api_carnet_entry_delete:

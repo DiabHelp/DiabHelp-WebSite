@@ -16,7 +16,7 @@ class CommentArticleType extends AbstractType
     {
         $builder
             ->add('text')
-            ->add('envoyer', 'submit')
+            ->add('submit', 'submit')
         ;
     }
     
