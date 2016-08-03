@@ -7,9 +7,18 @@ dh_api:
     prefix:   /api
 
 ## DiabHelp Platform routing
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /fr/
+        permanent: true
+
 dh_platform:
     resource: "@DHPlatformBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/ # Ici, on ajoute {_locale} au préfixe !
+    requirements:
+            _locale: en|fr
 
 # app:
 #     resource: "@AppBundle/Controller/"
@@ -28,6 +37,7 @@ dh_platform:
 ## FOSUserBundle routing
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /{_locale}
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -35,18 +45,20 @@ fos_user_profile:
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix: /{_locale}/register
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix: /{_locale}/resetting
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
 login:
-    path:   /login
+    path:   /{_locale}/login
+    requirements:
+            _locale: en|fr
 
 rest_login:
     path:   /rest-login

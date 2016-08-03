@@ -45,7 +45,7 @@ class CarnetController extends Controller
                 $entry->setDate($entry->getDate()->getTimestamp());
         }
 
-        $jsonContent = $this->serializer->serialize(array("success" => true, $entries), 'json');
+        $jsonContent = $this->serializer->serialize(array("success" => true, "entries" => $entries), 'json');
 
         return new Response($jsonContent);
     }
@@ -81,7 +81,7 @@ class CarnetController extends Controller
         return new Response($jsonContent);
     }
 
-    public function setFromAppAction(Request $request)
+    public function setFromAppAction(Request $request, $id_user)
     {
         $encoders = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
@@ -98,8 +98,6 @@ class CarnetController extends Controller
         if (!empty($content)) {
             $entries = json_decode($content, true);
         }
-
-        $id_user = $request->get('id_user', null);
 
         if ($id_user == null || $content == null) {
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
