@@ -66,6 +66,7 @@ $(window).load(function() {
 						$('#passwords_different').show();
 						error++;
 					}
+					if (firstname.length < 2 || firstname.length > 25 || lastname.length < 2 || lastname.length > 25){
 						$('#names_bad_lenght').show();
 						error++;
 					}
