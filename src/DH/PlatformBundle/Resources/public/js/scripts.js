@@ -29,30 +29,32 @@ $(window).load(function() {
 		var firstname = $('#fos_user_registration_form_firstname').val();
 		var lastname = $('#fos_user_registration_form_lastname').val();
 
-		$.post("check_available", { username: username, email: email },
+
+        $('.hideme').hide();
+
+        $.post("check_available", { username: username, email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == false) {
 					if (res.availables[0] == 0)
-						$('#availability_result').html('Le nom d\'utilisateur ' + username + ' est déjà utilisé, veuillez en prendre un autre.');
+						$('#username_already_use').show();
 					else if (res.availables[1] == 0)
-						$('#availability_result').html('L\'adresse email ' + email + ' est déjà utilisée, veuillez en prendre une autre.');
+						$('#email_already_use').show();
 					else
-						$('#availability_result').html('Tout les champs sont obligatoires.');
+						$('#empty_form').show();
 				} else if (!isValidEmailAddress(email))
-					$('#availability_result').html('Veuillez rentrer une adresse email valide.');
+					$('#email_unvailable').show();
 				else if (pwd != pwdv)
-					$('#availability_result').html('Les mots de passe doivent être identiques.');
+					$('#passwords_different').show();
 				else if (pwd.length < 8 || pwd.length > 42)
-					$('#availability_result').html('Le mot de passe doit contenir entre 8 et 42 caractères.');
+					$('#passwords_bad_lenght').show();
 				else if (firstname.length < 1 || firstname.length > 42 || lastname.length < 1 || lastname.length > 42)
-					$('#availability_result').html('Les noms et prénoms doivent contenir entre 1 et 42 caractères.');
+					$('#names_bad_lenght').show();
 				else if (username.length < 2 || username.length > 25)
-					$('#availability_result').html('Les mots de passe doivent être identiques.');
+					$('#username_bad_lenght').show();
 				else if (!$('#fos_user_registration_form_cgu').is(":checked"))
-					$('#availability_result').html('Vous devez accepter les CGU afin de vous enregistrer.');
+					$('#accept_cgu').show();
 				else {
-					$('#availability_result').html('');
 					$('#fos_user_registration_form').submit();
 				}
 			});
