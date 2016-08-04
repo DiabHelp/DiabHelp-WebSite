@@ -49,7 +49,13 @@
           <h3>{{ 'Créé par' | trans }} : {{ module.organisme }}</h3>
           <h4>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
           <h5 style="text-align:right; text-transform:none;">
-            <a style="text-decoration:none; color:white;" href="" > {{ 'Ce module a reçu' | trans }} {{ module.nbVote }} {{ 'commentaires' | trans }} </a>
+            <a style="text-decoration:none; color:white;" href="{{ path('dh_platform_module_view', {'id': module.id}) }}" >
+              {% if module.comments|length > 0 %}
+                  {{ 'Ce module a reçu' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}
+              {% else %}
+                  {{ "Ce module n'a pas reçu de commentaires." | trans }}
+              {% endif %}
+            </a>
           </h5>
         </div>
         <a>
