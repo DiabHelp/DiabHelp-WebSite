@@ -36,8 +36,11 @@ class ProchePatientController extends Controller
             $link->getProche()->setPassword("");
             $link->getProche()->setSalt("");
         }
-
-        $jsonContent = $this->serializer->serialize($links, 'json');
+        if ($links == null) {
+            $errors[] = "Users not found";
+            $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
+        } else
+            $jsonContent = $this->serializer->serialize(array("success" => true, "users" => $links), 'json');
 
         return new Response($jsonContent);
     }
