@@ -75,9 +75,22 @@ class ProchePatientController extends Controller
 
         if ($link == null) {
             $link = new ProchePatientLink();
+
             $user_repo = $em->getRepository('DHAPIBundle:User');
+
             $proche = $user_repo->findOneById($id_proche);
             $patient = $user_repo->findOneById($id_patient);
+
+            if ($proche == null)
+                $errors[] = "Proche not found";
+            if ($patient == null)
+                $errors[] = "Patient not found";
+
+            if (count($errors) > 0) {
+                $resp = array("success" => false, "errors" => $errors);
+                $jsonContent = $this->serializer->serialize($resp, 'json');
+                return new Response($jsonContent);
+            }
 
             $link->setProche($proche);
             $link->setPatient($patient);
