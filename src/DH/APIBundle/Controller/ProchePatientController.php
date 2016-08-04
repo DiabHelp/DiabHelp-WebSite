@@ -10,7 +10,6 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProchePatientController extends Controller
 {
@@ -129,5 +128,45 @@ class ProchePatientController extends Controller
         }
 
         return new Response($this->serializer->serialize($response, 'json'));
+    }
+
+    public function searchPatientAction(Request $request, $search) {
+        $encoders = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object;
+        });
+
+        $this->serializer = new Serializer(array($normalizer), array($encoders));
+
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('DHUserBundle:User');
+
+        $qb = $repository->createQueryBuilder('cm');
+        $qb->select('cm')
+            ->where($qb->expr()->orX(
+                $qb->expr()->eq('cm.firstname', ':search'),
+                $qb->expr()->eq('cm.lastname', ':search'),
+                $qb->expr()->eq('cm.phone', ':search')
+            ))
+            ->setParameter('search', $search);
+
+        $users = $qb->getQuery()->getResult();
+
+        foreach ($users as $key => $user) {
+            $user->setPassword("");
+            $user->setSalt("");
+        }
+
+        if ($users == null) {
+            $errors = array();
+            $errors[] = "Users not found";
+            $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
+        } else
+            $jsonContent = $this->serializer->serialize(array("success" => true, "users" => $users), 'json');
+
+        return new Response($jsonContent);
     }
 }

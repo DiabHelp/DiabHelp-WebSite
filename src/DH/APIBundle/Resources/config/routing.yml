@@ -17,6 +17,10 @@ dh_api_proche_patient_get_position:
     requirements:
         id_user:  \d+
 
+dh_api_proche_patient_search_patient:
+    path:     /patient/search/{search}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:searchPatient }
+
 ## CARNET DE SUIVI
 dh_api_carnet_entry_getAllByUserId:
     path:      /carnet/entry/getAllByUserId/{id_user}
