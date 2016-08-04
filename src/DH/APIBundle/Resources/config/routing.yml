@@ -1,3 +1,22 @@
+## PROCHE PATIENT
+dh_api_proche_patient_get_list:
+    path:     /patient/getAllByUserId/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getAllPatientByUserId }
+    requirements:
+        id_user:   \d+
+
+dh_api_proche_patient_manage_list:
+    path:     /patient/managePatientList
+    defaults:  { _controller: DHAPIBundle:ProchePatient:managePatientList }
+    requirements:
+        _method:  POST
+
+dh_api_proche_patient_get_position:
+    path:     /patient/getPatientPosition/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getPatientPosition }
+    requirements:
+        id_user:  \d+
+
 ## CARNET DE SUIVI
 dh_api_carnet_entry_getAllByUserId:
     path:      /carnet/entry/getAllByUserId/{id_user}
