@@ -54,7 +54,8 @@ EMAIL: EMAIL
 #connexion
 'Se connecter à DiabHelp': 'Log in to DiabHelp'
 'Se connecter': 'Log in'
-'Nom d''utilisateur': 'Username or email address'
+'Nom d''utilisateur': 'Username'
+'ou adresse email': 'or email address'
 'Mot de passe': 'Password'
 'Mot de passe oublié?': 'Forgot password?'
 'Pas de compte?': 'No account yet?'
@@ -66,7 +67,6 @@ EMAIL: EMAIL
 
 #inscription
 "S'inscrire sur DiabHelp": "Register to DiabHelp"
-"Nom d'utilisateur": "Username"
 "Email": "Email"
 "Mot de passe": "Password"
 "Confirmation de mot de passe": "Password confirmation"
@@ -77,6 +77,10 @@ EMAIL: EMAIL
 "Enregistrer": "Register"
 "Déjà inscrit?": "Already have an account ?"
 "Je suis un": "I am a"
+'Patient': Patient
+'Proche': Relative
+'Docteur': Doctor
+
 
 #modules
 'Liste des modules': List of modules
@@ -214,3 +218,14 @@ helper:
 #email
 "Email confirmation envoyé": >
   A confirmation email have been sent to your adress, check your mailbox and click on the attached link.
+
+#error messages
+"déjà utilisé": "already used."
+"Adresse email déjà utilisée.": "Email address already used."
+"Formulaire vide.": "All the fields are required."
+"Adresse email non valide.": "Invalid email address."
+"Les mots de passe ne correspondent pas.": "Passwords doesn't match."
+"Le mot de passe doit contenir entre 8 et 42 caractères.": "Password must be composed of 8 to 42 characters."
+"Le nom et le prénom doivent contenir entre 2 et 25 caractères.": "Firstname and lastname must be composed of 2 to 25 characters."
+"Le nom d'utilisateur doit contenir entre 2 et 25 caractères.": "The username must be composed of 2 to 25 characters."
+"Vous devez accepter les Conditions Générales d'utilisation.": "You must accept the General Terms and Conditions."

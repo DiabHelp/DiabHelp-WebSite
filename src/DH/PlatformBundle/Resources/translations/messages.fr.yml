@@ -60,7 +60,8 @@ EMAIL: EMAIL
 #connexion
 'Se connecter à DiabHelp': 'Se connecter à DiabHelp'
 'Se connecter': 'Se connecter'
-'Nom d''utilisateur': 'Nom d''utilisateur ou adresse email'
+'Nom d''utilisateur': 'Nom d''utilisateur'
+'ou adresse email': 'ou adresse email'
 'Mot de passe': 'Mot de passe'
 'Mot de passe oublié?': 'Mot de passe oublié?'
 'Pas de compte?': 'Pas de compte?'
@@ -83,6 +84,10 @@ EMAIL: EMAIL
 "Enregistrer": "S'enregistrer"
 "Déjà inscrit?": "Déjà inscrit?"
 "Je suis un": "Je suis un"
+'Patient': Patient
+'Proche': Proche
+'Docteur': Docteur
+
 
 
 #modules
@@ -223,3 +228,15 @@ helper:
 #email
 "Email confirmation envoyé": >
  Un email d'activation a été envoyé sur votre adresse email, merci de cliquer sur le lien de validation.
+
+#error messages
+"déjà utilisé": "déjà utilisé"
+"Adresse email déjà utilisée.": "Adresse email déjà utilisée."
+"Formulaire vide.": "Tous les champs sont requis."
+"Adresse email non valide.": "Adresse email non valide."
+"Les mots de passe ne correspondent pas.": "Les mots de passe ne correspondent pas."
+"Le mot de passe doit contenir entre 8 et 42 caractères.": "Le mot de passe doit contenir entre 8 et 42 caractères."
+"Le nom et le prénom doivent contenir entre 2 et 25 caractères.": "Le nom et le prénom doivent contenir entre 2 et 25 caractères."
+"Le nom d'utilisateur doit contenir entre 2 et 25 caractères": "Le nom d'utilisateur doit contenir entre 2 et 25 caractères."
+"Vous devez accepter les Conditions Générales d'utilisation.": "Vous devez accepter les Conditions Générales d'utilisation."
+
