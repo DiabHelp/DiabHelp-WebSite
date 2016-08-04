@@ -77,6 +77,10 @@ EMAIL: EMAIL
 "Enregistrer": "Register"
 "Déjà inscrit?": "Already have an account ?"
 "Je suis un": "I am a"
+'Patient': Patient
+'Proche': Relative
+'Docteur': Doctor
+
 
 #modules
 'Liste des modules': List of modules
