@@ -26,11 +26,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="dateHour" type="text" column="date_hour" length="65535" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
     <field name="glucide" type="float" column="glucide" precision="10" scale="0" nullable="false"/>
     <field name="activity" type="text" column="activity" length="65535" nullable="false">
       <options>

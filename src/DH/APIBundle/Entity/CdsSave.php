@@ -195,14 +195,6 @@ class CdsSave
      */
     private $dateCreation;
 
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="date_hour", type="text", nullable=false)
-     */
-    private $dateHour;
-
     /**
      * @var integer
      *
@@ -281,30 +273,6 @@ class CdsSave
     public function getPlace()
     {
         return $this->place;
-    }
-
-    /**
-     * Set dateHour
-     *
-     * @param string $dateHour
-     *
-     * @return CdsSave
-     */
-    public function setDateHour($dateHour)
-    {
-        $this->dateHour = $dateHour;
-
-        return $this;
-    }
-
-    /**
-     * Get dateHour
-     *
-     * @return string
-     */
-    public function getDateHour()
-    {
-        return $this->dateHour;
     }
 
     /**

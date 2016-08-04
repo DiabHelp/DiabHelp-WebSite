@@ -118,7 +118,6 @@ class CarnetController extends Controller
                 $entry_insert->setDateEdition($date_edition);
                 $entry_insert->setTitle($entry['title']);
                 $entry_insert->setPlace($entry['place']);
-                $entry_insert->setDateHour($entry['date_hour']);
                 $entry_insert->setGlucide($entry['glucide']);
                 $entry_insert->setActivity($entry['activity']);
                 $entry_insert->setActivityType($entry['activity_type']);
@@ -155,7 +154,6 @@ class CarnetController extends Controller
                 $test_entry->setDateEdition($date_edition);
                 $test_entry->setTitle($entry['title']);
                 $test_entry->setPlace($entry['place']);
-                $test_entry->setDateHour($entry['date_hour']);
                 $test_entry->setGlucide($entry['glucide']);
                 $test_entry->setActivity($entry['activity']);
                 $test_entry->setActivityType($entry['activity_type']);
