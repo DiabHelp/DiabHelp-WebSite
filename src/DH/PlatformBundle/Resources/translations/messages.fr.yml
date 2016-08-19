@@ -102,6 +102,7 @@ Information: Information
 'Attribuer 1 étoile à ce module': "Attribuer 1 étoile à ce module"
 'Créé par': "Créé par"
 'Catégorie': Catégorie
+"Ce module n'a pas reçu de commentaires.": "Ce module n'a pas encore reçu de commentaires."
 'Ce module a reçu': "Ce module a reçu"
 'Afficher les': 'Afficher les'
 'commentaires': commentaires
@@ -239,4 +240,5 @@ helper:
 "Le nom et le prénom doivent contenir entre 2 et 25 caractères.": "Le nom et le prénom doivent contenir entre 2 et 25 caractères."
 "Le nom d'utilisateur doit contenir entre 2 et 25 caractères": "Le nom d'utilisateur doit contenir entre 2 et 25 caractères."
 "Vous devez accepter les Conditions Générales d'utilisation.": "Vous devez accepter les Conditions Générales d'utilisation."
-
+"Veuillez renseigner ce champ.": "Veuillez renseigner ce champ."
+"This value should not be blank.": "Veuillez renseigner ce champ."
