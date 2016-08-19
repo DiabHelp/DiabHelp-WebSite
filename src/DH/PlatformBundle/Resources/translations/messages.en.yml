@@ -230,3 +230,4 @@ helper:
 "Le nom et le prénom doivent contenir entre 2 et 25 caractères.": "Firstname and lastname must be composed of 2 to 25 characters."
 "Le nom d'utilisateur doit contenir entre 2 et 25 caractères.": "The username must be composed of 2 to 25 characters."
 "Vous devez accepter les Conditions Générales d'utilisation.": "You must accept the General Terms and Conditions."
+"This value should not be blank.": "This value should not be blank."
