@@ -1,0 +1,48 @@
+{# Admin/Articles/index #}
+
+{% extends "DHAdminBundle::layout.html.twig" %}
+
+{% block title %}
+    Ajout de news - {{ parent() }}
+{% endblock %}
+
+{% block dhadmin_body %}
+
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+     -->
+    {% for key, lmessage in app.session.flashbag.all() %}
+        {% for message in lmessage %}
+            <div class="alert alert-{{ key }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
+    <br>
+    {{ form_errors(form) }}
+    <br>
+    {{ form_widget(form.profilePictureFile) }}
+    <br>
+    {{ form_widget(form.username, {'attr': {'placeholder' : 'Username'}}) }}
+    <br>
+    {{ form_widget(form.firstname, {'attr': {'placeholder' : 'Prénom'}}) }}
+    <br>
+    {{ form_widget(form.lastname, {'attr': {'placeholder' : 'Nom'}}) }}
+    <br>
+    {{ form_widget(form.email, {'attr': {'placeholder' : 'Email'}}) }}
+    <br>
+    {{ form_widget(form.organisme, {'attr': {'placeholder' : 'Association'}}) }}
+    <br>
+    {{ form_widget(form.phone, {'attr': {'placeholder' : 'Numéro de téléphone'}}) }}
+    <br>
+    {{ form_widget(form.birthdate) }}
+    <br>
+    Lock : {{ form_widget(form.locked) }}
+    <br>
+    {{ form_widget(form._token) }}
+    <br>
+    {{ form_widget(form.save) }}
+
+{% endblock %}

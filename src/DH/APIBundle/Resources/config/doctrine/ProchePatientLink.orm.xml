@@ -4,16 +4,16 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="idPatient" type="integer" column="id_patient" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="idProche" type="integer" column="id_proche" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <many-to-one field="patient" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_patient" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="proche" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_proche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <field name="status" type="integer" column="status" nullable="false">
       <options>
         <option name="unsigned"/>

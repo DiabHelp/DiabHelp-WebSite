@@ -31,7 +31,7 @@ security:
 
     providers:
         main:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     firewalls:
         dev:
@@ -43,6 +43,7 @@ security:
             anonymous:      true
             provider:       main
             form_login:
+                default_target_path: dh_platform_home
                 login_path:         fos_user_security_login
                 check_path:         fos_user_security_check
                 success_handler:    authentication_handler
@@ -54,7 +55,7 @@ security:
             #     failure_handler:    authentication_handler
             logout:
                 path:       fos_user_security_logout
-                target:     /
+                target:     dh_platform_home
             remember_me:
                 key:        %secret% # %secret% est un paramètre de parameters.yml
             http_basic:

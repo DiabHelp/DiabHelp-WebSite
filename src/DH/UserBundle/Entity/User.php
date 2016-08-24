@@ -14,6 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="user")
+ * @Vich\Uploadable
  */
 class User extends BaseUser
 {
@@ -21,7 +22,9 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->addRole('ROLE_USER');
-    }  
+        $this->setProfilePicturePath('default.jpg');
+    }
+
    /**
     * @ORM\Column(name="id", type="integer")
     * @ORM\Id
@@ -34,8 +37,8 @@ class User extends BaseUser
      *
      * @Assert\NotBlank(message="Please enter your firstname.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=3,
-     *     max=42,
+     *     min=2,
+     *     max=25,
      *     minMessage="The firstname is too short.",
      *     maxMessage="The firstname is too long.",
      *     groups={"Registration", "Profile"}
@@ -48,8 +51,8 @@ class User extends BaseUser
      *
      * @Assert\NotBlank(message="Please enter your lastname.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=3,
-     *     max=42,
+     *     min=2,
+     *     max=25,
      *     minMessage="The lastname is too short.",
      *     maxMessage="The lastname is too long.",
      *     groups={"Registration", "Profile"}

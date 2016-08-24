@@ -20,6 +20,18 @@ dh_platform_profile:
     path:     /profile
     defaults: { _controller: DHPlatformBundle:Diabhelp:profile }
 
+dp_platform_check_available:
+    path:     /check_available
+    defaults: { _controller: DHPlatformBundle:Diabhelp:checkAvailable }
+    requirements:
+        _method:  POST
+
+dp_platform_check_email_exist:
+    path:     /check_email_exist
+    defaults: { _controller: DHPlatformBundle:Diabhelp:checkEmailExist }
+    requirements:
+        _method:  POST
+
 ## MODULES
 dh_platform_module:
     path:     /modules
@@ -48,6 +60,12 @@ dh_platform_module_comment_delete:
     requirements:
         id:  \d+
 
+dh_platform_module_comment_edit:
+    path:      /modules/editcomment/{id}
+    defaults:  { _controller: DHPlatformBundle:Module:editComment }
+    requirements:
+        id:  \d+
+
 ## ARTICLES
 dh_platform_article:
     path:     /articles
@@ -66,6 +84,12 @@ dh_platform_article_view:
 dh_platform_article_comment_delete:
     path:      /articles/deletecomment/{id}
     defaults:  { _controller: DHPlatformBundle:Article:deleteComment }
+    requirements:
+        id:  \d+
+
+dh_platform_article_comment_edit:
+    path:      /articles/editcomment/{id}
+    defaults:  { _controller: DHPlatformBundle:Article:editComment }
     requirements:
         id:  \d+
 

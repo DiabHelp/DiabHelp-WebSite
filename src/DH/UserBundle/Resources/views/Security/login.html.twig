@@ -1,19 +1,21 @@
 <div id='connexion' class='center'>
-    <h2 class='center'>Se connecter</h2>
+    <h2 class='center'>{{ 'Se connecter à DiabHelp' | trans }}</h2>
     <form action="{{ path('fos_user_security_check') }}" method="post">
-        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nom d'utilisateur" class='nav_respons_signup' autofocus/>
-        <input type="password" id="password" name="_password" placeholder='Mot de passe' class='nav_respons_signup'/>
-        <input type="submit" value="Connexion" class='nav_respons_signup'/>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }} {{ "ou adresse email" | trans }}" class='nav_respons_signup' autofocus/>
+        <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" class='nav_respons_signup'/>
+        <input type="submit" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
     </form>
     {#<?php // include 'src/fb.php'; ?>#}
-    <a onclick='show_signup_part("forget")' style='color: blue; font-size: 0.8em;'>Mot de passe oublié?</a>
-    <p>Pas de compte? <a onclick='show_signup_part("signup");' style='color: blue;'>Inscrivez-vous</a></p>
+    <a href='{{ path('fos_user_resetting_request') }}' style='color: blue; font-size: 0.8em;'>{{ 'Mot de passe oublié?' | trans }}</a>
+
+    <p>{{ 'Pas de compte?' | trans}} <a onclick='show_signup_part("signup");' style='color: blue;'>{{ "S'inscrire" | trans }}</a></p>
 </div>
 <div id='forget' class='center' hidden>
-    <h2 class='center'>Retrouver son mot de passe</h2>
+    <h2 class='center'>{{ "Retrouver son mot de passe" | trans }}</h2>
+    <p id="email_exist_error" style="color: red;"></p>
     <form name='forget' action="" method='post'>
         <input required type='text' name='mail' placeholder='E-mail'/>
-        <input type='submit' value='envoyer'>
+        <input type='submit' value='{{ 'Envoyer' | trans }}'>
     </form>
-    <a onclick='show_signup_part("signin");' style='color: blue; font-size: 0.8em;'>Mot de passe retrouvé?</a>
+    <a onclick='show_signup_part("signin");' style='color: blue; font-size: 0.8em;'>{{ "Mot de passe retrouvé?" | trans }}</a>
 </div>

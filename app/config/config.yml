@@ -6,12 +6,13 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
     logo_directory: '%kernel.root_dir%/../web/images/module'
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallback: %locale% }
+    default_locale:  %locale%
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -25,7 +26,6 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-    default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
@@ -99,11 +99,17 @@ fos_user:
         form:
             type: app_user_registration
         confirmation:
-            enabled: true
+            enabled: false
             template: email/registration.email.twig
             from_email:
                 address:        registration@diabhelp.fr
                 sender_name:    L'équipe DiabHelp
+    resetting:
+        email:
+            from_email:
+                address:        reset@diabhelp.fr
+                sender_name:    L'équipe DiabHelp
+            template: email/password_resetting.email.twig
             # type: DH\PlatformBundle\Form\RegistrationType
             # if you are using Symfony < 2.8 you should use the type name instead
 
@@ -123,4 +129,8 @@ vich_uploader:
         logo_module:
             uri_prefix:         /Dev-API/web/images/module
             upload_destination: %kernel.root_dir%/../web/images/module
+            namer:              vich_uploader.namer_uniqid
+        logo_article:
+            uri_prefix:         /Dev-API/web/images/article
+            upload_destination: %kernel.root_dir%/../web/images/article
             namer:              vich_uploader.namer_uniqid

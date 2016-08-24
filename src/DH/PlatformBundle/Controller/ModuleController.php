@@ -44,7 +44,8 @@ class ModuleController extends Controller
 
 	    if ($form->handleRequest($request)->isValid()) {
 	    	if ($module->getImageName() == "" or $module->getImageName() == null) {
-	    		$module->setImageName("basic.jpg");
+	    		$module->setImageName("av-def.jpg");
+                $module->setUpdatedAtNow();
 	    	}
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($module);
@@ -158,8 +159,6 @@ class ModuleController extends Controller
 
 		$allComments = $em->getRepository('DHPlatformBundle:CommentModule')->findByModule($module->getId());
 
-		$allow = false;
-		
 		if (end($allComments) != $comment) {
 			throw $this->createNotFoundException("You cannot delete this comment because it's not the last one");
 		}
@@ -170,4 +169,40 @@ class ModuleController extends Controller
 
 		return $this->redirect($this->generateUrl('dh_platform_module_view', array('id' => $module->getId())));
 	}
+
+    public function editCommentAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $message = $request->get('text', null);
+
+        $comment = $em->getRepository('DHPlatformBundle:CommentModule')->find($id);
+
+        if ($comment == null) {
+            throw $this->createNotFoundException("Comment ".$id." doesn't exist");
+        }
+        else if ($comment->getAuthor() != $this->getUser()) {
+            throw $this->createNotFoundException("Comment not found for this user");
+        }
+
+        $module = $comment->getModule();
+
+        if ($module == null) {
+            throw $this->createNotFoundException("Module not found");
+        }
+
+        $allComments = $em->getRepository('DHPlatformBundle:CommentModule')->findByModule($module->getId());
+
+        if (end($allComments) != $comment) {
+            throw $this->createNotFoundException("You cannot delete this comment because it's not the last one");
+        }
+
+        $comment->setText($message);
+
+        $em->flush();
+        $request->getSession()->getFlashBag()->add('info', 'Comment edited');
+
+        return $this->redirect($this->generateUrl('dh_platform_module_view', array('id' => $module->getId())));
+    }
+
 }

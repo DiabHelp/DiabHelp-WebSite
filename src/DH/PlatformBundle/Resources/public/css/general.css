@@ -3118,11 +3118,8 @@ body {
   margin: 19px 0 0 14px;
   width: 65%;
   letter-spacing: 0.03em;
-  -moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 10px;
-  -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
 }
 .news_about_us {
@@ -4660,10 +4657,8 @@ border-left:0;
 background:#078b87; 
 padding:29px;  
 width:80%;
-margin: 0 auto;
-margin-bottom:2%;
-margin-top:15px;
--webkit-border-top-left-radius: 5px;
+    margin: 15px auto 2%;
+    -webkit-border-top-left-radius: 5px;
 -moz-border-radius-topleft: 5px;
 border-top-left-radius: 5px;
 }
@@ -4683,7 +4678,7 @@ border-top-left-radius: 5px;
 {
 text-align:center;
 color: white;
-size: 1.3em;
+font-size: 1.3em;
 font-weight: bolder;
 }
 .module_s h3, h4
@@ -4720,9 +4715,8 @@ color:white;
 .texteareaCommentNews, .com_change {
   width: 98%;
   border: 1px solid black;
-  padding: 5px 0;
-  padding-left: 1%;
-  font-size: 16px;
+    padding: 5px 0 5px 1%;
+    font-size: 16px;
   height: auto;
 }
 
@@ -4731,12 +4725,11 @@ color:white;
   height: 35px;
   -webkit-appearance: button;
   font-size: 14px;
-  background: transparent;
-  letter-spacing: 1px;
+    letter-spacing: 1px;
   border: 1px;
   text-transform: uppercase;
-  background-color: white;
-  width: 100%;
+    background: white;
+    width: 100%;
   text-align: center;
 }
 
@@ -5012,8 +5005,7 @@ margin-left:80%;
     }
 
 .proposer_submit {
-  background: url('../images/submit_button.png') center no-repeat;
-  background-color: #2a2a2a;
+    background: #2a2a2a url('../images/submit_button.png') no-repeat center;
 }
 .proposer_submit p {
   margin-top: -45px;
@@ -5045,4 +5037,8 @@ body {
 
 #dh_platformbundle_module_imageFile label {
   display: none;
+}
+
+input[type=password] {
+  border: 1px solid #c4c5c7;
 }

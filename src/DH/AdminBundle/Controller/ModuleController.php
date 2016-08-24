@@ -5,6 +5,7 @@ namespace DH\AdminBundle\Controller;
 use DH\PlatformBundle\Entity\Module;
 use DH\PlatformBundle\Entity\CommentModule;
 
+use DH\PlatformBundle\Form\ModuleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -38,7 +39,34 @@ class ModuleController extends Controller
 		return $this->redirect($this->generateUrl('dh_admin_modules'));
 	}
 
-	public function hideOrShowAction(Request $request, $id)
+    public function editAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('DHPlatformBundle:Module')->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'No module found for id ' . $id
+            );
+        }
+
+        $form = $this->get('form.factory')->create(new ModuleType, $user);
+
+        if ($form->handleRequest($request)->isValid()) {
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Module has been modified');
+
+            return $this->redirect($this->generateUrl('dh_admin_modules'));
+        }
+
+        return $this->render('DHPlatformBundle:Module:add.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function hideOrShowAction(Request $request, $id)
 	{
 		$em = $this->getDoctrine()->getManager();
 

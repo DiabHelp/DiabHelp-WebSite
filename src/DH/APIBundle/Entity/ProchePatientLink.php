@@ -13,18 +13,24 @@ use Doctrine\ORM\Mapping as ORM;
 class ProchePatientLink
 {
     /**
-     * @var integer
+     * @var \DH\APIBundle\Entity\User
      *
-     * @ORM\Column(name="id_patient", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="DH\APIBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_patient", referencedColumnName="id")
+     * })
      */
-    private $idPatient;
+    private $patient;
 
     /**
-     * @var integer
+     * @var \DH\APIBundle\Entity\User
      *
-     * @ORM\Column(name="id_proche", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="DH\APIBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_proche", referencedColumnName="id")
+     * })
      */
-    private $idProche;
+    private $proche;
 
     /**
      * @var integer
@@ -42,54 +48,52 @@ class ProchePatientLink
      */
     private $id;
 
-
-
     /**
-     * Set idPatient
+     * Set proche
      *
-     * @param integer $idPatient
+     * @param \DH\APIBundle\Entity\User $proche
      *
      * @return ProchePatientLink
      */
-    public function setIdPatient($idPatient)
+    public function setProche(\DH\APIBundle\Entity\User $proche = null)
     {
-        $this->idPatient = $idPatient;
+        $this->proche = $proche;
 
         return $this;
     }
 
     /**
-     * Get idPatient
+     * Get proche
      *
-     * @return integer
+     * @return \DH\APIBundle\Entity\User
      */
-    public function getIdPatient()
+    public function getProche()
     {
-        return $this->idPatient;
+        return $this->proche;
     }
 
     /**
-     * Set idProche
+     * Set patient
      *
-     * @param integer $idProche
+     * @param \DH\APIBundle\Entity\User $patient
      *
      * @return ProchePatientLink
      */
-    public function setIdProche($idProche)
+    public function setPatient(\DH\APIBundle\Entity\User $patient = null)
     {
-        $this->idProche = $idProche;
+        $this->patient = $patient;
 
         return $this;
     }
 
     /**
-     * Get idProche
+     * Get patient
      *
-     * @return integer
+     * @return \DH\APIBundle\Entity\User
      */
-    public function getIdProche()
+    public function getPatient()
     {
-        return $this->idProche;
+        return $this->patient;
     }
 
     /**

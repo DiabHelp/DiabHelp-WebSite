@@ -1,5 +1,85 @@
 $(window).load(function() {
 
+	function isValidEmailAddress(emailAddress) {
+		var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+		return pattern.test(emailAddress);
+	};
+
+	$('#reset_pwd').click(function () {
+		var email = $('#fos_user_forget_pwd_form_email').val();
+
+		$.post("check_email_exist", { email: email },
+			function (result) {
+				var res = $.parseJSON(result);
+				if (res.success == true)
+					$('#email_exist_error').html('L\'adresse email ' + email + ' n\'est pas enregistrée, veuillez en saisir une autre.');
+				else {
+					$('#email_exist_error').html('');
+					console.log('reset_pwd_submit');
+				}
+					// $('#fos_user_registration_form').submit();
+			});
+	});
+
+	$('#fos_user_registration_form_submit').click(function () {
+		var username = $('#fos_user_registration_form_username').val();
+		var email = $('#fos_user_registration_form_email').val();
+		var pwd = $('#fos_user_registration_form_plainPassword_first').val();
+		var pwdv = $('#fos_user_registration_form_plainPassword_second').val();
+		var firstname = $('#fos_user_registration_form_firstname').val();
+		var lastname = $('#fos_user_registration_form_lastname').val();
+
+
+        $('.hideme').hide();
+
+		var error = 0;
+		var main_error = 0;
+        $.post("check_available", { username: username, email: email },
+			function (result) {
+				var res = $.parseJSON(result);
+				if (res.success == false) {
+					if (res.availables[0] == 0){
+						$('#username_already_used').show();
+						main_error++;
+					}
+					if (res.availables[1] == 0){
+						$('#email_already_used').show();
+						main_error++;
+					}
+					if (main_error == 0)
+						$('#empty_form').show();
+				}
+				else {
+					if (username.length < 2 || username.length > 25){
+						$('#username_bad_lenght').show();
+						error++;
+					}
+					if (!isValidEmailAddress(email)){
+						$('#email_unvailable').show();
+						error++;
+					}
+					if (pwd.length < 8 || pwd.length > 42){
+						$('#passwords_bad_lenght').show();
+						error++;
+					}
+					else if (pwd != pwdv){
+						$('#passwords_different').show();
+						error++;
+					}
+					if (firstname.length < 2 || firstname.length > 25 || lastname.length < 2 || lastname.length > 25){
+						$('#names_bad_lenght').show();
+						error++;
+					}
+					if (!$('#fos_user_registration_form_cgu').is(":checked")){
+						$('#accept_cgu').show();
+						error++;
+					}
+					if (error == 0 && main_error == 0)
+						$('#fos_user_registration_form').submit();
+				}
+			});
+	});
+
 	// carousel index page
   $('.flexslider').flexslider({
     animation: "slide",
@@ -86,11 +166,11 @@ $(window).load(function() {
 
   // carousel news page   
   $('.news_item_pic').flexslider({
-    animation: "slide", //String: Тип анимации, "fade" или "slide"
+    animation: "slide", //String: "fade" or "slide"
     slideshow: true,
-    controlNav: false, //Boolean: Создание навигации для постраничного управления каждым слайдом.
-    prevText: "", //String: Тест для кнопки "previous" пункта directionNav
-    nextText: "",  //String: Тест для кнопки "next" пункта directionNav
+    controlNav: false, //Boolean:
+    prevText: "", //String: "previous"
+    nextText: "",  //String: "next"
   });
 
   // masonry index page
@@ -142,7 +222,7 @@ function mapInit() {
 function loadMapScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "https://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=mapInit";
+  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFMs-Ca3F9mv2r4Oa6WctxU9zzeNWy_vg&callback=mapInit";
   document.body.appendChild(script);
 }
 
@@ -229,10 +309,10 @@ function show_com_content(id)
     }
 }
 
-function show_com_modification_form(id, id_text)
+function show_com_modification_form(id)
 	{
-		var elem = document.getElementById(id);
-		var text = document.getElementById(id_text);
+		var elem = document.getElementById("modif_com_form" + id);
+		var text = document.getElementById("text_com" + id);
 		if (elem.style.display == "none")
 		{
 			$(text).slideUp("slow", function(){
@@ -256,13 +336,13 @@ function display_info_msg(id, msg, color)
 
 function update_com(id)
 {
-	var posting = $.post("./src/update_com.php",
-		{text: $("#com_change" + id).val(),
-		id_com: id
-	});
+	var edit_text = $("#com_change" + id).val();
+	var posting = $.post("./editcomment/" + id,
+		{text: edit_text}
+		);
 	posting.done(function(data){
-		$("#text_com" + id).html(data);
-		show_com_modification_form("modif_com_form" + id, "text_com" + id);
+		$("#text_com" + id).html(edit_text);
+		show_com_modification_form(id);
 		display_info_msg("#com_info_msg" + id, "Commentaire édité avec succès.", "#7FFF00");
 	});
 

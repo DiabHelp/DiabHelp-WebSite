@@ -11,19 +11,23 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('roles', 'collection', array(
-               'type' => 'choice',
-               'options' => array(
-                   'choices' => array(
-                       'ROLE_PATIENT' => 'Patient',
-                       'ROLE_PROCHE' => 'Proche',
-                       'ROLE_DOCTOR' => 'Docteur'
+                'type' => 'choice',
+                'options' => array(
+                    'label' => false,
+                    'choices' => array(
+                        'ROLE_PATIENT' => 'Patient',
+                        'ROLE_PROCHE' => 'Proche',
+                        'ROLE_DOCTOR' => 'Docteur'
 //                       'ROLE_ADMIN' => 'Admin'
-                   )
-               )
-           )
+                    ),
+//                    'choice_label' => 'roleName',
+                    'choice_translation_domain' => 'messages',
+                )
+            )
         )
-        ->add('firstname')
-        ->add('lastname')
+
+            ->add('firstname')
+            ->add('lastname')
         ;
     }
 

@@ -3,7 +3,7 @@
 {% extends "DHPlatformBundle::slide.html.twig" %}
 
 {% block title %}
-  Accueil - {{ parent() }}
+  {{ 'Accueil' | trans }} - {{ parent()  }}
 {% endblock %}
 
 {% block dhplatform_body %}
@@ -12,109 +12,109 @@
     <div class="services_center">
       <div class="services_item first fl">
         <div class="services_item_regular">
-          <h3 class="services_item_title"><a href="{{ path('dh_platform_home') }}">App' DiabHelp</a></h3>
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_home') }}">{{ 'Application DiabHelp' | trans }}</a></h3>
           <div class="services_backgr">
             <p class="services_item_pic">
               <a href="{{ path('dh_platform_home') }}">
-                <img src="{{ asset('bundles/dhplatform/images/services/icone_phone2.png') }}" alt="">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_phone2.png') }}" alt="{{ 'Application DiabHelp' | trans }}">
               </a>
             </p>
             <div class="services_pic_line"> </div>
             <p class="services_item_desc">
-              S'informer et Télécharger l'application DiabHelp
+              {{ 'Télécharger l\'application DiabHelp' | trans }}
             </p>
           </div>
         </div>
         <div class="services_item_hover">
-          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_home') }}">L'application</a></h3>
+          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_home') }}">{{ 'L\'application' | trans }}</a></h3>
           <p class="services_item_pic_hover">
             <a href="{{ path('dh_platform_home') }}">
-              <img src="{{ asset('bundles/dhplatform/images/services/icone_phone1.png') }}" alt="">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_phone1.png') }}" alt="{{ 'L\'application' | trans }}">
             </a>
           </p>
           <p class="services_item_link_hover">
-            <a href="{{ path('dh_platform_home') }}">S'informer</a>
+            <a href="{{ path('dh_platform_home') }}">{{ 'S\'informer' | trans }}</a>
           </p>
         </div>
       </div>
       <div class="services_item second fl">
         <div class="services_item_regular">
-          <h3 class="services_item_title"><a href="{{ path('dh_platform_module') }}">Réagir</a></h3>
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_module') }}">{{ 'Réagir' | trans }}</a></h3>
           <div class="services_backgr">
             <p class="services_item_pic">
               <a href="{{ path('dh_platform_module') }}">
-                <img src="{{ asset('bundles/dhplatform/images/services/icone_reagir2.png') }}" alt="">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_reagir2.png') }}" alt="{{ 'Réagir' | trans }}">
               </a>
             </p>
             <div class="services_pic_line"> </div>
             <p class="services_item_desc">
-              Devenez acteur du développement de DiabHelp en réagissant sur vos modules préférés
+              {{ 'Donnez votre avis sur les modules de l\'application' |trans }}
             </p>
           </div>
         </div>
         <div class="services_item_hover">
-          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_module') }}">Réagissez</a></h3>
+          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_module') }}">{{ 'Réagir'| trans }}</a></h3>
           <p class="services_item_pic_hover">
             <a href="{{ path('dh_platform_module') }}">
-              <img src="{{ asset('bundles/dhplatform/images/services/icone_reagir.png') }}" alt="">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_reagir.png') }}" alt="{{ 'Réagissez'| trans }}">
             </a>
           </p>
           <p class="services_item_link_hover">
-            <a href="{{ path('dh_platform_module') }}">Réagir</a>
+            <a href="{{ path('dh_platform_module') }}">{{ 'Réagir'| trans }}</a>
           </p>
         </div>
       </div>
       <div class="services_item fl third">
         <div class="services_item_regular">
-          <h3 class="services_item_title"><a href="{{ path('dh_platform_module_add') }}">Proposer</a></h3>
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_module_add') }}">{{ 'Proposer' | trans }}</a></h3>
           <div class="services_backgr">
             <p class="services_item_pic">
               <a href="{{ path('dh_platform_module_add') }}">
-                <img src="{{ asset('bundles/dhplatform/images/services/icone_proposer2.png') }}" alt="">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_proposer2.png') }}" alt="{{ 'Proposer' | trans }}">
               </a>
             </p>
             <div class="services_pic_line"> </div>
             <p class="services_item_desc">
-              Devenez acteur du développement en proposant votre propre module
+              {{ 'Devenez acteur du développement en proposant votre propre module' | trans }}
             </p>
           </div>
         </div>
         <div class="services_item_hover">
-          <h3 class="services_item_title_hover"><a href="proposer.php">Proposer</a></h3>
+          <h3 class="services_item_title_hover"><a href="proposer.php">{{ 'Proposer' | trans  }}</a></h3>
           <p class="services_item_pic_hover">
             <a href="{{ path('dh_platform_module_add') }}">
-              <img src="{{ asset('bundles/dhplatform/images/services/icone_proposer.png') }}" alt="">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_proposer.png') }}" alt="{{ 'Proposer' | trans  }}">
             </a>
           </p>
           <p class="services_item_link_hover">
-            <a href="{{ path('dh_platform_module_add') }}">Proposer</a>
+            <a href="{{ path('dh_platform_module_add') }}">{{ 'Proposer' | trans  }}</a>
           </p>
         </div>
       </div>
       <div class="services_item fl last">
         <div class="services_item_regular">
-          <h3 class="services_item_title"><a href="{{ path('dh_platform_contact') }}">Qui sommes nous ?</a></h3>
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_contact') }}">{{ 'Qui sommes nous ?' | trans }}</a></h3>
           <div class="services_backgr">
             <p class="services_item_pic">
               <a href="{{ path('dh_platform_contact') }}">
-                <img src="{{ asset('bundles/dhplatform/images/services/icone_qui2.png') }}" alt="">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_qui2.png') }}" alt="{{ 'Qui sommes nous ?' | trans }}">
               </a>
             </p>
             <div class="services_pic_line"> </div>
             <p class="services_item_desc">
-              Vous voulez en savoir un peu plus sur nous ? C'est par ici
+              {{ 'A propos de l\'équipe DiabHelp' | trans }}
             </p>
           </div>
         </div>
         <div class="services_item_hover">
-          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_contact') }}">Qui sommes nous ?</a></h3>
+          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_contact') }}">{{ 'Qui sommes nous ?' | trans }}</a></h3>
           <p class="services_item_pic_hover">
             <a href="{{ path('dh_platform_contact') }}">
-              <img src="{{ asset('bundles/dhplatform/images/services/icone_qui.png') }}" alt="">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_qui.png') }}" alt="{{ 'Qui sommes nous ?' | trans }}">
             </a>
           </p>
           <p class="services_item_link_hover">
-            <a href="{{ path('dh_platform_contact') }}">Nous connaitre</a>
+            <a href="{{ path('dh_platform_contact') }}">{{ 'En savoir plus' | trans }}</a>
           </p>
         </div>
       </div>
@@ -122,60 +122,12 @@
     </div>
   </div>
   <div class="welcome">
-    <h1>DiabHelp, bien plus qu'un simple projet</h1>
-    <p><span style= "font-size:20px;">Dans l'optique d'améliorer le quotidien des personnes diagnostiquées du diabète, nous proposons aujourd'hui de centraliser les informations, mais aussi les solutions grâce à notre application de proposition de modules à laquelle chacun des membres de notre site contribue,
-			En collaboration avec des organismes de la santé (médecins, nutritionistes, centres hospitaliers, etc) nous assurons un service qualitatif qui répond à vos besoins.</span></p>
+    <h1 class="article-title">{{ 'Allégeons la gestion du diabète avec DiabHelp' | trans  }} </h1>
+    <p class="article-desc">{{ 'diabhelp.desc.parag1' | trans }}</p>
+    <p class="article-desc">{{ 'diabhelp.desc.parag2' | trans }}</p>
+    <br />
   </div>
 
-  <!-- Testimonials Section Start -->
-  <div class="carousel_article">
-    <div class="left_border_article"></div>
-    <div class="slider_articles">
-      <ul class="slides">
-        <li class="article_item">
-          <img class="article_pic" src="{{ asset('bundles/dhplatform/images/carousel_article/samanta.jpg') }}" alt="">
-          <h1 class="article_title"><a href="#">Michelle Franckie</a></h1>
-          <p class="article_date">04 Jun 2013</p>
-          <div class="cf"></div>
-          <p class="article_desc">Très satisfaite, bien qu'un peu rétiscente de prime-abord service impeccable et module de calcul de glycémie très pratique. </p>
-        </li>
-        <li class="article_item">
-          <img class="article_pic" src="{{ asset('bundles/dhplatform/images/carousel_article/samanta2.jpg') }}" alt="">
-          <h1 class="article_title"><a href="#">Alex Socha</a></h1>
-          <p class="article_date">04 Jun 2013</p>
-          <div class="cf"></div>
-          <p class="article_desc">Inscris depuis 3 mois maintenant, bonne communauté, un module de calcul du taux de glycémie vraiment pratique !</p>
-        </li>
-        <li class="article_item">
-          <img class="article_pic" src="{{ asset('bundles/dhplatform/images/carousel_article/samanta3.jpg') }}" alt="">
-          <h1 class="article_title"><a href="#">Peter Smith</a></h1>
-          <p class="article_date">06 Aug 2014</p>
-          <div class="cf"></div>
-          <p class="article_desc">mon médecin suit mon parcours grâce au module de suivi, très intuitif, il sait m'envoyer une alerte en période de fête. </p>
-        </li>
-      </ul>
-    </div>
-    <div class="slider_articles_mob">
-      <ul class="slides">
-        <li class="article_item">
-          <h1 class="article_title"><a href="#">Santa Millers</a></h1>
-          <p class="article_date">04 Jun 2013</p>
-          <div class="cf"></div>
-          <p class="article_desc">Très satisfaite, bien qu'un peu rétiscente de prime-abord service impeccable et module de calcul de glycémie très pratique. </p>
-        </li>
-        <li class="article_item">
-          <h1 class="article_title"><a href="#">Alex Socha</a></h1>
-          <p class="article_date">04 Jun 2013</p>
-          <div class="cf"></div>
-          <p class="article_desc">Inscris depuis 3 mois maintenant, bonne communauté, un module de calcul du taux de glycémie vraiment pratique !</p>
-        </li>
-        <li class="article_item">
-          <h1 class="article_title"><a href="#">Peter Smith</a></h1>
-          <p class="article_date">06 Aug 2014</p>
-          <div class="cf"></div>
-          <p class="article_desc">mon médecin suit mon parcours grâce au module de suivi, très intuitif, il sait m'envoyer une alerte en période de fête. </p>
-        </li>
-      </ul>
     </div>
     <div class="right_border_article"></div>
   </div>

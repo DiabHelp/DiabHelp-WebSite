@@ -11,5 +11,5 @@ parameters:
     mailer_port: 587
     mailer_host: smtp.diabhelp.org
     mailer_user: contact@diabhelp.org
-    mailer_password: Devines:)
+    mailer_password: 'Devines:)'
     secret: 9d4939be09c26bf9130261566679a7d534caa334

@@ -1,7 +1,7 @@
 {% extends "DHPlatformBundle::slide.html.twig" %}
 
 {% block title %}
-  Articles - {{ parent() }}
+  {{ 'Actualités' | trans }} - {{ parent() }}
 {% endblock %}
 
 {% block dhplatform_body %}
@@ -10,10 +10,10 @@
     <div class = "page_header">
       <div class= center >
         <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
-        <h1 class="page_header_title fl">News</h1>
+        <h1 class="page_header_title fl">{{ 'Actualités' | trans }}</h1>
         <ul class="page_header_nav fr">
-          <li><a href="{{ path('dh_platform_home') }}">Accueil</a></li>
-          <li><a class="active" href="{{ path('dh_platform_article') }}">News</a></li>
+          <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
+          <li><a class="active" href="{{ path('dh_platform_article') }}">{{ 'Actualités' | trans }}</a></li>
         </ul>
         <div class="cf"></div>
       </div>
@@ -24,11 +24,12 @@
 
       {% for article in articles %}
 
+      {% if article.display == 1 %}
+
         <div class=news_content_left fl>
           <div class=news_item>
             <div class= center >
-              <img style="width:100%" src="{{ article.imgPath }}" border="0"/>
-              {#<img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />#}
+              <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}" />
               <h2 class=news_item_date>{{ article.date|date('d/m/Y') }}</h2>
               <h2 class=news_item_title>{{ article.title }}</h2>
               <div id = Text_News>
@@ -36,22 +37,26 @@
                   {{ article.text }}
                 </p>
                 <p class= news_item_link>
-                  <a href="{{ path('dh_platform_article_view', {'id': article.id}) }}">Lire la suite</a>
+                  <a href="{{ path('dh_platform_article_view', {'id': article.id}) }}">{{ 'Lire la suite' | trans }}</a>
                 </p>
                 <br/>
               </div>
             </div>
           </div>
         </div>
+
+      {% endif %}
+
       {% endfor %}
+
     </div>
     <div class = center>
       <div class="news_link_load_more">
-        <a href="#">Plus de news ?</a>
+        <a href="#">{{ "Lire plus d'actualités..." | trans }}</a>
       </div>
     </div>
   </div>
 
-	{#<a href="{{ path('dh_platform_article_add') }}">Ajouter un putain d'article</a>#}
+	{#<a href="{{ path('dh_platform_article_add') }}">Ajouter un article</a>#}
 
 {% endblock %}

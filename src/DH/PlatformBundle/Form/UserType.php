@@ -3,6 +3,7 @@
 namespace DH\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -13,6 +14,8 @@ class UserType extends AbstractType
         $builder
             ->add('firstname')
             ->add('lastname')
+            ->add('username')
+            ->add('locked')
             ->add('email')
             ->add('organisme')
             ->add('phone')
@@ -24,6 +27,7 @@ class UserType extends AbstractType
             ))
             ->add('profilePictureFile')
             ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
                 'first_options'  => array(
                     'label' => false,
                     'attr' => array(
@@ -37,8 +41,7 @@ class UserType extends AbstractType
                         'placeholder' => 'password confirmation',
                         'class' => 'contact_form_input_noname',
                     )
-                ),
-                'required' => false
+                )
             ))
             ->add('save', 'submit')
         ;

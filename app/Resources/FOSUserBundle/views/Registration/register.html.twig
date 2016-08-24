@@ -1,36 +1,69 @@
 <div id='inscription' class='center' hidden>
-    <h2 class='center'>S'inscrire</h2>
-    <form action="{{ path('fos_user_registration_register') }}" method="POST">
-        <div class="form-group" id="fos_user_registration_form">
-            <div id="signup_first_part">
-                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur' } }) }}
+    <h2 class='center'>{{ "S'inscrire" | trans }}</h2>
+    <div style="color: red;">
+        <p id="username_already_used" class="hideme" hidden>
+            {{ "Nom d'uilisateur"| trans }}
+            {#{ form.username }#}
+            {{ "déjà utilisé." | trans }}
+        </p>
+        <p id="email_already_used" class="hideme" hidden>
+            {#{ form.email }#} :
+            {{ "Adresse email déjà utilisée." | trans }}
+        </p>
+        <p id="empty_form" class="hideme" hidden>
+            {{ "Formulaire vide." | trans }}
+        </p>
+        <p id="email_unvailable" class="hideme" hidden>
+            {{ "Adresse email non valide." | trans }}
+        </p>
+        <p id="passwords_different" class="hideme" hidden>
+            {{ "Les mots de passe ne correspondent pas." | trans }}
+        </p>
+        <p id="passwords_bad_lenght" class="hideme" hidden>
+            {{ "Le mot de passe doit contenir entre 8 et 42 caractères." | trans }}
+        </p>
+        <p id="names_bad_lenght" class="hideme" hidden>
+            {{ "Le nom et le prénom doivent contenir entre 2 et 25 caractères." | trans }}
+        </p>
+        <p id="username_bad_lenght" class="hideme" hidden>
+            {{ "Le nom d'utilisateur doit contenir entre 2 et 25 caractères." | trans }}
+        </p>
+        <p id="accept_cgu" class="hideme" hidden>
+            {{ "Vous devez accepter les Conditions Générales d'utilisation." | trans }}
+        </p>
+    </div>
+    <form id="fos_user_registration_form" action="{{ path('fos_user_registration_register') }}" method="POST">
+        <div class="form-group">
+            <div>
+                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur' | trans } }) }}
                 {{ form_errors(form.username) }}
-                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'E-mail' } }) }}
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email' | trans } }) }}
                 {{ form_errors(form.email) }}
             </div>
-            <div id="signup_second_part">
-                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe' } }) }}
+            <div>
+                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe' | trans } }) }}
                 {{ form_errors(form.plainPassword.first) }}
-                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe de confirmation' } }) }}
+                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirmation de mot de passe' | trans } }) }}
                 {{ form_errors(form.plainPassword.second) }}
             </div>
-            <div id="signup_third_part">
-                {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom' } }) }}
+            <div>
+                {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom' | trans } }) }}
                 {{ form_errors(form.firstname) }}
-                {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'Nom' } }) }}
+                {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'Nom' | trans } }) }}
                 {{ form_errors(form.lastname) }}
             </div>
         </div>
         <div class="signup_roles">
-            Je suis un
+            {{ 'Je suis un' | trans }}
             {{ form_widget(form.roles, { 'attr': {'class': 'form-control' } }) }}
             {{ form_errors(form.roles) }}
         </div>
         {{ form_rest(form) }}
-        <input required type='checkbox' name='CGU'> Acceptez les <a href='{{ path('dh_platform_legal') }}'>CGU</a><br/>
+        <a href='{{ path('dh_platform_legal') }}'>{{ "Consulter les Conditions Générales d'Utilisation" | trans }}</a>
+        <input required id="fos_user_registration_form_cgu" type='checkbox' name='CGU'> {{ "J'accepte les CGU" | trans }}<br/>
         <div>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Enregistrer">
+            <input id="fos_user_registration_form_submit" class="btn btn-lg btn-primary btn-block" type="button" value="{{ "Enregistrer" | trans }}">
         </div>
     </form>
-    <p>Déjà inscrit? <a onclick='show_signup_part("signin");' style='color: blue;'>Connectez-vous</a></p>
+    <p>{{ 'Déjà inscrit?' | trans }} <a onclick='show_signup_part("signin");' style='color: blue;'>{{ "Se connecter" | trans }}</a></p>
 </div>
