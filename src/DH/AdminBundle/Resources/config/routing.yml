@@ -2,14 +2,47 @@ dh_admin_index:
     path:       /
     defaults:   { _controller: DHAdminBundle:Admin:index }
 
+# Users
+dh_admin_users:
+    path:       /users
+    defaults:   { _controller: DHAdminBundle:User:index }
+
+dh_admin_users_edit:
+    path:      /users/edit/{id}
+    defaults:  { _controller: DHAdminBundle:User:edit }
+    requirements:
+        id:     \d+
+
+dh_admin_users_delete:
+    path:      /articles/delete/{id}
+    defaults:  { _controller: DHAdminBundle:User:delete }
+    requirements:
+        id:     \d+
+
 # Articles
 dh_admin_articles:
-    path:       /article
+    path:       /articles
     defaults:   { _controller: DHAdminBundle:Article:index }
+
+dh_admin_articles_add:
+    path:      /articles/add
+    defaults:  { _controller: DHAdminBundle:Article:add }
+
+dh_admin_articles_edit:
+    path:      /articles/edit/{id}
+    defaults:  { _controller: DHAdminBundle:Article:edit }
+    requirements:
+        id:     \d+
 
 dh_admin_articles_delete:
     path:      /article/delete/{id}
     defaults:  { _controller: DHAdminBundle:Article:delete }
+    requirements:
+        id:     \d+
+
+dh_admin_articles_hideorshow:
+    path:      /articles/hideOrShow/{id}
+    defaults:  { _controller: DHAdminBundle:Article:hideOrShow }
     requirements:
         id:     \d+
 
@@ -21,6 +54,12 @@ dh_admin_modules:
 dh_admin_modules_delete:
     path:      /modules/delete/{id}
     defaults:  { _controller: DHAdminBundle:Module:delete }
+    requirements:
+        id:     \d+
+
+dh_admin_modules_edit:
+    path:      /modules/edit/{id}
+    defaults:  { _controller: DHAdminBundle:Module:edit }
     requirements:
         id:     \d+
 
