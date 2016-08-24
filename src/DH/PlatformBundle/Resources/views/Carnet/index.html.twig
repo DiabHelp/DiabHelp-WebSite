@@ -8,9 +8,9 @@
 
 {% block dhplatform_body %}
 
-<h2><a href="{{ path('dh_platform_carnet_exportjson') }}">Exporter mon carnet de suivi !</a></h2>
+<h2><a href="{{ path('dh_platform_carnet_exportjson', {'id_user' : app.user.id}) }}">Exporter mon carnet de suivi !</a></h2>
 
-<h2><a href="{{ path('dh_platform_carnet_show') }}">Visualiser mon carnet de suivi !</a></h2>
+<h2><a href="{{ path('dh_platform_carnet_show', {'id_user' : app.user.id}) }}">Visualiser mon carnet de suivi !</a></h2>
 
   <div class='cf'></div>
 

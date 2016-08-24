@@ -1,4 +1,4 @@
-#navbar
+################### navbar ###################
 Accueil: Home
 Modules: Modules
 Proposer: Suggest
@@ -12,7 +12,8 @@ Connexion: 'Log in'
 Inscription: 'Register'
 Connexion/Inscription: 'Log in / Register'
 
-#index
+
+################### index ###################
 Réagir: React
 'Télécharger l''application DiabHelp': 'Download the app'
 'S''informer': 'More information'
@@ -34,9 +35,9 @@ diabhelp.desc:
     app. Each and every participation are most welcome, do not hesitate to vote for your favorites modules, or even
     submit your own development ideas. By collaborating with health organisms (doctors, nutritionists, hospitals, etc),
     we will provide a quality standard to fullfill your needs.
-#endof index
 
-#slider
+
+################### slider ###################
 Réagissez: React
 'Notez et commentez les modules qui vous semblent pertinents.': 'Rate and give your impressions about the modules.'
 'Un projet créé pour les patients, par les patients. Devenez acteur du développement de votre solution.':
@@ -45,13 +46,15 @@ Réagissez: React
 'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée':
   'Suggest your own module ! The community will give feedback and vote for it to get the best of the idea.'
 
-#footer
+
+################### footer ###################
 'Mentions légales': 'Legal notice'
 ADRESSE: ADRESS
 TELEPHONE: PHONE
 EMAIL: EMAIL
 
-#connexion
+
+################### connexion ###################
 'Se connecter à DiabHelp': 'Log in to DiabHelp'
 'Se connecter': 'Log in'
 'Nom d''utilisateur': 'Username'
@@ -65,7 +68,8 @@ EMAIL: EMAIL
 'envoyer': 'send'
 'Mot de passe retrouvé?': 'Password found'
 
-#inscription
+
+################### inscription ###################
 "S'inscrire sur DiabHelp": "Register to DiabHelp"
 "Email": "Email"
 "Mot de passe": "Password"
@@ -82,7 +86,7 @@ EMAIL: EMAIL
 'Docteur': Doctor
 
 
-#modules
+################### modules ###################
 'Liste des modules': List of modules
 'Informations complémentaires sur le module': "Additional information about the module"
 Information: Information
@@ -102,7 +106,8 @@ Information: Information
 'Supprimer': 'Delete'
 'Modifier': 'Edit'
 
-#proposer
+
+################### proposer ###################
 'Proposer un module': 'Submit an idea'
 'Pourquoi proposer un module ?': "Why submitting an idea ?"
 proposer:
@@ -127,7 +132,8 @@ proposer:
 'Vous devez être connecté afin de proposer un module.': "You have to be logged in to submit an idea."
 'Pas de module trouvé': 'No module found'
 
-#contact
+
+################### contact ###################
 Contact: Contact
 "Qui sommes nous ?": "Who are we ?"
 contact:
@@ -180,7 +186,8 @@ contact:
 'Votre numéro de téléphone': 'Your phone number (optionnal)'
 'Ecrivez votre message': 'Type in your message'
 
-#actualités
+
+################### actualités ###################
 Archives: Archives
 Janvier: January
 Février: February
@@ -199,7 +206,8 @@ Décembre: December
 'Poster un commentaire': 'Post a comment'
 'Votre commentaire ici..': 'Your comment here'
 
-#profil
+
+################### profil ###################
 'Modifier son profil': 'Edit profile'
 'Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)': 'Choose your profile picture (2Mo max, jpg, jpeg, gif and png accepted)'
 'Envoyer cette image': 'Upload this picture'
@@ -207,7 +215,8 @@ Association: Association
 "Numéro de téléphone": 'Phone number'
 'Je souhaite supprimer mon compte': 'I want to delete my account'
 
-#ilsNousOntAidés
+
+################### ilsNousOntAidés ###################
 'Ils nous ont aidés': 'They helped us'
 helper:
   thomas: >
@@ -216,11 +225,12 @@ helper:
 'Merci à Thomas ! :-)': 'Thank you Thomas ! :-)'
 
 
-#email
+################### email ###################
 "Email confirmation envoyé": >
   A confirmation email have been sent to your adress, check your mailbox and click on the attached link.
 
-#error messages
+
+################### error messages ###################
 "déjà utilisé": "already used."
 "Adresse email déjà utilisée.": "Email address already used."
 "Formulaire vide.": "All the fields are required."
@@ -231,3 +241,18 @@ helper:
 "Le nom d'utilisateur doit contenir entre 2 et 25 caractères.": "The username must be composed of 2 to 25 characters."
 "Vous devez accepter les Conditions Générales d'utilisation.": "You must accept the General Terms and Conditions."
 "This value should not be blank.": "This value should not be blank."
+
+
+################### export CDS ###################
+"Carnet de suivi": "Logbook"
+"Date": "Date"
+"Titre": "Title"
+"Lieu": "Place"
+"Glucides": "Carbohydrates"
+"Glycémie": "Blood sugar"
+"HbA1c": "HbA1c"
+"Activité": "Activity"
+"Type d'activité": "Type of activity"
+"Insuline rapide": "Rapid insulin"
+"Insuline lente": "Slow insulin"
+"Notes": "Notes"

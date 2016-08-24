@@ -23,7 +23,7 @@ class CarnetController extends Controller
 	{
         return '
 [{
-   "date":null,
+   "date":"02/08/2016",
    "title":"test",
    "place":"test",
    "dateHour":"now",
@@ -95,25 +95,21 @@ class CarnetController extends Controller
         $entries = $request->get('datas', null);
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('DHUserBundle:User');
-
-        $user = $repo->findOneById($id_user);
+        $user = $this->getUser();
+        $datastring = $this->getFakeData();
+        $data = json_decode($datastring);
+//        $user = $repo->findOneById($id_user);
         if (!$user)
             return new Response($this->serializer->serialize(array("success" => false), 'json'));
 
-//        $logbook = new Logbook();
-//        $logbook->setToken($carnetToken);
-//        $logbook->setDate(new \Datetime());
-//        $logbook->setUser($user);
-
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
-        $datas = json_decode($entries);
 
         $content = $this->renderView('DHPlatformBundle:Carnet:template.html.twig',
             array(
                 'firstname' => $firstname,
                 'lastname' => $lastname,
-                'datas' => $datas,
+                'data' => $data,
             )
         );
 		$response = new Response();
@@ -135,15 +131,7 @@ class CarnetController extends Controller
 		else
 			$path = $this->get('kernel')->getRootDir() . '/data/pdf/logbook/' . $carnetToken . '.pdf';
 
-        var_dump($path);
-
 		$id_user = $request->get('id_user', null);
-		//$entries = $request->get('datas', null);
-        $entries = array();
-        $content = $this->get("request")->getContent();
-        if (!empty($content)) {
-            $entries = json_decode($content, true);
-        }
 		$em = $this->getDoctrine()->getManager();
 		$repo = $em->getRepository('DHUserBundle:User');
 
@@ -158,46 +146,45 @@ class CarnetController extends Controller
 
 		$firstname = $user->getFirstname();
 		$lastname = $user->getLastname();
+//        $datastring = $this->getFakeData();
+//        $data = json_decode($datastring);
 
-//		$datas = json_decode($entries);
+		$entries = $request->get('data', null);
+		$data = json_decode($entries);
 
-		$this->get('knp_snappy.pdf')->generateFromHtml(
-	    $this->renderView(
-	        'DHPlatformBundle:Carnet:template.html.twig',
-	        array(
-	            'firstname' => $firstname,
-	            'lastname' => $lastname,
-	            'datas' => $entries,
-	            )
-	        ),
-	    $path
-	    );
+        $html = $this->renderView(
+            'DHPlatformBundle:Carnet:template.html.twig',
+            array(
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'data' => $data,
+            )
+        );
 
+        $this->get('knp_snappy.pdf')->generateFromHtml($html, $path,
+            array (
+                'encoding' => 'utf-8',
+                'dpi' => 300,
+                'image-dpi' => 300
+            ));
 
-		$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
 
 		$content = file_get_contents($path);
-        var_dump($content);
-
-/*		$response = new Response();
-	    $response->headers->set('Content-Type', 'application/pdf');
-	    $response->headers->set('Content-Disposition', 'attachment;filename="'."Carnet_suivi_$firstname-$lastname.pdf");
-	    $response->setContent($content);*/
 
         $em->flush();
         $email = $request->get('email', null);
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-//            $attachment = Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
-
+//            $attachment = \Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
                 ->setTo($email)
                 ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
-                ->attach(Swift_Attachment::fromPath($path));
+                ->attach(\Swift_Attachment::fromPath($path));
             $this->get('mailer')->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }

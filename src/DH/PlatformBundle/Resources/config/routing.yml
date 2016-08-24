@@ -100,9 +100,13 @@ dh_platform_carnet:
     defaults:   { _controller: DHPlatformBundle:Carnet:index}
 
 dh_platform_carnet_show:
-    path:       /carnet/show
+    path:       /carnet/show/{id_user}
     defaults:   { _controller: DHPlatformBundle:Carnet:show}
+    requirements:
+        id_user:  \d+
 
 dh_platform_carnet_exportjson:
-    path:       /carnet/export
+    path:       /carnet/export/{id_user}
     defaults:   { _controller: DHPlatformBundle:Carnet:exportJSON}
+    requirements:
+        id_user:  \d+
