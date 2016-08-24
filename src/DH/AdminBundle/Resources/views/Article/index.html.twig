@@ -19,22 +19,40 @@
 	{% endfor %}
 {% endfor %}
 
-<table border="1">
+	<a href="{{ path('dh_admin_articles_add') }}">Add an article</a>
+
+	<table border="1">
 <tbody>
 	<tr>
 		<th>id</th>
+		<th>img</th>
 		<th>date</th>
 		<th>title</th>
 		<th>text</th>
+		<th>Edit</th>
 		<th>Delete</th>
+		<th>Hide/Show</th>
 	</tr>
 	{% for article in articles %}
 		<tr>
 			<td>{{ article.id }}</td>
+			<td>
+				<img class='img_art' id='image_profil' src="{{ vich_uploader_asset(article, 'imageFile') }}" />
+			</td>
 			<td>{{ article.date|date('d/m/Y') }}</td>
 			<td>{{ article.title }}</td>
 			<td>{{ article.text }}</td>
+			<td><a href="{{ path('dh_admin_articles_edit', {'id': article.id}) }}">Edit this article</a></td>
 			<td><a href="{{ path('dh_admin_articles_delete', {'id': article.id}) }}">Delete this article</a></td>
+			<td>
+				<a href="{{ path('dh_admin_articles_hideorshow', {'id': article.id}) }}">
+					{% if article.display == 1 %}
+						Hide
+					{% else %}
+						Show
+					{% endif %}
+				</a>
+			</td>
 		</tr>
 	{% endfor %}
 </tbody>

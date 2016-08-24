@@ -130,3 +130,7 @@ vich_uploader:
             uri_prefix:         /Dev-API/web/images/module
             upload_destination: %kernel.root_dir%/../web/images/module
             namer:              vich_uploader.namer_uniqid
+        logo_article:
+            uri_prefix:         /Dev-API/web/images/article
+            upload_destination: %kernel.root_dir%/../web/images/article
+            namer:              vich_uploader.namer_uniqid
