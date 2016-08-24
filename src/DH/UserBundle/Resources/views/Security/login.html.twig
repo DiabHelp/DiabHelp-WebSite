@@ -6,13 +6,13 @@
             {{ "Cet utilisateur n'existe pas." | trans }}
         </p>
         <p id="login_error" class="hideme" hidden>
-            {{ "Le nom d'uilisateur et le mot de passe ne correspondent pas."| trans }}
+            {{ "Le nom d'uilisateur et le mot de passe ne correspondent pas." | trans }}
         </p>
     </div>
-    <form action="{{ path('fos_user_security_check') }}" method="post">
+    <form id="fos_user_connexion_form" action="{{ path('fos_user_security_check') }}" method="post">
         <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }} {{ "ou adresse email" | trans }}" class='nav_respons_signup' autofocus/>
         <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" class='nav_respons_signup'/>
-        <input type="submit" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
+        <input id="fos_user_connexion_form_submit" type="button" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
     </form>
     {#<?php // include 'src/fb.php'; ?>#}
     <a href='{{ path('fos_user_resetting_request') }}' style='color: blue; font-size: 0.8em;'>{{ 'Mot de passe oublié?' | trans }}</a>

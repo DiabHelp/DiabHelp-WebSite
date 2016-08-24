@@ -32,6 +32,12 @@ dh_platform_check_email_exist:
     requirements:
         _method:  POST
 
+dh_platform_check_email_and_username_exist:
+    path:     /check_email_and_username_exist
+    defaults: { _controller: DHPlatformBundle:Diabhelp:checkEmailAndUsernameExist }
+    requirements:
+        _method:  POST
+
 ## MODULES
 dh_platform_module:
     path:     /modules
