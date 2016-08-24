@@ -69,9 +69,9 @@
             <h2 class="contact_form_title">{{ 'Vous voulez nous contacter ?' | trans }}</h2>
             <div class="contact_form_box">
                 {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
-                <div class="error">
-                    {{ form_errors(form) }}
-                </div>
+                {#<div class="error">#}
+                    {#{{ form_errors(form) }}#}
+                {#</div>#}
                 <div class="form_box_left fl">
                     {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_name', 'placeholder' : 'Votre nom' | trans }}) }}
                     {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_mail', 'placeholder' : 'Votre email' | trans }}) }}

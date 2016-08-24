@@ -231,3 +231,6 @@ helper:
 "Le nom d'utilisateur doit contenir entre 2 et 25 caractères.": "The username must be composed of 2 to 25 characters."
 "Vous devez accepter les Conditions Générales d'utilisation.": "You must accept the General Terms and Conditions."
 "This value should not be blank.": "This value should not be blank."
+
+"Cet utilisateur n'existe pas": "This user doesn't exist."
+"Le nom d'uilisateur et le mot de passe ne correspondent pas.": "The username and password do not match."
