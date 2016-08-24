@@ -8,8 +8,20 @@
 
 {% block body %}
 
+    <div id="content"></div>
+    <div class = "page_header">
+        <div class= center >
+            <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
+            <h1 class="page_header_title fl">{{ 'Ils nous ont aidés' | trans }}</h1>
+            <ul class="page_header_nav fr">
+                <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
+                <li><a class="active" href="{{ path('dh_platform_contact') }}">{{ 'Ils nous ont aidés' | trans }}</a></li>
+            </ul>
+        </div>
+        <div class="cf"></div>
+    </div>
+
     <div class='center'>
-        <h1 class=news_item_title>{{ 'Ils nous ont aidés' | trans }}</h1>
         <div class="cf"></div>
         <div class='news_item'>
             <div id='Text_News'>
