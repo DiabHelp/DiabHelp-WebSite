@@ -180,7 +180,7 @@ class DiabhelpController extends Controller
         else if ($user != null)
             $resp = array("success" => true);
         else
-            $resp = array("success" => false);
+            $resp = array("success" => true);
 
         $jsonContent = $this->serializer->serialize($resp, 'json');
         return new Response($jsonContent);
