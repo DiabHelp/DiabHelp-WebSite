@@ -21,6 +21,33 @@ $(window).load(function() {
 			});
 	});
 
+	$('#fos_user_connexion_form_submit').click(function () {
+		var username = $('#username').val();
+		var password = $('#password').val();
+
+		$('.hideme').hide();
+
+		var errors = 0;
+		$.post("check_email_and_username_exist", { test: username },
+			function (result) {
+				var res = $.parseJSON(result);
+				if (res.success == false) {
+					$('#unknown_user').show();
+					errors++;
+				} else
+					$.post("../rest-login", { username: username, password: password },
+						function (result) {
+							var res = $.parseJSON(result);
+							if (res.success == false) {
+								$('#login_error').show();
+								errors++;
+							}
+							if (errors == 0)
+								$("#fos_user_connexion_form").submit();
+					});
+		});
+	});
+
 	$('#fos_user_registration_form_submit').click(function () {
 		var username = $('#fos_user_registration_form_username').val();
 		var email = $('#fos_user_registration_form_email').val();

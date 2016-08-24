@@ -64,7 +64,7 @@ EMAIL: EMAIL
 'Se connecter à DiabHelp': 'Se connecter à DiabHelp'
 'Se connecter': 'Se connecter'
 'Nom d''utilisateur': 'Nom d''utilisateur'
-'ou adresse email': 'ou adresse email'
+'ou adresse email': 'ou email'
 'Mot de passe': 'Mot de passe'
 'Mot de passe oublié?': 'Mot de passe oublié?'
 'Pas de compte?': 'Pas de compte?'
@@ -251,6 +251,8 @@ helper:
 "Vous devez accepter les Conditions Générales d'utilisation.": "Vous devez accepter les Conditions Générales d'utilisation."
 "Veuillez renseigner ce champ.": "Veuillez renseigner ce champ."
 "This value should not be blank.": "Veuillez renseigner ce champ."
+"Cet utilisateur n'existe pas": "Cet utilisateur n'existe pas"
+"Le nom d'uilisateur et le mot de passe ne correspondent pas.": "Le nom d'uilisateur et le mot de passe ne correspondent pas."
 
 
 ################### export CDS ###################
