@@ -37,12 +37,10 @@ class CarnetController extends Controller
         }
 
         foreach ($entries as $entry) {
-            if ($entry->getRdate() != null)
-                $entry->setRdate($entry->getRdate()->getTimestamp());
             if ($entry->getDateEdition() != null)
                 $entry->setDateEdition($entry->getDateEdition()->getTimestamp());
-            if ($entry->getDate() != null)
-                $entry->setDate($entry->getDate()->getTimestamp());
+            if ($entry->getDateCreation() != null)
+                $entry->setDateCreation($entry->getDateCreation()->getTimestamp());
         }
 
         $jsonContent = $this->serializer->serialize(array("success" => true, "entries" => $entries), 'json');
@@ -114,19 +112,18 @@ class CarnetController extends Controller
                 $tmp_date = new DateTime();
                 $entry_insert->setIdSynchro($entry['id']);
                 $entry_insert->setIdUser($id_user);
-                $date = $tmp_date->setTimestamp($entry['date']);
-                $entry_insert->setDate($date);
-                $date_edition = $tmp_date->setTimestamp($entry['date_edition']);
+                $date = $tmp_date->setTimestamp($entry['dateCreation']);
+                $entry_insert->setDateCreation($date);
+                $date_edition = $tmp_date->setTimestamp($entry['dateEdition']);
                 $entry_insert->setDateEdition($date_edition);
                 $entry_insert->setTitle($entry['title']);
                 $entry_insert->setPlace($entry['place']);
-                $entry_insert->setDateHour($entry['date_hour']);
                 $entry_insert->setGlucide($entry['glucide']);
                 $entry_insert->setActivity($entry['activity']);
-                $entry_insert->setActivityType($entry['activity_type']);
+                $entry_insert->setActivityType($entry['activityType']);
                 $entry_insert->setNotes($entry['notes']);
-                $entry_insert->setFastInsu($entry['fast_insu']);
-                $entry_insert->setSlowInsu($entry['slow_insu']);
+                $entry_insert->setFastInsu($entry['fastInsu']);
+                $entry_insert->setSlowInsu($entry['slowInsu']);
                 $entry_insert->setHba1c($entry['hba1c']);
                 $entry_insert->setHour($entry['hour']);
                 $entry_insert->setGlycemy($entry['glycemy']);
@@ -144,28 +141,25 @@ class CarnetController extends Controller
                 $entry_insert->setAthome($entry['athome']);
                 $entry_insert->setAlcohol($entry['alcohol']);
                 $entry_insert->setPeriod($entry['period']);
-                $rdate = $tmp_date->setTimestamp($entry['rdate']);
-                $entry_insert->setRdate($rdate);
 
                 $em->persist($entry_insert);
                 $em->flush();
-            } else if ($test_entry->getDateEdition()->getTimestamp() < $entry['date_edition']) {
+            } else if ($test_entry->getDateEdition()->getTimestamp() < $entry['dateEdition']) {
                 $tmp_date = new DateTime();
                 $test_entry->setIdSynchro($entry['id']);
                 $test_entry->setIdUser($id_user);
-                $date = $tmp_date->setTimestamp($entry['date']);
-                $test_entry->setDate($date);
-                $date_edition = $tmp_date->setTimestamp($entry['date_edition']);
+                $date = $tmp_date->setTimestamp($entry['dateCreation']);
+                $test_entry->setDateCreation($date);
+                $date_edition = $tmp_date->setTimestamp($entry['dateEdition']);
                 $test_entry->setDateEdition($date_edition);
                 $test_entry->setTitle($entry['title']);
                 $test_entry->setPlace($entry['place']);
-                $test_entry->setDateHour($entry['date_hour']);
                 $test_entry->setGlucide($entry['glucide']);
                 $test_entry->setActivity($entry['activity']);
-                $test_entry->setActivityType($entry['activity_type']);
+                $test_entry->setActivityType($entry['activityType']);
                 $test_entry->setNotes($entry['notes']);
-                $test_entry->setFastInsu($entry['fast_insu']);
-                $test_entry->setSlowInsu($entry['slow_insu']);
+                $test_entry->setFastInsu($entry['fastInsu']);
+                $test_entry->setSlowInsu($entry['slowInsu']);
                 $test_entry->setHba1c($entry['hba1c']);
                 $test_entry->setHour($entry['hour']);
                 $test_entry->setGlycemy($entry['glycemy']);
@@ -183,8 +177,6 @@ class CarnetController extends Controller
                 $test_entry->setAthome($entry['athome']);
                 $test_entry->setAlcohol($entry['alcohol']);
                 $test_entry->setPeriod($entry['period']);
-                $rdate = $tmp_date->setTimestamp($entry['rdate']);
-                $test_entry->setRdate($rdate);
 
                 $em->flush();
             }
