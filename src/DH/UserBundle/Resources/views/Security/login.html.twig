@@ -1,5 +1,14 @@
 <div id='connexion' class='center'>
     <h2 class='center'>{{ 'Se connecter à DiabHelp' | trans }}</h2>
+    <div style="color: red;">
+        <p id="unknown_user" class="hideme" hidden>
+            {#{ form.username }#}
+            {{ "Cet utilisateur n'existe pas." | trans }}
+        </p>
+        <p id="login_error" class="hideme" hidden>
+            {{ "Le nom d'uilisateur et le mot de passe ne correspondent pas."| trans }}
+        </p>
+    </div>
     <form action="{{ path('fos_user_security_check') }}" method="post">
         <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }} {{ "ou adresse email" | trans }}" class='nav_respons_signup' autofocus/>
         <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" class='nav_respons_signup'/>
