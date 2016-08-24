@@ -174,6 +174,7 @@ class CarnetController extends Controller
 		$content = file_get_contents($path);
 
         $em->flush();
+        var_dump($user);
         $email = $request->get('email', null);
         if ($email == null)
             $email = $user->getEmail();
