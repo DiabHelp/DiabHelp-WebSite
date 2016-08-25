@@ -2,6 +2,8 @@
 
 namespace DH\PlatformBundle\Controller;
 
+use Swift_Mailer;
+use Swift_MailTransport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -170,19 +172,23 @@ class CarnetController extends Controller
 
 //		$content = file_get_contents($path);
 //        var_dump($user);
+        $transport = Swift_MailTransport::newInstance();
+        $mailer = Swift_Mailer::newInstance($transport);
         $email = $request->get('email', null);
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-            $filename = "Export".$user->getFirstname(). "-" . $user->getLastname(). ".pdf";
+            $filename = "Export-".$user->getFirstname(). "-" . $user->getLastname(). ".pdf";
             var_dump($email);
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
-                ->setTo($email)
                 ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
                 ->attach(\Swift_Attachment::fromPath($path)->setFilename($filename));
-            $this->get('mailer')->send($message);
+            $message->setTo($email);
+//            $mailer = $this->get('mailer');
+            var_dump($mailer);
+            $mailer->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
         else
