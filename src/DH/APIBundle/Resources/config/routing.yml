@@ -50,7 +50,7 @@ dh_api_carnet_entry_delete:
 
 dh_api_carnet_exportJSON:
     path:      /carnet/exportJSON
-    defaults:  { _controller: DHPlatformBundle:Carnet:exportJSON }
+    defaults:  { _controller: DHAPIBundle:Carnet:exportJSON }
 
 ## MODULES
 dh_api_module_view:
