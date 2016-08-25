@@ -143,11 +143,8 @@ class CarnetController extends Controller
 		$logbook->setToken($carnetToken);
 		$logbook->setDate(new \Datetime());
 		$logbook->setUser($user);
-
 		$firstname = $user->getFirstname();
 		$lastname = $user->getLastname();
-//        $datastring = $this->getFakeData();
-//        $data = json_decode($datastring);
 
 		$entries = $request->get('data', null);
 		$data = json_decode($entries);
@@ -160,7 +157,6 @@ class CarnetController extends Controller
                 'data' => $data,
             )
         );
-
         $this->get('knp_snappy.pdf')->generateFromHtml($html, $path,
             array (
                 'encoding' => 'utf-8',
@@ -170,22 +166,22 @@ class CarnetController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 		$em->persist($logbook);
-
-		$content = file_get_contents($path);
-
         $em->flush();
-        var_dump($user);
+
+//		$content = file_get_contents($path);
+//        var_dump($user);
         $email = $request->get('email', null);
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-//            $attachment = \Swift_Attachment::newInstance($content, "Carnet_suivi_$firstname-$lastname.pdf", 'application/pdf');
+            $filename = "Export".$user.getFirstname(). "-" . $user.getLastname(). ".pdf";
+            var_dump($email);
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
                 ->setTo($email)
                 ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
-                ->attach(\Swift_Attachment::fromPath($path));
+                ->attach(\Swift_Attachment::fromPath($path)->setFilename($filename));
             $this->get('mailer')->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
