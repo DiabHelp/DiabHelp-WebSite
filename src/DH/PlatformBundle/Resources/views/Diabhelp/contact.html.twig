@@ -1,12 +1,14 @@
 {# src/DH/PlatformBundle/Resources/views/Advert/index.html.twig #}
 
-{% extends "DHPlatformBundle::slide.html.twig" %}
+{#{% extends "DHPlatformBundle::slide.html.twig" %}#}
+
+{% extends "layout.html.twig" %}
 
 {% block title %}
     {{ "L'équipe" | trans }} - {{ parent() }}
 {% endblock %}
 
-{% block dhplatform_body %}
+{% block body %}
 
     <div id="content"></div>
     <div class = "page_header">

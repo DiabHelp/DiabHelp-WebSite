@@ -1,12 +1,12 @@
 {# src/DH/PlatformBundle/Resources/views/Article/view.html.twig #}
 
-{% extends "DHPlatformBundle::slide.html.twig" %}
+{% extends "layout.html.twig" %}
 
 {% block title %}
   {{ article.title }} - {{ parent() }}
 {% endblock %}
 
-{% block dhplatform_body %}
+{% block body %}
 
   <div id="content">
     <div class = "page_header">
