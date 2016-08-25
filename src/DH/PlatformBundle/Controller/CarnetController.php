@@ -173,10 +173,11 @@ class CarnetController extends Controller
         $transport = Swift_MailTransport::newInstance();
         $mailer = Swift_Mailer::newInstance($transport);
         $email = $request->get('email', null);
+        $datenow = new \DateTime();
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-            $filename = "Export-". $firstname. "-" . $lastname .  DATE_W3C . ".pdf";
+            $filename = "Export-". $firstname. "-" . $lastname . $datenow->format('Y-m-d H:i:s') . ".pdf";
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
