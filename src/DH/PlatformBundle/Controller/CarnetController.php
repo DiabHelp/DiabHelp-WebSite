@@ -174,7 +174,7 @@ class CarnetController extends Controller
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-            $filename = "Export".$user.getFirstname(). "-" . $user.getLastname(). ".pdf";
+            $filename = "Export".$user->getFirstname(). "-" . $user->getLastname(). ".pdf";
             var_dump($email);
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
