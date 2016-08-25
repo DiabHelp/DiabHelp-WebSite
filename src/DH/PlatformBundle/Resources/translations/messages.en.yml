@@ -248,6 +248,7 @@ helper:
 ################### export CDS ###################
 "Carnet de suivi": "Logbook"
 "Date": "Date"
+"Heure": "Hour"
 "Titre": "Title"
 "Lieu": "Place"
 "Glucides": "Carbohydrates"
