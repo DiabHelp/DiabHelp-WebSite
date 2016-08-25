@@ -15,18 +15,13 @@
       </options>
     </field>
     <field name="dateEdition" type="datetime" column="date_edition" nullable="false"/>
-    <field name="date" type="datetime" column="date" nullable="false"/>
+    <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
     <field name="title" type="text" column="title" length="65535" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
     <field name="place" type="text" column="place" length="65535" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="dateHour" type="text" column="date_hour" length="65535" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -124,11 +119,6 @@
     <field name="period" type="integer" column="period" nullable="false">
       <options>
         <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="rdate" type="datetime" column="rdate" nullable="false">
-      <options>
-        <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
   </entity>

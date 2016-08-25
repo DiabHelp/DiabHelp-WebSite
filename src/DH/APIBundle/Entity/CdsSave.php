@@ -28,13 +28,6 @@ class CdsSave
     private $place;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="date_hour", type="text", length=65535, nullable=false)
-     */
-    private $dateHour;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="glucide", type="float", precision=10, scale=0, nullable=false)
@@ -198,16 +191,9 @@ class CdsSave
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="rdate", type="datetime", nullable=false)
+     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
      */
-    private $rdate = 'CURRENT_TIMESTAMP';
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
-     */
-    private $date;
+    private $dateCreation;
 
     /**
      * @var integer
@@ -228,17 +214,17 @@ class CdsSave
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getDateCreation()
     {
-        return $this->date;
+        return $this->dateCreation;
     }
 
     /**
-     * @param mixed $date
+     * @param mixed $dateCreation
      */
-    public function setDate($date)
+    public function setDateCreation($dateCreation)
     {
-        $this->date = $date;
+        $this->dateCreation = $dateCreation;
     }
 
     /**
@@ -287,30 +273,6 @@ class CdsSave
     public function getPlace()
     {
         return $this->place;
-    }
-
-    /**
-     * Set dateHour
-     *
-     * @param string $dateHour
-     *
-     * @return CdsSave
-     */
-    public function setDateHour($dateHour)
-    {
-        $this->dateHour = $dateHour;
-
-        return $this;
-    }
-
-    /**
-     * Get dateHour
-     *
-     * @return string
-     */
-    public function getDateHour()
-    {
-        return $this->dateHour;
     }
 
     /**
@@ -863,30 +825,6 @@ class CdsSave
     public function getPeriod()
     {
         return $this->period;
-    }
-
-    /**
-     * Set rdate
-     *
-     * @param mixed $rdate
-     *
-     * @return CdsSave
-     */
-    public function setRdate($rdate)
-    {
-        $this->rdate = $rdate;
-
-        return $this;
-    }
-
-    /**
-     * Get rdate
-     *
-     * @return mixed
-     */
-    public function getRdate()
-    {
-        return $this->rdate;
     }
 
     /**

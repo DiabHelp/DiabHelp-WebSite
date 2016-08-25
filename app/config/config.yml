@@ -116,11 +116,11 @@ fos_user:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        binary:     C:\\wamp\\wkhtmltopdf\\bin\\wkhtmltopdf.exe
         options:    []
     image:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        binary:     C:\\wamp\\wkhtmltopdf\\bin\\wkhtmltoimage.exe
         options:    []
 
 vich_uploader:
@@ -129,4 +129,8 @@ vich_uploader:
         logo_module:
             uri_prefix:         /Dev-API/web/images/module
             upload_destination: %kernel.root_dir%/../web/images/module
+            namer:              vich_uploader.namer_uniqid
+        logo_article:
+            uri_prefix:         /Dev-API/web/images/article
+            upload_destination: %kernel.root_dir%/../web/images/article
             namer:              vich_uploader.namer_uniqid
