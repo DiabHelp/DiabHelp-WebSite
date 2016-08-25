@@ -170,24 +170,19 @@ class CarnetController extends Controller
 		$em->persist($logbook);
         $em->flush();
 
-//		$content = file_get_contents($path);
-//        var_dump($user);
         $transport = Swift_MailTransport::newInstance();
         $mailer = Swift_Mailer::newInstance($transport);
         $email = $request->get('email', null);
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-            $filename = "Export-".$user->getFirstname(). "-" . $user->getLastname(). ".pdf";
-            var_dump($email);
+            $filename = "Export-". $firstname. "-" . $lastname .  DATE_W3C . ".pdf";
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
                 ->setBody($this->renderView('DHPlatformBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
                 ->attach(\Swift_Attachment::fromPath($path)->setFilename($filename));
             $message->setTo($email);
-//            $mailer = $this->get('mailer');
-            var_dump($mailer);
             $mailer->send($message);
             return new Response($this->serializer->serialize(array("success" => true), 'json'));
         }
