@@ -4,6 +4,7 @@ namespace DH\APIBundle\Controller;
 
 use DateTime;
 use DH\APIBundle\Entity\CdsSave;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +12,7 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Swift_MailTransport;
 
 class CarnetController extends Controller
 {
@@ -254,6 +255,7 @@ class CarnetController extends Controller
         );
         $this->get('knp_snappy.pdf')->generateFromHtml($html, $path,
             array (
+                'orientation'=>'Landscape',
                 'encoding' => 'utf-8',
                 'dpi' => 300,
                 'image-dpi' => 300
