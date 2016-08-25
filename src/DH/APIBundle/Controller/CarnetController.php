@@ -268,7 +268,7 @@ class CarnetController extends Controller
         if ($email == null)
             $email = $user->getEmail();
         if ($email){
-            $filename = "Export-". $firstname. "-" . $lastname . $datenow->format('Y-m-d H:i:s') . ".pdf";
+            $filename = "Export-". $firstname. "-" . $lastname . "-" . $datenow->format('Y-m-d H:i:s') . ".pdf";
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre carnet de suivi')
                 ->setFrom('exportCDS@diabhelp.org')
