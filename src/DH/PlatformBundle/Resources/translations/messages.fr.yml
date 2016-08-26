@@ -258,6 +258,7 @@ helper:
 ################### export CDS ###################
 "Carnet de suivi": "Carnet de suivi"
 "Date": "Date"
+"Heure": "Heure"
 "Titre": "Titre"
 "Lieu": "Lieu"
 "Glucides": "Glucides"

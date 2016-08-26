@@ -41,15 +41,16 @@
             {#</p>#}
                 <div class="contact_form_box">
                     <div class="form_box_left fl">
-                        {{ form_widget(form.firstname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Prénom'}}) }}
-                        {{ form_widget(form.lastname, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Nom'}}) }}
-                        {{ form_widget(form.email, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Email'}}) }}
-                        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Association'}}) }}
+                        {{ form_widget(form.username, {'value' : form.vars.value.username, 'attr': {'style': 'display:none;'}}) }}
+                        {{ form_widget(form.firstname, {'value' : form.vars.value.firstname, 'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Prénom'}}) }}
+                        {{ form_widget(form.lastname, {'value' : form.vars.value.lastname, 'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Nom'}}) }}
+                        {{ form_widget(form.email, {'value' : form.vars.value.email, 'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Email'}}) }}
+                        {{ form_widget(form.organisme, {'value' : form.vars.value.organisme, 'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Association'}}) }}
                     </div>
                     <div class="form_box_center fl">
-                        {{ form_widget(form.phone, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Numéro de téléphone'}}) }}
+                        {{ form_widget(form.phone, {'value' : form.vars.value.phone, 'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Numéro de téléphone'}}) }}
                         {{ form_widget(form.birthdate, {'attr': {'class': 'contact_form_input_noname'}}) }}
-                        {{ form_widget(form.plainPassword) }}
+                        {{ form_widget(form.plainPassword, {'value' : form.vars.value.plainPassword}) }}
                     </div>
                     <div class="form_box_righ fl proposer_submit">
                         {{ form_widget(form._token) }}
