@@ -126,7 +126,6 @@ class ModuleController extends Controller
 		} else
 			$vote->setVote($note);
 
-
 		$beforeNote = $module->getNote();
   		$beforeNbVote = $module->getNbVote();
   		$afterNote = (($beforeNote * $beforeNbVote) + $note) / ($beforeNbVote + 1);

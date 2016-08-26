@@ -11,7 +11,7 @@
     </div>
     <form id="fos_user_connexion_form" action="{{ path('fos_user_security_check') }}" method="post">
         <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }} {{ "ou adresse email" | trans }}" class='nav_respons_signup' autofocus/>
-        <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" class='nav_respons_signup'/>
+        <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" onkeypress="return enter(event)" class='nav_respons_signup'/>
         <input id="fos_user_connexion_form_submit" type="button" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
     </form>
     {#<?php // include 'src/fb.php'; ?>#}
