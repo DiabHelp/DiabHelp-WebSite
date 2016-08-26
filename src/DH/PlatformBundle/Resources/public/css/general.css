@@ -1880,7 +1880,7 @@ body {
   text-overflow: ellipsis;
 }
 .trainers_tariffs_line {
-  background: url('../images/trainers_tariff_line.png') repeat-x;
+  /*background: url('../images/trainers_tariff_line.png') repeat-x;*/
   width: 100%;
   height: 1px;
   margin: 7px 0 10px 0;
@@ -3072,20 +3072,20 @@ body {
   margin: 13px 20px 0 20px;
 }
 .news_archive_item li {
-  background: url('../images/news_archive_neactive.png') right center no-repeat;
+  /*background: url('../images/news_archive_neactive.png') right center no-repeat;*/
 }
 .news_archive_item li a {
   color: #474747;
   display: block;
 }
 .news_archive_item li:hover {
-  background: url('../images/news_tags_active.png') right center no-repeat;
+  /*background: url('../images/news_tags_active.png') right center no-repeat;*/
 }
 .news_archive_item li:hover a {
   color: #42caad;
 }
 .news_archive_item_line {
-  background: url('../images/trainers_tariff_line.png') repeat-x !important;
+  /*background: url('../images/trainers_tariff_line.png') repeat-x !important;*/
   width: 100% !important;
   height: 1px !important;
   margin: 8px 0 6px 0;
