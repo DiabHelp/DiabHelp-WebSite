@@ -126,12 +126,18 @@ class ModuleController extends Controller
 		} else
 			$vote->setVote($note);
 
+        $em->flush();
 
-		$beforeNote = $module->getNote();
-  		$beforeNbVote = $module->getNbVote();
-  		$afterNote = (($beforeNote * $beforeNbVote) + $note) / ($beforeNbVote + 1);
-  		$module->setNbVote($beforeNbVote + 1);
-  		$module->setNote($afterNote);
+        $votes = $module->getVotes();
+        $nbVotes = 0;
+        $sumVotes = 0;
+        foreach ($votes as $v) {
+            $sumVotes = $sumVotes + $v->getVote();
+            $nbVotes++;
+        }
+        $finalNote = $sumVotes / $nbVotes;
+
+  		$module->setNote($finalNote);
 
   		$em->flush();
 
