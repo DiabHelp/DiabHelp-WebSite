@@ -1,4 +1,5 @@
 <div id='connexion' class='center'>
+    <img src="{{ asset('bundles/dhplatform/images/Delete-24.png') }}" align="right" onclick="show_signup()" style="cursor: pointer;">
     <h2 class='center'>{{ 'Se connecter à DiabHelp' | trans }}</h2>
     <div style="color: red;">
         <p id="unknown_user" class="hideme" hidden>
@@ -20,6 +21,7 @@
     <p>{{ 'Pas de compte?' | trans}} <a onclick='show_signup_part("signup");' style='color: blue;'>{{ "S'inscrire" | trans }}</a></p>
 </div>
 <div id='forget' class='center' hidden>
+    <img src="{{ asset('bundles/dhplatform/images/Delete-24.png') }}" align="right" onclick="show_signup()" style="cursor: pointer;">
     <h2 class='center'>{{ "Retrouver son mot de passe" | trans }}</h2>
     <p id="email_exist_error" style="color: red;"></p>
     <form name='forget' action="" method='post'>
