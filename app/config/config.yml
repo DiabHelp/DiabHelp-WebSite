@@ -39,6 +39,13 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+# Twig Service Configuration
+services:
+  twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }
+
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -116,11 +123,11 @@ fos_user:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        binary:     C:\\wamp\\wkhtmltopdf\\bin\\wkhtmltopdf.exe
         options:    []
     image:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        binary:     C:\\wamp\\wkhtmltopdf\\bin\\wkhtmltoimage.exe
         options:    []
 
 vich_uploader:

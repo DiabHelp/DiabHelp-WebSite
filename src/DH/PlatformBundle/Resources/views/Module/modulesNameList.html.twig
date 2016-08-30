@@ -3,7 +3,7 @@
             {% for module in modules %}
                 {% if module.display == 1 %}
                     <li>
-                        <a href='{{ path('dh_platform_module_view', {'id': module.id}) }}'>{{ module.name }}</a>
+                        <a href='{{ path('dh_platform_module_view', {'id': module.id}) }}'>{{ module.name | truncate(20) }}</a>
                     </li>
                 {% endif %}
             {% endfor %}

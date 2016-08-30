@@ -652,6 +652,7 @@ body {
   left: -1px;
   width: 100%;
   background-color: #ffffff;
+  text-align: center;
 }
 .nav_respons_drop li a {
   line-height: 1;
@@ -1880,7 +1881,7 @@ body {
   text-overflow: ellipsis;
 }
 .trainers_tariffs_line {
-  background: url('../images/trainers_tariff_line.png') repeat-x;
+  /*background: url('../images/trainers_tariff_line.png') repeat-x;*/
   width: 100%;
   height: 1px;
   margin: 7px 0 10px 0;
@@ -2834,11 +2835,6 @@ body {
 .news_content {
   max-width: 984px;
   margin: 27px auto 50px;
-/*   box-shadow: 0 15px 25px -7px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 15px 25px -7px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 15px 25px -7px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0 15px 25px -7px rgba(0, 0, 0, 0.1);
- */
 }
 .news_content_left {
   width: 72%;
@@ -3072,20 +3068,20 @@ body {
   margin: 13px 20px 0 20px;
 }
 .news_archive_item li {
-  background: url('../images/news_archive_neactive.png') right center no-repeat;
+  /*background: url('../images/news_archive_neactive.png') right center no-repeat;*/
 }
 .news_archive_item li a {
   color: #474747;
   display: block;
 }
 .news_archive_item li:hover {
-  background: url('../images/news_tags_active.png') right center no-repeat;
+  /*background: url('../images/news_tags_active.png') right center no-repeat;*/
 }
 .news_archive_item li:hover a {
   color: #42caad;
 }
 .news_archive_item_line {
-  background: url('../images/trainers_tariff_line.png') repeat-x !important;
+  /*background: url('../images/trainers_tariff_line.png') repeat-x !important;*/
   width: 100% !important;
   height: 1px !important;
   margin: 8px 0 6px 0;
@@ -3160,20 +3156,20 @@ body {
   margin: 13px 20px 0 20px;
 }
 .news_categories_item li {
-  background: url('../images/news_archive_neactive.png') right center no-repeat;
+  /*background: url('../images/news_archive_neactive.png') right center no-repeat;*/
 }
 .news_categories_item li a {
   color: #474747;
   display: block;
 }
 .news_categories_item li:hover {
-  background: url('../images/news_tags_active.png') right center no-repeat;
+  /*background: url('../images/news_tags_active.png') right center no-repeat;*/
 }
 .news_categories_item li:hover a {
   color: #42caad;
 }
 .news_categories_item_line {
-  background: url('../images/trainers_tariff_line.png') repeat-x !important;
+  /*background: url('../images/trainers_tariff_line.png') repeat-x !important;*/
   width: 100% !important;
   height: 1px !important;
   margin: 8px 0 6px 0;
@@ -4074,13 +4070,13 @@ input::-moz-placeholder {
   100% {
     -webkit-transform: translateX(0%);
   }
+
 }
 /* Large Desktop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (min-width: 1200px) {
-  
 }
-/* Defaul Desktop
+/* Default Desktop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (min-width: 980px) {
   
@@ -4191,137 +4187,7 @@ input::-moz-placeholder {
     margin-bottom: 20px;
   }
 }
-/* Tablets
-/* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
-@media (max-width: 980px) {
-
-  .nav li{
-    background: rgb(7, 139, 135);
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-
-  }
-
-  .nav li a{
-    color:white;
-  }
-  .form_box_left,
-  .form_box_center,
-  .form_box_righ {
-    float: none!important;
-    margin: 0 auto;
-  }
-  .contact_form_input_phone,
-  .contact_form_input_mail,
-  .contact_form_input_name,
-.contact_form_input_noname  {
-    margin-left: 17px;
-  }
-  .form_box_righ {
-    width: 387px;
-    margin-top: 10px;
-    text-align: center;
-  }
-  .form_box_righ .contact_form_submit {
-    margin: 0 auto;
-    margin-top: 45px;
-  }
-  .gallery_list {
-    width: 98%;
-    margin: 0 auto;
-  }
-  .gallery_item488 {
-    width: 99.5%;
-  }
-  .gallery_item243 {
-    width: 49.5%;
-  }
-  .form_news_box_left,
-  .form_news_box_center,
-  .form_news_box_righ {
-    max-width: 240px;
-    width: 240px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    float: none!important;
-  }
-  .news_form_input_name,
-  .news_form_input_mail,
-  .news_form_input_site {
-    margin-left: 0;
-    width: 169px;
-  }
-  .form_news_box_righ {
-    text-align: center;
-  }
-  .news_form_submit {
-    margin-left: 0;
-  }
-
-
-}
-@media (max-width: 960px) {
-  .services {
-    height: 672px;
-  }
-  .services_item {
-    width: 49.5%;
-    margin-bottom: 1em;
-    margin-right: 1%;
-  }
-  .services_item.second {
-    margin-right: 0;
-  }
-  .services_item.last {
-    margin-right: 0;
-  }
-  .upcoming_classes_container_mob .item {
-    width: 32%;
-  }
-  .footer_info_1,
-  .footer_info_2,
-  .footer_info_3 {
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 15px;
-    float: none!important;
-  }
-  .events_list_item:nth-child(2n) {
-    margin-right: 0px;
-  }
-  .events_list_item {
-    width: 49.3%;
-  }
-  .event_upcoming_list {
-    width: 98%;
-    margin: 0 auto;
-  }
-  .contact_icon_mail,
-  .contact_icon_adr,
-  .contact_icon_tel {
-    width: 100%;
-  }
-  /*contact page*/
-  .contact_picture{
-    width:45%;
-  }
-}
-
-@media (max-width: 860px){
-  .header_telefon{
-    background-color: rgba(7, 139, 135, 0.3);
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 10px 0;
-
-  }
-  .header_telefon a{
-    font-weight: 600;
-  }
-}
-/* Landskape Phone to Small Desktop & Portrait Tablet
+/* Landscape Phone to Small Desktop & Portrait Tablet
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (max-width: 767px) {
   
@@ -4351,7 +4217,7 @@ input::-moz-placeholder {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1000px) {
   .news_content_left {
     width: 100%;
     margin-bottom: 30px;
@@ -4624,7 +4490,6 @@ margin-top : -11%;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     margin-bottom:10px;
-
 }
 
 .contener_mod
@@ -4710,7 +4575,6 @@ color:white;
     float:left;
     width:50%;
 }
-
 
 .texteareaCommentNews, .com_change {
   width: 98%;
@@ -4838,8 +4702,6 @@ transition: all 300ms ease-in-out;
     display:block;
 }
 
-
-
 /***********news CSS*/
 .Bigblock_1{
 width:60%;
@@ -4873,8 +4735,6 @@ margin-left:20%;
 margin-bottom : 20px;
 }
 
-
-
 /*Se connecter/s'enregister*/
 #connexion, #inscription, #forget {
   background-color: rgba(7, 139, 135, 0.3);
@@ -4897,8 +4757,6 @@ margin-bottom : 20px;
   margin-top:10px;
   border: 1px solid #c4c5c7 !important;
 }
-
-
 
 /*Tableau Fofo*/
 table {
@@ -5041,4 +4899,13 @@ body {
 
 input[type=password] {
   border: 1px solid #c4c5c7;
+}
+
+.flags {
+  position: absolute;
+  right: 10px;
+}
+
+.flags li {
+  top: 10px;
 }

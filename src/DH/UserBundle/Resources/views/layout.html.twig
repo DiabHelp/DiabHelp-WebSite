@@ -3,18 +3,18 @@
 {% block body %}
 
     <body>
-    {% for type, messages in app.session.flashBag.all %}
-        {% for message in messages %}
-            <div class="{{ type }}">
-                {{ message|trans({}, 'FOSUserBundle') }}
-            </div>
+        {% for type, messages in app.session.flashBag.all %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
 
-    <div>
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
-    </div>
+        <div class="center">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
     </body>
 
 {% endblock %}

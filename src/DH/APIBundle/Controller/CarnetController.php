@@ -4,13 +4,15 @@ namespace DH\APIBundle\Controller;
 
 use DateTime;
 use DH\APIBundle\Entity\CdsSave;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Swift_MailTransport;
 
 class CarnetController extends Controller
 {
@@ -83,7 +85,6 @@ class CarnetController extends Controller
     {
         $encoders = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
-
         $this->serializer = new Serializer(array($normalizer), array($encoders));
 
         $em = $this->getDoctrine()
@@ -211,4 +212,78 @@ class CarnetController extends Controller
         return new Response($this->serializer->serialize(array("success" => true), 'json'));
     }
 
+    public function exportJSONAction(Request $request)
+    {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
+        $carnetToken = $this->generateRandomString();
+        if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+            $path = $this->get('kernel')->getRootDir() . '\data\pdf\logbook\\' . $carnetToken . '.pdf';
+        }
+        else
+            $path = $this->get('kernel')->getRootDir() . '/data/pdf/logbook/' . $carnetToken . '.pdf';
+
+        $id_user = $request->get('id_user', null);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('DHUserBundle:User');
+
+        $user = $repo->findOneById($id_user);
+        if (!$user)
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
+
+        $firstname = $user->getFirstname();
+        $lastname = $user->getLastname();
+
+        $data = array();
+        $content = $this->get("request")->getContent();
+        if (!empty($content)) {
+            $data = json_decode($content, true);
+        }
+
+        if ($id_user == null || $content == null)
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
+
+        $html = $this->renderView(
+            'DHAPIBundle:Carnet:template.html.twig',
+            array(
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'data' => $data,
+            )
+        );
+        $this->get('knp_snappy.pdf')->generateFromHtml($html, $path,
+            array (
+                'orientation'=>'Landscape',
+                'encoding' => 'utf-8',
+                'dpi' => 300,
+                'image-dpi' => 300
+            ));
+
+        $transport = Swift_MailTransport::newInstance();
+        $mailer = Swift_Mailer::newInstance($transport);
+        $email = $request->get('email', null);
+        $datenow = new \DateTime();
+        if ($email == null)
+            $email = $user->getEmail();
+        if ($email){
+            $filename = "Export-". $firstname. "-" . $lastname . "-" . $datenow->format('Y-m-d H:i:s') . ".pdf";
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Votre carnet de suivi')
+                ->setFrom('exportCDS@diabhelp.org')
+                ->setBody($this->renderView('DHAPIBundle:Mail:exportCDS.html.twig', array('enquiry' => $user)))
+                ->attach(\Swift_Attachment::fromPath($path)->setFilename($filename));
+            $message->setTo($email);
+            $mailer->send($message);
+            return new Response($this->serializer->serialize(array("success" => true), 'json'));
+        }
+        else
+            return new Response($this->serializer->serialize(array("success" => false), 'json'));
+    }
+
+    private function generateRandomString($length = 42)
+    {
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+    }
 }
