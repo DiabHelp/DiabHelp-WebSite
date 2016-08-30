@@ -1,10 +1,10 @@
-{% extends "DHPlatformBundle::slide.html.twig" %}
+{% extends "layout.html.twig" %}
 
 {% block title %}
   {{ 'Actualités' | trans }} - {{ parent() }}
 {% endblock %}
 
-{% block dhplatform_body %}
+{% block body %}
 
   <div id="content">
     <div class = "page_header">
@@ -24,11 +24,12 @@
 
       {% for article in articles %}
 
+      {% if article.display == 1 %}
+
         <div class=news_content_left fl>
           <div class=news_item>
             <div class= center >
-              <img style="width:100%" src="{{ article.imgPath }}" border="0"/>
-              {#<img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />#}
+              <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}" />
               <h2 class=news_item_date>{{ article.date|date('d/m/Y') }}</h2>
               <h2 class=news_item_title>{{ article.title }}</h2>
               <div id = Text_News>
@@ -43,7 +44,11 @@
             </div>
           </div>
         </div>
+
+      {% endif %}
+
       {% endfor %}
+
     </div>
     <div class = center>
       <div class="news_link_load_more">

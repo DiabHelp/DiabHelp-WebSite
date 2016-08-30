@@ -1,12 +1,12 @@
 {# src/DH/PlatformBundle/Resources/views/Module/index.html.twig #}
 
-{% extends "DHPlatformBundle::slide.html.twig" %}
+{% extends "layout.html.twig" %}
 
 {% block title %}
   {{ 'Modules' | trans }} - {{ parent() }}
 {% endblock %}
 
-{% block dhplatform_body %}
+{% block body %}
 
   <div class = 'page_header'>
     <div class= center >
@@ -35,7 +35,7 @@
       <div class='graph_mod'>
         <div class='left_mod'>
           <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />
-          <p>{{ 'Note actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
+          <p>{{ 'Note actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note | round(1, 'ceil') }}</a></p>
           <div class='rating' style='margin-right:35px;'>
             <a id="{{ module.id }}rating5" onclick="voteModuleIndex({{ module.id }}, 5)" {% if module.note > 4 %} style="color:#FFA500" {% endif %} title="{{ 'Attribuer 5 étoiles à ce module' | trans }}">☆</a>
             <a id="{{ module.id }}rating4" onclick="voteModuleIndex({{ module.id }}, 4)" {% if module.note > 3 %} style="color:#FFA500" {% endif %} title="{{ 'Attribuer 4 étoiles à ce module' | trans }}">☆</a>
@@ -49,7 +49,13 @@
           <h3>{{ 'Créé par' | trans }} : {{ module.organisme }}</h3>
           <h4>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
           <h5 style="text-align:right; text-transform:none;">
-            <a style="text-decoration:none; color:white;" href="" > {{ 'Ce module a reçu' | trans }} {{ module.nbVote }} {{ 'commentaires' | trans }} </a>
+            <a style="text-decoration:none; color:white;" href="{{ path('dh_platform_module_view', {'id': module.id}) }}" >
+              {% if module.comments|length > 0 %}
+                  {{ 'Ce module a reçu' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}
+              {% else %}
+                  {{ "Ce module n'a pas reçu de commentaires." | trans }}
+              {% endif %}
+            </a>
           </h5>
         </div>
         <a>

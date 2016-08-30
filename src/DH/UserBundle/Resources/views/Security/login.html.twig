@@ -1,9 +1,19 @@
 <div id='connexion' class='center'>
+    <img src="{{ asset('bundles/dhplatform/images/Delete-24.png') }}" align="right" onclick="show_signup()" style="cursor: pointer;">
     <h2 class='center'>{{ 'Se connecter à DiabHelp' | trans }}</h2>
-    <form action="{{ path('fos_user_security_check') }}" method="post">
+    <div style="color: red;">
+        <p id="unknown_user" class="hideme" hidden>
+            {#{ form.username }#}
+            {{ "Cet utilisateur n'existe pas." | trans }}
+        </p>
+        <p id="login_error" class="hideme" hidden>
+            {{ "Le nom d'uilisateur et le mot de passe ne correspondent pas." | trans }}
+        </p>
+    </div>
+    <form id="fos_user_connexion_form" action="{{ path('fos_user_security_check') }}" method="post">
         <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ "Nom d'utilisateur" | trans }} {{ "ou adresse email" | trans }}" class='nav_respons_signup' autofocus/>
-        <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" class='nav_respons_signup'/>
-        <input type="submit" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
+        <input type="password" id="password" name="_password" placeholder="{{ 'Mot de passe' | trans }}" onkeypress="return enter(event)" class='nav_respons_signup'/>
+        <input id="fos_user_connexion_form_submit" type="button" value="{{ 'Connexion' | trans }}" class='nav_respons_signup'/>
     </form>
     {#<?php // include 'src/fb.php'; ?>#}
     <a href='{{ path('fos_user_resetting_request') }}' style='color: blue; font-size: 0.8em;'>{{ 'Mot de passe oublié?' | trans }}</a>
@@ -11,6 +21,7 @@
     <p>{{ 'Pas de compte?' | trans}} <a onclick='show_signup_part("signup");' style='color: blue;'>{{ "S'inscrire" | trans }}</a></p>
 </div>
 <div id='forget' class='center' hidden>
+    <img src="{{ asset('bundles/dhplatform/images/Delete-24.png') }}" align="right" onclick="show_signup()" style="cursor: pointer;">
     <h2 class='center'>{{ "Retrouver son mot de passe" | trans }}</h2>
     <p id="email_exist_error" style="color: red;"></p>
     <form name='forget' action="" method='post'>

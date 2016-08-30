@@ -107,25 +107,22 @@ class DiabhelpController extends Controller
         $repo = $em->getRepository('DHUserBundle:User');
 
         $errors = array();
+        $availables = array(0 => 1, 1 => 1);
+
         if ($username == null)
             $errors[] = "Missing username";
+        else if ($repo->findByUsername($username) != null)
+            $availables[0] = 0;
 
         if ($email == null)
             $errors[] = "Missing email";
-
-        $userByUsername = $repo->findByUsername($username);
-
-        $userByEmail = $repo->findByEmail($email);
-
-        if ($userByUsername == null && $userByEmail == null)
-            $resp = array("success" => true);
-        $availables = array(0 => 1, 1 => 1);
-        if ($userByUsername != null)
-            $availables[0] = 0;
-        if ($userByEmail != null)
+        else if ($repo->findByEmail($email) != null)
             $availables[1] = 0;
-        if (count($errors) > 0 || $userByUsername != null || $userByEmail != null)
+
+        if (count($errors) > 0)
             $resp = array("success" => false, "errors" => $errors, "availables" => $availables);
+        else
+            $resp = array("success" => true, "availables" => $availables);
 
         $jsonContent = $this->serializer->serialize($resp, 'json');
         return new Response($jsonContent);
@@ -152,6 +149,36 @@ class DiabhelpController extends Controller
             $resp = array("success" => true, "errors" => $errors);
         else if ($user != null)
             $resp = array("success" => false);
+        else
+            $resp = array("success" => true);
+
+        $jsonContent = $this->serializer->serialize($resp, 'json');
+        return new Response($jsonContent);
+    }
+
+    public function checkEmailAndUsernameExistAction(Request $request) {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
+        $test = $request->get('test', null);
+
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('DHUserBundle:User');
+
+        $errors = array();
+
+        if ($test == null)
+            $errors[] = "Missing param";
+
+        $user = $repo->findByEmail($test);
+        if ($user == null)
+            $user = $repo->findByUsername($test);
+
+        if (count($errors) > 0)
+            $resp = array("success" => false, "errors" => $errors);
+        else if ($user != null)
+            $resp = array("success" => true);
         else
             $resp = array("success" => true);
 

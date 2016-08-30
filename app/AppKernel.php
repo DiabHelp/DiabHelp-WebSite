@@ -6,12 +6,12 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 class AppKernel extends Kernel
 {
     public function __constructor() {
-        date_default_timezone_set('Asia/Hong_Kong');
+        date_default_timezone_set('Europe/Paris');
         parent::init();
     }
 
     public function init() {
-        date_default_timezone_set('Asia/Hong_Kong');
+        date_default_timezone_set('Europe/Paris');
     }
 
     public function registerBundles()

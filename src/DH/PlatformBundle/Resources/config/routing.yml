@@ -20,15 +20,21 @@ dh_platform_profile:
     path:     /profile
     defaults: { _controller: DHPlatformBundle:Diabhelp:profile }
 
-dp_platform_check_available:
+dh_platform_check_available:
     path:     /check_available
     defaults: { _controller: DHPlatformBundle:Diabhelp:checkAvailable }
     requirements:
         _method:  POST
 
-dp_platform_check_email_exist:
+dh_platform_check_email_exist:
     path:     /check_email_exist
     defaults: { _controller: DHPlatformBundle:Diabhelp:checkEmailExist }
+    requirements:
+        _method:  POST
+
+dh_platform_check_email_and_username_exist:
+    path:     /check_email_and_username_exist
+    defaults: { _controller: DHPlatformBundle:Diabhelp:checkEmailAndUsernameExist }
     requirements:
         _method:  POST
 
@@ -99,6 +105,14 @@ dh_platform_carnet:
     path:       /carnet
     defaults:   { _controller: DHPlatformBundle:Carnet:index}
 
+dh_platform_carnet_show:
+    path:       /carnet/show/{id_user}
+    defaults:   { _controller: DHPlatformBundle:Carnet:show}
+    requirements:
+        id_user:  \d+
+
 dh_platform_carnet_exportjson:
-    path:       /carnet/export
+    path:       /carnet/export/{id_user}
     defaults:   { _controller: DHPlatformBundle:Carnet:exportJSON}
+    requirements:
+        id_user:  \d+
