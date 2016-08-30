@@ -4076,7 +4076,7 @@ input::-moz-placeholder {
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (min-width: 1200px) {
 }
-/* Defaul Desktop
+/* Default Desktop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (min-width: 980px) {
   
@@ -4187,7 +4187,7 @@ input::-moz-placeholder {
     margin-bottom: 20px;
   }
 }
-/* Landskape Phone to Small Desktop & Portrait Tablet
+/* Landscape Phone to Small Desktop & Portrait Tablet
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (max-width: 767px) {
   
@@ -4217,7 +4217,7 @@ input::-moz-placeholder {
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
   .news_content_left {
     width: 100%;
     margin-bottom: 30px;
