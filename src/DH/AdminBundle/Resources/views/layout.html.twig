@@ -3,16 +3,20 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-  Admin - {{ parent() }}
+  {{ "Administration" | trans }}- {{ parent() }}
 {% endblock %}
 
 
-{% block body %}
+{% block body  %}
+<div class="center">
 
-<a href="{{ path('dh_admin_index') }}">Zone admin</a> | <a href="{{ path('dh_admin_modules') }}">Modules</a> | <a href="{{ path('dh_admin_articles') }}">News</a> | <a href="{{ path('dh_admin_users') }}">Users</a><br/>
-
+<div >
+  <a href="{{ path('dh_admin_modules') }}">{{ "Modules management" | trans }}</a> |
+  <a href="{{ path('dh_admin_articles') }}">{{ "News management" | trans }}</a> |
+  <a href="{{ path('dh_admin_users') }}">{{ "User management" | trans }}</a><br/>
+</div>
   {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
-  {% block dhadmin_body %}
-  {% endblock %}
-
+{% block dhadmin_body %}
+{% endblock %}
+</div>
 {% endblock %}

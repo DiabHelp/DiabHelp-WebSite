@@ -3,20 +3,13 @@
 {% extends "DHAdminBundle::layout.html.twig" %}
 
 {% block title %}
-  Zone d'administration - {{ parent() }}
+  {{ "Admin zone" | trans }} - {{ parent() }}
 {% endblock %}
 
 {% block dhadmin_body %}
 
-<h1>Cool ! On a une zone admin</h1>
-<p>La dedans on va pouvoir faire pleins de trucs ! Du genre ...</p>
-<li>Editer news</li>
-<li>Supprimer news</li>
-<li>Editer module (avec le status et tout)</li>
-<li>Supprimer un module</li>
-
-  
-
+<h1>{{ "Admin panel" | trans }}</h1>
+<p>Voici le panneau d'administration de DiabHelp</p>
   <div class='cf'></div>
 
 {% endblock %}
