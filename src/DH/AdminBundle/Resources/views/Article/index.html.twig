@@ -19,19 +19,19 @@
 	{% endfor %}
 {% endfor %}
 
-	<a href="{{ path('dh_admin_articles_add') }}">Add an article</a>
+	<p><a href="{{ path('dh_admin_articles_add') }}">{{ "Add an article" | trans }}</a></p>
 
 	<table border="1">
 <tbody>
 	<tr>
-		<th>id</th>
-		<th>img</th>
-		<th>date</th>
-		<th>title</th>
-		<th>text</th>
-		<th>Edit</th>
-		<th>Delete</th>
-		<th>Hide/Show</th>
+		<th>{{ "ID" | trans }}</th>
+		<th>{{ "Image"| trans }}</th>
+		<th>{{ "Date" | trans }}</th>
+		<th>{{ "Title" | trans }}</th>
+		<th>{{ "Text" | trans }}</th>
+		<th>{{ "Edit" | trans }}</th>
+		<th>{{ "Hide/Show" | trans }}</th>
+		<th>{{ "Delete" | trans }}</th>
 	</tr>
 	{% for article in articles %}
 		<tr>
@@ -42,16 +42,19 @@
 			<td>{{ article.date|date('d/m/Y') }}</td>
 			<td>{{ article.title }}</td>
 			<td>{{ article.text }}</td>
-			<td><a href="{{ path('dh_admin_articles_edit', {'id': article.id}) }}">Edit this article</a></td>
-			<td><a href="{{ path('dh_admin_articles_delete', {'id': article.id}) }}">Delete this article</a></td>
+			<td><a href="{{ path('dh_admin_articles_edit', {'id': article.id}) }}" >{{ "Edit" | trans }}</a></td>
 			<td>
 				<a href="{{ path('dh_admin_articles_hideorshow', {'id': article.id}) }}">
 					{% if article.display == 1 %}
-						Hide
+						{{ "Hide" | trans }}
 					{% else %}
-						Show
+						{{ "Show" | trans }}
 					{% endif %}
 				</a>
+			</td>
+			<td>
+				<a href="{{ path('dh_admin_articles_delete', {'id': article.id}) }}"
+				   onclick="return confirm({{ 'Are you sure?' | trans }})">{{ "Delete" | trans }}</a>
 			</td>
 		</tr>
 	{% endfor %}

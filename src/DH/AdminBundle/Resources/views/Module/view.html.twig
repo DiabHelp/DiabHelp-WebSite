@@ -23,13 +23,15 @@
     <div class='module_s'>
         <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />
         <h2 id="module_name">{{ module.name }}</h2>
-        <h3 style='text-align:left'>Crée par : <em>{{ module.organisme }}</em></h3>
-        <h4 style='text-align:left'>Catégorie : {{ module.type }}</h4>
-        <p>Note Actuelle : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
+        <h3 style='text-align:left'>{{ 'Créé par' | trans }} : <em>{{ module.organisme }}</em></h3>
+        <h4 style='text-align:left'>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
+        <p>{{ 'Note actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
         <div class='describ_mod'>
           <p>{{ module.description }}</p>
         </div>
-		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >Afficher les {{ module.comments|length }} commentaires</button>
+		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >
+            {{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}
+        </button>
     </div>
         <div id="com_react_content" style="height:auto; display:none;">
             {% for comment in module.comments %}
@@ -43,11 +45,11 @@
                     <div id="header_com_droite">
                         <div class="action_block">
                               <div class="delete_com">
-                                  <a style="background-color:red;" href="{{ path('dh_admin_module_comment_delete', {'id': comment.id}) }}">Supprimer</a>
+                                  <a style="background-color:red;" href="{{ path('dh_admin_module_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>
                               </div>
                             {% if app.user and comment.author.id == app.user.id %}
                                 <div class="modify_com">
-                                    <a style="background-color:gray" onclick="">Modifier</a>
+                                    <a style="background-color:gray" onclick="">{{ 'Modifier' | trans }}</a>
                                 </div>
                             {% endif %}
                         </div>
@@ -64,7 +66,7 @@
                             <textarea rows="10" cols="100" class="com_change" id=com_change>{{ comment.text }}</textarea>
                         </div>
                         <div align="center">
-                            <input name="envoyer" class="send_button" id="envoyer" value="Envoyer" />
+                            <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" />
                         </div>
                     </form>
                 </div>
