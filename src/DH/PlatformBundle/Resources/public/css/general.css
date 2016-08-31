@@ -546,8 +546,8 @@ body {
   max-width: 100%;
 }
 .nav {
-  padding: 0;
-  margin: 26px 0 0 54px;
+  padding: 0px 0px 0px 25px;
+  margin: 39px 0px 0px 0px;
 }
 .nav li {
   list-style: none;
@@ -559,7 +559,7 @@ body {
 }
 .nav li a {
   display: block;
-  padding: 5px 11px 5px 12px;
+  padding: 0px 0px 0px 10px;
   text-decoration: none;
   color: #2d2d2d;
 }
@@ -4074,7 +4074,10 @@ input::-moz-placeholder {
 }
 /* Large Desktop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
+  .nav {
+    margin-right: 0;
+  }
 }
 /* Default Desktop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
@@ -4232,6 +4235,7 @@ input::-moz-placeholder {
     width: 100%;
     text-align: center;
     margin-bottom: 25px;
+    padding-right: 10px;
     float: none!important;
   }
   .nav {

@@ -279,3 +279,30 @@ helper:
 "Modules management": "Gestion des modules"
 "User management": "Gestion des utilisateurs"
 Administration: Administration
+"Add an article": "Ajouter un article"
+"Add a module": "Ajouter un module"
+
+"Title": "Titre"
+"Text": "Texte"
+"see more": "voir plus"
+"Name": "Nom"
+"Type": "Type"
+"Description": "Description"
+"Username": "Pseudo"
+"Last_login": "Dernière connexion"
+"Locked": "Verrouillé"
+"Roles": "Roles"
+"Firstname": "Prénom"
+"Lastname": "Nom"
+"Organism": "Organisme"
+"Birthday": "Date de naissance"
+"Phone": "Téléphone"
+"Image": "Image"
+
+
+"Show": "Afficher"
+"Hide": "Cacher"
+"Edit": "Editer"
+"Hide/Show": "Afficher/Cacher"
+"Delete": "Supprimer"
+'Are you sure?': 'Confirmez-vous ?'

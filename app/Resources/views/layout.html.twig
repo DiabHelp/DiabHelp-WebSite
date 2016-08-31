@@ -62,7 +62,7 @@
     {% if app.user %}
       <li>
         <a href="{{ path('dh_platform_profile') }}">
-          <b>{{ app.user.username }}</b> {{ 'Profil' | trans }}
+          <b>{{ app.user.username | truncate(12) }}</b> {{ 'Profil' | trans }}
         </a>
       </li>
       <li>

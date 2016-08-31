@@ -60,7 +60,9 @@
                     </span>
                 </p>
             {% endif %}
-		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >{{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}</button>
+		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >
+            {{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}
+        </button>
     </div>
         <div id="com_react_content" style="height:auto; display:none;">
             {% for comment in module.comments %}
