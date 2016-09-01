@@ -17,7 +17,7 @@ class UserType extends AbstractType
             ->add('username')
             ->add('locked')
             ->add('email')
-            ->add('organisme', 'text', array('required' => false))
+            ->add('organisme')
             ->add('phone')
             ->add('birthdate', 'date', array(
                 'widget' => 'single_text',
