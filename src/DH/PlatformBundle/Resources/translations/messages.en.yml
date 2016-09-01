@@ -67,11 +67,15 @@ EMAIL: EMAIL
 'Retrouver son mot de passe': 'Retrieve password'
 'Envoyer': 'Send'
 'envoyer': 'send'
-'Mot de passe retrouvé?': 'Password found'
+'Mot de passe retrouvé?': 'Password found?'
+"Cet utilisateur n'existe pas.": "This user doesn't exist."
+
 
 
 ################### inscription ###################
 "S'inscrire sur DiabHelp": "Register to DiabHelp"
+"Nom d'utilisateur": "Username"
+"déjà utilisé.": "already used."
 "Email": "Email"
 "Mot de passe": "Password"
 "Confirmation de mot de passe": "Password confirmation"
@@ -273,6 +277,7 @@ Administration: Administration
 "Add an article": "Add an article"
 "Add a module": "Add a module"
 
+"ID": "ID"
 "Title": "Title"
 "Text": "Text"
 "see more": "see more"
