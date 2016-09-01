@@ -104,8 +104,10 @@ class ModuleController extends Controller
   	{
   		$em = $this->getDoctrine()->getManager();
 
-  		$vote = $em->getRepository('DHPlatformBundle:Vote')->findOneBy(array('author' => $this->getUser(),
-  																		  'module' => $id,
+  		$vote = $em->getRepository('DHPlatformBundle:Vote')->findOneBy(
+  		                                                                array(
+  		                                                                    'author' => $this->getUser(),
+                                                                            'module' => $id,
   																		  ));
 
   		$module = $em->getRepository('DHPlatformBundle:Module')->find($id);
@@ -121,21 +123,25 @@ class ModuleController extends Controller
 			$vote->setVote($note);
 			$vote->setAuthor($this->getUser());
 			$vote->setModule($module);
-			$vote->setDate(new \Datetime());
+            $vote->setDate(new \Datetime());
 			$em->persist($vote);
-		} else
+		} else {
 			$vote->setVote($note);
-
+            $vote->setDate(new \Datetime());
+        }
         $em->flush();
 
         $votes = $module->getVotes();
-        $nbVotes = 0;
-        $sumVotes = 0;
-        foreach ($votes as $v) {
-            $sumVotes = $sumVotes + $v->getVote();
-            $nbVotes++;
-        }
-        $finalNote = $sumVotes / $nbVotes;
+        if ($votes){
+            $nbVotes = 0;
+            $sumVotes = 0;
+            foreach ($votes as $v) {
+                $sumVotes = $sumVotes + $v->getVote();
+                $nbVotes++;
+            }
+            $finalNote = $sumVotes / $nbVotes;
+        } else
+            $finalNote = 0;
 
   		$module->setNote($finalNote);
 
