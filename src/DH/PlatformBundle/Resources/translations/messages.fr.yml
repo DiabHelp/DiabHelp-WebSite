@@ -12,6 +12,7 @@ Déconnexion: Déconnexion
 Connexion: Connexion
 Inscription: Inscription
 Connexion/Inscription: Connexion/Inscription
+"Menu de Navigation": "Menu de Navigation"
 
 
 ################### index ###################
@@ -73,11 +74,13 @@ EMAIL: EMAIL
 'Envoyer': 'Envoyer'
 'envoyer': 'envoyer'
 'Mot de passe retrouvé?': 'Mot de passe retrouvé?'
+"Cet utilisateur n'existe pas.": "Cet utilisateur n'existe pas."
 
 
 ################### inscription ###################
 "S'inscrire sur DiabHelp": "S'incrire sur DiabHelp"
 "Nom d'utilisateur": "Nom d'utilisateur"
+"déjà utilisé.": "déjà utilisé."
 "Email": "Email"
 "Mot de passe": "Mot de passe"
 "Confirmation de mot de passe": "Confirmation de mot de passe"
@@ -282,6 +285,7 @@ Administration: Administration
 "Add an article": "Ajouter un article"
 "Add a module": "Ajouter un module"
 
+"ID": "ID"
 "Title": "Titre"
 "Text": "Texte"
 "see more": "voir plus"
