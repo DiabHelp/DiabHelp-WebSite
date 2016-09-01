@@ -12,6 +12,7 @@ Déconnexion: Déconnexion
 Connexion: Connexion
 Inscription: Inscription
 Connexion/Inscription: Connexion/Inscription
+"Menu de Navigation": "Menu de Navigation"
 
 
 ################### index ###################
@@ -270,3 +271,39 @@ helper:
 "Insuline rapide": "Insuline rapide"
 "Insuline lente": "Insuline lente"
 "Notes": "Notes"
+
+
+################### Admin zone ###################
+"Admin zone": "Zone admin"
+"Admin panel": "Panneau d'administration"
+"News management": "Gestion des articles"
+"Modules management": "Gestion des modules"
+"User management": "Gestion des utilisateurs"
+Administration: Administration
+"Add an article": "Ajouter un article"
+"Add a module": "Ajouter un module"
+
+"Title": "Titre"
+"Text": "Texte"
+"see more": "voir plus"
+"Name": "Nom"
+"Type": "Type"
+"Description": "Description"
+"Username": "Pseudo"
+"Last_login": "Dernière connexion"
+"Locked": "Verrouillé"
+"Roles": "Roles"
+"Firstname": "Prénom"
+"Lastname": "Nom"
+"Organism": "Organisme"
+"Birthday": "Date de naissance"
+"Phone": "Téléphone"
+"Image": "Image"
+
+
+"Show": "Afficher"
+"Hide": "Cacher"
+"Edit": "Editer"
+"Hide/Show": "Afficher/Cacher"
+"Delete": "Supprimer"
+'Are you sure?': 'Confirmez-vous ?'

@@ -62,7 +62,7 @@
     {% if app.user %}
       <li>
         <a href="{{ path('dh_platform_profile') }}">
-          <b>{{ app.user.username }}</b> {{ 'Profil' | trans }}
+          <b>{{ app.user.username | truncate(12) }}</b> {{ 'Profil' | trans }}
         </a>
       </li>
       <li>
@@ -90,7 +90,7 @@
   </ul>
 </div>
 <div class="nav_respons fl">
-  <a href="javascript:;" onclick="HideShowMenu();">Menu de Navigation</a>
+  <a href="javascript:;" onclick="HideShowMenu();">{{ "Menu de Navigation" | trans }}</a>
   <ul class="nav_respons_drop" id="nav_dropdown">
     <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
     <li><a href="{{ path('dh_platform_module') }}">{{ 'Modules' | trans }}</a></li>
