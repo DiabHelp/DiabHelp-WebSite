@@ -18,36 +18,41 @@
 	{% endfor %}
 {% endfor %}
 
+
+<p>	<a href="{{ path('dh_platform_module_add') }}">{{ "Add a module" | trans }}</a></p>
+
+
 <table border="1">
 <tbody>
 	<tr>
-		<th>id</th>
-		<th>Nom</th>
-		<th>Description</th>
-		<th>nb votes</th>
-		<th>type</th>
-		<th>Delete</th>
-		<th>Edit</th>
-		<th>Hide/Show</th>
+        <th>{{ "ID" | trans }}</th>
+        <th>{{ "Name" | trans }}</th>
+        <th>{{ "Description" | trans }}</th>
+        <th>{{ "Type" | trans }}</th>
+        <th>{{ "Edit" | trans }}</th>
+        <th>{{ "Hide/Show" | trans }}</th>
+        <th>{{ "Delete" | trans }}</th>
 	</tr>
 	{% for module in modules %}
 		<tr>
-			<td>{{ module.id }} -> <a href="{{ path('dh_admin_modules_view', {'id': module.id}) }}">see more</a></td>
+			<td>{{ module.id }} -> <a href="{{ path('dh_admin_modules_view', {'id': module.id}) }}">{{ "see more" | trans }}</a></td>
 			<td>{{ module.name }}</td>
 			<td>{{ module.description }}</td>
-			<td>{{ module.nbVote }}</td>
 			<td>{{ module.type }}</td>
-			<td><a href="{{ path('dh_admin_modules_delete', {'id': module.id}) }}">Delete this module</a></td>
-			<td><a href="{{ path('dh_admin_modules_edit', {'id': module.id}) }}">Edit this module</a></td>
+			<td><a href="{{ path('dh_admin_modules_edit', {'id': module.id}) }}">{{ "Edit" | trans }}</a></td>
 			<td>
 				<a href="{{ path('dh_admin_modules_hideorshow', {'id': module.id}) }}">
 					{% if module.display == 1 %}
-						Hide
+                        {{ "Hide" | trans }}
 					{% else %}
-						Show
+                        {{ "Show" | trans }}
 					{% endif %}
 				</a>
 			</td>
+			<td>
+                <a href="{{ path('dh_admin_modules_delete', {'id': module.id}) }}"
+                   onclick="return confirm({{ "Are you sure?" | trans }})">{{ "Delete" | trans }}</a>
+            </td>
 		</tr>
 	{% endfor %}
 </tbody>
