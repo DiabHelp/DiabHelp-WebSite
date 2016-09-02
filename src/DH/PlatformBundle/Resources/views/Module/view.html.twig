@@ -25,7 +25,7 @@
         <h2 id="module_name">{{ module.name }}</h2>
         <h3 style='text-align:left'>{{ 'Créé par' | trans }} : <em>{{ module.organisme }}</em></h3>
         <h4 style='text-align:left'>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
-        <a class="fbShareButton"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>
+        {#<a class="fbShareButton"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>#}
         <p>{{ 'Note actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note | round(1, 'ceil') }}</a></p>
         <div class='rating' style='margin-right:35px;'>
           <a id="{{ module.id }}rating5" onclick="voteModuleView({{ module.id }}, 5)" {% if module.note > 4 %} style="color:#FFA500" {% endif %} title='{{ 'Attribuer 5 étoiles à ce module' | trans }}'>☆</a>
