@@ -30,9 +30,17 @@
                <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}" />
              <h2 class=news_item_date>{{ article.date|date('d/m/Y') }}</h2>
              <h2 class=news_item_title>{{ article.title }}</h2>
-               <a class="fbShareButtonNews"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>
+               {#<a class="fbShareButtonNews"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>#}
              <div id = Text_News>
-               <p class=news_content>{{ article.text }}</p>
+               <p class=news_content>
+                {% if (article.text != null) %}
+                    {% set paragraphs = article.text|split('\n') %}
+                    {%  for par in paragraphs %}
+                        <p>{{ par }}</p>
+                    {% endfor %}
+                {% endif %}
+                </p>
+
              </div>
              <h2 class="contact_form_title" style="color:#474747;">{{ 'Poster un commentaire' | trans }}</h2>
              </div>

@@ -3532,14 +3532,12 @@ body {
   margin: 20px 0 0 0;
 }
 .footer_info_1_pic {
-  background: url('../images/senior_cards.png') no-repeat;
   width: 50px;
   height: 50px;
   margin: 23px 0 0 39px;
   position: relative;
 }
 .pic_shadow {
-  background: url('../images/footer_pic_shadow.png') no-repeat;
   width: 54px;
   height: 16px;
   position: absolute;
@@ -3569,14 +3567,12 @@ body {
   margin: 20px 0 0 0;
 }
 .footer_info_2_pic {
-  background: url('../images/calendar.png') no-repeat;
   width: 50px;
   height: 50px;
   margin: 23px 0 0 40px;
   position: relative;
 }
 .pic_shadow {
-  background: url('../images/footer_pic_shadow.png') no-repeat;
   width: 54px;
   height: 16px;
   position: absolute;
@@ -3606,7 +3602,6 @@ body {
   margin: 20px 0 0 0;
 }
 .footer_info_3_pic {
-  background: url('../images/rooms_for_rent.png') no-repeat;
   width: 50px;
   height: 50px;
   margin: 23px 0 0 41px;
@@ -3791,7 +3786,19 @@ input::-moz-placeholder {
   padding: 0 0 7px 0px;
   margin: 0 0 33px 0;
   border-bottom: 1px solid #31544c;
+  text-align: center;
 }
+.footer_contacts_title_light {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  padding: 0 0 7px 0px;
+  margin: 0 0 33px 0;
+  border-bottom: 1px solid #31544c;
+  text-align: center;
+}
+
 .footer_contacts_item {
   margin: 15px 0 0 0;
 }
@@ -4834,10 +4841,10 @@ margin-left:80%;
 }
  
 .link_footer{
- font-size:24px;
+ font-size:18px;
  color:white;
 }
- 
+
     #customBtn {
       display: inline-block;
       background: #cc3732;
