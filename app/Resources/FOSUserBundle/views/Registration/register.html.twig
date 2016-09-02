@@ -36,7 +36,13 @@
     <form id="fos_user_registration_form" action="{{ path('fos_user_registration_register') }}" method="POST">
         <div class="form-group">
             <div>
-                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur' | trans } }) }}
+                {{ form_widget(form.username, { 'attr':
+                    {
+                        'class': 'form-control',
+                        'placeholder': 'Nom d\'utilisateur' | trans({}, 'messages')
+                    }
+                }) }}
+
                 {{ form_errors(form.username) }}
                 {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email' | trans } }) }}
                 {{ form_errors(form.email) }}
