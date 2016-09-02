@@ -89,6 +89,8 @@ EMAIL: EMAIL
 'Patient': Patient
 'Proche': Relative
 'Docteur': Doctor
+"Nom d'utilisateur": "Username"
+
 
 
 ################### modules ###################
@@ -137,6 +139,9 @@ proposer:
   'Describe here the module you would like to have in your DiabHelp''s app'
 'Vous devez être connecté afin de proposer un module.': "You have to be logged in to submit an idea."
 'Pas de module trouvé': 'No module found'
+'logo': 'logo'
+'File': 'File'
+'Save': 'Save'
 
 
 ################### contact ###################
@@ -220,7 +225,8 @@ Décembre: December
 Association: Association
 "Numéro de téléphone": 'Phone number'
 'Je souhaite supprimer mon compte': 'I want to delete my account'
-
+'password': 'Password'
+'password confirmation': 'Password confirmation'
 
 ################### ilsNousOntAidés ###################
 'Ils nous ont aidés': 'They helped us'
