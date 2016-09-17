@@ -11,6 +11,7 @@ Déconnexion: 'Log out'
 Connexion: 'Log in'
 Inscription: 'Register'
 Connexion/Inscription: 'Log in / Register'
+"Menu de Navigation": "Navigation menu"
 
 
 ################### index ###################
@@ -66,11 +67,15 @@ EMAIL: EMAIL
 'Retrouver son mot de passe': 'Retrieve password'
 'Envoyer': 'Send'
 'envoyer': 'send'
-'Mot de passe retrouvé?': 'Password found'
+'Mot de passe retrouvé?': 'Password found?'
+"Cet utilisateur n'existe pas.": "This user doesn't exist."
+
 
 
 ################### inscription ###################
 "S'inscrire sur DiabHelp": "Register to DiabHelp"
+"Nom d'utilisateur": "Username"
+"déjà utilisé.": "already used."
 "Email": "Email"
 "Mot de passe": "Password"
 "Confirmation de mot de passe": "Password confirmation"
@@ -84,10 +89,12 @@ EMAIL: EMAIL
 'Patient': Patient
 'Proche': Relative
 'Docteur': Doctor
+"Nom d'utilisateur": "Username"
+
 
 
 ################### modules ###################
-'Liste des modules': List of modules
+'Liste des modules': 'List of modules'
 'Informations complémentaires sur le module': "Additional information about the module"
 Information: Information
 'Note actuelle': "Current rating"
@@ -99,6 +106,7 @@ Information: Information
 'Créé par': "Created by"
 'Catégorie': Category
 "Ce module n'a pas reçu de commentaires.": "This module didn't recieve any comment yet."
+"Vous devez être connecté afin poster un commentaire." : "You must be logged in to post a comment."
 'Ce module a reçu': "This module recieved"
 'Afficher les': 'Display the'
 'commentaires': comments
@@ -131,6 +139,9 @@ proposer:
   'Describe here the module you would like to have in your DiabHelp''s app'
 'Vous devez être connecté afin de proposer un module.': "You have to be logged in to submit an idea."
 'Pas de module trouvé': 'No module found'
+'logo': 'logo'
+'File': 'File'
+'Save': 'Save'
 
 
 ################### contact ###################
@@ -214,7 +225,8 @@ Décembre: December
 Association: Association
 "Numéro de téléphone": 'Phone number'
 'Je souhaite supprimer mon compte': 'I want to delete my account'
-
+'password': 'Password'
+'password confirmation': 'Password confirmation'
 
 ################### ilsNousOntAidés ###################
 'Ils nous ont aidés': 'They helped us'
@@ -259,3 +271,41 @@ helper:
 "Insuline rapide": "Rapid insulin"
 "Insuline lente": "Slow insulin"
 "Notes": "Notes"
+
+
+################### Admin zone ###################
+"Admin zone": "Admin zone"
+"Admin panel": "Admin panel"
+"News management": "News management"
+"Modules management": "Modules management"
+"User management": "User management"
+Administration: Administration
+"Add an article": "Add an article"
+"Add a module": "Add a module"
+
+"ID": "ID"
+"Title": "Title"
+"Text": "Text"
+"see more": "see more"
+"Name": "Name"
+"Type": "Type"
+"Description": "Description"
+"Username": "Username"
+"Last_login": "Last_login"
+"Locked": "Locked"
+"Roles": "Roles"
+"Firstname": "Firstname"
+"Lastname": "Lastname"
+"Organism": "Organism"
+"Birthday": "Birthday"
+"Phone": "Phone"
+"Image": "Image"
+
+"Show": "Show"
+"Hide": "Hide"
+"Edit": "Edit"
+"Hide/Show": "Hide/Show"
+"Delete": "Delete"
+'Are you sure?': 'Are you sure?'
+
+
