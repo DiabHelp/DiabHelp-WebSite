@@ -72,11 +72,20 @@ class Module
     private $note = 0;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="nb_vote", type="integer", options={"default" = 0})
+     * @return float
      */
-    private $nbVote = 0;
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param float $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
 
     /**
      * @ORM\OneToMany(targetEntity="DH\PlatformBundle\Entity\Vote", mappedBy="module", cascade={"persist", "remove"})
@@ -365,27 +374,27 @@ class Module
     }
 
     /**
-     * Set note
+     * Add vote
      *
-     * @param integer $note
+     * @param \DH\PlatformBundle\Entity\Vote $vote
      *
      * @return Module
      */
-    public function setNote($note)
+    public function addVote(\DH\PlatformBundle\Entity\Vote $vote)
     {
-        $this->note = $note;
+        $this->votes[] = $vote;
 
         return $this;
     }
 
     /**
-     * Get note
+     * Get votes
      *
-     * @return integer
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getNote()
+    public function getVotes()
     {
-        return $this->note;
+        return $this->votes;
     }
 
     /**

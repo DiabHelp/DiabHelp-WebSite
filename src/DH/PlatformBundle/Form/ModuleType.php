@@ -19,7 +19,7 @@ class ModuleType extends AbstractType
             ->add('name', 'text')
             ->add('description', 'textarea')
             ->add('type', 'text')
-            ->add('organisme', 'text')
+            ->add('organisme', 'text', array('required' => false))
             ->add('imageFile', 'vich_image', array('required' => false))
             ->add('save', 'submit')
         ;

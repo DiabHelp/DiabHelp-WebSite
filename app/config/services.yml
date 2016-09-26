@@ -12,3 +12,7 @@ services:
         class:        DH\UserBundle\Handler\AuthenticationHandler
         arguments:    [@router, @session]
         # arguments:    [@router, @security.context, @fos_user.user_manager, @service_container]
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

@@ -22,30 +22,7 @@ $(window).load(function() {
 	});
 
 	$('#fos_user_connexion_form_submit').click(function () {
-		var username = $('#username').val();
-		var password = $('#password').val();
-
-		$('.hideme').hide();
-
-		var errors = 0;
-		$.post("check_email_and_username_exist", { test: username },
-			function (result) {
-				var res = $.parseJSON(result);
-				if (res.success == false) {
-					$('#unknown_user').show();
-					errors++;
-				} else
-					$.post("../rest-login", { username: username, password: password },
-						function (result) {
-							var res = $.parseJSON(result);
-							if (res.success == false) {
-								$('#login_error').show();
-								errors++;
-							}
-							if (errors == 0)
-								$("#fos_user_connexion_form").submit();
-					});
-		});
+		login();
 	});
 
 	$('#fos_user_registration_form_submit').click(function () {
@@ -210,12 +187,49 @@ $(window).load(function() {
   loadMapScript();
 });
 
+function login() {
+	var username = $('#username').val();
+	var password = $('#password').val();
+
+	$('.hideme').hide();
+
+	var errors = 0;
+	$.post("check_email_and_username_exist", { test: username },
+		function (result) {
+			var res = $.parseJSON(result);
+			if (res.success == false) {
+				$('#unknown_user').show();
+				errors++;
+			} else
+				$.post("../rest-login", { username: username, password: password },
+					function (result) {
+						var res = $.parseJSON(result);
+						if (res.success == false) {
+							$('#login_error').show();
+							errors++;
+						}
+						if (errors == 0)
+							$("#fos_user_connexion_form").submit();
+					});
+		});
+}
+
+function enter(e) {
+	if (e.keyCode == 13) {
+		login();
+		return true;
+	}
+}
+
 //vote
 function voteModuleView(id, note) {
 	$.ajax({
 		url: "./vote/"+id+"/"+note,
 		dataType: "json",
-		type: "GET"
+		type: "GET",
+		complete : function(code_html, statut){
+			location.reload();
+		}
 	});
 }
 
@@ -223,7 +237,10 @@ function voteModuleIndex(id, note) {
 	$.ajax({
 		url: "./modules/vote/"+id+"/"+note,
 		dataType: "json",
-		type: "GET"
+		type: "GET",
+		complete : function(code_html, statut){
+			location.reload();
+		}
 	});
 }
 
@@ -404,10 +421,6 @@ $(document).ready(function() {
         $(".notif").fadeOut(); 
 	},3000);
 }); 
-
-function validate_account(name, id) {
-	alert("Quel est ton nom");
-}
 
 // function getEmail() {
 	// gapi.client.load('oauth2', 'v2', function() {

@@ -1,4 +1,4 @@
-#navbar
+################### navbar ###################
 Accueil: Accueil
 Modules: Modules
 Proposer: Proposer
@@ -12,8 +12,10 @@ Déconnexion: Déconnexion
 Connexion: Connexion
 Inscription: Inscription
 Connexion/Inscription: Connexion/Inscription
+"Menu de Navigation": "Menu de Navigation"
 
-#index
+
+################### index ###################
 Réagir: Réagir
 Proposer: Proposer
 'Télécharger l''application DiabHelp': 'Télécharger l''application DiabHelp'
@@ -39,9 +41,9 @@ diabhelp.desc:
     pour vos modules favoris, ou encore proposer vos idées de développement. En collaboration avec des organismes de la
     santé (médecins, nutritionnistes, centres hospitaliers, etc), nous assurerons un service qualitatif qui répondra à
     vos besoins.
-#endof index
 
-#slider
+
+################### slider ###################
 Réagissez: Réagissez
 'Notez et commentez les modules qui vous semblent pertinents.':
   'Notez et commentez les modules qui vous semblent pertinents.'
@@ -51,13 +53,15 @@ Réagissez: Réagissez
 'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée':
   'Proposez le module de votre choix ! Il sera alors soumis aux votes de la communauté pour obtenir le meilleur de chaque idée'
 
-#footer
+
+################### footer ###################
 'Mentions légales': 'Mentions légales'
 ADRESSE: ADRESSE
 TELEPHONE: TELEPHONE
 EMAIL: EMAIL
 
-#connexion
+
+################### connexion ###################
 'Se connecter à DiabHelp': 'Se connecter à DiabHelp'
 'Se connecter': 'Se connecter'
 'Nom d''utilisateur': 'Nom d''utilisateur'
@@ -70,10 +74,13 @@ EMAIL: EMAIL
 'Envoyer': 'Envoyer'
 'envoyer': 'envoyer'
 'Mot de passe retrouvé?': 'Mot de passe retrouvé?'
+"Cet utilisateur n'existe pas.": "Cet utilisateur n'existe pas."
 
-#inscription
+
+################### inscription ###################
 "S'inscrire sur DiabHelp": "S'incrire sur DiabHelp"
 "Nom d'utilisateur": "Nom d'utilisateur"
+"déjà utilisé.": "déjà utilisé."
 "Email": "Email"
 "Mot de passe": "Mot de passe"
 "Confirmation de mot de passe": "Confirmation de mot de passe"
@@ -87,10 +94,10 @@ EMAIL: EMAIL
 'Patient': Patient
 'Proche': Proche
 'Docteur': Docteur
+"Nom d'utilisateur": "Nom d'utilisateur"
 
 
-
-#modules
+################### modules ###################
 'Liste des modules': Liste des modules
 'Informations complémentaires sur le module': "Informations complémentaires sur le module"
 Information: Information
@@ -104,6 +111,7 @@ Information: Information
 'Catégorie': Catégorie
 "Ce module n'a pas reçu de commentaires.": "Ce module n'a pas encore reçu de commentaires."
 'Ce module a reçu': "Ce module a reçu"
+"Vous devez être connecté afin poster un commentaire." : "Vous devez être connecté afin poster un commentaire."
 'Afficher les': 'Afficher les'
 'commentaires': commentaires
 'Commentaires': Commentaires
@@ -111,7 +119,7 @@ Information: Information
 'Modifier': 'Modifier'
 
 
-#proposer
+################### proposer ###################
 'Proposer un module': 'Proposer un module'
 'Pourquoi proposer un module ?': "Pourquoi proposer un module ?"
 proposer:
@@ -136,8 +144,13 @@ proposer:
   'Décrivez ici le module que vous souhaiteriez avoir dans votre application DiabHelp'
 'Vous devez être connecté afin de proposer un module.': "Vous devez être connecté afin de proposer un module."
 'Pas de module trouvé': 'Pas de module trouvé'
+'logo': 'logo'
+'File': 'Fichier'
+'Save': 'Enregistrer'
 
-#contact
+
+
+################### contact ###################
 Contact: Contact
 "Qui sommes nous ?": "Qui sommes nous ?"
 contact:
@@ -190,7 +203,8 @@ contact:
 'Votre numéro de téléphone': 'Votre numéro de téléphone'
 'Ecrivez votre message': 'Ecrivez votre message'
 
-#actualités
+
+################### actualités ###################
 Archives: Archives
 Janvier: Janvier
 Février: Février
@@ -209,7 +223,8 @@ Décembre: Décembre
 'Poster un commentaire': 'Poster un commentaire'
 'Votre commentaire ici..': 'Votre commentaire ici..'
 
-#profil
+
+################### profil ###################
 'Modifier son profil': 'Modifier son profil'
 'Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)':
   'Choisissez votre avatar (2Mo Max, en jpg, jpeg, gif et png)'
@@ -217,8 +232,11 @@ Décembre: Décembre
 Association: Association
 "Numéro de téléphone": 'Numéro de téléphone'
 'Je souhaite supprimer mon compte': 'Je souhaite supprimer mon compte'
+'password': 'Mot de passe'
+'password confirmation': 'Confirmation du mot de passe'
 
-#ilsNousOntAidés
+
+################### ilsNousOntAidés ###################
 'Ils nous ont aidés': 'Ils nous ont aidés'
 helper:
   thomas: >
@@ -226,11 +244,13 @@ helper:
     site web et les applications.
 'Merci à Thomas ! :-)': 'Merci à Thomas ! :-)'
 
-#email
+
+################### email ###################
 "Email confirmation envoyé": >
  Un email d'activation a été envoyé sur votre adresse email, merci de cliquer sur le lien de validation.
 
-#error messages
+
+################### error messages ###################
 "déjà utilisé": "déjà utilisé"
 "Adresse email déjà utilisée.": "Adresse email déjà utilisée."
 "Formulaire vide.": "Tous les champs sont requis."
@@ -238,11 +258,62 @@ helper:
 "Les mots de passe ne correspondent pas.": "Les mots de passe ne correspondent pas."
 "Le mot de passe doit contenir entre 8 et 42 caractères.": "Le mot de passe doit contenir entre 8 et 42 caractères."
 "Le nom et le prénom doivent contenir entre 2 et 25 caractères.": "Le nom et le prénom doivent contenir entre 2 et 25 caractères."
-"Le nom d'utilisateur doit contenir entre 2 et 25 caractères": "Le nom d'utilisateur doit contenir entre 2 et 25 caractères."
+"Le nom d'utilisateur doit contenir entre 2 et 25 caractères.": "Le nom d'utilisateur doit contenir entre 2 et 25 caractères."
 "Vous devez accepter les Conditions Générales d'utilisation.": "Vous devez accepter les Conditions Générales d'utilisation."
 "Veuillez renseigner ce champ.": "Veuillez renseigner ce champ."
-
 "This value should not be blank.": "Veuillez renseigner ce champ."
-
 "Cet utilisateur n'existe pas": "Cet utilisateur n'existe pas"
 "Le nom d'uilisateur et le mot de passe ne correspondent pas.": "Le nom d'uilisateur et le mot de passe ne correspondent pas."
+
+
+################### export CDS ###################
+"Carnet de suivi": "Carnet de suivi"
+"Date": "Date"
+"Heure": "Heure"
+"Titre": "Titre"
+"Lieu": "Lieu"
+"Glucides": "Glucides"
+"Glycémie": "Glycémie"
+"HbA1c": "HbA1c"
+"Activité": "Activité"
+"Type d'activité": "Type d'activité"
+"Insuline rapide": "Insuline rapide"
+"Insuline lente": "Insuline lente"
+"Notes": "Notes"
+
+
+################### Admin zone ###################
+"Admin zone": "Zone admin"
+"Admin panel": "Panneau d'administration"
+"News management": "Gestion des articles"
+"Modules management": "Gestion des modules"
+"User management": "Gestion des utilisateurs"
+Administration: Administration
+"Add an article": "Ajouter un article"
+"Add a module": "Ajouter un module"
+
+"ID": "ID"
+"Title": "Titre"
+"Text": "Texte"
+"see more": "voir plus"
+"Name": "Nom"
+"Type": "Type"
+"Description": "Description"
+"Username": "Pseudo"
+"Last_login": "Dernière connexion"
+"Locked": "Verrouillé"
+"Roles": "Roles"
+"Firstname": "Prénom"
+"Lastname": "Nom"
+"Organism": "Organisme"
+"Birthday": "Date de naissance"
+"Phone": "Téléphone"
+"Image": "Image"
+
+
+"Show": "Afficher"
+"Hide": "Cacher"
+"Edit": "Editer"
+"Hide/Show": "Afficher/Cacher"
+"Delete": "Supprimer"
+'Are you sure?': 'Confirmez-vous ?'
