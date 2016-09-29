@@ -94,6 +94,7 @@ EMAIL: EMAIL
 'Patient': Patient
 'Proche': Proche
 'Docteur': Docteur
+"Nom d'utilisateur": "Nom d'utilisateur"
 
 
 ################### modules ###################
@@ -143,6 +144,10 @@ proposer:
   'Décrivez ici le module que vous souhaiteriez avoir dans votre application DiabHelp'
 'Vous devez être connecté afin de proposer un module.': "Vous devez être connecté afin de proposer un module."
 'Pas de module trouvé': 'Pas de module trouvé'
+'logo': 'logo'
+'File': 'Fichier'
+'Save': 'Enregistrer'
+
 
 
 ################### contact ###################
@@ -227,6 +232,8 @@ Décembre: Décembre
 Association: Association
 "Numéro de téléphone": 'Numéro de téléphone'
 'Je souhaite supprimer mon compte': 'Je souhaite supprimer mon compte'
+'password': 'Mot de passe'
+'password confirmation': 'Confirmation du mot de passe'
 
 
 ################### ilsNousOntAidés ###################
@@ -251,7 +258,7 @@ helper:
 "Les mots de passe ne correspondent pas.": "Les mots de passe ne correspondent pas."
 "Le mot de passe doit contenir entre 8 et 42 caractères.": "Le mot de passe doit contenir entre 8 et 42 caractères."
 "Le nom et le prénom doivent contenir entre 2 et 25 caractères.": "Le nom et le prénom doivent contenir entre 2 et 25 caractères."
-"Le nom d'utilisateur doit contenir entre 2 et 25 caractères": "Le nom d'utilisateur doit contenir entre 2 et 25 caractères."
+"Le nom d'utilisateur doit contenir entre 2 et 25 caractères.": "Le nom d'utilisateur doit contenir entre 2 et 25 caractères."
 "Vous devez accepter les Conditions Générales d'utilisation.": "Vous devez accepter les Conditions Générales d'utilisation."
 "Veuillez renseigner ce champ.": "Veuillez renseigner ce champ."
 "This value should not be blank.": "Veuillez renseigner ce champ."
