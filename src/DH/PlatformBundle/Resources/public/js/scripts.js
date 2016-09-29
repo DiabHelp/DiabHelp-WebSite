@@ -15,7 +15,6 @@ $(window).load(function() {
 					$('#email_exist_error').html('L\'adresse email ' + email + ' n\'est pas enregistrée, veuillez en saisir une autre.');
 				else {
 					$('#email_exist_error').html('');
-					console.log('reset_pwd_submit');
 				}
 					// $('#fos_user_registration_form').submit();
 			});
@@ -203,7 +202,7 @@ function login() {
 					$('#account_locked').show();
 				errors++;
 			} else
-				$.post("/fr/rest-login", { username: username, password: password },
+				$.post("/rest-login", { username: username, password: password },
 					function (result) {
 						var res = $.parseJSON(result);
 						if (res.success == false) {
