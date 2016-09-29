@@ -8,7 +8,7 @@ $(window).load(function() {
 	$('#reset_pwd').click(function () {
 		var email = $('#fos_user_forget_pwd_form_email').val();
 
-		$.post("/check_email_exist", { email: email },
+		$.post("/fr/check_email_exist", { email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == true)
@@ -38,7 +38,7 @@ $(window).load(function() {
 
 		var error = 0;
 		var main_error = 0;
-        $.post("/check_available", { username: username, email: email },
+        $.post("/fr/check_available", { username: username, email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == false) {
@@ -193,7 +193,7 @@ function login() {
 	$('.hideme').hide();
 
 	var errors = 0;
-	$.post("/check_email_and_username_exist", { test: username },
+	$.post("/fr/check_email_and_username_exist", { test: username },
 		function (result) {
 			var res = $.parseJSON(result);
 			if (res.success == false) {
@@ -203,7 +203,7 @@ function login() {
 					$('#account_locked').show();
 				errors++;
 			} else
-				$.post("/rest-login", { username: username, password: password },
+				$.post("/fr/rest-login", { username: username, password: password },
 					function (result) {
 						var res = $.parseJSON(result);
 						if (res.success == false) {
