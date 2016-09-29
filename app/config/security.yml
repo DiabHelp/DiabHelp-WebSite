@@ -1,4 +1,6 @@
 # app/config/security.yml
+imports:
+    - { resource: parameters.yml }
 
 security:
     encoders:
@@ -57,7 +59,14 @@ security:
                 path:       fos_user_security_logout
                 target:     dh_platform_home
             remember_me:
-                key:        %secret% # %secret% est un paramètre de parameters.yml
+                key:   "%secret%"
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+#                key:        %secret% # %secret% est un paramètre de parameters.yml
             http_basic:
                 realm: "REST Service Realm"
     access_control:
