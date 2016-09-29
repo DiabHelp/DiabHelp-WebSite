@@ -42,8 +42,14 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.lastLogin|date('d/m/Y') }}</td>
-                <td>{{ dump(user.locked) }}</td>
-                <td>{{ dump(user.roles) }}</td>
+                <td>{% if (user.locked) %}
+                       {{ "true" }}
+                    {% else %}
+                       {{ "false" }}
+                    {% endif %}</td>
+                <td>{% for role in user.roles %}
+                        {{ role }}
+                {% endfor %}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.lastname }}</td>
                 <td>{{ user.organisme }}</td>
