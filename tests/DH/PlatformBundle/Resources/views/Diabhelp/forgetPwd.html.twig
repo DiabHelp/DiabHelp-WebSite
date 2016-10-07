@@ -1,0 +1,8 @@
+<div id='forget' class='center' hidden>
+    <h2 class='center'>{{ 'Retrouver son mot de passe' | trans }}</h2>
+    <form name='forget' action="" method='post'>
+        <input required type='text' name='mail' placeholder='{{ 'Email' | trans }}'/>
+        <input type='submit' value='{{ 'envoyer' | trans }}'>
+    </form>
+    <a onclick='show_signup_part("signin");' style='color: blue; font-size: 0.8em;'>{{ 'Mot de passe retrouvé?' | trans }}</a>
+</div>

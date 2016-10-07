@@ -1,0 +1,4 @@
+services:
+#    dh_platform.example:
+#        class: DH\PlatformBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

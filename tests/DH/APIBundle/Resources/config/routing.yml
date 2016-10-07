@@ -1,0 +1,110 @@
+## PROCHE PATIENT (PATIENT)
+dh_api_proche_patient_get_all_patient:
+    path:     /patient/getAllByUserId/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getAllPatientByUserId }
+    requirements:
+        id_user:   \d+
+
+dh_api_proche_patient_manage_patient_list:
+    path:     /patient/managePatientList
+    defaults:  { _controller: DHAPIBundle:ProchePatient:managePatientList }
+    requirements:
+        _method:  POST
+
+dh_api_proche_patient_get_patient_position:
+    path:     /patient/getPatientPosition/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getPatientPosition }
+    requirements:
+        id_user:  \d+
+
+dh_api_proche_patient_search_patient:
+    path:     /patient/search/{search}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:searchPatient }
+
+## PROCHE PATIENT (PROCHE)
+dh_api_proche_patient_get_all_proche:
+    path:     /proche/getAllByUserId/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getAllProcheByUserId }
+    requirements:
+        id_user:   \d+
+
+dh_api_proche_patient_manage_proche_list:
+    path:     /proche/manageProcheList
+    defaults:  { _controller: DHAPIBundle:ProchePatient:manageProcheList }
+    requirements:
+        _method:  POST
+
+dh_api_proche_patient_set_position:
+    path:     /patient/setPatientPosition/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:setPatientPosition }
+    requirements:
+        id_user:  \d+
+
+dh_api_proche_patient_search_proche:
+    path:     /proche/search/{search}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:searchProche }
+
+## CARNET DE SUIVI
+dh_api_carnet_entry_getAllByUserId:
+    path:      /carnet/entry/getAllByUserId/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:getAllEntryByUserId }
+    requirements:
+        id_user:   \d+
+
+dh_api_carnet_entry_getLastDate:
+    path:      /carnet/entry/getLastDate/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:getLastDate }
+    requirements:
+        id_user:   \d+
+
+dh_api_carnet_entry_setFromApp:
+    path:      /carnet/entry/setFromApp/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:setFromApp }
+    requirements:
+        id_user:   \d+
+        _method:  POST
+
+dh_api_carnet_entry_delete:
+    path:      /carnet/entry/delete/{id}/{id_user}
+    defaults:  { _controller: DHAPIBundle:Carnet:delete }
+    requirements:
+        id:       \d+
+        id_user:  \d+
+
+dh_api_carnet_exportJSON:
+    path:      /carnet/exportJSON
+    defaults:  { _controller: DHPlatformBundle:Carnet:exportJSON }
+
+## MODULES
+dh_api_module_view:
+    path:      /modules/{id}
+    defaults:  { _controller: DHAPIBundle:Module:view }
+    requirements:
+        id:  \d+
+
+dh_api_module_all:
+    path:      /modules/all
+    defaults:  { _controller: DHAPIBundle:Module:all }
+
+## USERS
+dh_api_user_register:
+    path:      /user/register
+    defaults:  { _controller: DHAPIBundle:User:register }
+
+dh_api_user_logout:
+    path:      /user/logout/{token}
+    defaults:  { _controller: DHAPIBundle:User:logout }
+    requirements:
+        token:  \d+
+
+dh_api_user_get_info:
+    path:      /user/getInfo/{id}
+    defaults:  { _controller: DHAPIBundle:User:getInfo }
+    requirements:
+        id:   \d+
+
+dh_api_user_set_info:
+    path:      /user/setInfo
+    defaults:  { _controller: DHAPIBundle:User:setInfo }
+    requirements:
+        _method:  POST
