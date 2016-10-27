@@ -1,0 +1,79 @@
+{# src/DH/PlatformBundle/Resources/views/Module/view.html.twig #}
+
+{% extends "DHAdminBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ module.name }} - {{ parent() }}
+{% endblock %}
+
+{% block dhadmin_body %}
+
+  <div class = 'page_header'>
+    <div class= center >
+      <img class='page_header_logo fl' src='{{ asset('bundles/dhplatform/images/news_logo.png') }}' alt=''>
+      <h1 class='page_header_title fl'>{{ module.name }}</h1>
+      <ul class='page_header_nav fr'>
+        <li><a href='{{ path('dh_platform_home') }}'>Accueil</a></li>
+        <li><a class='active' href='{{ path('dh_platform_module') }}'>Liste des modules</a></li>
+      </ul>
+      <div class='cf'></div>
+    </div>
+  </div>
+  <div class='modules_back'>
+    <div class='module_s'>
+        <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(module, 'imageFile') }}" alt="{{ module.name }}" />
+        <h2 id="module_name">{{ module.name }}</h2>
+        <h3 style='text-align:left'>{{ 'Créé par' | trans }} : <em>{{ module.organisme }}</em></h3>
+        <h4 style='text-align:left'>{{ 'Catégorie' | trans }} : {{ module.type }}</h4>
+        <p>{{ 'Note actuelle' | trans }} : <a class="noteModule{{ module.id }}">{{ module.note }}</a></p>
+        <div class='describ_mod'>
+          <p>{{ module.description }}</p>
+        </div>
+		<button type="button"  id="button_com_react" onclick="show_com_content('com_react_content');" >
+            {{ 'Afficher les' | trans }} {{ module.comments|length }} {{ 'commentaires' | trans }}
+        </button>
+    </div>
+        <div id="com_react_content" style="height:auto; display:none;">
+            {% for comment in module.comments %}
+            <div class="simple_com">
+                <div class="header_com">
+                    <div id="header_com_gauche">
+                        <img src="" alt="user" class="icone_picture_user">
+                        <h3>{{ comment.author.username }}</h3>
+                        <h3>{{ comment.vote }} / 5</h3>
+                    </div>
+                    <div id="header_com_droite">
+                        <div class="action_block">
+                              <div class="delete_com">
+                                  <a style="background-color:red;" href="{{ path('dh_admin_module_comment_delete', {'id': comment.id}) }}">{{ 'Supprimer' | trans }}</a>
+                              </div>
+                            {% if app.user and comment.author.id == app.user.id %}
+                                <div class="modify_com">
+                                    <a style="background-color:gray" onclick="">{{ 'Modifier' | trans }}</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <h4>{{ comment.date|date('d/m/Y H:i:s') }}</h4>
+                    </div>
+                </div>
+                <div class="content_com">
+                    <p id="com_info_msg" style="display:none"></p>
+                    <div id=text_com>
+                        <p>{{ comment.text }}</p>
+                    </div>
+                    <form action="" id=modif_com_form style="width:100%;display:none;">
+                        <div align="center">
+                            <textarea rows="10" cols="100" class="com_change" id=com_change>{{ comment.text }}</textarea>
+                        </div>
+                        <div align="center">
+                            <input name="envoyer" class="send_button" id="envoyer" value="{{ 'Envoyer' | trans }}" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      <br/>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+  Proposer - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <div id="content"></div>
+  <div class = "page_header">
+    <div class="center">
+      <img class="page_header_logo fl" src="{{ asset('bundles/dhplatform/images/news_logo.png') }}" alt="">
+      <h1 class="page_header_title fl">{{ 'Proposer un module' | trans }}</h1>
+      <ul class="page_header_nav fr">
+        <li><a href="{{ path('dh_platform_home') }}">{{ 'Accueil' | trans }}</a></li>
+        <li><a class="active" href="{{ path('dh_platform_module_add') }}">{{ 'Proposer un module' | trans }}</a></li>
+      </ul>
+      <div class="cf"></div>
+    </div>
+  </div>
+  <div class='contact_content' style="margin:0 auto;">
+  <div class="contact_form">
+  <div class='contact_info' style="color:white;font-size:1.2em;">
+    <h1 style='text-align:center;'>{{ 'Pourquoi proposer un module ?' | trans }}</h1>
+    <p>{{ "proposer.desc.parag1" | trans }}</p>
+    <p>{{ "proposer.desc.parag2" | trans }}</p>
+    <p>{{ "proposer.desc.parag3" | trans }}</p>
+  </div>
+  <h2 class="contact_form_title">{{ 'Vous voulez proposer un module ?' | trans }}</h2>
+{% if app.user %}
+  <div class="contact_form_box">
+    {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
+  <div class="error">
+      {{ form_errors(form) }}
+  </div>
+    <div class="form_box_left fl">
+        {{ form_widget(form.name, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Nom du module' | trans }}) }}
+        {{ form_widget(form.type, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Type de module' | trans }}) }}
+        {{ form_widget(form.organisme, {'attr': {'class': 'contact_form_input_noname', 'placeholder' : 'Organisme / association' | trans }}) }}
+      <div style="text-align: center;margin-bottom: 2%;">
+        <h5 style="margin-top: 3%;color:white;font-size:1.5em;">{{ 'Soumettre un logo' | trans }}</h5>
+        {{ form_widget(form.imageFile, {'attr': {'title': 'logo'}}) }}
+      </div>
+    </div>
+    <div class="form_box_center fl">
+    {{ form_widget(form.description, {'attr': {'class': 'contact_form_textarea',
+      'placeholder' : 'Décrivez ici le module que vous souhaiteriez avoir dans votre application DiabHelp' | trans}}) }}
+    {{ form_widget(form._token) }}
+    </div>
+    <div class="form_box_righ fl proposer_submit">
+      {{ form_widget(form.save, {'attr': {'class': 'contact_form_submit', 'type' : 'image', 'src' : asset('bundles/dhplatform/images/submit_button.png') }}) }}
+      <p>{{ 'Proposer' | trans }}</p>
+    </div>
+  {% else %}
+    <p style="font-size:1.8em;font-style:bold;text-align:center;">
+      {{ 'Vous devez être connecté afin de proposer un module.' | trans }}
+        <span onclick="show_signup()" style="color:blue;">
+          <a>{{ 'Se connecter' | trans }}</a>
+        </span>
+     </p>
+    <br/>
+  {% endif %}
+  </div>
+    <div class="cf"></div>
+  </div>
+  </div>
+
+{% endblock %}

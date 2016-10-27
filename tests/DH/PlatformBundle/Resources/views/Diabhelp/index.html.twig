@@ -1,0 +1,135 @@
+{# src/DH/PlatformBundle/Resources/views/Advert/index.html.twig #}
+
+{% extends "DHPlatformBundle::slide.html.twig" %}
+
+{% block title %}
+  {{ 'Accueil' | trans }} - {{ parent()  }}
+{% endblock %}
+
+{% block dhplatform_body %}
+
+  <div class="services">
+    <div class="services_center">
+      <div class="services_item first fl">
+        <div class="services_item_regular">
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_home') }}">{{ 'Application DiabHelp' | trans }}</a></h3>
+          <div class="services_backgr">
+            <p class="services_item_pic">
+              <a href="{{ path('dh_platform_home') }}">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_phone2.png') }}" alt="{{ 'Application DiabHelp' | trans }}">
+              </a>
+            </p>
+            <div class="services_pic_line"> </div>
+            <p class="services_item_desc">
+              {{ 'Télécharger l\'application DiabHelp' | trans }}
+            </p>
+          </div>
+        </div>
+        <div class="services_item_hover">
+          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_home') }}">{{ 'L\'application' | trans }}</a></h3>
+          <p class="services_item_pic_hover">
+            <a href="{{ path('dh_platform_home') }}">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_phone1.png') }}" alt="{{ 'L\'application' | trans }}">
+            </a>
+          </p>
+          <p class="services_item_link_hover">
+            <a href="{{ path('dh_platform_home') }}">{{ 'S\'informer' | trans }}</a>
+          </p>
+        </div>
+      </div>
+      <div class="services_item second fl">
+        <div class="services_item_regular">
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_module') }}">{{ 'Réagir' | trans }}</a></h3>
+          <div class="services_backgr">
+            <p class="services_item_pic">
+              <a href="{{ path('dh_platform_module') }}">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_reagir2.png') }}" alt="{{ 'Réagir' | trans }}">
+              </a>
+            </p>
+            <div class="services_pic_line"> </div>
+            <p class="services_item_desc">
+              {{ 'Donnez votre avis sur les modules de l\'application' |trans }}
+            </p>
+          </div>
+        </div>
+        <div class="services_item_hover">
+          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_module') }}">{{ 'Réagir'| trans }}</a></h3>
+          <p class="services_item_pic_hover">
+            <a href="{{ path('dh_platform_module') }}">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_reagir.png') }}" alt="{{ 'Réagissez'| trans }}">
+            </a>
+          </p>
+          <p class="services_item_link_hover">
+            <a href="{{ path('dh_platform_module') }}">{{ 'Réagir'| trans }}</a>
+          </p>
+        </div>
+      </div>
+      <div class="services_item fl third">
+        <div class="services_item_regular">
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_module_add') }}">{{ 'Proposer' | trans }}</a></h3>
+          <div class="services_backgr">
+            <p class="services_item_pic">
+              <a href="{{ path('dh_platform_module_add') }}">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_proposer2.png') }}" alt="{{ 'Proposer' | trans }}">
+              </a>
+            </p>
+            <div class="services_pic_line"> </div>
+            <p class="services_item_desc">
+              {{ 'Devenez acteur du développement en proposant votre propre module' | trans }}
+            </p>
+          </div>
+        </div>
+        <div class="services_item_hover">
+          <h3 class="services_item_title_hover"><a href="proposer.php">{{ 'Proposer' | trans  }}</a></h3>
+          <p class="services_item_pic_hover">
+            <a href="{{ path('dh_platform_module_add') }}">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_proposer.png') }}" alt="{{ 'Proposer' | trans  }}">
+            </a>
+          </p>
+          <p class="services_item_link_hover">
+            <a href="{{ path('dh_platform_module_add') }}">{{ 'Proposer' | trans  }}</a>
+          </p>
+        </div>
+      </div>
+      <div class="services_item fl last">
+        <div class="services_item_regular">
+          <h3 class="services_item_title"><a href="{{ path('dh_platform_contact') }}">{{ 'Qui sommes nous ?' | trans }}</a></h3>
+          <div class="services_backgr">
+            <p class="services_item_pic">
+              <a href="{{ path('dh_platform_contact') }}">
+                <img src="{{ asset('bundles/dhplatform/images/services/icone_qui2.png') }}" alt="{{ 'Qui sommes nous ?' | trans }}">
+              </a>
+            </p>
+            <div class="services_pic_line"> </div>
+            <p class="services_item_desc">
+              {{ 'A propos de l\'équipe DiabHelp' | trans }}
+            </p>
+          </div>
+        </div>
+        <div class="services_item_hover">
+          <h3 class="services_item_title_hover"><a href="{{ path('dh_platform_contact') }}">{{ 'Qui sommes nous ?' | trans }}</a></h3>
+          <p class="services_item_pic_hover">
+            <a href="{{ path('dh_platform_contact') }}">
+              <img src="{{ asset('bundles/dhplatform/images/services/icone_qui.png') }}" alt="{{ 'Qui sommes nous ?' | trans }}">
+            </a>
+          </p>
+          <p class="services_item_link_hover">
+            <a href="{{ path('dh_platform_contact') }}">{{ 'En savoir plus' | trans }}</a>
+          </p>
+        </div>
+      </div>
+      <div class="cf"></div>
+    </div>
+  </div>
+  <div class="welcome">
+    <h1 class="article-title">{{ 'Allégeons la gestion du diabète avec DiabHelp' | trans  }} </h1>
+    <p class="article-desc">{{ 'diabhelp.desc.parag1' | trans }}</p>
+    <p class="article-desc">{{ 'diabhelp.desc.parag2' | trans }}</p>
+    <br />
+  </div>
+
+    </div>
+    <div class="right_border_article"></div>
+  </div>
+
+{% endblock %}

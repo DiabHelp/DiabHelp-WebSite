@@ -1,0 +1,23 @@
+{# src/DH/PlatformBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ "Administration" | trans }}- {{ parent() }}
+{% endblock %}
+
+
+{% block body  %}
+<div class="center">
+
+<div >
+  <a href="{{ path('dh_admin_modules') }}">{{ "Modules management" | trans }}</a> |
+  <a href="{{ path('dh_admin_articles') }}">{{ "News management" | trans }}</a> |
+  <a href="{{ path('dh_admin_users') }}">{{ "User management" | trans }}</a><br/>
+<br />
+</div>
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+{% block dhadmin_body %}
+{% endblock %}
+</div>
+{% endblock %}

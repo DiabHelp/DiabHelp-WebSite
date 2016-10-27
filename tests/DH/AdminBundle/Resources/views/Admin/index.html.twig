@@ -1,0 +1,15 @@
+{# src/DH/PlatformBundle/Resources/views/Module/index.html.twig #}
+
+{% extends "DHAdminBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ "Admin zone" | trans }} - {{ parent() }}
+{% endblock %}
+
+{% block dhadmin_body %}
+
+<h1>{{ "Admin panel" | trans }}</h1>
+<p>Voici le panneau d'administration de DiabHelp</p>
+  <div class='cf'></div>
+
+{% endblock %}
