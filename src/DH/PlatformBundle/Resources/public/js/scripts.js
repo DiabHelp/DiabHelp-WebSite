@@ -8,14 +8,13 @@ $(window).load(function() {
 	$('#reset_pwd').click(function () {
 		var email = $('#fos_user_forget_pwd_form_email').val();
 
-		$.post("check_email_exist", { email: email },
+		$.post("/fr/check_email_exist", { email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == true)
 					$('#email_exist_error').html('L\'adresse email ' + email + ' n\'est pas enregistrée, veuillez en saisir une autre.');
 				else {
 					$('#email_exist_error').html('');
-					console.log('reset_pwd_submit');
 				}
 					// $('#fos_user_registration_form').submit();
 			});
@@ -38,7 +37,7 @@ $(window).load(function() {
 
 		var error = 0;
 		var main_error = 0;
-        $.post("check_available", { username: username, email: email },
+        $.post("/fr/check_available", { username: username, email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == false) {
@@ -52,8 +51,7 @@ $(window).load(function() {
 					}
 					if (main_error == 0)
 						$('#empty_form').show();
-				}
-				else {
+				} else {
 					if (username.length < 2 || username.length > 25){
 						$('#username_bad_lenght').show();
 						error++;
@@ -194,14 +192,17 @@ function login() {
 	$('.hideme').hide();
 
 	var errors = 0;
-	$.post("check_email_and_username_exist", { test: username },
+	$.post("/fr/check_email_and_username_exist", { test: username },
 		function (result) {
 			var res = $.parseJSON(result);
 			if (res.success == false) {
-				$('#unknown_user').show();
+				if (res.errors[0] == 1)
+					$('#unknown_user').show();
+				else if (res.errors[1] == 1)
+					$('#account_locked').show();
 				errors++;
 			} else
-				$.post("../rest-login", { username: username, password: password },
+				$.post("/rest-login", { username: username, password: password },
 					function (result) {
 						var res = $.parseJSON(result);
 						if (res.success == false) {
