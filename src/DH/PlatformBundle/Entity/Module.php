@@ -398,30 +398,6 @@ class Module
     }
 
     /**
-     * Set nbVote
-     *
-     * @param integer $nbVote
-     *
-     * @return Module
-     */
-    public function setNbVote($nbVote)
-    {
-        $this->nbVote = $nbVote;
-
-        return $this;
-    }
-
-    /**
-     * Get nbVote
-     *
-     * @return integer
-     */
-    public function getNbVote()
-    {
-        return $this->nbVote;
-    }
-
-    /**
      * Set display
      *
      * @param integer $display

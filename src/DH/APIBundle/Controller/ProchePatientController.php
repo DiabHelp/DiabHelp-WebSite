@@ -123,8 +123,44 @@ class ProchePatientController extends Controller
             $errors[] = "User not found";
             $response = array("success" => false, "errors" => $errors);
         } else {
-            $position = "Position";
+            $position = array($user->getLattitude(), $user->getLongitude());
             $response = array("success" => true, "position" => $position);
+        }
+
+        return new Response($this->serializer->serialize($response, 'json'));
+    }
+
+    public function setPatientPositionAction(Request $request, $id_user) {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('DHUserBundle:User');
+
+        $user = $repository->find($id_user);
+
+        $lattitude = $request->get('lattitude', null);
+        $longitude = $request->get('longitude', null);
+
+        $errors = array();
+
+        if ($user == null || $lattitude == null || $longitude == null) {
+            $errors[] = "User not found";
+            $response = array("success" => false, "errors" => $errors);
+        } else {
+            $user->setLattitude($lattitude);
+            $user->setLongitude($longitude);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $user->setPassword("");
+            $user->setSalt("");
+
+            $response = array("success" => true, "user" => $user);
         }
 
         return new Response($this->serializer->serialize($response, 'json'));
@@ -261,30 +297,6 @@ class ProchePatientController extends Controller
         $em->flush();
 
         return new Response($this->serializer->serialize(array("success" => true), 'json'));
-    }
-
-    public function setPatientPositionAction(Request $request, $id_user) {
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $this->serializer = new Serializer($normalizers, $encoders);
-
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('DHUserBundle:User');
-
-        $user = $repository->find($id_user);
-
-        $errors = array();
-
-        if ($user == null) {
-            $errors[] = "User not found";
-            $response = array("success" => false, "errors" => $errors);
-        } else {
-            $position = "Position";
-            $response = array("success" => true, "position" => $position);
-        }
-
-        return new Response($this->serializer->serialize($response, 'json'));
     }
 
     public function searchProcheAction(Request $request, $search) {
