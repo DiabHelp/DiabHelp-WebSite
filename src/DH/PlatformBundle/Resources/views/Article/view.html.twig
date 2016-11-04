@@ -30,8 +30,8 @@
                <img class='img_mod' id='image_profil' src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}" />
              <h2 class=news_item_date>{{ article.date|date('d/m/Y') }}</h2>
              <h2 class=news_item_title>{{ article.title }}</h2>
-               {#<a class="fbShareButtonNews"><img src='{{ asset('bundles/dhplatform/images/sharefb.jpeg') }}'/></a>#}
              <div id = Text_News>
+               <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.dev.diabhelp.org{{  path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) | url_encode }}&layout=button_count&size=small&mobile_iframe=true&appId=843440889077700&width=82&height=20" width="82" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                <p class=news_content>
                 {% if (article.text != null) %}
                     {% set paragraphs = article.text|split('\n') %}
