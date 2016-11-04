@@ -29,7 +29,17 @@ class ProchePatientController extends Controller
 
         $links = $repository->findByProche($id_user);
 
-        foreach ($links as $key => $link) {
+        foreach ($links as $keys => $link) {
+            foreach ($link->getPatient()->getRoles() as $key => $role) {
+              if ($role == "ROLE_ADMIN") {
+                unset($links[$keys]);
+              }
+            }
+            foreach ($link->getProche()->getRoles() as $key => $role) {
+              if ($role == "ROLE_ADMIN") {
+                unset($links[$keys]);
+              }
+            }
             $link->getPatient()->setPassword("");
             $link->getPatient()->setSalt("");
             $link->getProche()->setPassword("");
@@ -167,43 +177,50 @@ class ProchePatientController extends Controller
     }
 
     public function searchPatientAction(Request $request, $search) {
-        $encoders = new JsonEncoder();
-        $normalizer = new ObjectNormalizer();
+      $encoders = new JsonEncoder();
+      $normalizer = new ObjectNormalizer();
 
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object;
-        });
+      $normalizer->setCircularReferenceHandler(function ($object) {
+          return $object;
+      });
 
-        $this->serializer = new Serializer(array($normalizer), array($encoders));
+      $this->serializer = new Serializer(array($normalizer), array($encoders));
 
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('DHUserBundle:User');
+      $repository = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('DHUserBundle:User');
 
-        $qb = $repository->createQueryBuilder('cm');
-        $qb->select('cm')
-            ->where($qb->expr()->orX(
-                $qb->expr()->eq('cm.firstname', ':search'),
-                $qb->expr()->eq('cm.lastname', ':search'),
-                $qb->expr()->eq('cm.phone', ':search')
-            ))
-            ->setParameter('search', $search);
+      $qb = $repository->createQueryBuilder('cm');
+      $qb->select('cm')
+          ->where($qb->expr()->orX(
+              $qb->expr()->eq('cm.firstname', ':search'),
+              $qb->expr()->eq('cm.lastname', ':search'),
+              $qb->expr()->eq('cm.phone', ':search')
+          ))
+          ->setParameter('search', $search);
 
-        $users = $qb->getQuery()->getResult();
+      $users = $qb->getQuery()->getResult();
 
-        foreach ($users as $key => $user) {
-            $user->setPassword("");
-            $user->setSalt("");
+      foreach ($users as $keys => $user) {
+        foreach ($user->getRoles() as $key => $role) {
+          if ($role == "ROLE_PROCHE") {
+            unset($users[$keys]);
+          } else if ($role == "ROLE_ADMIN") {
+            unset($users[$keys]);
+          }
         }
+        $user->setPassword("");
+        $user->setSalt("");
+      }
 
-        if ($users == null) {
-            $errors = array();
-            $errors[] = "Users not found";
-            $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
-        } else
-            $jsonContent = $this->serializer->serialize(array("success" => true, "users" => $users), 'json');
+      if ($users == null) {
+          $errors = array();
+          $errors[] = "Users not found";
+          $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
+      } else
+          $jsonContent = $this->serializer->serialize(array("success" => true, "users" => $users), 'json');
 
-        return new Response($jsonContent);
+      return new Response($jsonContent);
     }
 
     public function getAllProcheByUserIdAction(Request $request, $id_user) {
@@ -223,6 +240,16 @@ class ProchePatientController extends Controller
         $links = $repository->findByPatient($id_user);
 
         foreach ($links as $key => $link) {
+            foreach ($link->getPatient()->getRoles() as $key => $role) {
+              if ($role == "ROLE_ADMIN") {
+                unset($links[$keys]);
+              }
+            }
+            foreach ($link->getProche()->getRoles() as $key => $role) {
+              if ($role == "ROLE_ADMIN") {
+                unset($links[$keys]);
+              }
+            }
             $link->getPatient()->setPassword("");
             $link->getPatient()->setSalt("");
             $link->getProche()->setPassword("");
@@ -324,9 +351,16 @@ class ProchePatientController extends Controller
 
         $users = $qb->getQuery()->getResult();
 
-        foreach ($users as $key => $user) {
-            $user->setPassword("");
-            $user->setSalt("");
+        foreach ($users as $keys => $user) {
+          foreach ($user->getRoles() as $key => $role) {
+            if ($role == "ROLE_PATIENT") {
+              unset($users[$keys]);
+            } else if ($role == "ROLE_ADMIN") {
+              unset($users[$keys]);
+            }
+          }
+          $user->setPassword("");
+          $user->setSalt("");
         }
 
         if ($users == null) {
