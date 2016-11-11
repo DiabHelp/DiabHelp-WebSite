@@ -18,7 +18,7 @@ dh_api_proche_patient_get_patient_position:
         id_user:  \d+
 
 dh_api_proche_patient_search_patient:
-    path:     /patient/search/{search}
+    path:     /proche/search/{search}
     defaults:  { _controller: DHAPIBundle:ProchePatient:searchPatient }
 
 ## PROCHE PATIENT (PROCHE)
@@ -41,7 +41,7 @@ dh_api_proche_patient_set_position:
         id_user:  \d+
 
 dh_api_proche_patient_search_proche:
-    path:     /proche/search/{search}
+    path:     /patient/search/{search}
     defaults:  { _controller: DHAPIBundle:ProchePatient:searchProche }
 
 ## CARNET DE SUIVI
