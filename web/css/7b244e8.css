@@ -4913,3 +4913,7 @@ input[type=password] {
 .flags li {
   top: 10px;
 }
+
+#dh_platformbundle_module_imageFile_delete {
+  display: none;
+}

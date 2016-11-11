@@ -2,6 +2,14 @@ dh_platform_home:
     path:     /
     defaults: { _controller: DHPlatformBundle:Diabhelp:index }
 
+dh_platform_index:
+    path:     /index
+    defaults: { _controller: DHPlatformBundle:Diabhelp:index }
+
+dh_platform_accueil:
+    path:     /home
+    defaults: { _controller: DHPlatformBundle:Diabhelp:index }
+
 dh_platform_legal:
     path:     /legal
     defaults: { _controller: DHPlatformBundle:Diabhelp:legal }

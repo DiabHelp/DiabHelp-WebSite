@@ -1,0 +1,15 @@
+{# src/DH/PlatformBundle/Resources/views/Article/add.html.twig #}
+
+{% extends "DHPlatformBundle::slide.html.twig" %}
+
+{% block title %}
+  {{ 'Proposer ' | trans }} - {{ parent() }}
+{% endblock %}
+
+{% block dhplatform_body %}
+
+	<div class="well">
+  		{{ form(form) }}
+	</div>
+
+{% endblock %}
