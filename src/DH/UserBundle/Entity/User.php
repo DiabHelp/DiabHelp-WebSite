@@ -92,6 +92,20 @@ class User extends BaseUser
     protected $profilePicturePath;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="lattitude", type="string", length=255, nullable=false)
+     */
+    private $lattitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=255, nullable=false)
+     */
+    private $longitude;
+
+    /**
      * Sets the file used for profile picture uploads
      *
      * @param UploadedFile $file
@@ -380,5 +394,52 @@ class User extends BaseUser
     public function setBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
+    }
+
+
+    /**
+     * Set lattitude
+     *
+     * @param string $lattitude
+     *
+     * @return User
+     */
+    public function setLattitude($lattitude)
+    {
+        $this->lattitude = $lattitude;
+        return $this;
+    }
+
+    /**
+     * Get lattitude
+     *
+     * @return string
+     */
+    public function getLattitude()
+    {
+        return $this->lattitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     *
+     * @return User
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 }
