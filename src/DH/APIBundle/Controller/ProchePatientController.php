@@ -3,6 +3,7 @@
 namespace DH\APIBundle\Controller;
 
 use DH\APIBundle\Entity\ProchePatientLink;
+use DH\APIBundle\Controller\CommonController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
