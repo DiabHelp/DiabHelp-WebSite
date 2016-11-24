@@ -52,9 +52,7 @@ web/css/7b244e8_general_1.css
 composer.lock
 composer.lock
 app/config/config.yml
-src/DH/PlatformBundle/Resources/public/js/scripts.js
 cov/*
-
+Tests/_output/*
 app/cov/*
-
-tests/_output/*
+src/DH/PlatformBundle/Resources/public/js/scripts.js
