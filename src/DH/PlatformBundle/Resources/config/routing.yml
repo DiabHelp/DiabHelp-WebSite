@@ -2,6 +2,10 @@ dh_platform_home:
     path:     /
     defaults: { _controller: DHPlatformBundle:Diabhelp:index }
 
+dh_platform_early:
+    path:     /early-adopter
+    defaults: { _controller: DHPlatformBundle:Diabhelp:index }
+
 dh_platform_index:
     path:     /index
     defaults: { _controller: DHPlatformBundle:Diabhelp:index }
