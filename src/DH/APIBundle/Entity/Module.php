@@ -105,7 +105,12 @@ class Module
      */
     private $id;
 
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbVote", type="integer")
+     */
+    private $nbVote;
 
     /**
      * Set name
@@ -403,5 +408,26 @@ class Module
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nbVote
+     *
+     * @return \DH\APIBundle\Entity\Module
+     */
+    public function setNbVote($nbVote)
+    {
+        $this->nbVote = $nbVote;
+        return $this;
+    }
+
+    /**
+     * Set nbVote
+     *
+     * @return integer
+     */
+    public function getNbVote()
+    {
+        return $this->nbVote;
     }
 }
