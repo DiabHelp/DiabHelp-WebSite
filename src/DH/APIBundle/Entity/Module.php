@@ -57,13 +57,6 @@ class Module
     /**
      * @var integer
      *
-     * @ORM\Column(name="nb_vote", type="integer", nullable=false)
-     */
-    private $nbVote = '0';
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="display", type="integer", nullable=false)
      */
     private $display = '1';
@@ -256,30 +249,6 @@ class Module
     public function getNote()
     {
         return $this->note;
-    }
-
-    /**
-     * Set nbVote
-     *
-     * @param integer $nbVote
-     *
-     * @return Module
-     */
-    public function setNbVote($nbVote)
-    {
-        $this->nbVote = $nbVote;
-
-        return $this;
-    }
-
-    /**
-     * Get nbVote
-     *
-     * @return integer
-     */
-    public function getNbVote()
-    {
-        return $this->nbVote;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace DH\APIBundle\Controller;
 
 use DH\APIBundle\Entity\ProchePatientLink;
+use DH\APIBundle\Controller\CommonController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -130,7 +131,7 @@ class ProchePatientController extends Controller
         return new Response($this->serializer->serialize($response, 'json'));
     }
 
-    public function searchPatientAction(Request $request, $search) {
+    public function searchPatientAction(Request $request, $id_user, $search) {
         $encoders = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
 
@@ -155,7 +156,18 @@ class ProchePatientController extends Controller
 
         $users = $qb->getQuery()->getResult();
 
-        foreach ($users as $key => $user) {
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('DHAPIBundle:ProchePatientLink');
+
+        $links = $repository->findByProche($id_user);
+
+        foreach ($users as $key_u => $user) {
+            foreach ($links as $key_l => $link) {
+              if ($user->getId() == $link->getPatient()->getId()) {
+                unset($users[$key_u]);
+              }
+            }
             $user->setPassword("");
             $user->setSalt("");
         }
@@ -287,7 +299,7 @@ class ProchePatientController extends Controller
         return new Response($this->serializer->serialize($response, 'json'));
     }
 
-    public function searchProcheAction(Request $request, $search) {
+    public function searchProcheAction(Request $request, $id_user, $search) {
         $encoders = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
 
@@ -312,7 +324,18 @@ class ProchePatientController extends Controller
 
         $users = $qb->getQuery()->getResult();
 
-        foreach ($users as $key => $user) {
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('DHAPIBundle:ProchePatientLink');
+
+        $links = $repository->findByPatient($id_user);
+
+        foreach ($users as $key_u => $user) {
+            foreach ($links as $key_l => $link) {
+              if ($user->getId() == $link->getProche()->getId()) {
+                unset($users[$key_u]);
+              }
+            }
             $user->setPassword("");
             $user->setSalt("");
         }
