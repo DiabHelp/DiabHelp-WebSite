@@ -1,6 +1,6 @@
 services:
     redirect_register_user.registration.completed:
         class: DH\UserBundle\EventListener\RegistrationConfirmListener
-        arguments: [@router]
+        arguments: ['@router']
         tags:
             - { name: kernel.event_subscriber }

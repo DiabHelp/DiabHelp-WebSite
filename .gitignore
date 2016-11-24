@@ -54,3 +54,5 @@ composer.lock
 app/config/config.yml
 cov/*
 Tests/_output/*
+app/cov/*
+src/DH/PlatformBundle/Resources/public/js/scripts.js
