@@ -55,6 +55,11 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
+dh_platform_early:
+    defaults: { _controller: DHPlatformBundle:Diabhelp:contact }
+    path:     /early-adopter
+
+
 login:
     path:   /{_locale}/login
     requirements:
