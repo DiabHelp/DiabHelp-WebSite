@@ -4,7 +4,7 @@ dh_platform_home:
 
 dh_platform_early:
     path:     /early-adopter
-    defaults: { _controller: DHPlatformBundle:Diabhelp:index }
+    defaults: { _controller: DHPlatformBundle:Diabhelp:contact }
 
 dh_platform_index:
     path:     /index
