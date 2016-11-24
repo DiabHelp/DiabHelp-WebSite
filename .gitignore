@@ -56,3 +56,7 @@ cov/*
 Tests/_output/*
 app/cov/*
 src/DH/PlatformBundle/Resources/public/js/scripts.js
+composer.lock
+web/config.php
+app/SymfonyRequirements.php
+app/check.php
