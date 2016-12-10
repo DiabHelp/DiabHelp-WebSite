@@ -272,7 +272,6 @@ function loadMapScript() {
 }
 
 function show_signup() {
-	HideShowMenu();
 	if ($("#welogin").css("display") == "block") {
 		$("#welogin").slideUp("slow", function() {
 			$("#inscription").slideUp("slow");

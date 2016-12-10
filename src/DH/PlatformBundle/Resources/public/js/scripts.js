@@ -145,7 +145,7 @@ $(window).load(function() {
     prevText: "",
     nextText: ""
   });
-   
+
   $('#slider_gallery').flexslider({
     animation: "slide",
     controlNav: false,
@@ -157,7 +157,7 @@ $(window).load(function() {
     nextText: ""
   });
 
-  // carousel event opened page   
+  // carousel event opened page
   $('#slider_event').flexslider({
     animation: "slide",
     controlNav: false,
@@ -167,7 +167,7 @@ $(window).load(function() {
     nextText: ""
   });
 
-  // carousel news page   
+  // carousel news page
   $('.news_item_pic').flexslider({
     animation: "slide", //String: "fade" or "slide"
     slideshow: true,
@@ -181,7 +181,7 @@ $(window).load(function() {
     columnWidth: 1,
     itemSelector: '.item'
   });
-  
+
   //load map for contacts
   loadMapScript();
 });
@@ -339,7 +339,7 @@ function bonmail(mailteste) {
 }
 
 function show_com_content(id)
-  {	
+  {
   	var elem = document.getElementById(id);
     if (elem.style.display == "none")
     {
@@ -418,16 +418,16 @@ $('input[type="file"]').change(function() {
 	}
 });
 
-$(document).ready(function() { 
-    setTimeout(function() { 
-        $(".notif").fadeOut(); 
+$(document).ready(function() {
+    setTimeout(function() {
+        $(".notif").fadeOut();
 	},3000);
-}); 
+});
 
 // function getEmail() {
 	// gapi.client.load('oauth2', 'v2', function() {
 		// var request = gapi.client.oauth2.userinfo.get();
-		// request.execute(function(resp) {	
+		// request.execute(function(resp) {
 			// if (resp['email']) {
 				// return (resp['email']);
 				// console.log(resp['email']);
