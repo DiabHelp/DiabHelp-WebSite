@@ -2326,7 +2326,8 @@ body {
 
 #image_profil{
   width: 100%;
-  max-width: 135px;
+  max-width: 85px;
+  max-height: 85px;
   border:1px solid black;
   height:auto;
   margin-top: 9px;
