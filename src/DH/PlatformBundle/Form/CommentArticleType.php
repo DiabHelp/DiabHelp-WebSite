@@ -5,6 +5,7 @@ namespace DH\PlatformBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CommentArticleType extends AbstractType
 {
@@ -15,10 +16,10 @@ class CommentArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
+            ->add('text', 'text', array('constraints' => array(new NotBlank())))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

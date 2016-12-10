@@ -5,6 +5,8 @@ namespace DH\PlatformBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 
 class ModuleType extends AbstractType
@@ -16,7 +18,7 @@ class ModuleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text')
+            ->add('name', 'text', array('constraints' => array(new NotBlank())))
             ->add('description', 'textarea')
             ->add('type', 'text')
             ->add('organisme', 'text', array('required' => false))
