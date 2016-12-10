@@ -193,6 +193,9 @@
   <script src="{{ asset('bundles/dhplatform/js/masonry.pkgd.min.js') }}"></script>
   <script src="{{ asset('bundles/dhplatform/js/jquery.flexslider-min.js') }}"></script>
   <script src="{{ asset('bundles/dhplatform/js/scripts.js') }}"></script>
+  <script>
+    var server_name = "{{ path('dh_platform_home')|escape('js') }}";
+  </script>
   {#<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>#}
 {% endblock %}
 
