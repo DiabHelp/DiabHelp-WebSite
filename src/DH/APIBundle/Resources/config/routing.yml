@@ -21,6 +21,29 @@ dh_api_proche_patient_search_patient:
     path:     /patient/search/{id_user}/{search}
     defaults:  { _controller: DHAPIBundle:ProchePatient:searchPatient }
 
+## MEDECIN PATIENT
+dh_api_medecin_patient_get_all_patient:
+    path:     /medecin/getAllByUserId/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getAllPatientByUserId }
+    requirements:
+        id_user:   \d+
+
+dh_api_medecin_patient_manage_patient_list:
+    path:     /medecin/managePatientList
+    defaults:  { _controller: DHAPIBundle:ProchePatient:managePatientList }
+    requirements:
+        _method:  POST
+
+dh_api_medecin_patient_get_patient_position:
+    path:     /medecin/getPatientPosition/{id_user}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:getPatientPosition }
+    requirements:
+        id_user:  \d+
+
+dh_api_medecin_patient_search_patient:
+    path:     /patient/search/{id_user}/{search}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:searchPatient }
+
 ## PROCHE PATIENT (PROCHE)
 dh_api_proche_patient_get_all_proche:
     path:     /proche/getAllByUserId/{id_user}

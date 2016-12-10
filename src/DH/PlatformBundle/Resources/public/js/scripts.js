@@ -8,14 +8,13 @@ $(window).load(function() {
 	$('#reset_pwd').click(function () {
 		var email = $('#fos_user_forget_pwd_form_email').val();
 
-		$.post("check_email_exist", { email: email },
+		$.post(server_name + "check_email_exist", { email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == true)
 					$('#email_exist_error').html('L\'adresse email ' + email + ' n\'est pas enregistrée, veuillez en saisir une autre.');
 				else {
 					$('#email_exist_error').html('');
-					console.log('reset_pwd_submit');
 				}
 					// $('#fos_user_registration_form').submit();
 			});
@@ -38,7 +37,7 @@ $(window).load(function() {
 
 		var error = 0;
 		var main_error = 0;
-        $.post("check_available", { username: username, email: email },
+        $.post(server_name + "check_available", { username: username, email: email },
 			function (result) {
 				var res = $.parseJSON(result);
 				if (res.success == false) {
@@ -145,7 +144,7 @@ $(window).load(function() {
     prevText: "",
     nextText: ""
   });
-   
+
   $('#slider_gallery').flexslider({
     animation: "slide",
     controlNav: false,
@@ -157,7 +156,7 @@ $(window).load(function() {
     nextText: ""
   });
 
-  // carousel event opened page   
+  // carousel event opened page
   $('#slider_event').flexslider({
     animation: "slide",
     controlNav: false,
@@ -167,7 +166,7 @@ $(window).load(function() {
     nextText: ""
   });
 
-  // carousel news page   
+  // carousel news page
   $('.news_item_pic').flexslider({
     animation: "slide", //String: "fade" or "slide"
     slideshow: true,
@@ -181,7 +180,7 @@ $(window).load(function() {
     columnWidth: 1,
     itemSelector: '.item'
   });
-  
+
   //load map for contacts
   loadMapScript();
 });
@@ -193,7 +192,7 @@ function login() {
 	$('.hideme').hide();
 
 	var errors = 0;
-	$.post("check_email_and_username_exist", { test: username },
+	$.post(server_name + "check_email_and_username_exist", { test: username },
 		function (result) {
 			var res = $.parseJSON(result);
 			if (res.success == false) {
@@ -203,7 +202,7 @@ function login() {
 					$('#account_locked').show();
 				errors++;
 			} else
-				$.post("../rest-login", { username: username, password: password },
+				$.post(server_name + "../rest-login", { username: username, password: password },
 					function (result) {
 						var res = $.parseJSON(result);
 						if (res.success == false) {
@@ -339,7 +338,7 @@ function bonmail(mailteste) {
 }
 
 function show_com_content(id)
-  {	
+  {
   	var elem = document.getElementById(id);
     if (elem.style.display == "none")
     {
@@ -418,16 +417,16 @@ $('input[type="file"]').change(function() {
 	}
 });
 
-$(document).ready(function() { 
-    setTimeout(function() { 
-        $(".notif").fadeOut(); 
+$(document).ready(function() {
+    setTimeout(function() {
+        $(".notif").fadeOut();
 	},3000);
-}); 
+});
 
 // function getEmail() {
 	// gapi.client.load('oauth2', 'v2', function() {
 		// var request = gapi.client.oauth2.userinfo.get();
-		// request.execute(function(resp) {	
+		// request.execute(function(resp) {
 			// if (resp['email']) {
 				// return (resp['email']);
 				// console.log(resp['email']);
