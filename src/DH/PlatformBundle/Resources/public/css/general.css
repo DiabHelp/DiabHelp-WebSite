@@ -627,7 +627,7 @@ body {
 }
 .nav_respons_signup {
   min-width: 180px;
-  max-height: 25px;	
+  max-height: 25px;
 }
 .nav_respons {
   display: none;
@@ -2326,8 +2326,9 @@ body {
 
 #image_profil{
   width: 100%;
-  max-width: 135px;
-  border:5px solid black;
+  max-width: 85px;
+  max-height: 85px;
+  border:1px solid black;
   height:auto;
   margin-top: 9px;
   margin-left: 1px;
@@ -2335,7 +2336,7 @@ body {
 #image_profile{
   width: 100%;
   max-width: 270px;
-  border:5px solid black;
+  border:1px solid black;
   height:auto;
   margin-top: 22px;
 }
@@ -4082,7 +4083,7 @@ input::-moz-placeholder {
 /* Default Desktop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (min-width: 980px) {
-  
+
 }
 /* Laptop
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
@@ -4193,7 +4194,7 @@ input::-moz-placeholder {
 /* Landscape Phone to Small Desktop & Portrait Tablet
 /* ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## */
 @media (max-width: 767px) {
-  
+
   .nav{
   margin: 32px 0 0 18px;
   }
@@ -4465,21 +4466,21 @@ margin-top : -11%;
     margin: auto;
 }
 
-.rating a { 
+.rating a {
    float:right;
-   color: #aaa;  
-   text-decoration: none;  
-   font-size: 3em;  
-   transition: color .4s; 
+   color: #aaa;
+   text-decoration: none;
+   font-size: 3em;
+   transition: color .4s;
    margin: auto;
-}  
+}
 
-.rating a:hover,  
-.rating a:focus,  
-.rating a:hover ~ a,  
-.rating a:focus ~ a {  
-   color: orange;  
-   cursor: pointer;  
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+   color: orange;
+   cursor: pointer;
 }
 .noteModule {
   cursor: text;
@@ -4517,14 +4518,14 @@ color: greenyellow;
 color:white;
 text-align:right;
 }
-.module_s { 
-display: block; 
+.module_s {
+display: block;
 border-bottom:solid 1px #2d2d2d;
 border-right:solid 1px #2d2d2d;
 border-top:0;
 border-left:0;
-background:#078b87; 
-padding:29px;  
+background:#078b87;
+padding:29px;
 width:80%;
     margin: 15px auto 2%;
     -webkit-border-top-left-radius: 5px;
@@ -4610,7 +4611,7 @@ opacity: 0.75;
 -moz-transition: all 300ms ease-in-out;
 -ms-transition: all 300ms ease-in-out;
 -o-transition: all 300ms ease-in-out;
-transition: all 300ms ease-in-out;  
+transition: all 300ms ease-in-out;
 }
 
 #button_com_react, #button_com_news
@@ -4624,13 +4625,13 @@ transition: all 300ms ease-in-out;
 
 #com_react_content
 {
-  background-color:#474747; 
+  background-color:#474747;
   height:auto;
 }
 
-#com_react_news{ 
+#com_react_news{
   height:auto;
-  background-color:#474747; 
+  background-color:#474747;
 }
 
 .simple_com{
@@ -4663,7 +4664,7 @@ transition: all 300ms ease-in-out;
   text-decoration: none;
   display: inline-block;
   width: 96px;
-  text-align: center;    
+  text-align: center;
 }
 
 #header_com_gauche{
@@ -4795,7 +4796,7 @@ color:white;
  height: 43px;
  padding-top: 7px;
  /*permet le centrage vertical*/
- text-align: center; 
+ text-align: center;
  color: #000;
  background: #444;
  background: linear-gradient( #555, #2C2C2C);
@@ -4805,8 +4806,8 @@ color:white;
 }
 
 .magick_button:hover
-{ color: #222; 
-background: #555; 
+{ color: #222;
+background: #555;
 background: linear-gradient( #777, #333);
  }
 
@@ -4819,25 +4820,25 @@ margin-left:80%;
  height: 20px;
  padding-top: 7px;
  /*permet le centrage vertical*/
- text-align: center; 
+ text-align: center;
  color: #000;
  background: #444;
  background: linear-gradient( #555, #2C2C2C);
  border-radius: 6px;
  text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
- box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5), 0 
+ box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5), 0
 					-1px 0 rgba( 255, 255, 255, 0.4);
 }
 .mini_button:hover { color: #222;
   background: #555;
   background: linear-gradient( #777, #333);
 }
- 
+
 .link_footer{
  font-size:24px;
  color:white;
 }
- 
+
     #customBtn {
       display: inline-block;
       background: #cc3732;
