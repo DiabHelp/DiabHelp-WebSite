@@ -731,6 +731,14 @@ body {
   color: #ffffff;
   margin-right: 3px;
 }
+
+#banner {
+  background-color: #078b87;
+  text-align: center;
+  font-size: 1.2em;
+  color: white;
+}
+
 /* FlexSlider index page
 *******************************/
 .flexslider {

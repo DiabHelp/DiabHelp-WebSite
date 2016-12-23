@@ -15,6 +15,7 @@
 
 <body>
 <div class="header center">
+  <div id="banner"> <a href="https://goo.gl/forms/6px675oMN7HtdSCZ2" target="_blank">Laissez nous votre témoignage sur la gestion de votre diabète au quotidien en cliquant ici. </a></div>
   <div class="header_logo fl">
     <a class="header_logo fl" title="diabhelp_icon"  href="{{ path('dh_platform_home') }}">
       <img alt="diabhelp_icon" src="{{ asset('bundles/dhplatform/images/Logo_diabhelp3.png') }}">
@@ -132,16 +133,27 @@
 <footer>
   <div class="footer">
     <div class="footer_center">
-      <div class="footer_contacts f1">
-          <a class="footer_contacts_title link_footer" href="{{ path('dh_platform_legal') }}">{{ 'Mentions légales' | trans }}</a> |
-          <a class="footer_contacts_title link_footer" href="{{ path('dh_platform_theyHelpedUs') }}">{{ 'Ils nous ont aidés' | trans }}</a>
+      <div class="footer_contacts center">
+        <a class="footer_contacts_title" href="{{ path('dh_platform_legal') }}">{{ 'Mentions légales' | trans }}</a> |
       </div>
-      <div class="footer_contacts fl center">
-        <h1 class="footer_contacts_title">{{ 'Contact' | trans }}</h1>
+
+      <div class="footer_contacts_item">
+        <div class="cf"></div>
+      </div>
+      <div class="footer_contacts center">
+        <a class="footer_contacts_title" href="{{ path('dh_platform_theyHelpedUs') }}">{{ 'Ils nous ont aidés' | trans }}</a>
+      </div>
+      <div class="footer_contacts_item">
+        <div class="cf"></div>
+      </div>
+
+      <div class="footer_contacts center">
+        <a class="footer_contacts_title" href="{{ path('dh_platform_contact')}}">{{ 'Contact' | trans }}</a>
+      </div>
         <div class="footer_contacts_item">
           <div class="cf"></div>
         </div>
-        <div class="footer_contacts_item">
+        <div class="footer_contacts center">
           <div class="footer_contacts_item_pic_address fl"></div>
           <div class="footer_contacts_item_inf fl">
             <h5>{{ 'ADRESSE' | trans }}</h5>
@@ -149,7 +161,7 @@
           </div>
           <div class="cf"></div>
         </div>
-        <div class="footer_contacts_item">
+        <div class="footer_contacts center">
           <div class="footer_contacts_item_pic_tel fl"></div>
           <div class="footer_contacts_item_inf fl">
             <h5>{{ 'TELEPHONE' | trans }}</h5>
@@ -157,7 +169,7 @@
           </div>
           <div class="cf"></div>
         </div>
-        <div class="footer_contacts_item">
+        <div class="footer_contacts center">
           <div class="footer_contacts_item_pic_email fl"></div>
           <div class="footer_contacts_item_inf fl">
             <h5>{{ 'EMAIL' | trans }}</h5>
