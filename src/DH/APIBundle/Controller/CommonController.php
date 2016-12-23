@@ -4,22 +4,41 @@ namespace DH\APIBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CommonController extends Controller {
+class PushNotification extends Controller {
 
-  public function sendPushNotification($destination, $title, $body) {
-    $message = "the test message";
-    $tickerText = "ticker text message";
-    $contentTitle = "content title";
-    $contentText = "content body";
+  private $destination;
+  private $title;
+  private $body;
 
-    $registrationId = 'abcdef...';
+  public function setDestination($destination) {
+    $this.$destination = $destination;
+    return this;
+  }
+
+  public function setDestination($title) {
+    $this.$title = $title;
+    return this;
+  }
+
+  public function setDestination($body) {
+    $this.$body = $body;
+    return this;
+  }
+
+  public function send() {
+    // $message = "the test message";
+    // $tickerText = "ticker text message";
+    // $contentTitle = "content title";
+    // $contentText = "content body";
+    //
+    // $registrationId = 'abcdef...';
     $apiKey = "1234...";
 
     $headers = array("Content-Type:" . "application/json", "Authorization:" . "key=" . $apiKey);
 
     $data = array(
-        'data' => $body,
-        'registration_ids' => $destination
+        'data' => $this.$body,
+        'registration_ids' => $this.$destination
     );
 
     $ch = curl_init();

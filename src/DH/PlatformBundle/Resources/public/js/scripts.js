@@ -33,7 +33,7 @@ $(window).load(function() {
 		var lastname = $('#fos_user_registration_form_lastname').val();
 
 
-        $('.hideme').hide();
+    $('.hideme').hide();
 
 		var error = 0;
 		var main_error = 0;
