@@ -5,6 +5,21 @@ dh_api_proche_patient_get_all_patient:
     requirements:
         id_user:   \d+
 
+dh_api_proche_patient_alert_all:
+    path:     /patient/{id_patient}/alert
+    defaults:  { _controller: DHAPIBundle:ProchePatient:alertAllProche }
+    requirements:
+        _method:  POST
+        id_patient:   \d+
+
+dh_api_proche_patient_alert_one:
+    path:     /patient/{id_patient}/alert/{id_proche}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:alertOneProche }
+    requirements:
+        _method:  POST
+        id_patient:   \d+
+        id_proche:   \d+
+
 dh_api_proche_patient_manage_patient_list:
     path:     /patient/managePatientList
     defaults:  { _controller: DHAPIBundle:ProchePatient:managePatientList }
@@ -16,6 +31,10 @@ dh_api_proche_patient_get_patient_position:
     defaults:  { _controller: DHAPIBundle:ProchePatient:getPatientPosition }
     requirements:
         id_user:  \d+
+
+dh_api_proche_patient_set_patient_position:
+    path:     /patient/setPatientPosition
+    defaults:  { _controller: DHAPIBundle:ProchePatient:setPatientPosition }
 
 dh_api_proche_patient_search_patient:
     path:     /patient/search/{id_user}/{search}
