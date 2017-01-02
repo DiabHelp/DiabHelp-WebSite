@@ -35,6 +35,8 @@ dh_api_proche_patient_get_patient_position:
 dh_api_proche_patient_set_patient_position:
     path:     /patient/setPatientPosition
     defaults:  { _controller: DHAPIBundle:ProchePatient:setPatientPosition }
+    requirements:
+        _method:  POST
 
 dh_api_proche_patient_search_patient:
     path:     /patient/search/{id_user}/{search}
