@@ -21,7 +21,7 @@ dh_api_proche_patient_alert_one:
         id_proche:   \d+
 
 dh_api_proche_patient_manage_patient_list:
-    path:     /patient/managePatientList
+    path:     /patient/manageProcheList
     defaults:  { _controller: DHAPIBundle:ProchePatient:managePatientList }
     requirements:
         _method:  POST
@@ -73,7 +73,7 @@ dh_api_proche_patient_get_all_proche:
         id_user:   \d+
 
 dh_api_proche_patient_manage_proche_list:
-    path:     /proche/manageProcheList
+    path:     /proche/managePatientList
     defaults:  { _controller: DHAPIBundle:ProchePatient:manageProcheList }
     requirements:
         _method:  POST
