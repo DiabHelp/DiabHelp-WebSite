@@ -2573,7 +2573,7 @@ body {
   border: none !important;
   padding: 15px !important;
   outline: none;
-  margin: 10px 0 0 9px;
+  margin: 10px 0 0 12px;
   width: 357px;
 }
 .form_box_righ {
@@ -4925,4 +4925,18 @@ input[type=password] {
 
 #dh_platformbundle_module_imageFile_delete {
   display: none;
+}
+
+.contact_form_input_mail,
+.contact_form_input_phone,
+.contact_form_input_name {
+  width: 240px;
+}
+
+.contact_form_input_noname {
+
+}
+
+.form_box_left {
+  width: 350px;
 }
