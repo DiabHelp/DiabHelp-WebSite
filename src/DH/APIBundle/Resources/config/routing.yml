@@ -152,3 +152,9 @@ dh_api_user_set_info:
     defaults:  { _controller: DHAPIBundle:User:setInfo }
     requirements:
         _method:  POST
+
+dh_api_user_set_FCM_token:
+    path:      /user/setFCMToken
+    defaults:  { _controller: DHAPIBundle:User:setFCMToken }
+    requirements:
+        _method:  POST
