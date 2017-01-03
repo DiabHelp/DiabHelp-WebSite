@@ -101,9 +101,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="GCMToken", type="string", length=255, nullable=true)
+     * @ORM\Column(name="FCMToken", type="string", length=255, nullable=true)
      */
-    private $GCMToken;
+    private $FCMToken;
 
     /**
      * Sets the file used for profile picture uploads
@@ -421,25 +421,25 @@ class User extends BaseUser
     }
 
     /**
-     * Set GCMToken
+     * Set FCMToken
      *
-     * @param string $GCMToken
+     * @param string $FCMToken
      *
      * @return User
      */
-    public function setGCMToken($GCMToken)
+    public function setFCMToken($FCMToken)
     {
-        $this->GCMToken = $GCMToken;
+        $this->FCMToken = $FCMToken;
         return $this;
     }
 
     /**
-     * Get GCMToken
+     * Get FCMToken
      *
      * @return string
      */
-    public function getGCMToken()
+    public function getFCMToken()
     {
-        return $this->GCMToken;
+        return $this->FCMToken;
     }
 }
