@@ -124,11 +124,89 @@ class ProchePatientController extends Controller
             $errors[] = "User not found";
             $response = array("success" => false, "errors" => $errors);
         } else {
-            $position = "Position";
+            $position = $user->getPosition();
             $response = array("success" => true, "position" => $position);
         }
 
         return new Response($this->serializer->serialize($response, 'json'));
+    }
+
+    public function alertAllProcheAction(Request $request, $id_patient) {
+      $encoders = new JsonEncoder();
+      $normalizer = new ObjectNormalizer();
+
+      $normalizer->setCircularReferenceHandler(function ($object) {
+          return $object;
+      });
+
+      $this->serializer = new Serializer(array($normalizer), array($encoders));
+
+      $repository = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('DHAPIBundle:ProchePatientLink');
+
+      $links = $repository->findByProche($id_patient);
+
+      $errors = array();
+
+      foreach ($links as $key => $link) {
+          $token = $link->getProche()->getGCMToken();
+          $message = $request->get('message', null);
+          // Send notif with message
+          $errors[] = "TROUVE";
+      }
+
+      if ($message == null)
+        $errors[] = "Missing message";
+      if ($links == null)
+        $errors[] = "Users not found";
+
+      if (count($errors > 0))
+          $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
+      else
+          $jsonContent = $this->serializer->serialize(array("success" => true), 'json');
+
+      return new Response($jsonContent);
+    }
+
+    public function alertOneProcheAction(Request $request, $id_patient, $id_proche) {
+      $encoders = new JsonEncoder();
+      $normalizer = new ObjectNormalizer();
+
+      $normalizer->setCircularReferenceHandler(function ($object) {
+          return $object;
+      });
+
+      $this->serializer = new Serializer(array($normalizer), array($encoders));
+
+      $repository = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('DHAPIBundle:ProchePatientLink');
+
+      $links = $repository->findByProche($id_patient);
+
+      $errors = array();
+
+      $message = $request->get('message', null);
+
+      foreach ($links as $key => $link) {
+        $token = $link->getProche()->getGCMToken();
+        if ($id_proche == $link->getProche()->getId())
+        // Send notif with message
+          $errors[] = "TROUVE";
+      }
+
+      if ($message == null)
+        $errors[] = "Missing message";
+      if ($links == null)
+        $errors[] = "Users not found";
+
+      if (count($errors > 0))
+          $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
+      else
+          $jsonContent = $this->serializer->serialize(array("success" => true), 'json');
+
+      return new Response($jsonContent);
     }
 
     public function searchPatientAction(Request $request, $id_user, $search) {
@@ -275,27 +353,37 @@ class ProchePatientController extends Controller
         return new Response($this->serializer->serialize(array("success" => true), 'json'));
     }
 
-    public function setPatientPositionAction(Request $request, $id_user) {
+    public function setPatientPositionAction(Request $request) {
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
         $this->serializer = new Serializer($normalizers, $encoders);
 
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('DHUserBundle:User');
-
-        $user = $repository->find($id_user);
+        $id_user = $request->get('id_user', null);
+        $position = $request->get('position', null);
 
         $errors = array();
-
-        if ($user == null) {
+        if ($id_user == null || $position == null)
+          $errors[] = "Missing parameters";
+        else {
+          $em = $this->getDoctrine()->getManager();
+          $repo = $em->getRepository('DHUserBundle:User');
+          $user = $repo->find($id_user);
+          if ($user == null)
             $errors[] = "User not found";
-            $response = array("success" => false, "errors" => $errors);
-        } else {
-            $position = "Position";
-            $response = array("success" => true, "position" => $position);
         }
 
+        if (count($errors) > 0) {
+          $response = array("success" => false, "errors" => $errors);
+          return new Response($this->serializer->serialize($response, 'json'));
+        }
+
+        if ($position)
+          $user->setPosition($position);
+
+        $em->persist($user);
+        $em->flush();
+
+        $response = array("success" => true);
         return new Response($this->serializer->serialize($response, 'json'));
     }
 

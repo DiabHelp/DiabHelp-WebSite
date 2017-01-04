@@ -170,4 +170,38 @@ class UserController extends Controller
         return new Response($this->serializer->serialize(array("success" => false), 'json'));
     }
 
+    public function setFCMTokenAction(Request $request) {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $this->serializer = new Serializer($normalizers, $encoders);
+
+        $id_user = $request->get('id_user', null);
+        $token = $request->get('token', null);
+
+        $errors = array();
+
+        if ($id_user == null)
+          $errors[] = "Missing user_id";
+        if ($token == null || count($token) == 0)
+          $token = null;
+
+        if (count($errors) == 0) {
+          $em = $this->getDoctrine()->getManager();
+          $repo = $em->getRepository('DHUserBundle:User');
+          $user = $repo->findOneById($id_user);
+
+          if ($user == null)
+              $errors[] = "User not found";
+          else {
+            $user->setFCMToken($token);
+            $em->flush();
+          }
+        }
+
+        if (count($errors) > 0)
+          return new Response($this->serializer->serialize(array("success" => false, "errors" => $errors), 'json'));
+
+        return new Response($this->serializer->serialize(array("success" => true), 'json'));
+    }
+
 }

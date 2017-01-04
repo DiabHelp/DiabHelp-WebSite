@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class ProchePatientLink
 {
     /**
-     * @var \DH\APIBundle\Entity\User
+     * @var \DH\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="DH\APIBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="DH\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_patient", referencedColumnName="id")
      * })
@@ -23,9 +23,9 @@ class ProchePatientLink
     private $patient;
 
     /**
-     * @var \DH\APIBundle\Entity\User
+     * @var \DH\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="DH\APIBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="DH\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_proche", referencedColumnName="id")
      * })
@@ -51,11 +51,11 @@ class ProchePatientLink
     /**
      * Set proche
      *
-     * @param \DH\APIBundle\Entity\User $proche
+     * @param \DH\UserBundle\Entity\User $proche
      *
      * @return ProchePatientLink
      */
-    public function setProche(\DH\APIBundle\Entity\User $proche = null)
+    public function setProche(\DH\UserBundle\Entity\User $proche = null)
     {
         $this->proche = $proche;
 
@@ -65,7 +65,7 @@ class ProchePatientLink
     /**
      * Get proche
      *
-     * @return \DH\APIBundle\Entity\User
+     * @return \DH\UserBundle\Entity\User
      */
     public function getProche()
     {
@@ -75,11 +75,11 @@ class ProchePatientLink
     /**
      * Set patient
      *
-     * @param \DH\APIBundle\Entity\User $patient
+     * @param \DH\UserBundle\Entity\User $patient
      *
      * @return ProchePatientLink
      */
-    public function setPatient(\DH\APIBundle\Entity\User $patient = null)
+    public function setPatient(\DH\UserBundle\Entity\User $patient = null)
     {
         $this->patient = $patient;
 
@@ -89,7 +89,7 @@ class ProchePatientLink
     /**
      * Get patient
      *
-     * @return \DH\APIBundle\Entity\User
+     * @return \DH\UserBundle\Entity\User
      */
     public function getPatient()
     {

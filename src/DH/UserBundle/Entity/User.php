@@ -94,16 +94,16 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="lattitude", type="string", length=255, nullable=false)
+     * @ORM\Column(name="position", type="string", length=255, nullable=true)
      */
-    private $lattitude;
+    private $position;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="longitude", type="string", length=255, nullable=false)
+     * @ORM\Column(name="FCMToken", type="string", length=255, nullable=true)
      */
-    private $longitude;
+    private $FCMToken;
 
     /**
      * Sets the file used for profile picture uploads
@@ -398,48 +398,48 @@ class User extends BaseUser
 
 
     /**
-     * Set lattitude
+     * Set position
      *
-     * @param string $lattitude
+     * @param string $position
      *
      * @return User
      */
-    public function setLattitude($lattitude)
+    public function setPosition($position)
     {
-        $this->lattitude = $lattitude;
+        $this->position = $position;
         return $this;
     }
 
     /**
-     * Get lattitude
+     * Get position
      *
      * @return string
      */
-    public function getLattitude()
+    public function getPosition()
     {
-        return $this->lattitude;
+        return $this->position;
     }
 
     /**
-     * Set longitude
+     * Set FCMToken
      *
-     * @param string $longitude
+     * @param string $FCMToken
      *
      * @return User
      */
-    public function setLongitude($longitude)
+    public function setFCMToken($FCMToken)
     {
-        $this->longitude = $longitude;
+        $this->FCMToken = $FCMToken;
         return $this;
     }
 
     /**
-     * Get longitude
+     * Get FCMToken
      *
      * @return string
      */
-    public function getLongitude()
+    public function getFCMToken()
     {
-        return $this->longitude;
+        return $this->FCMToken;
     }
 }

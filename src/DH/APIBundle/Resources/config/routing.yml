@@ -5,8 +5,23 @@ dh_api_proche_patient_get_all_patient:
     requirements:
         id_user:   \d+
 
+dh_api_proche_patient_alert_all:
+    path:     /patient/{id_patient}/alert
+    defaults:  { _controller: DHAPIBundle:ProchePatient:alertAllProche }
+    requirements:
+        _method:  POST
+        id_patient:   \d+
+
+dh_api_proche_patient_alert_one:
+    path:     /patient/{id_patient}/alert/{id_proche}
+    defaults:  { _controller: DHAPIBundle:ProchePatient:alertOneProche }
+    requirements:
+        _method:  POST
+        id_patient:   \d+
+        id_proche:   \d+
+
 dh_api_proche_patient_manage_patient_list:
-    path:     /patient/managePatientList
+    path:     /patient/manageProcheList
     defaults:  { _controller: DHAPIBundle:ProchePatient:managePatientList }
     requirements:
         _method:  POST
@@ -16,6 +31,12 @@ dh_api_proche_patient_get_patient_position:
     defaults:  { _controller: DHAPIBundle:ProchePatient:getPatientPosition }
     requirements:
         id_user:  \d+
+
+dh_api_proche_patient_set_patient_position:
+    path:     /patient/setPatientPosition
+    defaults:  { _controller: DHAPIBundle:ProchePatient:setPatientPosition }
+    requirements:
+        _method:  POST
 
 dh_api_proche_patient_search_patient:
     path:     /patient/search/{id_user}/{search}
@@ -52,7 +73,7 @@ dh_api_proche_patient_get_all_proche:
         id_user:   \d+
 
 dh_api_proche_patient_manage_proche_list:
-    path:     /proche/manageProcheList
+    path:     /proche/managePatientList
     defaults:  { _controller: DHAPIBundle:ProchePatient:manageProcheList }
     requirements:
         _method:  POST
@@ -129,5 +150,11 @@ dh_api_user_get_info:
 dh_api_user_set_info:
     path:      /user/setInfo
     defaults:  { _controller: DHAPIBundle:User:setInfo }
+    requirements:
+        _method:  POST
+
+dh_api_user_set_FCM_token:
+    path:      /user/setFCMToken
+    defaults:  { _controller: DHAPIBundle:User:setFCMToken }
     requirements:
         _method:  POST
