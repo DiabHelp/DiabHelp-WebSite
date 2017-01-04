@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="FCMToken", type="string", length=255, nullable=true)
+   */
+  private $FCMToken;
+
     /**
      * @var string
      *
@@ -589,5 +596,28 @@ class User
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set FCMToken
+     *
+     * @param string $FCMToken
+     *
+     * @return User
+     */
+    public function setFCMToken($FCMToken)
+    {
+        $this->FCMToken = $FCMToken;
+        return $this;
+    }
+
+    /**
+     * Get FCMToken
+     *
+     * @return string
+     */
+    public function getFCMToken()
+    {
+        return $this->FCMToken;
     }
 }
