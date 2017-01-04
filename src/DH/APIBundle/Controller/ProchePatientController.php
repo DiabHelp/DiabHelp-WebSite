@@ -146,7 +146,7 @@ class ProchePatientController extends Controller
           ->getManager()
           ->getRepository('DHAPIBundle:ProchePatientLink');
 
-      $links = $repository->findByProche($id_patient);
+      $links = $repository->findByPatient($id_patient);
 
       $errors = array();
 
@@ -230,7 +230,7 @@ class ProchePatientController extends Controller
           ->getManager()
           ->getRepository('DHAPIBundle:ProchePatientLink');
 
-      $links = $repository->findByProche($id_patient);
+      $links = $repository->findByPatient($id_patient);
 
       $errors = array();
 
