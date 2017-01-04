@@ -159,44 +159,48 @@ class ProchePatientController extends Controller
       $message = $request->get('message', null);
 
       foreach ($links as $key => $link) {
-        $token = $link->getProche()->getFCMToken();
-        $firstname = $link->getPatient()->getFirstname();
-        $lastname = $link->getPatient()->getLastname();
-        $position = $link->getPatient()->getPosition();
+        if ($link->getProche() != null) {
+          $token = $link->getProche()->getFCMToken();
+          $firstname = $link->getPatient()->getFirstname();
+          $lastname = $link->getPatient()->getLastname();
+          $position = $link->getPatient()->getPosition();
 
-        $url = 'https://fcm.googleapis.com/fcm/send';
+          if ($token != null || $firsname != null || $lastname != null || $position != null) {
+            $url = 'https://fcm.googleapis.com/fcm/send';
 
-        $to = $token;
-        $pname = "fr.diabhelp.prochepatient";
-        $appname = "Suivi des proches";
-        $event = "alert_patient";
-        $id_user = $id_proche;
-        $name_user = $firstname . " " . $lastname;
-        $id_patient = $id_patient;
-        $cds = $entries;
+            $to = $token;
+            $pname = "fr.diabhelp.prochepatient";
+            $appname = "Suivi des proches";
+            $event = "alert_patient";
+            $id_user = $id_proche;
+            $name_user = $firstname . " " . $lastname;
+            $id_patient = $id_patient;
+            $cds = $entries;
 
-        $datas = array("PNAME" => $pname,
-                      "APPNAME" => $appname,
-                      "EVENT" => $event,
-                      "ID_USER" => $id_user,
-                      "NAME_USER" => $name_user,
-                      "ID_PATIENT" => $id_patient,
-                      "MESSAGE" => $message,
-                      "POSITION" => $position,
-                      "CARNET_SUIVI" => $cds
-                    );
+            $datas = array("PNAME" => $pname,
+                          "APPNAME" => $appname,
+                          "EVENT" => $event,
+                          "ID_USER" => $id_user,
+                          "NAME_USER" => $name_user,
+                          "ID_PATIENT" => $id_patient,
+                          "MESSAGE" => $message,
+                          "POSITION" => $position,
+                          "CARNET_SUIVI" => $cds
+                        );
 
-        $data = array('to' => $to, 'datas'=> $datas);
-        $data_json = json_encode($data);
+            $data = array('to' => $to, 'datas'=> $datas);
+            $data_json = json_encode($data);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($ch);
-        curl_close($ch);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_exec($ch);
+            curl_close($ch);
+          }
+        }
       }
 
       if ($message == null)
