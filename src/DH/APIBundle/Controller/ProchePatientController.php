@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Sensio\Bundle\BuzzBundle;
 
 class ProchePatientController extends Controller
 {
@@ -149,11 +150,53 @@ class ProchePatientController extends Controller
 
       $errors = array();
 
+      $repository = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('DHAPIBundle:CdsSave');
+
+      $entries = $repository->findByIdUser($id_patient);
+
+      $message = $request->get('message', null);
+
       foreach ($links as $key => $link) {
-          $token = $link->getProche()->getGCMToken();
-          $message = $request->get('message', null);
-          // Send notif with message
-          $errors[] = "TROUVE";
+        $token = $link->getProche()->getFCMToken();
+        $firstname = $link->getPatient()->getFirstname();
+        $lastname = $link->getPatient()->getLastname();
+        $position = $link->getPatient()->getPosition();
+
+        $url = 'https://fcm.googleapis.com/fcm/send';
+
+        $to = $token;
+        $pname = "fr.diabhelp.prochepatient";
+        $appname = "Suivi des proches";
+        $event = "alert_patient";
+        $id_user = $id_proche;
+        $name_user = $firstname . " " . $lastname;
+        $id_patient = $id_patient;
+        $cds = $entries;
+
+        $datas = array("PNAME" => $pname,
+                      "APPNAME" => $appname,
+                      "EVENT" => $event,
+                      "ID_USER" => $id_user,
+                      "NAME_USER" => $name_user,
+                      "ID_PATIENT" => $id_patient,
+                      "MESSAGE" => $message,
+                      "POSITION" => $position,
+                      "CARNET_SUIVI" => $cds
+                    );
+
+        $data = array('to' => $to, 'datas'=> $datas);
+        $data_json = json_encode($data);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($ch);
+        curl_close($ch);
       }
 
       if ($message == null)
@@ -161,7 +204,7 @@ class ProchePatientController extends Controller
       if ($links == null)
         $errors[] = "Users not found";
 
-      if (count($errors > 0))
+      if (count($errors) > 0)
           $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
       else
           $jsonContent = $this->serializer->serialize(array("success" => true), 'json');
@@ -190,10 +233,52 @@ class ProchePatientController extends Controller
       $message = $request->get('message', null);
 
       foreach ($links as $key => $link) {
-        $token = $link->getProche()->getGCMToken();
-        if ($id_proche == $link->getProche()->getId())
-        // Send notif with message
-          $errors[] = "TROUVE";
+        if ($id_proche == $link->getProche()->getId()) {
+          $token = $link->getProche()->getFCMToken();
+          $firstname = $link->getPatient()->getFirstname();
+          $lastname = $link->getPatient()->getLastname();
+          $position = $link->getPatient()->getPosition();
+
+          $repository = $this->getDoctrine()
+              ->getManager()
+              ->getRepository('DHAPIBundle:CdsSave');
+
+          $entries = $repository->findByIdUser($id_patient);
+
+          $url = 'https://fcm.googleapis.com/fcm/send';
+
+          $to = $token;
+          $pname = "fr.diabhelp.prochepatient";
+          $appname = "Suivi des proches";
+          $event = "alert_patient";
+          $id_user = $id_proche;
+          $name_user = $firstname . " " . $lastname;
+          $id_patient = $id_patient;
+          $cds = $entries;
+
+          $datas = array("PNAME" => $pname,
+                        "APPNAME" => $appname,
+                        "EVENT" => $event,
+                        "ID_USER" => $id_user,
+                        "NAME_USER" => $name_user,
+                        "ID_PATIENT" => $id_patient,
+                        "MESSAGE" => $message,
+                        "POSITION" => $position,
+                        "CARNET_SUIVI" => $cds
+                      );
+
+          $data = array('to' => $to, 'datas'=> $datas);
+          $data_json = json_encode($data);
+
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, $url);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+          curl_setopt($ch, CURLOPT_POST, 1);
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_exec($ch);
+          curl_close($ch);
+        }
       }
 
       if ($message == null)
@@ -201,7 +286,7 @@ class ProchePatientController extends Controller
       if ($links == null)
         $errors[] = "Users not found";
 
-      if (count($errors > 0))
+      if (count($errors) > 0)
           $jsonContent = $this->serializer->serialize(array("success" => false, "errors" => $errors), 'json');
       else
           $jsonContent = $this->serializer->serialize(array("success" => true), 'json');
