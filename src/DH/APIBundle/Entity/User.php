@@ -19,6 +19,13 @@ class User
    */
   private $FCMToken;
 
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="position", type="string", length=255, nullable=true)
+   */
+  private $position;
+
     /**
      * @var string
      *
@@ -619,5 +626,28 @@ class User
     public function getFCMToken()
     {
         return $this->FCMToken;
+    }
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     *
+     * @return User
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

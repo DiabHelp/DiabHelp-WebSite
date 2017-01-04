@@ -164,6 +164,7 @@ class ProchePatientController extends Controller
           $firstname = $link->getPatient()->getFirstname();
           $lastname = $link->getPatient()->getLastname();
           $position = $link->getPatient()->getPosition();
+          $id_proche = $link->getProche()->getId();
 
           if ($token != null || $firsname != null || $lastname != null || $position != null) {
             $url = 'https://fcm.googleapis.com/fcm/send';
