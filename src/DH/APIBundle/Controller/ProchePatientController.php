@@ -132,6 +132,7 @@ class ProchePatientController extends Controller
         return new Response($this->serializer->serialize($response, 'json'));
     }
 
+
     public function alertAllProcheAction(Request $request, $id_patient) {
       $encoders = new JsonEncoder();
       $normalizer = new ObjectNormalizer();
@@ -169,6 +170,8 @@ class ProchePatientController extends Controller
           if ($token != null || $firstname != null || $lastname != null || $position != null) {
             $url = 'https://fcm.googleapis.com/fcm/send';
 
+            $title = "Reception alerte";
+            $body = $firstname . " a besoin d'assistance";
             $to = $token;
             $pname = "fr.diabhelp.prochepatient";
             $appname = "Suivi des proches";
@@ -189,7 +192,7 @@ class ProchePatientController extends Controller
                           "CARNET_SUIVI" => $cds
                         );
 
-            $data = array('to' => $to, 'datas'=> $datas);
+            $data = array('notification' => array('title' => $title, 'body' => $body), 'to' => $to, 'datas'=> $datas);
             $data_json = json_encode($data);
 
             $ch = curl_init();
@@ -252,6 +255,8 @@ class ProchePatientController extends Controller
 
           $url = 'https://fcm.googleapis.com/fcm/send';
 
+          $title = "Reception alerte";
+          $body = $firstname . " a besoin d'assistance";
           $to = $token;
           $pname = "fr.diabhelp.prochepatient";
           $appname = "Suivi des proches";
@@ -272,7 +277,7 @@ class ProchePatientController extends Controller
                         "CARNET_SUIVI" => $cds
                       );
 
-          $data = array('to' => $to, 'datas'=> $datas);
+          $data = array('notification' => array('title' => $title, 'body' => $body), 'to' => $to, 'datas'=> $datas);
           $data_json = json_encode($data);
 
           $ch = curl_init();
