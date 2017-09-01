@@ -261,14 +261,14 @@ function mapInit() {
 	panControl: false,
 	scrollwheel: false
   }
-    var map = new google.maps.Map(document.getElementById("map_contact"), mapOptions);
+   // var map = new google.maps.Map(document.getElementById("map_contact"), mapOptions);
 }
 
 function loadMapScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
   script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFMs-Ca3F9mv2r4Oa6WctxU9zzeNWy_vg&callback=mapInit";
-  document.body.appendChild(script);
+  //document.body.appendChild(script);
 }
 
 function show_signup() {
